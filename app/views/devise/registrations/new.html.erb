@@ -1,0 +1,46 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label "단국대 웹메일", :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label "닉네임", :username %><br />
+    <%= f.email_field :username, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :gender, "여자" %>
+    <%= f.radio_button(:gender, "여자") %>
+    <%= f.label :gender, "남자" %>
+    <%= f.radio_button(:gender, "남자") %>
+  </div>
+
+  <div class="field">
+    <%= f.label "전공", :major %><br />
+    <%#= f.select :major, @dates.collect {|name, index| [name, index]}, {prompt: "날짜를 선택해주세요"}, :remote => true, :class => 'date_selection', :id => 'id_date_selection' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
