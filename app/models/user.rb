@@ -9,9 +9,6 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true, presence: true
   validates :username, uniqueness: true, presence: true
   validates :gender, presence: true
-  
- 	belongs_to :major, inverse_of: :users
- 	#inverse_of는 메모리에 정보가 남아있는 경우 그것을 가져다 쓰기 때문에 db를 들리지 않아도 되어서 효율적인 방법.
 
   def login=(login)
     @login = login

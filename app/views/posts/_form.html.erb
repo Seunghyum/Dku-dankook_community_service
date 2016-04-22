@@ -1,4 +1,4 @@
-<%= form_for(@post) do |f| %>
+<%= form_for [@board, @post], html: {multipart: true} do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -21,15 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :attachment %><br>
-    <%= f.text_field :attachment %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :hits %><br>
-    <%= f.number_field :hits %>
+    <%= f.file_field :attachment %>
   </div>
   <div class="actions">
     <%= f.submit %>

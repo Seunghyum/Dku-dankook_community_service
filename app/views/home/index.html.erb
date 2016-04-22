@@ -1,2 +1,26 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class='wrapper'>
+  <div class="main">
+    <div class="section section-nude">
+      <div class="container tim-container">
+        <h4>게시판</h4>
+        <div class="row coloured-cards">
+          <% Board.all.each do |board| %>
+              <div class="col-md-4 col-sm-6">
+                  <div class="card-big-shadow">
+                      <div class="card card-hover-effect card-just-text" data-background="color" data-color="yellow" data-radius="none">
+                        <%= link_to board_posts_path(board) do %>
+                          <div class="content">
+                              <h6 class="category">게시판</h6>
+                              <h4 class="title"><%= board.name %></h4>
+                              <p class="description"><%= board.description %></p>
+                          </div>
+                        <% end %>
+                      </div> <!-- end card -->
+                  </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

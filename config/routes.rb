@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   
   resources :boards do
     resources :posts do
-      collection do
-        get 'search/', to: 'posts#search'
-      end
+      # collection do
+      #   get 'search/', to: 'posts#search'
+      # end
       resources :comments, module: :posts, shallow: true
     end
   end

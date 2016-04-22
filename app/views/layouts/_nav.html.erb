@@ -1,0 +1,150 @@
+<nav class="navbar navbar-default" role="navigation-demo">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+          로고
+      </a>
+    </div>
+
+<!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navigation-example-2">
+      <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="#">
+                    Discover
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    Wishlist
+                </a>
+            </li>
+            <li class="dropdown">
+                <a class="btn btn-icon btn-sm btn-warning btn-fill" data-toggle="dropdown">
+                    <i class="ti-pulse"></i>
+                </a>
+
+                  <ul class="dropdown-menu dropdown-menu-right dropdown-notification">
+                    <li class="no-notification">
+                           You're all clear!
+                    </li>
+
+                  </ul>
+            </li>
+            <li class="dropdown">
+                <a class="btn btn-sm btn-danger btn-fill" data-toggle="dropdown">
+                    7
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-right dropdown-wide dropdown-notification">
+                    <li class="dropdown-header">
+                        You have 7 unread notifications
+                    </li>
+                    <li>
+                    <ul class="dropdown-notification-list scroll-area">
+                        <li>
+                            <a href="#" class="notification-item">
+                                <div class="notification-text">
+                                    <span class="label label-icon label-success"><i class="ti-comment-alt"></i></span>
+                                    <span class="message"><b>Patrick</b> mentioned you in a comment.</span>
+                                    <br>
+                                    <span class="time">20min ago</span>
+
+                                    <button class="btn btn-xs btn-icon btn-fill read-notification">
+                                        <i class="ti-check"></i>
+                                    </button>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="notification-item">
+                               <div class="notification-text">
+                                    <span class="label label-icon label-info"><i class="ti-help"></i></span>
+
+                                    <span class="message">Our privacy policy changed!</span>
+                                    <br>
+                                    <span class="time">1day ago</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="notification-item">
+                                <div class="notification-text">
+                                    <span class="label label-icon label-warning"><i class="ti-alert"></i></span>
+
+                                    <span class="message">Please confirm your email address.</span>
+                                    <br>
+                                    <span class="time">2days ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="notification-item">
+                                <div class="notification-text">
+                                    <span class="label label-icon label-primary"><i class="ti-thought"></i></span>
+                                    <span class="message">Have you thought about increasing your outbound marketing resources? See some tips here!</span>
+                                    <br>
+                                    <span class="time">3days ago</span>
+                                </div>
+                            </a>
+                        </li>
+                     </ul>
+                     </li>
+<!--                                 end scroll area -->
+
+                    <li class="dropdown-footer">
+                        <ul class="dropdown-footer-menu">
+                            <li>
+                                <a href="#">Mark all as read</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" class="profile-photo dropdown-toggle" data-toggle="dropdown">
+                    <div class="profile-photo-small">
+                        <%= image_tag "placeholder.jpg", al: "Circle Image", class: "img-circle img-responsive img-no-padding" %>
+                    </div>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right dropdown-wide">
+                    <li class="dropdown-header">
+                        Dropdown header
+                    </li>
+                    <li>
+                        <a href="#">Me</a>
+                    </li>
+                    <li>
+                        <a href="#">Settings and other stuff</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="#">Sign out</a></li>
+                    <li class="dropdown-footer">
+                        <ul class="dropdown-footer-menu">
+                            <li>
+                                <a href="#">Creative Tim</a>
+                            </li>
+                            <li>
+                                <a href="#">Terms</a>
+                            </li>
+                            <li>
+                                <a href="#">Privacy</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+       </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-->
+</nav>

@@ -1,35 +1,70 @@
-<p id="notice"><%= notice %></p>
+<div class="wrapper">
+    <div class="main">
+        <div class="section section-nude">
+            <div class="container tim-container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <p id="notice"><%= notice %></p>
+                        
+                        <h4><small><%= @board.name %></small></h4>
+                        
+                        <%= link_to 'New Post', new_board_post_path %>
+                        
+                        <div class="table-responsive">
+                          <table class="table table-striped">
+                              <thead>
+                                  <tr>
+                                      <th class="text-center">#</th>
+                                      <th>Title</th>
+                                      <th>User</th>
+                                      <th>
+                                        <button href="#" class="btn btn-icon btn-danger btn-simple">
+                                           <i class="ti-heart"></i> 
+                                        </button>
+                                        /
+                                        <button href="#" class="btn btn-icon btn-simple">
+                                             <i class="ti-heart-broken"></i>
+                                        </button>
+                                      </th>
+                                      <th class="text-center">view</th>
+                                      <th>Since</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                <% @posts.each do |post| %>
+                                  <tr>
+                                    <td class="text-center"><%= post.id %></td>
+                                    <td>
+                                      <%= link_to "#{post.title}", board_post_path(post.board, post) %>
+                                      
+                                      <% if post.user == current_user %>
+                                        <!--수정버튼-->
+                                        <%= link_to board_post_path(post.board, post) do %>
+                                          <button class="btn btn-icon btn-xs btn-warning btn-fill" rel="tooltip" title="Edit Profile">
+                                            <i class="fa fa-edit"></i>
+                                          </button>
+                                        <% end %>
+                                        <!--삭제버튼-->
+                                        <%= link_to board_post_path(post.board, post), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                                          <button class="btn btn-icon btn-xs btn-danger btn-fill" rel="tooltip" title="Edit Profile">
+                                            <i class="fa fa-times"></i>
+                                          </button>
+                                        <% end %>
+                                      <% end %>
+                                    </td>
+                                    <td><%= post.user.username %></td>
+                                    <td><%= post.hits %></td>
+                                    <td class="text-center">수</td>
+                                    <td><%= post.created_at %></td>
+                                  </tr>
+                                <% end %>
+                              </tbody>
+                          </table>
+                        </div>
 
-<h1>Listing Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Attachment</th>
-      <th>User</th>
-      <th>Hits</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.content %></td>
-        <td><%= post.attachment %></td>
-        <td><%= post.user %></td>
-        <td><%= post.hits %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
