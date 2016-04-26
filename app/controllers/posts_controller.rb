@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_board
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
   # GET /posts
   # GET /posts.json
   def index
@@ -10,7 +9,9 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   # GET /posts/1.json
-  def show
+  def show    
+    @post.hits = @post.hits + 1
+    @post.save
   end
 
   # GET /posts/new
@@ -28,28 +29,20 @@ class PostsController < ApplicationController
     @post = @board.posts.new(post_params)
     @post.user = current_user
    
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to [@post.board, @post], notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      redirect_to [@post.board, @post]
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.update(post_params)
+      redirect_to [@post.board, @post]
+    else
+      render :edit
     end
   end
 
@@ -57,10 +50,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to board_posts_url, notice: 'Post was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to board_posts_path(@post.board)
   end
 
   private
@@ -73,9 +63,8 @@ class PostsController < ApplicationController
       @board = Board.find(params[:board_id])
     end
 
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :attachment, :user_id, :hits)
+      params.require(:post).permit(:title, :content, :attachment, :board_id)
     end
 end

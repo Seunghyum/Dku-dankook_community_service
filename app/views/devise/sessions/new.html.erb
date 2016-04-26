@@ -6,6 +6,7 @@
                     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 ">
                         <div class="demo-card">
                             <h3 class="title text-center">어서오세요!</h3>
+                            <%= devise_error_messages! %>
                             <br>
                             <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {:class => "register-form"}) do |f| %>
                                 <label>닉네임 or 학교 웹메일</label>

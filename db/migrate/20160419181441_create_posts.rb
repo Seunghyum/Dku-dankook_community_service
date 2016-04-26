@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration
       t.text :content
       t.string :attachment
       t.references :user, index: true, foreign_key: true
-      t.integer :hits
+      t.integer :hits, default: 0
 
       t.timestamps null: false
     end

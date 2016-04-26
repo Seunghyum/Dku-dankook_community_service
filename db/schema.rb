@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420085432) do
+ActiveRecord::Schema.define(version: 20160422075535) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "name"
@@ -20,20 +20,30 @@ ActiveRecord::Schema.define(version: 20160420085432) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "majors", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "comments", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "ancestry"
+    t.integer  "post_id"
   end
+
+  add_index "comments", ["ancestry"], name: "index_comments_on_ancestry"
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
     t.string   "attachment"
     t.integer  "user_id"
-    t.integer  "hits"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "hits",       default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "board_id"
   end
 
@@ -58,11 +68,11 @@ ActiveRecord::Schema.define(version: 20160420085432) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
-    t.integer  "major_id"
+    t.integer  "comment_id"
   end
 
+  add_index "users", ["comment_id"], name: "index_users_on_comment_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["major_id"], name: "index_users_on_major_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

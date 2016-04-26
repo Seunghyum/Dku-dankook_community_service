@@ -9,7 +9,7 @@
                                 <p id="notice"><%= notice %></p>
                                 <span class="label label-warning"><%= @board.name %></span>
                                 <h3 class="title"><%= @post.title %></h3>
-                                <h6 class="title-uppercase"><%= @post.created_at %></h6>
+                                <h6 class="title-uppercase"><%= @post.created_at.strftime("%B %d, %Y")%></h6>
                                 <% if @post.user == current_user %>
                                   <!--수정버튼-->
                                     <%= link_to edit_board_post_path(@post.board, @post) do %>
@@ -42,15 +42,15 @@
                                 </p>
                             </div>
                             <div class="media-footer">
-                                <a href="#" class="btn btn-danger btn-simple">
+                                <span href="#" class="btn btn-danger btn-simple">
                                      <i class="ti-heart"></i> 243
-                                </a>
-                                <a href="#" class="btn btn-simple">
+                                </span>
+                                <span href="#" class="btn btn-simple">
                                      <i class="ti-heart-broken"></i> 2
-                                </a>
-                                <a href="#" class="btn btn-simple">
-                                     view · 3
-                                </a>
+                                </span>
+                                <span href="#" class="btn btn-simple">
+                                     view · <%= @post.hits %>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -92,152 +92,126 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="media-area">
-                            <h3>댓글 · 10</h3>
-                            <div class="media">
-                                  <a class="pull-left" href="#">
-                                   <div class="avatar">
-                                        <%= image_tag "placeholder.jpg",class: "media-object" %>
-                                   </div>
-                                  </a>
-                                  <div class="media-body">
-                                    <h5 class="media-heading">Creative Tim</h5>
-                                    <div class="pull-right">
-                                        <h6 class="text-muted">Sep 11, 11:53 AM</h6>
-                                        <a href="#" class="btn btn-info btn-simple pull-right "> <i class="fa fa-reply"></i> Reply</a>
-
-                                    </div>
-                                    <p>Hello guys, nice to have you on the platform! There will be a lot of great stuff coming soon. We will keep you posted for the latest news.</p>
-                                    <p> Don't forget, You're Awesome!</p>
-
-                                    <div class="media-footer">
-                                        <a href="#" class="btn btn-danger btn-simple">
-                                             <i class="ti-heart"></i> 243
-                                        </a>
-                                        <a href="#" class="btn btn-simple">
-                                             <i class="ti-heart-broken"></i> 2
-                                        </a>
-                                        <a href="#" class="btn btn-simple">
-                                             Follow · 3
-                                        </a>
-                                    </div>
-
-                                     <div class="media media-post">
-                                             <a class="pull-left author" href="#">
-                                              <div class="avatar">
-                                                    <img class="media-object" alt="64x64" src="assets/img/chet_faker_2.jpg">
-                                              </div>
-                                          </a>
-                                          <div class="media-body">
-                                                <textarea class="form-control" placeholder="Write a nice reply or go home..." rows="4"></textarea>
-                                                <div class="media-footer">
-                                                     <a href="#" class="btn btn-info btn-fill pull-right">Reply</a>
-                                                </div>
-                                          </div>
-                                     </div> <!-- end media-post -->
-                                  </div>
-                            </div> <!-- end media -->
-
-                            <!--  Comment                    -->
-                            <div class="media">
-                              <a class="pull-left" href="#">
-                                  <div class="avatar">
-                                     <img class="media-object" alt="Tim Picture" src="assets/img/flume.jpg">
-                                  </div>
-                              </a>
-                              <div class="media-body">
-
-                                <h5 class="media-heading">Flume</h5>
-                                <div class="pull-right">
-                                    <h6 class="text-muted">Sep 11, 11:54 AM</h6>
-                                    <a href="#" class="btn btn-info btn-simple pull-right "> <i class="fa fa-reply"></i> Reply</a>
-
+                          <h3>댓글 · <%= @post.comments ? "0" : @counts.count %></h3>
+                        <!--대댓글 출력-->
+                          <%#= nested_comments @comment.subtree.arrange(:order => :created_at) if @post.comments %>
+                        
+  <% @post.comments.each do |comment| %>
+    <div class="media">
+      <a class="pull-left" href="#">
+       <div class="avatar">
+            <%= image_tag "placeholder.jpg",class: "media-object" %>
+       </div>
+      </a>
+      <div class="media-body">
+        <h5 class="media-heading"><%= comment.user.username %></h5>
+        <div class="pull-right">
+            <h6 class="text-muted"><%= comment.created_at %></h6>
+            <a href="#" class="btn btn-info btn-simple pull-right "> <i class="fa fa-reply"></i> Reply</a>
+        </div>
+        <p><%= comment.content %></p>
+      
+        <div class="media-footer">
+          <span href="#" class="btn btn-danger btn-simple">
+               <i class="ti-heart"></i> 243
+          </span>
+          <span href="#" class="btn btn-simple">
+               <i class="ti-heart-broken"></i> 2
+          </span>
+      <!--댓글 수정 및 삭제-->
+          <% if current_user == comment.user %>
+          <!--수정버튼-->
+            <a style='cursor:pointer' id="posts-comment-toggle<%=comment.id%>" >
+            
+              <script>
+          			$('#posts-comment-toggle<%=comment.id%>').click(function(){
+          				var toggle = $('#comment-toggle<%=comment.id%>');
+          				if( toggle.is(':hidden') ){
+          						toggle.slideDown();
+          				} else {
+          						toggle.slideUp();
+          				}
+          			});
+          		</script>
+          		
+              <button class="btn btn-icon btn-sm btn-warning btn-fill" rel="tooltip" title="Edit Profile">
+                <i class="fa fa-edit"></i>
+              </button>
+            </a>
+          <!--삭제버튼-->
+            <%= link_to comment, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <button class="btn btn-icon btn-sm btn-danger btn-fill" rel="tooltip" title="Edit Profile">
+                <i class="fa fa-times"></i>
+              </button>
+            <% end %>
+          <!--수정 폼-->
+            <div class="media media-post" id='comment-toggle<%=comment.id%>' style='display: none;'>
+              <div class="media-body">
+                <%= form_for [comment], method: :put do |f|%>
+                  <p>
+                    <%= f.label :content, "수정하기" %><br />
+                    <%= f.text_area :content, :rows => 4, class: "form-control", placeholder: "예의 있게 써주세요"  %>
+                  </p>
+                  <p><%= f.submit "수정하기",class: "btn btn-info btn-fill btn-wd pull-right" %></p>
+                <% end %>
+              </div>
+             </div> <!-- end media-post -->
+          </div>
+        <% end %>
+      <!--대댓글 작성-->
+      <div class="media media-post">
+        <a class="pull-left author" href="#">
+          <div class="avatar">
+            현재 유저의 이미지
+            <img class="media-object" alt="64x64" src="assets/img/chet_faker_2.jpg">
+          </div>
+        </a>
+        <div class="media-body">
+          <%= form_for comment, method: :put do |f|%>
+            <%= f.hidden_field :parent_id %>
+            <p>
+              <%= f.label :content, "댓글달기" %><br />
+              <%= f.text_area :content, :rows => 4, class: "form-control", placeholder: "예의 있게 써주세요"  %>
+            </p>
+            <p><%= f.submit "Post Message",class: "btn btn-info btn-fill btn-wd pull-right" %></p>
+          <% end %>
+        </div>
+      </div>
+           
+    </div>
+  </div> <!-- end media -->
+  <% end %> 
+                        
+                        <!--댓글 작성-->
+                          <div class="media media-post">
+                            <a class="pull-left author" href="#">
+                                <div class="avatar">
+                                      <!--현재 유저의 프로파일-->
+                                      <img class="media-object" alt="64x64" src="assets/img/banks.jpg">
                                 </div>
-
-                                 <p>Hello guys, nice to have you on the platform! There will be a lot of great stuff coming soon. We will keep you posted for the latest news.</p>
-
-                                 <div class="media-footer">
-                                    <a href="#" class="btn btn-simple">
-                                         <i class="ti-heart"></i> 243
-                                    </a>
-                                    <a href="#" class="btn btn-primary btn-simple">
-                                         <i class="ti-heart-broken"></i> 2
-                                    </a>
-                                    <a href="#" class="btn btn-simple">
-                                         Follow · 3
-                                    </a>
-                                 </div>
-                                 <div class="media">
-                                      <a class="pull-left" href="#">
-                                          <div class="avatar">
-                                                <img class="media-object" alt="64x64" src="assets/img/chet_faker_2.jpg">
-                                          </div>
-                                      </a>
-                                      <div class="media-body">
-                                            <h5 class="media-heading">Chet Faker</h5>
-                                            <div class="pull-right">
-                                                <h6 class="text-muted">Sep 11, 11:56 AM</h6>
-                                                <a href="#" class="btn btn-info btn-simple pull-right "> <i class="fa fa-reply"></i> Reply</a>
-
-                                            </div>
-                                            <p>Hello guys, nice to have you on the platform! There will be a lot of great stuff coming soon. We will keep you posted for the latest news.</p>
-                                            <p> Don't forget, You're Awesome!</p>
-
-                                            <div class="media-footer">
-                                                <a href="#" class="btn btn-danger btn-simple">
-                                                     <i class="ti-heart"></i> 243
-                                                </a>
-                                                <a href="#" class="btn btn-simple">
-                                                     <i class="ti-heart-broken"></i> 2
-                                                </a>
-                                                <a href="#" class="btn btn-info btn-simple">
-                                                     Follow · 3
-                                                </a>
-                                            </div>
-                                      </div>
-                                  </div> <!-- end media -->
-                              </div>
-                            </div> <!-- end media -->
-                            <div class="media">
-                                  <a class="pull-left" href="#">
-                                      <div class="avatar">
-                                            <img class="media-object" alt="64x64" src="assets/img/banks.jpg">
-                                      </div>
-                                  </a>
-                                  <div class="media-body">
-                                        <h5 class="media-heading">Banks</h5>
-                                        <div class="pull-right">
-                                            <h6 class="text-muted">Sep 11, 11:57 AM</h6>
-                                            <a href="#" class="btn btn-info btn-simple pull-right "> <i class="fa fa-reply"></i> Reply</a>
-
-                                        </div>
-                                        <p>Hello guys, nice to have you on the platform! There will be a lot of great stuff coming soon. We will keep you posted for the latest news.</p>
-                                        <p> Don't forget, You're Awesome!</p>
-
-                                        <div class="media-footer">
-                                            <a href="#" class="btn btn-simple">
-                                                 <i class="ti-heart"></i> 243
-                                            </a>
-                                            <a href="#" class="btn btn-simple">
-                                                 <i class="ti-heart-broken"></i> 2
-                                            </a>
-                                            <a href="#" class="btn btn-simple">
-                                                 Follow · 3
-                                            </a>
-                                        </div>
-                                  </div>
-                            </div> <!-- end media -->
-                            <div class="pagination-area">
-                                <ul class="pagination pagination-no-border">
-                                     <!--   color-classes: "pagination-blue", "pagination-azure", "pagination-orange", "pagination-red", "pagination-green", special-classes: "pagination-no-border"  -->
-                                      <li><a href="#">«</a></li>
-                                      <li class="active"><a href="#">1</a></li>
-                                      <li><a href="#">2</a></li>
-                                      <li><a href="#">3</a></li>
-                                      <li><a href="#">4</a></li>
-                                      <li><a href="#">5</a></li>
-                                      <li><a href="#">»</a></li>
-                                 </ul>
+                            </a>
+                            <div class="media-body">
+                            	<%= form_for [@board, @post, @post.comments.new] do |f| %>
+                                <%= f.hidden_field :parent_id %>
+                                <div class="media-footer">
+                                  <%= f.text_area :content, :rows => 6, class: "form-control border-input", placeholder: "예의 있게 써주세요"  %>
+                                </div>
+                                <p><%= f.submit "Post Message",class: "btn btn-info btn-fill btn-wd pull-right" %></p>
+                              <% end %>
                             </div>
+                          </div>
+                          <div class="pagination-area">
+                            <ul class="pagination pagination-no-border">
+                               <!--   color-classes: "pagination-blue", "pagination-azure", "pagination-orange", "pagination-red", "pagination-green", special-classes: "pagination-no-border"  -->
+                                <li><a href="#">«</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">»</a></li>
+                             </ul>
+                          </div>
                         </div> <!-- end media-area -->
                     </div> <!-- end col-md-8 -->
                 </div> <!-- end row -->
