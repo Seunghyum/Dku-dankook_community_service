@@ -9,17 +9,17 @@
                                 <p id="notice"><%= notice %></p>
                                 <span class="label label-warning"><%= @board.name %></span>
                                 <h3 class="title"><%= @post.title %></h3>
-                                <h6 class="title-uppercase"><%= @post.created_at.strftime("%B %d, %Y")%></h6>
+                                <h6 class="title-uppercase"><%= @post.created_at.strftime("%Y %B %d, %T") %></h6>
                                 <% if @post.user == current_user %>
                                   <!--수정버튼-->
                                     <%= link_to edit_board_post_path(@post.board, @post) do %>
-                                      <button class="btn btn-icon btn-sm btn-warning btn-fill" rel="tooltip" title="Edit Profile">
+                                      <button class="btn btn-icon btn-sm btn-warning btn-fill" rel="tooltip" title="수정하기">
                                         <i class="fa fa-edit"></i>
                                       </button>
                                     <% end %>
                                     <!--삭제버튼-->
                                     <%= link_to board_post_path(@post.board, @post), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                                      <button class="btn btn-icon btn-sm btn-danger btn-fill" rel="tooltip" title="Edit Profile">
+                                      <button class="btn btn-icon btn-sm btn-danger btn-fill" rel="tooltip" title="삭제하기">
                                         <i class="fa fa-times"></i>
                                       </button>
                                     <% end %>
@@ -34,7 +34,7 @@
                                     <div class="card" style="background-image: url('<%= image_path "cat.jpg" %>');">                                                                                    
                                     </div> <!-- end card -->
                                 </div>
-                                <p class="image-thumb"><%= @post.user.username %> website front page</p>
+                                <p class="image-thumb"><%= @post.user.username %>님께서 작성하셨습니다.</p>
                             </div>
                             <div class="article-content text-center">
                                 <p>
@@ -84,7 +84,7 @@
 
 
 
-<!--댓글-->
+<!--덧글-->
 <div class="wrapper">
     <div class="main">
         <div class="section">
@@ -92,10 +92,8 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="media-area">
-                          <h3>댓글 · <%= @post.comments ? "0" : @counts.count %></h3>
-                        <!--대댓글 출력-->
-                          <%#= nested_comments @comment.subtree.arrange(:order => :created_at) if @post.comments %>
-                        
+                          <h3>덧글 · <%= @post.comments ? "0" : @counts.count %></h3>
+                          
   <% @post.comments.each do |comment| %>
     <div class="media">
       <a class="pull-left" href="#">
@@ -106,7 +104,7 @@
       <div class="media-body">
         <h5 class="media-heading"><%= comment.user.username %></h5>
         <div class="pull-right">
-            <h6 class="text-muted"><%= comment.created_at %></h6>
+            <h6 class="text-muted"><%= comment.created_at.strftime("%Y %B %d, %T") %></h6>
             <a href="#" class="btn btn-info btn-simple pull-right "> <i class="fa fa-reply"></i> Reply</a>
         </div>
         <p><%= comment.content %></p>
@@ -118,7 +116,7 @@
           <span href="#" class="btn btn-simple">
                <i class="ti-heart-broken"></i> 2
           </span>
-      <!--댓글 수정 및 삭제-->
+      <!--덧글 수정 및 삭제-->
           <% if current_user == comment.user %>
           <!--수정버튼-->
             <a style='cursor:pointer' id="posts-comment-toggle<%=comment.id%>" >
@@ -134,13 +132,14 @@
           			});
           		</script>
           		
-              <button class="btn btn-icon btn-sm btn-warning btn-fill" rel="tooltip" title="Edit Profile">
+              <button class="btn btn-icon btn-sm btn-warning btn-fill" rel="tooltip" title="수정하기">
                 <i class="fa fa-edit"></i>
               </button>
             </a>
+            &nbsp;
           <!--삭제버튼-->
             <%= link_to comment, method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <button class="btn btn-icon btn-sm btn-danger btn-fill" rel="tooltip" title="Edit Profile">
+              <button class="btn btn-icon btn-sm btn-danger btn-fill" rel="tooltip" title="삭제하기">
                 <i class="fa fa-times"></i>
               </button>
             <% end %>
@@ -148,8 +147,6 @@
             <div class="media media-post" id='comment-toggle<%=comment.id%>' style='display: none;'>
               <div class="media-body">
                 <%= form_for [comment], method: :put do |f|%>
-                  <p>
-                    <%= f.label :content, "수정하기" %><br />
                     <%= f.text_area :content, :rows => 4, class: "form-control", placeholder: "예의 있게 써주세요"  %>
                   </p>
                   <p><%= f.submit "수정하기",class: "btn btn-info btn-fill btn-wd pull-right" %></p>
@@ -157,32 +154,12 @@
               </div>
              </div> <!-- end media-post -->
           </div>
-        <% end %>
-      <!--대댓글 작성-->
-      <div class="media media-post">
-        <a class="pull-left author" href="#">
-          <div class="avatar">
-            현재 유저의 이미지
-            <img class="media-object" alt="64x64" src="assets/img/chet_faker_2.jpg">
-          </div>
-        </a>
-        <div class="media-body">
-          <%= form_for comment, method: :put do |f|%>
-            <%= f.hidden_field :parent_id %>
-            <p>
-              <%= f.label :content, "댓글달기" %><br />
-              <%= f.text_area :content, :rows => 4, class: "form-control", placeholder: "예의 있게 써주세요"  %>
-            </p>
-            <p><%= f.submit "Post Message",class: "btn btn-info btn-fill btn-wd pull-right" %></p>
-          <% end %>
-        </div>
+        <% end %>           
       </div>
-           
-    </div>
-  </div> <!-- end media -->
+    </div> <!-- end media -->
   <% end %> 
                         
-                        <!--댓글 작성-->
+                        <!--덧글 작성-->
                           <div class="media media-post">
                             <a class="pull-left author" href="#">
                                 <div class="avatar">
@@ -192,25 +169,12 @@
                             </a>
                             <div class="media-body">
                             	<%= form_for [@board, @post, @post.comments.new] do |f| %>
-                                <%= f.hidden_field :parent_id %>
                                 <div class="media-footer">
                                   <%= f.text_area :content, :rows => 6, class: "form-control border-input", placeholder: "예의 있게 써주세요"  %>
                                 </div>
-                                <p><%= f.submit "Post Message",class: "btn btn-info btn-fill btn-wd pull-right" %></p>
+                                <p><%= f.submit "덧글달기",class: "btn btn-info btn-fill btn-wd pull-right" %></p>
                               <% end %>
                             </div>
-                          </div>
-                          <div class="pagination-area">
-                            <ul class="pagination pagination-no-border">
-                               <!--   color-classes: "pagination-blue", "pagination-azure", "pagination-orange", "pagination-red", "pagination-green", special-classes: "pagination-no-border"  -->
-                                <li><a href="#">«</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">»</a></li>
-                             </ul>
                           </div>
                         </div> <!-- end media-area -->
                     </div> <!-- end col-md-8 -->
@@ -218,4 +182,6 @@
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>

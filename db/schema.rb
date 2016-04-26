@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160422075535) do
+ActiveRecord::Schema.define(version: 20160426130414) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "name"
@@ -27,14 +27,18 @@ ActiveRecord::Schema.define(version: 20160422075535) do
     t.string   "commentable_type"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.string   "ancestry"
     t.integer  "post_id"
   end
 
-  add_index "comments", ["ancestry"], name: "index_comments_on_ancestry"
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   add_index "comments", ["post_id"], name: "index_comments_on_post_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "estimates", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"

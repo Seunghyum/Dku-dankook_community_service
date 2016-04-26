@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :estimates
   resources :comments
   get 'home/index'
 

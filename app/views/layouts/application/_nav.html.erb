@@ -119,14 +119,9 @@
                     <li class="dropdown-header">
                         Dropdown header
                     </li>
-                    <li>
-                        <a href="#">Me</a>
-                    </li>
-                    <li>
-                        <a href="#">Settings and other stuff</a>
-                    </li>
                     <li class="divider"></li>
-                    <li><a href="#">Sign out</a></li>
+                    <li><%= link_to "회원정보 수정", edit_user_registration_path %></li>
+                    <li><%= link_to "로그아웃", destroy_user_session_path %></li>
                     <li class="dropdown-footer">
                         <ul class="dropdown-footer-menu">
                             <li>
