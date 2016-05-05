@@ -9,7 +9,7 @@
                             <%= devise_error_messages! %>
                             <br>
                             <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {:class => "register-form"}) do |f| %>
-                                <label>닉네임 or 학교 웹메일</label>
+                                <label>닉네임 or 메일</label>
                                 <%= f.text_field :login, class: "form-control", placeholder: "닉네임 or 학교 웹메일" %>
                                 
                                 <label>비밀번호</label>

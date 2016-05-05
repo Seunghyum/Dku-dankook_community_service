@@ -20,9 +20,11 @@
                 <%= link_to '홈으로', root_path %>
             </li>
             <li>
-                <a href="#">
-                    Wishlist
-                </a>
+                <%= link_to "로그아웃", destroy_user_session_path, method: "delete" %>
+            </li>
+            <li>
+                <%= current_user.email %><br>
+                <%= current_user.username %>
             </li>
             <li class="dropdown">
                 <a class="btn btn-icon btn-sm btn-warning btn-fill" data-toggle="dropdown">

@@ -11,7 +11,16 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true, presence: true
   validates :username, uniqueness: true, presence: true
   validates :gender, presence: true
-
+  validate :validate_username
+  
+  #로그인시 서로의 username과 email이 같은 유저 발생시 예외처리
+  def validate_username
+    if User.where(email: username).exists?
+      errors.add(:username, :invalid)
+    end
+  end
+  
+  #username으로 로그인할 수있게 만들기
   def login=(login)
     @login = login
   end
