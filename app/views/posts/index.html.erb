@@ -5,11 +5,11 @@
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
                         <p id="notice"><%= notice %></p>
-                        
+
                         <h4><small><%= @board.name %></small></h4>
-                        
+
                         <%= link_to 'New Post', new_board_post_path %>
-                        
+
                         <div class="table-responsive">
                           <table class="table table-striped">
                               <thead>
@@ -17,9 +17,9 @@
                                       <th class="text-center">#</th>
                                       <th>Title</th>
                                       <th>User</th>
-                                      <th>
+                                      <th class="text-center">
                                         <button href="#" class="btn btn-icon btn-danger btn-simple">
-                                           <i class="ti-heart"></i> 
+                                           <i class="ti-heart"></i>
                                         </button>
                                         /
                                         <button href="#" class="btn btn-icon btn-simple">
@@ -36,7 +36,8 @@
                                     <td class="text-center"><%= post.id %></td>
                                     <td>
                                       <%= link_to "#{post.title}", board_post_path(post.board, post) %>
-                                      
+
+                                      <!-- 관리자일때만 보이게 -->
                                       <% if post.user == current_user %>
                                         <!--수정버튼-->
                                         <%= link_to board_post_path(post.board, post) do %>
@@ -53,8 +54,8 @@
                                       <% end %>
                                     </td>
                                     <td><%= post.user.username %></td>
-                                    <td><%= post.hits %></td>
-                                    <td class="text-center">수</td>
+                                    <td class="text-center"><%= post.get_upvotes.size %> / <%= post.get_downvotes.size %></td>
+                                    <td class="text-center"><%= post.hits %></td>
                                     <td><%= post.created_at.strftime("%Y %B %d, %T") %></td>
                                   </tr>
                                 <% end %>

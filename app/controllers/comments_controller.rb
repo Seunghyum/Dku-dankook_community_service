@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:update, :destroy]
-  
-  def create    
+  before_action :set_comment, only: [:update, :destroy, :upvote, :downvote]
+
+  def create
   	@comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
   	@comment.save
@@ -17,7 +17,16 @@ class CommentsController < ApplicationController
     @comment.update(comment_params)
     redirect_to :back
   end
-  
+
+  def upvote
+    @comment.upvote_from current_user
+    redirect_to :back
+  end
+
+  def downvote
+    @comment.downvote_from current_user
+    redirect_to :back
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment

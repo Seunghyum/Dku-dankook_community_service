@@ -4,31 +4,33 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-         
+
  	has_many :posts
  	has_many :comments
- 	
+
   validates :email, uniqueness: true, presence: true
   validates :username, uniqueness: true, presence: true
   validates :gender, presence: true
   validate :validate_username
-  
+
+  #투표자
+  acts_as_voter
   #로그인시 서로의 username과 email이 같은 유저 발생시 예외처리
   def validate_username
     if User.where(email: username).exists?
       errors.add(:username, :invalid)
     end
   end
-  
+
   #username으로 로그인할 수있게 만들기
   def login=(login)
     @login = login
   end
-  
+
   def login
     @login || self.username || self.email
   end
-  
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)

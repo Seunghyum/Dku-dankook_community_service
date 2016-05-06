@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+#권한설정
+gem 'cancancan'
+#투표기능
+gem 'acts_as_votable'
 #editor
 gem 'tinymce-rails'
 
@@ -50,4 +54,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

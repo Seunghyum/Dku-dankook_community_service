@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_board
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   # GET /posts
   # GET /posts.json
   def index
@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   # GET /posts/1.json
-  def show    
+  def show
     @post.hits = @post.hits + 1
     @post.save
   end
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
   def create
     @post = @board.posts.new(post_params)
     @post.user = current_user
-   
+
     if @post.save
       redirect_to [@post.board, @post]
     else
@@ -53,12 +53,21 @@ class PostsController < ApplicationController
     redirect_to board_posts_path(@post.board)
   end
 
+  def upvote
+    @post.upvote_from current_user
+    redirect_to :back
+  end
+
+  def downvote
+    @post.downvote_from current_user
+    redirect_to :back
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
     end
-    
+
     def set_board
       @board = Board.find(params[:board_id])
     end

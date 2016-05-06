@@ -31,7 +31,7 @@
                         <div class="col-md-8 col-md-offset-2">
                             <div class="article-image text-center">
                                 <div class="card-big-shadow">
-                                    <div class="card" style="background-image: url('<%= image_path "cat.jpg" %>');">                                                                                    
+                                    <div class="card" style="background-image: url('<%= image_path "cat.jpg" %>');">
                                     </div> <!-- end card -->
                                 </div>
                                 <p class="image-thumb"><%= @post.user.username %>님께서 작성하셨습니다.</p>
@@ -42,12 +42,12 @@
                                 </p>
                             </div>
                             <div class="media-footer">
-                                <span href="#" class="btn btn-danger btn-simple">
-                                     <i class="ti-heart"></i> 243
-                                </span>
-                                <span href="#" class="btn btn-simple">
-                                     <i class="ti-heart-broken"></i> 2
-                                </span>
+                                <%= link_to like_board_post_path(@board, @post), class: "btn btn-danger btn-simple", method: :put  do %>
+                                     <i class="ti-heart"></i> <%= @post.get_upvotes.size %>
+                                <% end %>
+                                <%= link_to dislike_board_post_path(@board, @post), class: "btn btn-simple", method: :put  do %>
+                                   <i class="ti-heart-broken"></i> <%= @post.get_downvotes.size %>
+                                <% end %>
                                 <span href="#" class="btn btn-simple">
                                      view · <%= @post.hits %>
                                 </span>
@@ -76,8 +76,8 @@
                     </div>
                 </div>
             </div>
-        </div> 
-        
+        </div>
+
     </div>
 </div>
 
@@ -93,7 +93,7 @@
                     <div class="col-md-8 col-md-offset-2">
                         <div class="media-area">
                           <h3>덧글 · <%= @post.comments ? "0" : @counts.count %></h3>
-                          
+
   <% @post.comments.each do |comment| %>
     <div class="media">
       <a class="pull-left" href="#">
@@ -105,22 +105,22 @@
         <h5 class="media-heading"><%= comment.user.username %></h5>
         <div class="pull-right">
             <h6 class="text-muted"><%= comment.created_at.strftime("%Y %B %d, %T") %></h6>
-            <a href="#" class="btn btn-info btn-simple pull-right "> <i class="fa fa-reply"></i> Reply</a>
+            <!-- <a href="#" class="btn btn-info btn-simple pull-right "> <i class="fa fa-reply"></i> Reply</a> -->
         </div>
         <p><%= comment.content %></p>
-      
+
         <div class="media-footer">
-          <span href="#" class="btn btn-danger btn-simple">
-               <i class="ti-heart"></i> 243
-          </span>
-          <span href="#" class="btn btn-simple">
-               <i class="ti-heart-broken"></i> 2
-          </span>
+          <%= link_to like_board_post_comment_path(@board, @post, comment), class: "btn btn-danger btn-simple", method: :put  do %>
+               <i class="ti-heart"></i> <%= comment.get_upvotes.size %>
+          <% end %>
+          <%= link_to dislike_board_post_comment_path(@board, @post, comment), class: "btn btn-simple", method: :put  do %>
+               <i class="ti-heart-broken"></i> <%= comment.get_downvotes.size %>
+          <% end %>
       <!--덧글 수정 및 삭제-->
           <% if current_user == comment.user %>
           <!--수정버튼-->
             <a style='cursor:pointer' id="posts-comment-toggle<%=comment.id%>" >
-            
+
               <script>
           			$('#posts-comment-toggle<%=comment.id%>').click(function(){
           				var toggle = $('#comment-toggle<%=comment.id%>');
@@ -131,7 +131,7 @@
           				}
           			});
           		</script>
-          		
+
               <button class="btn btn-icon btn-sm btn-warning btn-fill" rel="tooltip" title="수정하기">
                 <i class="fa fa-edit"></i>
               </button>
@@ -154,11 +154,11 @@
               </div>
              </div> <!-- end media-post -->
           </div>
-        <% end %>           
+        <% end %>
       </div>
     </div> <!-- end media -->
-  <% end %> 
-                        
+  <% end %>
+
                         <!--덧글 작성-->
                           <div class="media media-post">
                             <a class="pull-left author" href="#">

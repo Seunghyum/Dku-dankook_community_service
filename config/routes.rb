@@ -1,18 +1,25 @@
 Rails.application.routes.draw do
-  
+
   resources :estimates
   resources :comments
   get 'home/index'
 
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords'}
-  
-  
+
+
   resources :boards do
     resources :posts do
-      # collection do
-      #   get 'search/', to: 'posts#search'
-      # end
-      resources :comments, module: :posts, shallow: true
+      member do
+        put "like" => "posts#upvote"
+        put "dislike" => "posts#downvote"
+      end
+      # resources :comments, module: :posts, shallow: true
+      resources :comments, module: :posts do
+        member do
+          put "like" => "comments#upvote"
+          put "dislike" => "comments#downvote"
+        end
+      end
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
