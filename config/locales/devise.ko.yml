@@ -8,11 +8,7 @@ ko:
       not_saved:
         one: "1개의 에러가 발생해서 %{resource}를(을) 저장할 수 없습니다:"
         other: "%{count}개의 에러가 발생해서 %{resource}를(을) 저장할 수 없습니다:"
-  empty:
-    assignment : '과제'
-    lecture : '정규강의'
-    tutorial : '보조강의'
-    contacts : '계정의 연락처정보'  
+
   devise:
     failure:
       already_authenticated: '이미 로그인하셨습니다.'

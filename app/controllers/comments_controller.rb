@@ -2,6 +2,17 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:update, :destroy, :upvote, :downvote]
 
   def create
+    @comment = @commentable.comments.new(comment_params)
+
+    # respond_to do |format|
+    #   if @comment.save
+    #     format.html { @comment.user = current_user}
+    #     format.js
+    #   else
+    #     format.html
+    #     format.js
+    #   end
+    # end
   	@comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
   	@comment.save

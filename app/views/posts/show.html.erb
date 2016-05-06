@@ -10,13 +10,16 @@
                                 <span class="label label-warning"><%= @board.name %></span>
                                 <h3 class="title"><%= @post.title %></h3>
                                 <h6 class="title-uppercase"><%= @post.created_at.strftime("%Y %B %d, %T") %></h6>
-                                <% if @post.user == current_user %>
+                                <% if can? :update, @post %>
                                   <!--수정버튼-->
                                     <%= link_to edit_board_post_path(@post.board, @post) do %>
                                       <button class="btn btn-icon btn-sm btn-warning btn-fill" rel="tooltip" title="수정하기">
                                         <i class="fa fa-edit"></i>
                                       </button>
                                     <% end %>
+                                <% end %>
+
+                                <% if can? :destroy, @post %>
                                     <!--삭제버튼-->
                                     <%= link_to board_post_path(@post.board, @post), method: :delete, data: { confirm: 'Are you sure?' } do %>
                                       <button class="btn btn-icon btn-sm btn-danger btn-fill" rel="tooltip" title="삭제하기">
@@ -93,71 +96,76 @@
                     <div class="col-md-8 col-md-offset-2">
                         <div class="media-area">
                           <h3>덧글 · <%= @post.comments ? "0" : @counts.count %></h3>
+<%#= render @comment %>
+<% @post.comments.each do |comment| %>
+<div class="media">
+  <a class="pull-left" href="#">
+   <div class="avatar">
+        <%= image_tag "placeholder.jpg",class: "media-object" %>
+   </div>
+  </a>
+  <div class="media-body">
+    <h5 class="media-heading"><%= comment.user.username %></h5>
+    <div class="pull-right">
+        <h6 class="text-muted"><%= comment.created_at.strftime("%Y %B %d, %T") %></h6>
+        <!-- <a href="#" class="btn btn-info btn-simple pull-right "> <i class="fa fa-reply"></i> Reply</a> -->
+    </div>
+    <p><%= comment.content %></p>
 
-  <% @post.comments.each do |comment| %>
-    <div class="media">
-      <a class="pull-left" href="#">
-       <div class="avatar">
-            <%= image_tag "placeholder.jpg",class: "media-object" %>
-       </div>
-      </a>
-      <div class="media-body">
-        <h5 class="media-heading"><%= comment.user.username %></h5>
-        <div class="pull-right">
-            <h6 class="text-muted"><%= comment.created_at.strftime("%Y %B %d, %T") %></h6>
-            <!-- <a href="#" class="btn btn-info btn-simple pull-right "> <i class="fa fa-reply"></i> Reply</a> -->
-        </div>
-        <p><%= comment.content %></p>
+    <div class="media-footer">
+      <%= link_to like_board_post_comment_path(@board, @post, comment), class: "btn btn-danger btn-simple", method: :put  do %>
+           <i class="ti-heart"></i> <%= comment.get_upvotes.size %>
+      <% end %>
+      <%= link_to dislike_board_post_comment_path(@board, @post, comment), class: "btn btn-simple", method: :put  do %>
+           <i class="ti-heart-broken"></i> <%= comment.get_downvotes.size %>
+      <% end %>
+  <!--덧글 수정 및 삭제-->
+      <% if current_user == comment.user %>
+      <!--수정버튼-->
+        <a style='cursor:pointer' id="posts-comment-toggle<%=comment.id%>" >
 
-        <div class="media-footer">
-          <%= link_to like_board_post_comment_path(@board, @post, comment), class: "btn btn-danger btn-simple", method: :put  do %>
-               <i class="ti-heart"></i> <%= comment.get_upvotes.size %>
+          <script>
+            $('#posts-comment-toggle<%=comment.id%>').click(function(){
+              var toggle = $('#comment-toggle<%=comment.id%>');
+              if( toggle.is(':hidden') ){
+                  toggle.slideDown();
+              } else {
+                  toggle.slideUp();
+              }
+            });
+          </script>
+
+          <button class="btn btn-icon btn-sm btn-warning btn-fill" rel="tooltip" title="수정하기">
+            <i class="fa fa-edit"></i>
+          </button>
+        </a>
+        &nbsp;
+        <!--수정 폼-->
+        <% if can? :update, comment %>
+          <div class="media media-post" id='comment-toggle<%=comment.id%>' style='display: none;'>
+            <div class="media-body">
+              <%= form_for [comment], method: :put, remote: true do |f|%>
+                  <%= f.text_area :content, :rows => 4, class: "form-control", placeholder: "예의 있게 써주세요"  %>
+                </p>
+                <p><%= f.submit "수정하기",class: "btn btn-info btn-fill btn-wd pull-right" %></p>
+              <% end %>
+            </div>
+           </div> <!-- end media-post -->
+        <% end %>
+
+        <!--삭제버튼-->
+        <% if can? :destroy, comment %>
+          <%= link_to comment, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <button class="btn btn-icon btn-sm btn-danger btn-fill" rel="tooltip" title="삭제하기">
+              <i class="fa fa-times"></i>
+            </button>
           <% end %>
-          <%= link_to dislike_board_post_comment_path(@board, @post, comment), class: "btn btn-simple", method: :put  do %>
-               <i class="ti-heart-broken"></i> <%= comment.get_downvotes.size %>
-          <% end %>
-      <!--덧글 수정 및 삭제-->
-          <% if current_user == comment.user %>
-          <!--수정버튼-->
-            <a style='cursor:pointer' id="posts-comment-toggle<%=comment.id%>" >
-
-              <script>
-          			$('#posts-comment-toggle<%=comment.id%>').click(function(){
-          				var toggle = $('#comment-toggle<%=comment.id%>');
-          				if( toggle.is(':hidden') ){
-          						toggle.slideDown();
-          				} else {
-          						toggle.slideUp();
-          				}
-          			});
-          		</script>
-
-              <button class="btn btn-icon btn-sm btn-warning btn-fill" rel="tooltip" title="수정하기">
-                <i class="fa fa-edit"></i>
-              </button>
-            </a>
-            &nbsp;
-          <!--삭제버튼-->
-            <%= link_to comment, method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <button class="btn btn-icon btn-sm btn-danger btn-fill" rel="tooltip" title="삭제하기">
-                <i class="fa fa-times"></i>
-              </button>
-            <% end %>
-          <!--수정 폼-->
-            <div class="media media-post" id='comment-toggle<%=comment.id%>' style='display: none;'>
-              <div class="media-body">
-                <%= form_for [comment], method: :put do |f|%>
-                    <%= f.text_area :content, :rows => 4, class: "form-control", placeholder: "예의 있게 써주세요"  %>
-                  </p>
-                  <p><%= f.submit "수정하기",class: "btn btn-info btn-fill btn-wd pull-right" %></p>
-                <% end %>
-              </div>
-             </div> <!-- end media-post -->
-          </div>
         <% end %>
       </div>
-    </div> <!-- end media -->
-  <% end %>
+    <% end %>
+  </div>
+</div> <!-- end media -->
+<% end %>
 
                         <!--덧글 작성-->
                           <div class="media media-post">

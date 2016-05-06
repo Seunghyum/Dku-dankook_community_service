@@ -12,6 +12,7 @@ class PostsController < ApplicationController
   def show
     @post.hits = @post.hits + 1
     @post.save
+    # @comment = @post.comments
   end
 
   # GET /posts/new

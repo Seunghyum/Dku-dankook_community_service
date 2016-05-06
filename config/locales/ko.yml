@@ -5,11 +5,18 @@ ko:
       messages:
         record_invalid: 데이터 검증에 실패하였습니다. %{errors}
 
+  unauthorized:
+    manage:
+      all: " %{action} %{subject}에 접근할 권한이 없습니다."
+      user: "접근 권한이 없습니다."
+    update:
+      project: "이 프로젝트에 접근할 수 없습니다."
+
   views:
     pagination:
       previous: "«"
       next: "»"
-      
+
   date:
     abbr_day_names:
     - 일

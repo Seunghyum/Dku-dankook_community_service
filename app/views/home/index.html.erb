@@ -2,6 +2,7 @@
   <div class="main">
     <div class="section section-nude">
       <div class="container tim-container">
+        <%= flash[:alert] %>
         <h4>게시판</h4>
         <div class="row coloured-cards">
           <% Board.all.each do |board| %>
