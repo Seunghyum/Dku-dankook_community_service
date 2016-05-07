@@ -98,8 +98,7 @@
                           <h3>덧글 · <%= @post.comments ? "0" : @counts.count %></h3>
                           <!-- 덧글 -->
                           <div id='comment-wrapper'>
-                            <%#= render @post.comments %>
-                            <%= render '/posts/comment' %>
+                            <%= render "/posts/comment" %>
                           </div>
 
 
@@ -112,7 +111,7 @@
                                 </div>
                             </a>
                             <div class="media-body">
-                            	<%= form_for [@board, @post, @post.comments.new], remote: true do |f| %>
+                            	<%= form_for [@board, @post, @post.comments.new] do |f| %>
                                 <div class="media-footer">
                                   <%= f.text_area :content, :rows => 6, class: "form-control border-input",id: "create-comment", placeholder: "예의 있게 써주세요"  %>
                                 </div>

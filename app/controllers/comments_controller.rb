@@ -14,11 +14,12 @@ class CommentsController < ApplicationController
   	@comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
     @comment.save
-    # 덧글 작성 ajax
-    respond_to do |format|
-    	format.html
-      format.js
-    end
+    redirect_to :back
+      # 덧글 작성 ajax
+    # respond_to do |format|
+    # 	format.html
+    #   format.js
+    # end
   end
 
   def destroy
