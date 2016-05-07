@@ -12,7 +12,11 @@ class PostsController < ApplicationController
   def show
     @post.hits = @post.hits + 1
     @post.save
-    # @comment = @post.comments
+    #좋아요 버튼 ajax -  up / down vote.js
+    respond_to do |format|
+    	format.html
+      format.js
+    end
   end
 
   # GET /posts/new
@@ -56,12 +60,18 @@ class PostsController < ApplicationController
 
   def upvote
     @post.upvote_from current_user
-    redirect_to :back
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def downvote
     @post.downvote_from current_user
-    redirect_to :back
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   private
     # Use callbacks to share common setup or constraints between actions.

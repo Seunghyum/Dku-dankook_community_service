@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# 시간표기
+gem 'rails-timeago'
 #권한설정
 gem 'cancancan'
 #투표기능

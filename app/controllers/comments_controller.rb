@@ -2,8 +2,6 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:update, :destroy, :upvote, :downvote]
 
   def create
-    @comment = @commentable.comments.new(comment_params)
-
     # respond_to do |format|
     #   if @comment.save
     #     format.html { @comment.user = current_user}
@@ -15,8 +13,12 @@ class CommentsController < ApplicationController
     # end
   	@comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
-  	@comment.save
-  	redirect_to :back
+    @comment.save
+    # 덧글 작성 ajax
+    respond_to do |format|
+    	format.html
+      format.js
+    end
   end
 
   def destroy
@@ -31,12 +33,18 @@ class CommentsController < ApplicationController
 
   def upvote
     @comment.upvote_from current_user
-    redirect_to :back
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def downvote
     @comment.downvote_from current_user
-    redirect_to :back
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   private
     # Use callbacks to share common setup or constraints between actions.

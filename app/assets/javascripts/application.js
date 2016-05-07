@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require tinymce-jquery
+//= require rails-timeago
 //= require_tree .
