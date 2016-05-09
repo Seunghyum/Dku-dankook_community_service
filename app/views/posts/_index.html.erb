@@ -1,0 +1,112 @@
+<div class="wrapper">
+    <div class="main">
+        <div class="section section-nude">
+            <div class="container tim-container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <p id="notice"><%= notice %></p>
+                        <!-- 도구바 Start -->
+                        <div id="navbar-warning">
+                          <nav class="navbar navbar-ct-success">
+                            <div class="container-fluid">
+                              <!-- Brand and toggle get grouped for better mobile display -->
+                              <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                  <span class="sr-only">Toggle navigation</span>
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                                </button>
+                                <%= link_to @board.name, "board_posts_path(@board)", class: "navbar-brand text-success" %>
+                              </div>
+
+                              <!-- Collect the nav links, forms, and other content for toggling -->
+                              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav navbar-right">
+                                  <li>
+                                  <%= link_to 'New Post', new_board_post_path, class: "btn btn-simple btn-success" %></li>
+                                </ul>
+                                <%= form_tag board_posts_path(@board), :method => 'get', class: "navbar-form navbar-right", role: "search" do %>
+                                  <div class="form-group">
+                                    <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search" %>
+                                  </div>
+                                  <%= button_tag type: "submit" , class: "btn btn-success btn-icon btn-fill" do %>
+                                    <i class='ti-search'></i>
+                                  <% end %>
+                                <% end %>
+                                <!-- <form class="navbar-form navbar-right" role="search">
+                                    <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Search">
+                                    </div>
+                                    <button type="submit" class="btn btn-success btn-icon btn-fill"><i class="ti-search"></i></button>
+                                </form> -->
+                              </div><!-- /.navbar-collapse -->
+                            </div><!-- /.container-fluid -->
+                          </nav>
+                      </div>
+                      <!-- 도구바 End -->
+
+                        <div class="table-responsive">
+                          <table class="table table-striped">
+                              <thead>
+                                  <tr>
+                                      <th  data-field="num" class="text-center">#</th>
+                                      <th data-field="title">Title</th>
+                                      <th data-field="user">User</th>
+                                      <th  data-field="like" class="text-center">
+                                        <button id='like' href="#" class="btn btn-icon btn-danger btn-simple">
+                                           <i class="ti-heart"></i>
+                                        </button>
+                                        /
+                                        <button id='like' href="#" class="btn btn-icon btn-simple">
+                                             <i class="ti-heart-broken"></i>
+                                        </button>
+                                      </th>
+                                      <th  data-field="hits" class="text-center">view</th>
+                                      <th  data-field="time">Since</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                <% @posts.each do |post| %>
+                                  <tr style="<%= 'background-color: #d7f7ff;' if post == @post %>">
+                                    <td class="text-center"><%= post.id %></td>
+                                    <td>
+                                      <%= link_to "#{post.title}", board_post_path(post.board, post) %>
+
+                                      <!-- 관리자일때만 보이게 -->
+                                      <% if post.user == current_user %>
+                                        <!--수정버튼-->
+                                        <%= link_to board_post_path(post.board, post) do %>
+                                          <button class="btn btn-icon btn-xs btn-warning btn-fill" rel="tooltip" title="Edit Profile">
+                                            <i class="fa fa-edit"></i>
+                                          </button>
+                                        <% end %>
+                                        <!--삭제버튼-->
+                                        <%= link_to board_post_path(post.board, post), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                                          <button class="btn btn-icon btn-xs btn-danger btn-fill" rel="tooltip" title="Edit Profile">
+                                            <i class="fa fa-times"></i>
+                                          </button>
+                                        <% end %>
+                                      <% end %>
+                                    </td>
+                                    <td><%= post.user.username.truncate(10) %></td>
+                                    <td class="text-center"><%= post.get_upvotes.size %> / <%= post.get_downvotes.size %></td>
+                                    <td class="text-center"><%= post.hits %></td>
+                                    <td><%= timeago_tag post.created_at %></td>
+                                    <!-- <td><%= post.created_at.strftime("%Y %B %d, %T") %></td> -->
+                                  </tr>
+                                <% end %>
+                              </tbody>
+                          </table>
+                          <!-- paginate Start -->
+                          <center>
+                            <%= paginate @posts %>
+                          </center>
+                          <!-- paginate END-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

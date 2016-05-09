@@ -1,6 +1,9 @@
 class Post < ActiveRecord::Base
+
   belongs_to :user
   belongs_to :board
+
+  default_scope {order('id DESC')}
 
   has_many :comments, as: :commentable, dependent: :destroy
 
@@ -8,4 +11,12 @@ class Post < ActiveRecord::Base
   validates :content, presence: true
   #투표대상
   acts_as_votable
+
+  def self.search(search)
+    if search
+      where(["title LIKE ?","%#{search}%"])
+    else
+      all
+    end
+  end
 end

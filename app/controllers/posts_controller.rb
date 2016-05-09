@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = @board.posts.all.page(params[:page]).per(20)
+    # @posts = @board.posts.all.page(params[:page]).per(20)
+    @posts = @board.posts.search(params[:search]).page(params[:page]).per(20)
   end
 
   # GET /posts/1
@@ -12,6 +13,7 @@ class PostsController < ApplicationController
   def show
     @post.hits = @post.hits + 1
     @post.save
+    @posts = @board.posts.all.page(params[:page]).per(20)
     #좋아요 버튼 ajax -  up / down vote.js
     respond_to do |format|
     	format.html
