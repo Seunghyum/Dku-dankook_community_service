@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160506194725) do
   create_table "estimates", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
   create_table "posts", force: :cascade do |t|
