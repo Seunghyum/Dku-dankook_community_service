@@ -195,6 +195,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   meta_request
+  nokogiri
   pry-rails
   rails (= 4.2.5)
   rails-timeago

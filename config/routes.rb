@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+#사물함
   get 'locker/index'
 
   get 'locker/manage'
@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   get 'locker/reject'
 
   get 'locker/selecting'
+
+  #전화번호부
+  get 'phone_search/search'
+
+  get 'phone_search/result'
 
   resources :estimates
   resources :comments

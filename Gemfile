@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+#전화번호부 긁어오기
+gem 'nokogiri'
 # 시간표기
 gem 'rails-timeago'
 #권한설정
