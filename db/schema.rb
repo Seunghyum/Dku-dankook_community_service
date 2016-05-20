@@ -116,6 +116,10 @@ ActiveRecord::Schema.define(version: 20160520041758) do
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
     t.integer  "comment_id"
+    t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "image"
   end
 
   add_index "users", ["comment_id"], name: "index_users_on_comment_id"
