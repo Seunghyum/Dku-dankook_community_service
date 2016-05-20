@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'locker/index'
+
+  get 'locker/manage'
+
+  get 'locker/nottime'
+
+  get 'locker/reject'
+
+  get 'locker/selecting'
+
   resources :estimates
   resources :comments
   get 'home/index'

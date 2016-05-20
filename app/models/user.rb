@@ -5,8 +5,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_one :locker
  	has_many :posts
  	has_many :comments
+  belongs_to :major
 
   validates :email, uniqueness: true, presence: true
   validates :username, uniqueness: true, presence: true

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160506194725) do
+ActiveRecord::Schema.define(version: 20160516161013) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "name"
@@ -51,8 +51,28 @@ ActiveRecord::Schema.define(version: 20160506194725) do
   create_table "estimates", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "name"
   end
+
+  create_table "lockers", force: :cascade do |t|
+    t.integer  "lnum"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "major_id"
+  end
+
+  add_index "lockers", ["major_id"], name: "index_lockers_on_major_id"
+  add_index "lockers", ["user_id"], name: "index_lockers_on_user_id"
+
+  create_table "majors", force: :cascade do |t|
+    t.string   "mname"
+    t.integer  "locker_limit"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+  end
+
+  add_index "majors", ["user_id"], name: "index_majors_on_user_id"
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -101,6 +121,10 @@ ActiveRecord::Schema.define(version: 20160506194725) do
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
     t.integer  "comment_id"
+    t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "image"
   end
 
   add_index "users", ["comment_id"], name: "index_users_on_comment_id"

@@ -10,6 +10,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :gender
       t.boolean :is_admin, default: false
 
+      #사물함  first_check 번호표
+      t.integer :my_num, default: 0, uniqueness: true
+
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
