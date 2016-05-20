@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516161013) do
+ActiveRecord::Schema.define(version: 20160520041758) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "name"
@@ -101,6 +101,22 @@ ActiveRecord::Schema.define(version: 20160516161013) do
   add_index "posts", ["cached_weighted_score"], name: "index_posts_on_cached_weighted_score"
   add_index "posts", ["cached_weighted_total"], name: "index_posts_on_cached_weighted_total"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "school_chuns", force: :cascade do |t|
+    t.string   "belong"
+    t.string   "name"
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "school_jooks", force: :cascade do |t|
+    t.string   "belong"
+    t.string   "name"
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",        null: false
