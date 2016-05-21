@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+# 전화번호부
+
+  resources :school_phone_searchings
   resources :estimates
   resources :comments
   get 'home/index'

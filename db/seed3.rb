@@ -23,7 +23,7 @@ require 'nokogiri'
     @row = @html.css("tr").length
     
     1..@row.times do |x|    
-        SchoolJook.create(name: @html.css("table//tr:nth-child(#{x})//td:nth-child(4)").inner_text, phone: @html.css("table//tr:nth-child(#{x})//td:nth-child(5)").inner_text )
+        SchoolJook.create(belong: @html.css("table//tr:nth-child(#{x})//td:nth-child(3)").inner_text, name: @html.css("table//tr:nth-child(#{x})//td:nth-child(4)").inner_text, phone: @html.css("table//tr:nth-child(#{x})//td:nth-child(5)").inner_text )
     end
 end
 
@@ -48,6 +48,6 @@ end
 #     @row = @html.css("tr").length
     
 #     1..@row.times do |x|    
-#         SchoolChun.create(name: @html.css("table//tr:nth-child(#{x})//td:nth-child(4)").inner_text, phone: @html.css("table//tr:nth-child(#{x})//td:nth-child(5)").inner_text )
+#         SchoolChun.create(belong: @html.css("table//tr:nth-child(#{x})//td:nth-child(3)").inner_text, name: @html.css("table//tr:nth-child(#{x})//td:nth-child(4)").inner_text, phone: @html.css("table//tr:nth-child(#{x})//td:nth-child(5)").inner_text )
 #     end
 # end
