@@ -1,20 +1,44 @@
-<h1>Search Result</h1>
-
-<p><%= link_to 'Back', :back %></p>
-
-<% if @search.search_school_phone.nil? || @search.search_school_phone.empty?  %>
+<% if @search_school_phone.empty?  %>
 
   <p>No Records Found</p>
 
 <% else %>
-  
-  <% @search.search_school_phone.each do |c| %>
-    <div class="div">
-      <p>캠퍼스: <%= @search.campus.empty? ? "All" : @search.campus %></p>
-      <p>과/학과: <%= c.belong %></p>
-      <p>명칭/이름: <%= c.name %></p>
-      <p>전화번호: <%= c.phone %></p>
+<div class="wrapper search">
+  <div class="main">
+    <div class="section section-white section-search">
+      <div class='container'>
+        <%= render "/school_phone_searchings/search" %>
+        
+        <div class='row'>
+          <div class="col-md-12">
+            <div class="card">
+              <div class="content table-responsive table-full-width">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                    	    <th>캠퍼스</th>
+                        	<th>과/학과</th>
+                        	<th>명칭/이름</th>
+                        	<th>전화번호</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <% @search_school_phone.each do |c| %>
+                        <tr>
+                        	<td><%= c.campus %></td>
+                        	<td><%= c.belong %></td>
+                        	<td><%= c.name %></td>
+                        	<td><%= c.phone %></td>
+                        </tr>
+                      <%end %>
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-
+  </div>
+</div>
 <% end %>

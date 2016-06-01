@@ -1,0 +1,25 @@
+<div class="row card">
+  <div class="col-md-8 col-md-offset-2 col-xs-12 text-center content ">
+    <%= form_for @new_search, html: {role: "search"} do |f| %>
+      <div class="row">
+        <div class="col-md-2 col-xs-4">
+          <div class='input-group'>
+            <%= f.select :campus, options_for_select(@campus), {:prompt => "캠퍼스"}, {class: "btn btn-info btn-fill" } %>
+          </div>
+        </div>
+        <div class='col-md-10 col-xs-8'>
+          <div class="input-group border-input">
+              <%= f.text_field :belong, class: "form-control border-input",  placeholder: "과/학과 OR 명칭/이름" %>
+              <span class="input-group-addon"><i class="ti-search"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <%= button_tag(type: 'submit', class: "btn btn-info") do%>
+        <i class='ti-search'></i> 검색
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to '<i class="ti-angle-left"></i> 홈으로'.html_safe, root_path,  class: "btn btn-fill btn-move-left" %>

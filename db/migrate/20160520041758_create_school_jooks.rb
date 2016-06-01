@@ -4,6 +4,7 @@ class CreateSchoolJooks < ActiveRecord::Migration
       t.string :belong
       t.string :name
       t.string :phone
+      t.string :campus, default: "죽전"
 
       t.timestamps null: false
     end

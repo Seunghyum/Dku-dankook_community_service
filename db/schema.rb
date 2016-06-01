@@ -106,16 +106,18 @@ ActiveRecord::Schema.define(version: 20160601125749) do
     t.string   "belong"
     t.string   "name"
     t.string   "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "campus",     default: "천안"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "school_jooks", force: :cascade do |t|
     t.string   "belong"
     t.string   "name"
     t.string   "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "campus",     default: "죽전"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "school_phone_searchings", force: :cascade do |t|

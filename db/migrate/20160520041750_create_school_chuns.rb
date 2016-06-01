@@ -4,6 +4,7 @@ class CreateSchoolChuns < ActiveRecord::Migration
       t.string :belong
       t.string :name
       t.string :phone
+      t.string :campus, default: "천안"
 
       t.timestamps null: false
     end
