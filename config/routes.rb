@@ -10,10 +10,8 @@ Rails.application.routes.draw do
 
   get 'locker/selecting'
 
-  #전화번호부
-  get 'phone_search/search'
-
-  get 'phone_search/result'
+# 전화번호부
+  resources :school_phone_searchings
 
   resources :school_phone_searchings
   resources :estimates

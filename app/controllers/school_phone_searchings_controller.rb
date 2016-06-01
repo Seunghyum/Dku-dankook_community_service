@@ -10,7 +10,7 @@ class SchoolPhoneSearchingsController < ApplicationController
     def show
         @search = SchoolPhoneSearching.find(params[:id])
     end
-
+    
 	private
 
 	def search_params
