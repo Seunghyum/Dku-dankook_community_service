@@ -9,24 +9,26 @@
             <div class="col-md-4 col-sm-6">
               <div class="card card-hover-effect">
                 <div class="section-nude">
-                    <%= link_to board_posts_path(board) do %>
-                      <div class="content">
-                          <h6 class="category">게시판</h6>
-                          <h4 class="title"><%= board.name %></h4>
-                          <p class="description"><%= board.description %></p>
-                      </div>
-                    <% end %>
-                  </div> <!-- end card -->
+                  <%= link_to board_posts_path(board) do %>
+                    <div class="content">
+                        <h6 class="category">게시판</h6>
+                        <h4 class="title"><%= board.name %></h4>
+                        <p class="description"><%= board.description %></p>
+                    </div>
+                  <% end %>
+                </div> <!-- end card -->
               </div>
             </div>
           <% end %>
           <div class="col-md-4 col-sm-6">
               <div class="card card-hover-effect">
-                  <div class="content section-nude">
+                <div class="section-nude">
+                  <div class="content">
                       <h6 class="category">게시판</h6>
-                      <h4 class="title"><a href="#">강의평가</a></h4>
+                      <h4 class="title">강의평가</h4>
                       <p class="description">수업을 평가합니다.</p>
                   </div>
+                </div>
               </div> <!-- end card -->
           </div>
         </div>
@@ -34,20 +36,24 @@
         <div class="row coloured-cards">
           <div class="col-md-4 col-sm-6">
               <div class="card card-hover-effect">
-                  <div class="content section-nude">
+                <div class="section-nude">
+                  <div class="content">
                       <h6 class="category">예약 서비스</h6>
-                      <h4 class="title"><a href="#">사물함 예약</a></h4>
+                      <h4 class="title">사물함 예약</h4>
                       <p class="description">온라인으로 우리학과의 사물함을 예약합니다.</p>
                   </div>
+                </div>
               </div> <!-- end card -->
           </div>
           <div class="col-md-4 col-sm-6">
               <div class="card card-hover-effect">
-                  <div class="content section-nude">
+                <div class="section-nude">
+                  <div class="content">
                       <h6 class="category">예약 서비스</h6>
-                      <h4 class="title"><a href="#">우리학과 중고책 예약</a></h4>
+                      <h4 class="title">우리학과 중고책 예약</h4>
                       <p class="description">온라인으로 우리학과의 중고책을 예약합니다.</p>
                   </div>
+                </div>
               </div> <!-- end card -->
           </div>
         </div>
@@ -55,13 +61,15 @@
         <div class="row coloured-cards">
           <div class="col-md-4 col-sm-6">
               <div class="card card-hover-effect">
-                  <%= link_to phone_search_search_path do %>
-                  <div class="content section-nude">
-                      <h6 class="category">검색</h6>
-                      <h4 class="title"><a href="#">전화번호부</a></h4>
-                      <p class="description">교내 부서의 전화번호를 찾아줍니다.</p>
-                  </div>
+                <div class="section-nude">
+                  <%= link_to phone_search_result_path do %>
+                    <div class="content">
+                        <h6 class="category">검색</h6>
+                        <h4 class="title">전화번호부</h4>
+                        <p class="description">교내 부서의 전화번호를 찾아줍니다.</p>
+                    </div>
                   <% end %>
+                </div>
               </div> <!-- end card -->
           </div>
         </div>

@@ -2,7 +2,7 @@
 <div class="media">
   <a class="pull-left" href="#">
    <div class="avatar">
-        <%= image_tag "placeholder.jpg",class: "media-object" %>
+    <%= image_tag current_user.photo ? current_user.photo : "placeholder.jpg" %>
    </div>
   </a>
   <div class="media-body">
@@ -15,10 +15,10 @@
 
     <div class="media-footer">
       <%= link_to like_board_post_comment_path(@board, @post, comment), class: "btn btn-danger btn-simple",id: "comment-like-btn-#{comment.id}" , remote: true  do %>
-           <i class="ti-heart"></i> <span><%= comment.get_upvotes.size %></span>
+         <i class="ti-heart"></i> <span><%= comment.get_upvotes.size %></span>
       <% end %>
       <%= link_to dislike_board_post_comment_path(@board, @post, comment), class: "btn btn-simple",id: "comment-dislike-btn-#{comment.id}" , remote: true do %>
-           <i class="ti-heart-broken"></i> <span><%= comment.get_downvotes.size %></span>
+         <i class="ti-heart-broken"></i> <span><%= comment.get_downvotes.size %></span>
       <% end %>
   <!--덧글 수정 및 삭제-->
       <% if current_user == comment.user %>
@@ -40,7 +40,15 @@
             <i class="fa fa-edit"></i>
           </button>
         </a>
-        &nbsp;
+
+        <!--삭제버튼-->
+        <% if can? :destroy, comment %>
+          <%= link_to comment, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <button class="btn btn-icon btn-sm btn-danger btn-fill" rel="tooltip" title="삭제하기">
+              <i class="fa fa-times"></i>
+            </button>
+          <% end %>
+        <% end %>
         <!--수정 폼-->
         <% if can? :update, comment %>
           <div class="media media-post" id='comment-toggle<%=comment.id%>' style='display: none;'>
@@ -52,15 +60,6 @@
               <% end %>
             </div>
            </div> <!-- end media-post -->
-        <% end %>
-
-        <!--삭제버튼-->
-        <% if can? :destroy, comment %>
-          <%= link_to comment, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <button class="btn btn-icon btn-sm btn-danger btn-fill" rel="tooltip" title="삭제하기">
-              <i class="fa fa-times"></i>
-            </button>
-          <% end %>
         <% end %>
       </div>
     <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520041758) do
+ActiveRecord::Schema.define(version: 20160601125749) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "name"
@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(version: 20160520041758) do
     t.string   "provider"
     t.string   "uid"
     t.string   "image"
+    t.string   "photo"
   end
 
   add_index "users", ["comment_id"], name: "index_users_on_comment_id"

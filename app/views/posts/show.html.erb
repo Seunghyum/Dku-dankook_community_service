@@ -87,7 +87,8 @@
                             <a class="pull-left author" href="#">
                                 <div class="avatar">
                                       <!--현재 유저의 프로파일-->
-                                      <img class="media-object" alt="64x64" src="assets/img/banks.jpg">
+                                  <%= image_tag current_user.photo ? current_user.photo : "placeholder.jpg" %>
+
                                 </div>
                             </a>
                             <div class="media-body">
