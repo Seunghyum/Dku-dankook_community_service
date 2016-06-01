@@ -1,0 +1,20 @@
+<h1>Search Result</h1>
+
+<p><%= link_to 'Back', :back %></p>
+
+<% if @search.search_school_phone.nil? || @search.search_school_phone.empty?  %>
+
+  <p>No Records Found</p>
+
+<% else %>
+  
+  <% @search.search_school_phone.each do |c| %>
+    <div class="div">
+      <p>캠퍼스: <%= @search.campus.empty? ? "All" : @search.campus %></p>
+      <p>과/학과: <%= c.belong %></p>
+      <p>명칭/이름: <%= c.name %></p>
+      <p>전화번호: <%= c.phone %></p>
+    </div>
+  <% end %>
+
+<% end %>

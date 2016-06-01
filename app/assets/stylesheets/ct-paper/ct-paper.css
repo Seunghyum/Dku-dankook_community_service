@@ -435,6 +435,7 @@ input.ct-red + span + label + span.switch-right {
 .btn i,
 .navbar .navbar-nav > li > a.btn i {
   margin-right: 5px;
+  vertical-align: middle;
 }
 .btn.btn-icon,
 .navbar .navbar-nav > li > a.btn.btn-icon {
@@ -1807,7 +1808,7 @@ textarea.form-control {
   padding: 30px 0;
   position: relative;
   background-color: #f4f3ef;
-  background-image: linear-gradient(to bottom, transparent 0%, rgba(112, 112, 112, 0) 60%, rgba(186, 186, 186, 0.15) 100%);
+  /*background-image: linear-gradient(to bottom, transparent 0%, rgba(112, 112, 112, 0) 60%, rgba(186, 186, 186, 0.15) 100%);*/
 }
 
 .section-with-space {

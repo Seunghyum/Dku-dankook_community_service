@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get 'phone_search/result'
 
+  resources :school_phone_searchings
   resources :estimates
   resources :comments
   get 'home/index'

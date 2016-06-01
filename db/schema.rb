@@ -118,6 +118,15 @@ ActiveRecord::Schema.define(version: 20160601125749) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "school_phone_searchings", force: :cascade do |t|
+    t.string   "campus",     default: ""
+    t.string   "belong",     default: ""
+    t.string   "phone",      default: ""
+    t.string   "name",       default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",        null: false
     t.string   "encrypted_password",     default: "",        null: false
@@ -126,6 +135,7 @@ ActiveRecord::Schema.define(version: 20160601125749) do
     t.string   "username"
     t.string   "gender"
     t.boolean  "is_admin",               default: false
+    t.integer  "my_num",                 default: 0
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
