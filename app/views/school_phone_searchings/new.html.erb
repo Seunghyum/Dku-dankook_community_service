@@ -1,0 +1,67 @@
+<div class="wrapper search">
+
+        <div class="main">
+            <div class="section section-white section-search">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
+                          <%= form_for @search, html: {role: "search"} do |f| %>
+                            <div class="input-group">
+                              <%= f.select :campus, options_for_select(@campus), {:prompt => "캠퍼스"}, {class: "btn btn-info btn-fill btn-block" } %>
+                            </div>
+                            <div class='row'>
+                              <div class="form-group col-md-6 col-sm-6">
+                                <%= f.text_field :belong, class: "form-control border-input",  placeholder: "소속" %>
+                              </div>
+
+                              <div class="form-group col-md-6 col-sm-6">
+                                <%= f.text_field :name, class: "form-control border-input",  placeholder: "부서" %>
+                              </div>
+                            </div>
+
+                            <%= button_tag(type: 'submit', class: "btn btn-info") do%>
+                              <i class='ti-search'></i> 검색
+                            <% end %>
+                            <%= link_to '<i class="ti-angle-left"></i> 홈으로'.html_safe, root_path,  class: "btn btn-fill btn-move-left" %>
+                          <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+        <form role="search" class="form-inline search-form">
+            <div class="input-group">
+              <span class="input-group-addon addon-xtreme" id="basic-addon1"><i class="fa fa-search"></i></span>
+              <input type="text" class="form-control input-xtreme" placeholder="Find Stuff" aria-describedby="basic-addon1">
+            </div>
+        </form>
+
+
+
+<%= form_for @search, html: {class: "pure-form"} do |f| %>
+
+  <div class="field">
+   <%= f.label :campus %><br />
+   <%= f.select :campus, options_for_select(@campus), :include_blank => true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :belong %><br />
+    <%= f.text_field :belong %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions"><%= f.submit "Search", class: "pure-button pure-button-primary" %></div>
+
+<% end %>
+
+<p><%= link_to 'Back', root_path %></p>
