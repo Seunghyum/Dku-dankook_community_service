@@ -1,44 +1,42 @@
-<% if @search_school_phone.empty?  %>
-
-  <p>No Records Found</p>
-
-<% else %>
 <div class="wrapper search">
   <div class="main">
     <div class="section section-white section-search">
       <div class='container'>
         <%= render "/school_phone_searchings/search" %>
-        
-        <div class='row'>
-          <div class="col-md-12">
-            <div class="card">
-              <div class="content table-responsive table-full-width">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                    	    <th>캠퍼스</th>
-                        	<th>과/학과</th>
-                        	<th>명칭/이름</th>
-                        	<th>전화번호</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      <% @search_school_phone.each do |c| %>
-                        <tr>
-                        	<td><%= c.campus %></td>
-                        	<td><%= c.belong %></td>
-                        	<td><%= c.name %></td>
-                        	<td><%= c.phone %></td>
-                        </tr>
-                      <%end %>
-                    </tbody>
-                </table>
+        <% if @search_school_phone.empty?  %>
+          <h4 class='text-danger text-center'>No Records Found</h4>
+        <% else %>
+          <h4 class='text-muted text-center'>총 <span class='text-info'><%= @search_school_phone.length %></span>개의 결과가 나왔습니다</h4>
+          <div class='row'>
+            <div class="col-md-12">
+              <div class="card">
+                <div class="content table-responsive table-full-width">
+                  <table class="table table-striped">
+                      <thead>
+                          <tr>
+                      	    <th>캠퍼스</th>
+                          	<th>과/학과</th>
+                          	<th>명칭/이름</th>
+                          	<th>전화번호</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <% @search_school_phone.each do |c| %>
+                          <tr>
+                          	<td><%= c.campus %></td>
+                          	<td><%= c.belong %></td>
+                          	<td><%= c.name %></td>
+                          	<td><%= c.phone %></td>
+                          </tr>
+                        <%end %>
+                      </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
-<% end %>
