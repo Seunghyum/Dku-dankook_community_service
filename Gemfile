@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+
+#카카오 로그인
+gem 'omniauth-kakao'
 #전화번호부 긁어오기
 gem 'nokogiri'
 # 시간표기

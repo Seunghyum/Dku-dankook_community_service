@@ -7,8 +7,18 @@
 
   font-weight: normal;
   font-style: normal;
+} 
+@font-face {
+  font-family: 'MalgunGothic';
+  src: font-url('MalgunGothic.eot');
+  src: font-url('MalgunGothic.eot?#iefix') format('embedded-opentype'),
+    font-url('MalgunGothic.woff') format('woff'),
+    font-url('MalgunGothic.ttf') format('truetype');
+
+  font-weight: normal;
+  font-style: normal;
 }
 
 * {
-		font-family:'Nanum Gothic', sans-serif;
+		font-family:'MalgunGothic', sans-serif;
 }
