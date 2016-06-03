@@ -17,6 +17,24 @@
         				<%= image_tag current_user.photo ? current_user.photo : "placeholder.jpg", class: "img-responsive rounded-2x img-bordered" %>
         			</div>
       				<h3><%= @post.user.username%></h3>
+      				
+              <% if can? :update, @post %>
+                <!--수정버튼-->
+                  <%= link_to edit_board_post_path(@post.board, @post) do %>
+                    <button class="btn-u btn-u-yellow" rel="tooltip" title="수정하기">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                  <% end %>
+              <% end %>
+
+              <% if can? :destroy, @post %>
+                  <!--삭제버튼-->
+                  <%= link_to board_post_path(@post.board, @post), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <button class="btn-u btn-u-red" rel="tooltip" title="삭제하기">
+                      <i class="fa fa-trash-o"></i>
+                    </button>
+                  <% end %>
+              <% end %>
         		</div>
       		
     		    <div class="col-sm-9 col-md-10 ">
@@ -47,234 +65,57 @@
     		<!-- End News v3 -->
     
     		<hr>
-    
-    		<h2 class="margin-bottom-20">Comments</h2>
-    		<!-- Blog Comments -->
-    		<div class="row blog-comments margin-bottom-30">
-    			<div class="col-sm-2 sm-margin-bottom-40 text-right">
-    				<%= image_tag current_user.photo ? current_user.photo : "placeholder.jpg" %>        			
-    			</div>
-    			<div class="col-sm-10">
-    				<div class="comments-itself">
-    					<h4>
-    						Jalen Davenport
-    						<span>5 hours ago / <a href="#">Reply</a></span>
-    					</h4>
-    					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod..</p>
-    				</div>
-    			</div>
-    		</div>
-    		<!-- End Blog Comments -->
-    
-    		<!-- Blog Comments -->
-    		<div class="row blog-comments margin-bottom-30">
-    			<div class="col-sm-2 sm-margin-bottom-40 text-right">
-    				<%= image_tag current_user.photo ? current_user.photo : "placeholder.jpg" %>  
-    			</div>
-    			<div class="col-sm-10">
-    				<div class="comments-itself">
-    					<h4>
-    						Marcus Farrell
-    						<span>7 hours ago / <a href="#">Reply</a></span>
-    					</h4>
-    					<p>Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod..</p>
-    				</div>
-    			</div>
-    		</div>
-    		<!-- End Blog Comments -->
-    
-    		<hr>
-    
-    		<h2 class="margin-bottom-20">Post a Comment</h2>
-    		<!-- Form -->
-    		<form action="assets/php/sky-forms-pro/demo-comment-process.php" method="post" id="sky-form3" class="sky-form comment-style" novalidate="novalidate">
-    			<fieldset>
-    				<div class="row sky-space-30">
-    					<div class="col-md-6">
-    						<div>
-    							<input type="text" name="name" id="name" placeholder="Name" class="form-control">
-    						</div>
-    					</div>
-    					<div class="col-md-6">
-    						<div>
-    							<input type="text" name="email" id="email" placeholder="Email" class="form-control">
-    						</div>
-    					</div>
-    				</div>
-    
-    				<div class="sky-space-30">
-    					<div>
-    						<textarea rows="8" name="message" id="message" placeholder="Write comment here ..." class="form-control"></textarea>
-    					</div>
-    				</div>
-    
-    				<p><button type="submit" class="btn-u">Submit</button></p>
-    			</fieldset>
-    
-    			<div class="message">
-    				<i class="rounded-x fa fa-check"></i>
-    				<p>Your comment was successfully posted!</p>
-    			</div>
-    		</form>
-    		<!-- End Form -->
-    	<div class="row news-v2 margin-bottom-50">
-    			<div class="col-sm-4 sm-margin-bottom-30">
-    				<div class="news-v2-badge">
-    					<img class="img-responsive" src="assets/img/main/img3.jpg" alt="">
-    					<p>
-    						<span>24</span>
-    						<small>Jan</small>
-    					</p>
-    				</div>
-    				<div class="news-v2-desc">
-    					<h3><a href="#">Blog Image Post</a></h3>
-    					<small>By Admin | California, US | In <a href="#">Art</a></small>
-    					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae.</p>
-    				</div>
-    			</div>
-    			<div class="col-sm-4 sm-margin-bottom-30">
-    				<div class="news-v2-badge">
-    					<img class="img-responsive" src="assets/img/main/img6.jpg" alt="">
-    					<p>
-    						<span>23</span>
-    						<small>Jan</small>
-    					</p>
-    				</div>
-    				<div class="news-v2-desc">
-    					<h3><a href="#">Blog Image Post</a></h3>
-    					<small>By Admin | California, US | In <a href="#">Art</a></small>
-    					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae.</p>
-    				</div>
-    			</div>
-    			<div class="col-sm-4">
-    				<div class="news-v2-badge">
-    					<img class="img-responsive" src="assets/img/main/img4.jpg" alt="">
-    					<p>
-    						<span>22</span>
-    						<small>Jan</small>
-    					</p>
-    				</div>
-    				<div class="news-v2-desc">
-    					<h3><a href="#">Blog Image Post</a></h3>
-    					<small>By Admin | California, US | In <a href="#">Art</a></small>
-    					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae.</p>
-    				</div>
-    			</div>
-    		</div></div><!--/end container-->
+  		<!-- Blog Comments -->
+    		<%= render "/posts/comment" %>
+  		<!-- End Blog Comments -->
+    		
+  	   <!-- <div class="row news-v2 margin-bottom-50">-->
+    		<!--	<div class="col-sm-4 sm-margin-bottom-30">-->
+    		<!--		<div class="news-v2-badge">-->
+    		<!--			<img class="img-responsive" src="assets/img/main/img3.jpg" alt="">-->
+    		<!--			<p>-->
+    		<!--				<span>24</span>-->
+    		<!--				<small>Jan</small>-->
+    		<!--			</p>-->
+    		<!--		</div>-->
+    		<!--		<div class="news-v2-desc">-->
+    		<!--			<h3><a href="#">Blog Image Post</a></h3>-->
+    		<!--			<small>By Admin | California, US | In <a href="#">Art</a></small>-->
+    		<!--			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae.</p>-->
+    		<!--		</div>-->
+    		<!--	</div>-->
+    		<!--	<div class="col-sm-4 sm-margin-bottom-30">-->
+    		<!--		<div class="news-v2-badge">-->
+    		<!--			<img class="img-responsive" src="assets/img/main/img6.jpg" alt="">-->
+    		<!--			<p>-->
+    		<!--				<span>23</span>-->
+    		<!--				<small>Jan</small>-->
+    		<!--			</p>-->
+    		<!--		</div>-->
+    		<!--		<div class="news-v2-desc">-->
+    		<!--			<h3><a href="#">Blog Image Post</a></h3>-->
+    		<!--			<small>By Admin | California, US | In <a href="#">Art</a></small>-->
+    		<!--			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae.</p>-->
+    		<!--		</div>-->
+    		<!--	</div>-->
+    		<!--	<div class="col-sm-4">-->
+    		<!--		<div class="news-v2-badge">-->
+    		<!--			<img class="img-responsive" src="assets/img/main/img4.jpg" alt="">-->
+    		<!--			<p>-->
+    		<!--				<span>22</span>-->
+    		<!--				<small>Jan</small>-->
+    		<!--			</p>-->
+    		<!--		</div>-->
+    		<!--		<div class="news-v2-desc">-->
+    		<!--			<h3><a href="#">Blog Image Post</a></h3>-->
+    		<!--			<small>By Admin | California, US | In <a href="#">Art</a></small>-->
+    		<!--			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae.</p>-->
+    		<!--		</div>-->
+    		<!--	</div>-->
+    		<!--</div>-->
+    	</div><!--/end container-->
     </div>
   </div>
-</div>
-
-<div class="wrapper blog">
-    <div class="main">
-        <div class="section-white">
-            <div class="container">
-                <div class="article">
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
-                            <div class="text-center">
-                                <p id="notice"><%= notice %></p>
-                                <span class="label label-warning"><%= @board.name %></span>
-                                <h3 class="title"><%= @post.title %></h3>
-                                <h6 class="title-uppercase"><%= timeago_tag @post.created_at %></h6>
-                                <% if can? :update, @post %>
-                                  <!--수정버튼-->
-                                    <%= link_to edit_board_post_path(@post.board, @post) do %>
-                                      <button class="btn btn-icon btn-sm btn-warning btn-fill" rel="tooltip" title="수정하기">
-                                        <i class="fa fa-edit"></i>
-                                      </button>
-                                    <% end %>
-                                <% end %>
-
-                                <% if can? :destroy, @post %>
-                                    <!--삭제버튼-->
-                                    <%= link_to board_post_path(@post.board, @post), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                                      <button class="btn btn-icon btn-sm btn-danger btn-fill" rel="tooltip" title="삭제하기">
-                                        <i class="fa fa-times"></i>
-                                      </button>
-                                    <% end %>
-                                <% end %>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <div class="article-image text-center">
-                                <div class="card-big-shadow">
-                                    <div class="card" style="background-image: url('<%= image_path "cat.jpg" %>');">
-                                    </div> <!-- end card -->
-                                </div>
-                                <p class="image-thumb"><%= @post.user.username %>님께서 작성하셨습니다.</p>
-                            </div>
-                            <div class="article-content text-center">
-                                <p>
-                                 <%= @post.content.html_safe %>
-                                </p>
-                            </div>
-                            <div class="media-footer">
-                                <%= link_to like_board_post_path(@board, @post), class: "btn btn-danger btn-simple btn-lg",id: "like-btn", remote: true  do %>
-                                     <i class="fa fa-heart-o" aria-hidden="true"></i> <span><%= @post.get_upvotes.size %> </span>
-                                <% end %>
-                                <%= link_to dislike_board_post_path(@board, @post), class: "btn btn-simple btn-lg",id: "dislike-btn" , remote: true do %>
-                                   <i class="ti-heart-broken"></i> <span><%= @post.get_downvotes.size %></span>
-                                <% end %>
-                                <span href="#" class="btn btn-simple">
-                                     view · <%= @post.hits %>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-
-
-
-<!--덧글-->
-<div class="wrapper">
-    <div class="main">
-        <div class="section-white">
-            <div class="container container-tim">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="media-area">
-                          <h3>덧글 · <%= @post.comments ? "0" : @counts.count %></h3>
-                          <!-- 덧글 -->
-                          <div id='comment-wrapper'>
-                            <%= render "/posts/comment" %>
-                          </div>
-
-
-                        <!--덧글 작성-->
-                          <div class="media media-post">
-                            <a class="pull-left author" href="#">
-                                <div class="avatar">
-                                      <!--현재 유저의 프로파일-->
-                                  <%= image_tag current_user.photo ? current_user.photo : "placeholder.jpg" %>
-
-                                </div>
-                            </a>
-                            <div class="media-body">
-                            	<%= form_for [@board, @post, @post.comments.new] do |f| %>
-                                <div class="media-footer">
-                                  <%= f.text_area :content, :rows => 6, class: "form-control border-input",id: "create-comment", placeholder: "예의 있게 써주세요"  %>
-                                </div>
-                                <p><%= f.submit "덧글달기",class: "btn btn-info btn-fill btn-wd pull-right" %></p>
-                              <% end %>
-                            </div>
-                          </div>
-                        </div> <!-- end media-area -->
-                    </div> <!-- end col-md-8 -->
-                </div> <!-- end row -->
-            </div>
-        </div>
-    </div>
-</div>
-</div>
 </div>
 
 <%= render "/posts/index" %>
