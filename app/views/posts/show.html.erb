@@ -1,3 +1,170 @@
+<div class="bg-color-light">
+	<div class="container content-sm">
+	  <div class='row'>
+	    <div class='col-md-10 col-md-offset-1'>
+        <center>
+          <p id="notice"><%= notice %></p>
+        </center>
+        
+    		<!-- News v3 -->
+        <%= link_to @board.name, board_posts_path(@board), class: "btn-u btn-u-lg" %>
+        
+    		<div class="news-v3 bg-color-white margin-bottom-30">
+    			<div class="news-v3-in clearfix row">
+    			
+        		<div class="col-sm-3 shadow-wrapper col-md-2 text-center">
+        			<div class="box-shadow shadow-effect-2 rounded-2x col-xs-8 col-sm-12">
+        				<%= image_tag current_user.photo ? current_user.photo : "placeholder.jpg", class: "img-responsive rounded-2x img-bordered" %>
+        			</div>
+      				<h3><%= @post.user.username%></h3>
+        		</div>
+      		
+    		    <div class="col-sm-9 col-md-10 ">
+    		      <center>
+                <h3 class="title"><%= @post.title %></h3>
+                <h6 class="title-uppercase"><%= timeago_tag @post.created_at %></h6>
+              </center>
+      			  <%= image_tag "cafe.jpg", class: "img-responsive full-width" %>
+      				<p><%= @post.content.html_safe %></p>
+      						
+      				<ul class="list-inline badge-lists badge-box-v1 margin-bottom-30 text-center">
+      					<li>
+                  <%= link_to like_board_post_path(@board, @post), id: "like-btn", remote: true  do %>
+      							<i class="rounded-x ti-heart text-danger"></i>
+      							<span class="badge badge-red rounded-x"><%= @post.get_upvotes.size %></span>
+      						<% end %>
+      					</li>
+      					<li>
+                  <%= link_to dislike_board_post_path(@board, @post), id: "dislike-btn" , remote: true do %>
+      							<i class="rounded-x ti-heart-broken"></i>
+      							<span class="badge badge-gray rounded-x"><%= @post.get_downvotes.size %></span>
+      						<% end %>
+      					</li>
+      				</ul>
+      			</div>
+    			</div>
+    		</div>
+    		<!-- End News v3 -->
+    
+    		<hr>
+    
+    		<h2 class="margin-bottom-20">Comments</h2>
+    		<!-- Blog Comments -->
+    		<div class="row blog-comments margin-bottom-30">
+    			<div class="col-sm-2 sm-margin-bottom-40 text-right">
+    				<%= image_tag current_user.photo ? current_user.photo : "placeholder.jpg" %>        			
+    			</div>
+    			<div class="col-sm-10">
+    				<div class="comments-itself">
+    					<h4>
+    						Jalen Davenport
+    						<span>5 hours ago / <a href="#">Reply</a></span>
+    					</h4>
+    					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod..</p>
+    				</div>
+    			</div>
+    		</div>
+    		<!-- End Blog Comments -->
+    
+    		<!-- Blog Comments -->
+    		<div class="row blog-comments margin-bottom-30">
+    			<div class="col-sm-2 sm-margin-bottom-40 text-right">
+    				<%= image_tag current_user.photo ? current_user.photo : "placeholder.jpg" %>  
+    			</div>
+    			<div class="col-sm-10">
+    				<div class="comments-itself">
+    					<h4>
+    						Marcus Farrell
+    						<span>7 hours ago / <a href="#">Reply</a></span>
+    					</h4>
+    					<p>Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod..</p>
+    				</div>
+    			</div>
+    		</div>
+    		<!-- End Blog Comments -->
+    
+    		<hr>
+    
+    		<h2 class="margin-bottom-20">Post a Comment</h2>
+    		<!-- Form -->
+    		<form action="assets/php/sky-forms-pro/demo-comment-process.php" method="post" id="sky-form3" class="sky-form comment-style" novalidate="novalidate">
+    			<fieldset>
+    				<div class="row sky-space-30">
+    					<div class="col-md-6">
+    						<div>
+    							<input type="text" name="name" id="name" placeholder="Name" class="form-control">
+    						</div>
+    					</div>
+    					<div class="col-md-6">
+    						<div>
+    							<input type="text" name="email" id="email" placeholder="Email" class="form-control">
+    						</div>
+    					</div>
+    				</div>
+    
+    				<div class="sky-space-30">
+    					<div>
+    						<textarea rows="8" name="message" id="message" placeholder="Write comment here ..." class="form-control"></textarea>
+    					</div>
+    				</div>
+    
+    				<p><button type="submit" class="btn-u">Submit</button></p>
+    			</fieldset>
+    
+    			<div class="message">
+    				<i class="rounded-x fa fa-check"></i>
+    				<p>Your comment was successfully posted!</p>
+    			</div>
+    		</form>
+    		<!-- End Form -->
+    	<div class="row news-v2 margin-bottom-50">
+    			<div class="col-sm-4 sm-margin-bottom-30">
+    				<div class="news-v2-badge">
+    					<img class="img-responsive" src="assets/img/main/img3.jpg" alt="">
+    					<p>
+    						<span>24</span>
+    						<small>Jan</small>
+    					</p>
+    				</div>
+    				<div class="news-v2-desc">
+    					<h3><a href="#">Blog Image Post</a></h3>
+    					<small>By Admin | California, US | In <a href="#">Art</a></small>
+    					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae.</p>
+    				</div>
+    			</div>
+    			<div class="col-sm-4 sm-margin-bottom-30">
+    				<div class="news-v2-badge">
+    					<img class="img-responsive" src="assets/img/main/img6.jpg" alt="">
+    					<p>
+    						<span>23</span>
+    						<small>Jan</small>
+    					</p>
+    				</div>
+    				<div class="news-v2-desc">
+    					<h3><a href="#">Blog Image Post</a></h3>
+    					<small>By Admin | California, US | In <a href="#">Art</a></small>
+    					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae.</p>
+    				</div>
+    			</div>
+    			<div class="col-sm-4">
+    				<div class="news-v2-badge">
+    					<img class="img-responsive" src="assets/img/main/img4.jpg" alt="">
+    					<p>
+    						<span>22</span>
+    						<small>Jan</small>
+    					</p>
+    				</div>
+    				<div class="news-v2-desc">
+    					<h3><a href="#">Blog Image Post</a></h3>
+    					<small>By Admin | California, US | In <a href="#">Art</a></small>
+    					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae.</p>
+    				</div>
+    			</div>
+    		</div></div><!--/end container-->
+    </div>
+  </div>
+</div>
+
 <div class="wrapper blog">
     <div class="main">
         <div class="section-white">

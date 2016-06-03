@@ -621,17 +621,23 @@
 
 				<!-- Search Block -->
 				<ul class="nav navbar-nav navbar-border-bottom navbar-right">
-					<li class="no-border">
-						<i class="search fa fa-search search-btn"></i>
-						<div class="search-open">
-							<div class="input-group animated fadeInDown">
-								<input type="text" class="form-control" placeholder="Search">
-								<span class="input-group-btn">
-									<button class="btn-u" type="button">Go</button>
-								</span>
-							</div>
-						</div>
-					</li>
+					
+                    <li class="no-border"><%= link_to "회원정보 수정", edit_user_registration_path %></li>
+                    <li class="no-border">
+                    	<%= link_to "로그아웃", destroy_user_session_path, method: "delete" if current_user %>
+                    	<%= link_to "로그인", new_user_session_path if current_user.nil? %>
+                    </li>
+					<!--<li class="no-border">-->
+						<!--<i class="search fa fa-search search-btn"></i>-->
+						<!--<div class="search-open">-->
+						<!--	<div class="input-group animated fadeInDown">-->
+						<!--		<input type="text" class="form-control" placeholder="Search">-->
+						<!--		<span class="input-group-btn">-->
+						<!--			<button class="btn-u" type="button">Go</button>-->
+						<!--		</span>-->
+						<!--	</div>-->
+						<!--</div>-->
+					<!--</li>-->
 				</ul>
 				<!-- End Search Block -->
 			</div><!--/end container-->
