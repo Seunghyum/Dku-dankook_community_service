@@ -14,3 +14,14 @@
 [data-field = "time" ] {
     width: 85px;
 }
+
+@media screen and (min-width: 768px) {
+    .text-right_sm-left_xs{
+        text-align: right;    
+    }
+}
+@media screen and (max-width: 768px) {
+    .text-right_sm-left_xs{
+        text-align: left;    
+    }
+}

@@ -21,7 +21,7 @@
               <% if can? :update, @post %>
                 <!--수정버튼-->
                   <%= link_to edit_board_post_path(@post.board, @post) do %>
-                    <button class="btn-u btn-u-yellow" rel="tooltip" title="수정하기">
+                    <button class="btn-u btn-brd btn-brd-hover rounded-4x btn-u-orange" rel="tooltip" title="수정하기">
                       <i class="fa fa-edit"></i>
                     </button>
                   <% end %>
@@ -30,7 +30,7 @@
               <% if can? :destroy, @post %>
                   <!--삭제버튼-->
                   <%= link_to board_post_path(@post.board, @post), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                    <button class="btn-u btn-u-red" rel="tooltip" title="삭제하기">
+                    <button class="btn-u btn-brd btn-brd-hover rounded-4x btn-u-red" rel="tooltip" title="삭제하기">
                       <i class="fa fa-trash-o"></i>
                     </button>
                   <% end %>
@@ -53,7 +53,7 @@
       						<% end %>
       					</li>
       					<li>
-                  <%= link_to dislike_board_post_path(@board, @post), id: "dislike-btn" , remote: true do %>
+                  <%= link_to dislike_board_post_path(@board, @post), id: "dislike-btn", remote: true do %>
       							<i class="rounded-x ti-heart-broken"></i>
       							<span class="badge badge-gray rounded-x"><%= @post.get_downvotes.size %></span>
       						<% end %>
@@ -66,7 +66,7 @@
     
     		<hr>
   		<!-- Blog Comments -->
-    		<%= render "/posts/comment" %>
+    		<%= render "comment" %>
   		<!-- End Blog Comments -->
     		
   	   <!-- <div class="row news-v2 margin-bottom-50">-->
@@ -118,4 +118,4 @@
   </div>
 </div>
 
-<%= render "/posts/index" %>
+<%= render "index" %>

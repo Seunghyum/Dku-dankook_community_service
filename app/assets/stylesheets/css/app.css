@@ -905,18 +905,22 @@ a.btn-u-xs {
 	border-color: #c0392b;
 }
 .btn-u.btn-brd.btn-u-red.btn-brd-hover:hover {
-	background: #c0392b;
+	/*background: #c0392b;*/
+	background: red;
 }
 
 .btn-u.btn-brd.btn-u-orange {
-	border-color: #e67e22;
+	/*border-color: #e67e22;*/
+	border-color: orange;
 }
 .btn-u.btn-brd.btn-u-orange:hover {
 	color: #d35400;
-	border-color: #d35400;
+	/*border-color: #d35400;*/
+	border-color: orange;
 }
 .btn-u.btn-brd.btn-u-orange.btn-brd-hover:hover {
-	 background: #d35400;
+	 /*background: #d35400;*/
+	 background: orange;
 }
 
 .btn-u.btn-brd.btn-u-sea {
@@ -942,14 +946,17 @@ a.btn-u-xs {
 }
 
 .btn-u.btn-brd.btn-u-yellow {
-	border-color: #f1c40f;
+	/*border-color: #f1c40f;*/
+	border-color: yellow;
 }
 .btn-u.btn-brd.btn-u-yellow:hover {
 	color: #f39c12;
-	border-color: #f39c12;
+	/*border-color: #f39c12;*/
+	border-color: yellow;
 }
 .btn-u.btn-brd.btn-u-yellow.btn-brd-hover:hover {
-	background: #f39c12;
+	/*background: #f39c12;*/
+	background: yellow;
 }
 
 .btn-u.btn-brd.btn-u-default {
