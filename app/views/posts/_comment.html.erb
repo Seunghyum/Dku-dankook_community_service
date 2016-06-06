@@ -1,4 +1,3 @@
-<%= tinymce %>
 <% @post.comments.each do |comment| %>
   <div class="row blog-comments margin-bottom-30">
   	<div class="col-sm-2 sm-margin-bottom-40 text-right_sm-left_xs">
@@ -29,7 +28,7 @@
   				</span>
   			</h5>
   			<!-- 덧글 내용 -->
-  			<%= comment.content.html_safe %>
+			  <%= comment.content.html_safe %>
   			<!--덧글 수정 및 삭제-->
         <% if current_user == comment.user %>
           <!--수정버튼-->
@@ -65,7 +64,7 @@
               <div class="media media-post" id='comment-toggle<%=comment.id%>' style='display: none;'>
                 <div class="media-body">
                   <%= form_for [comment] do |f|%>
-                    <%= f.text_area :content, :rows => 4, class: "form-control tinymce", placeholder: "예의 있게 써주세요"  %>
+                    <%= f.text_area :content, :rows => 4, class: "form-control summernote", placeholder: "예의 있게 써주세요"  %>
                     <br/>
                     <%= f.submit "수정하기",class: "btn-u btn-brd-hover btn-u-yellow" %>
                   <% end %>
@@ -87,10 +86,10 @@
   	<div class="col-sm-10">
     <!-- Form -->
       <div class='text-center'>
-        <%= form_for [@board, @post, @post.comments.new], class: "comment-style", novalidate:"novalidate" do |f| %>
+        <%= form_for [@board, @post, @post.comments.new], class: "comment-style", novalidate:"novalidate", remote: true do |f| %>
           <fieldset>    
         		<div class="comments-itself">
-      				<%= f.text_area :content, :rows => 6, class: "form-control tinymce",id: "create-comment", placeholder: "예의 있게 써주세요"  %>
+      				<%= f.text_area :content, :rows => 6, class: "form-control summernote",id: "create-comment", placeholder: "예의 있게 써주세요"  %>
               <br/>
         		  <%= f.submit "덧글달기",class: "btn-u" %>
         		</div>

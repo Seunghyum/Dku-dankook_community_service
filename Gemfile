@@ -11,7 +11,7 @@ gem 'cancancan'
 #투표기능
 gem 'acts_as_votable'
 #editor
-gem 'tinymce-rails'
+gem 'summernote-rails'
 
 #pagnation gem
 gem 'kaminari'

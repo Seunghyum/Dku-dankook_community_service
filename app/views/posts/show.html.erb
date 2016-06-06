@@ -66,7 +66,9 @@
     
     		<hr>
   		<!-- Blog Comments -->
-    		<%= render "comment" %>
+  		  <div id='ajax_comment'>
+    		  <%= render "comment" %>
+    		</div>
   		<!-- End Blog Comments -->
     		
   	   <!-- <div class="row news-v2 margin-bottom-50">-->
@@ -118,4 +120,4 @@
   </div>
 </div>
 
-<%= render "posts/components/table" %>
+<%= render "posts/ajax_components/table" %>

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require tinymce-jquery
-//= require rails-timeago
 //= require_tree .
+//= require summernote
+//= require lang/summernote-ko-KR
+//= require rails-timeago
