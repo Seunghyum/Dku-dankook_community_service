@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:update, :destroy, :upvote, :downvote]
+  before_action :set_post, only: [:create, :update, :destroy]
+  before_action :set_board, only: [:create, :update, :destroy]
 
   def create
     # respond_to do |format|
@@ -14,21 +16,31 @@ class CommentsController < ApplicationController
   	@comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
     @comment.save
-    redirect_to :back
       # 덧글 작성 ajax
-    # respond_to do |format|
-    # 	format.html
-    #   format.js
-    # end
+    respond_to do |format|
+    	format.html
+      format.js
+    end
+    # redirect_to :back
   end
 
   def destroy
     @comment.destroy
+    #   # 덧글 삭제 ajax
+    # respond_to do |format|
+    # 	format.html
+    #   format.js
+    # end
     redirect_to :back
   end
 
   def update
     @comment.update(comment_params)
+    #   # 덧글 수정 ajax
+    # respond_to do |format|
+    # 	format.html
+    #   format.js
+    # end
     redirect_to :back
   end
 
@@ -47,10 +59,19 @@ class CommentsController < ApplicationController
       format.js
     end
   end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
+    end
+    
+    def set_post
+      @post = Post.find(params[:post_id])
+    end
+    
+    def set_board
+      @board = Board.find(params[:board_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

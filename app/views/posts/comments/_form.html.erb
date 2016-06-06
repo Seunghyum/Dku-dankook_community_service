@@ -1,0 +1,21 @@
+<!-- 덧글작성 Form -->
+<div class="row blog-comments margin-bottom-30">
+	<div class="col-sm-2 sm-margin-bottom-40 text-right_sm-left_xs">
+		<%= image_tag current_user.photo ? current_user.photo : "placeholder.jpg" %>
+	</div>
+	<div class="col-sm-10">
+  <!-- Form -->
+    <%= form_for [@board, @post, @post.comments.new], class: "comment-style", novalidate:"novalidate", remote: true do |f| %>
+      <fieldset>
+    		<div class="comments-itself">
+  				<%= f.text_area :content, :rows => 6, class: "summernote",:data => { provider: "summernote"}, placeholder: "예의 있게 써주세요"  %>
+          <br/>
+          <div class='text-center'>
+    		    <%= f.submit "덧글달기",class: "btn-u" %>
+    		  </div>
+    		</div>
+    	</fieldset>
+    <% end %>
+	</div>
+</div>
+<!-- End Form -->

@@ -1,2 +1,7 @@
-// $("#create-comment").val("");
-// $("#comment-wrapper").append("<%= j render partial: '/posts/comment', object: @post.comments %>");
+//댓글 ajax
+$('#ajax_comment').html('<%= escape_javascript render(partial: @post.comments ) %>');
+
+//summernote 에디터 ajax대응
+$('[data-provider="summernote"]').each(function(){
+  $(this).summernote();
+});
