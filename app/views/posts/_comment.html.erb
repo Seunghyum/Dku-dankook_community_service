@@ -1,7 +1,7 @@
 <% @post.comments.each do |comment| %>
   <div class="row blog-comments margin-bottom-30">
   	<div class="col-sm-2 sm-margin-bottom-40 text-right_sm-left_xs">
-  		<%= image_tag comment.user.photo ? comment.user.photo : "placeholder.jpg" %>        			
+  		<%= image_tag comment.user.photo ? comment.user.photo : "placeholder.jpg" %>
   	</div>
   	<div class="col-sm-10">
   		<div class="comments-itself">
@@ -12,7 +12,7 @@
   				<span>
     				<ul class="list-inline badge-lists badge-box-v1">
     					<li>
-                <%= link_to like_board_post_comment_path(@board, @post, comment),id: "comment-like-btn-#{comment.id}" , remote: true  do %> 
+                <%= link_to like_board_post_comment_path(@board, @post, comment),id: "comment-like-btn-#{comment.id}" , remote: true  do %>
     							<i class="rounded-x ti-heart text-danger"></i>
     							<span class="badge badge-red rounded-x" id='text-white'><%= comment.get_upvotes.size %></span>
                 <% end %>
@@ -24,7 +24,7 @@
                 <% end %>
               </li>
             </ul>
-            
+
   				</span>
   			</h5>
   			<!-- 덧글 내용 -->
@@ -43,12 +43,12 @@
                 }
               });
             </script>
-  
+
             <button class="btn-u btn-brd btn-brd-hover rounded-4x btn-u-orange btn-u-sm" rel="tooltip" title="수정하기">
               <i class="fa fa-edit"></i>
             </button>
           </a>
-    
+
             <!--삭제버튼-->
           <% if can? :destroy, comment %>
             <%= link_to comment, method: :delete, data: { confirm: 'Are you sure?' } do %>
@@ -64,7 +64,7 @@
               <div class="media media-post" id='comment-toggle<%=comment.id%>' style='display: none;'>
                 <div class="media-body">
                   <%= form_for [comment] do |f|%>
-                    <%= f.text_area :content, :rows => 4, class: "form-control summernote", placeholder: "예의 있게 써주세요"  %>
+                    <%= f.text_area :content, :rows => 4, class: "form-control summernote",id: "summernote-input", placeholder: "예의 있게 써주세요"  %>
                     <br/>
                     <%= f.submit "수정하기",class: "btn-u btn-brd-hover btn-u-yellow" %>
                   <% end %>
@@ -73,7 +73,7 @@
             <% end %>
           </div>
         <% end %>
-        
+
   		</div>
   	</div>
   </div>
@@ -81,15 +81,15 @@
 <!-- 덧글작성 Form -->
 <div class="row blog-comments margin-bottom-30">
   	<div class="col-sm-2 sm-margin-bottom-40 text-right_sm-left_xs">
-  		<%= image_tag current_user.photo ? current_user.photo : "placeholder.jpg" %>        			
+  		<%= image_tag current_user.photo ? current_user.photo : "placeholder.jpg" %>
   	</div>
   	<div class="col-sm-10">
     <!-- Form -->
       <div class='text-center'>
         <%= form_for [@board, @post, @post.comments.new], class: "comment-style", novalidate:"novalidate", remote: true do |f| %>
-          <fieldset>    
+          <fieldset>
         		<div class="comments-itself">
-      				<%= f.text_area :content, :rows => 6, class: "form-control summernote",id: "create-comment", placeholder: "예의 있게 써주세요"  %>
+      				<%= f.text_area :content, :rows => 6, class: "form-control summernote",id: "create-comment summernote-input", placeholder: "예의 있게 써주세요"  %>
               <br/>
         		  <%= f.submit "덧글달기",class: "btn-u" %>
         		</div>
