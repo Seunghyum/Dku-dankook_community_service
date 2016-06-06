@@ -1,0 +1,29 @@
+<!--kaminari pagination될 table tr들-->
+<% @posts.each do |post| %>
+<tr style="<%= 'background-color: #d7f7ff;' if post == @post %>">
+  <td class="text-center"><%= post.id %></td>
+  <td>
+    <%= link_to "#{post.title}", board_post_path(post.board, post) %>
+
+    <!-- 관리자일때만 보이게 -->
+    <% if post.user == current_user %>
+      <!--수정버튼-->
+      <%= link_to board_post_path(post.board, post) do %>
+        <button class="btn btn-icon btn-xs btn-warning btn-fill" rel="tooltip" title="Edit Profile">
+          <i class="fa fa-edit"></i>
+        </button>
+      <% end %>
+      <!--삭제버튼-->
+      <%= link_to board_post_path(post.board, post), method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <button class="btn btn-icon btn-xs btn-danger btn-fill" rel="tooltip" title="Edit Profile">
+          <i class="fa fa-times"></i>
+        </button>
+      <% end %>
+    <% end %>
+  </td>
+  <td><%= post.user.username.truncate(10) %></td>
+  <td class="text-center"><%= post.get_upvotes.size %> / <%= post.get_downvotes.size %></td>
+  <td class="text-center"><%= post.hits %></td>
+  <td><%= timeago_tag post.created_at %></td>
+</tr>
+<% end %>

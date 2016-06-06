@@ -3,19 +3,11 @@
 <div class="header-v4">
 	<!-- Navbar -->
 	<div class="navbar navbar-default mega-menu" role="navigation">
-		<div class="container">
+		<div class="container text-center">
 			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<div class="row">
-					<div class="col-md-2">
-						<%= link_to root_path  do %>
-							<%= image_tag "unify/logo1-default.png", id: "logo-header", alt: "Logo" %>
-						<% end %>
-					</div>
-					<div class="col-md-10">
-						<a href="#"><%= image_tag "unify/adds.jpg", class: "header-banner img-responsive", width: "1000px;", alt: "" %></a>
-					</div>
-				</div>
+				<%= link_to root_path  do %>
+					<h2>로고</h2>
+				<% end %>
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
 					<span class="full-width-menu">Menu Bar</span>
 					<span class="icon-toggle">
@@ -24,7 +16,6 @@
 						<span class="icon-bar"></span>
 					</span>
 				</button>
-			</div>
 		</div>
 
 		<div class="clearfix"></div>
@@ -34,7 +25,7 @@
 			<div class="container">
 				<ul class="nav navbar-nav">
 					<!-- Home -->
-					<li class="dropdown active">
+					<li class="dropdown">
 						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
 							게시판
 						</a>
@@ -450,69 +441,6 @@
 						</ul>
 					</li>
 					<!-- End Portfolio -->
-
-					<!-- Features -->
-					<li class="dropdown">
-						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-							Features
-						</a>
-						<ul class="dropdown-menu">
-							<li class="dropdown-submenu">
-								<a href="javascript:void(0);">Headers</a>
-								<ul class="dropdown-menu">
-									<li><a href="feature_header_default.html">Header Default</a></li>
-									<li><a href="feature_header_default_no_topbar.html">Header Default without Topbar</a></li>
-									<li><a href="feature_header_default_centered.html">Header Default Centered</a></li>
-									<li><a href="feature_header_default_fixed.html">Header Default Fixed (Sticky)</a></li>
-									<li><a href="feature_header_default_login_popup.html">Header Default Login Popup</a></li>
-									<li><a href="feature_header_v1.html">Header v1</a></li>
-									<li><a href="feature_header_v2.html">Header v2</a></li>
-									<li><a href="feature_header_v3.html">Header v3</a></li>
-									<li><a href="feature_header_v4.html">Header v4</a></li>
-									<li><a href="feature_header_v4_logo_centered.html">Header v4 Centered Logo</a></li>
-									<li><a href="feature_header_v5.html">Header v5</a></li>
-									<li><a href="feature_header_v6_transparent.html">Header v6 Transparent</a></li>
-									<li><a href="feature_header_v6_semi_dark_transparent.html">Header v6 Dark Transparent</a></li>
-									<li><a href="feature_header_v6_semi_white_transparent.html">Header v6 White Transparent</a></li>
-									<li><a href="feature_header_v6_border_bottom.html">Header v6 Border Bottom</a></li>
-									<li><a href="feature_header_v6_classic_dark.html">Header v6 Classic Dark</a></li>
-									<li><a href="feature_header_v6_classic_white.html">Header v6 Classic White</a></li>
-									<li><a href="feature_header_v6_dark_dropdown.html">Header v6 Dark Dropdown</a></li>
-									<li><a href="feature_header_v6_dark_scroll.html">Header v6 Dark on Scroll</a></li>
-									<li><a href="feature_header_v6_dark_search.html">Header v6 Dark Search</a></li>
-									<li><a href="feature_header_v6_dark_res_nav.html">Header v6 Dark in Responsive</a></li>
-									<li><a href="page_home12.html">Header v7 Left Sidebar</a></li>
-									<li><a href="page_home13.html">Header v7 Right Sidebar</a></li>
-									<li><a href="feature_header_v8.html">Header v8</a></li>
-								</ul>
-							</li>
-							<li class="dropdown-submenu">
-								<a href="javascript:void(0);">Footers</a>
-								<ul class="dropdown-menu">
-									<li><a href="feature_footer_default.html#footer-default">Footer Default</a></li>
-									<li><a href="feature_footer_v1.html#footer-v1">Footer v1</a></li>
-									<li><a href="feature_footer_v2.html#footer-v2">Footer v2</a></li>
-									<li><a href="feature_footer_v3.html#footer-v3">Footer v3</a></li>
-									<li><a href="feature_footer_v4.html#footer-v4">Footer v4</a></li>
-									<li><a href="feature_footer_v5.html#footer-v5">Footer v5</a></li>
-									<li><a href="feature_footer_v6.html#footer-v6">Footer v6</a></li>
-									<li><a href="feature_footer_v7.html#footer-v7">Footer v7</a></li>
-									<li><a href="feature_footer_v8.html#footer-v8">Footer v8</a></li>
-								</ul>
-							</li>
-							<li><a href="feature_gallery.html">Gallery Examples</a></li>
-							<li><a href="feature_animations.html">Animations on Scroll</a></li>
-							<li><a href="feature_parallax_counters.html">Parallax Counters</a></li>
-							<li><a href="feature_testimonials_quotes.html">Testimonials and Quotes</a></li>
-							<li><a href="feature_icon_blocks.html">Icon Blocks</a></li>
-							<li><a href="feature_team_blocks.html">Team Blocks</a></li>
-							<li><a href="feature_news_blocks.html">News Blocks</a></li>
-							<li><a href="feature_parallax_blocks.html">Parallax Blocks</a></li>
-							<li><a href="feature_funny_boxes.html">Funny Boxes</a></li>
-							<li><a href="feature_call_to_actions.html">Call To Action</a></li>
-						</ul>
-					</li>
-					<!-- End Features -->
 
 					<!-- Shortcodes -->
 					<li class="dropdown mega-menu-fullwidth">
