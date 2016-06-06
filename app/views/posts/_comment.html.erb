@@ -28,7 +28,7 @@
   				</span>
   			</h5>
   			<!-- 덧글 내용 -->
-			  <%= comment.content.html_safe %>
+			  <p><%= comment.content.html_safe %></p>
   			<!--덧글 수정 및 삭제-->
         <% if current_user == comment.user %>
           <!--수정버튼-->
@@ -58,20 +58,20 @@
             <% end %>
           <% end %>
             <!--수정 폼-->
-          <div class='text-center'>
-            <br/>
-            <% if can? :update, comment %>
-              <div class="media media-post" id='comment-toggle<%=comment.id%>' style='display: none;'>
-                <div class="media-body">
-                  <%= form_for [comment] do |f|%>
-                    <%= f.text_area :content, :rows => 4, class: "form-control summernote",id: "summernote-input", placeholder: "예의 있게 써주세요"  %>
-                    <br/>
+          <br/>
+          <% if can? :update, comment %>
+            <div class="media media-post" id='comment-toggle<%=comment.id%>' style='display: none;'>
+              <div class="media-body">
+                <%= form_for [comment] do |f|%>
+                  <%= f.text_area :content, :rows => 4, class: "summernote",:data => { provider: "summernote"}, placeholder: "예의 있게 써주세요"  %>
+                  <br/>
+                  <div class='text-center'>
                     <%= f.submit "수정하기",class: "btn-u btn-brd-hover btn-u-yellow" %>
-                  <% end %>
-                </div>
-              </div> <!-- end media-post -->
-            <% end %>
-          </div>
+                  </div>
+                <% end %>
+              </div>
+            </div> <!-- end media-post -->
+          <% end %>
         <% end %>
 
   		</div>
@@ -85,17 +85,17 @@
   	</div>
   	<div class="col-sm-10">
     <!-- Form -->
-      <div class='text-center'>
-        <%= form_for [@board, @post, @post.comments.new], class: "comment-style", novalidate:"novalidate", remote: true do |f| %>
-          <fieldset>
-        		<div class="comments-itself">
-      				<%= f.text_area :content, :rows => 6, class: "form-control summernote",id: "create-comment summernote-input", placeholder: "예의 있게 써주세요"  %>
-              <br/>
-        		  <%= f.submit "덧글달기",class: "btn-u" %>
-        		</div>
-        	</fieldset>
-        <% end %>
-      </div>
+      <%= form_for [@board, @post, @post.comments.new], class: "comment-style", novalidate:"novalidate" do |f| %>
+        <fieldset>
+      		<div class="comments-itself">
+    				<%= f.text_area :content, :rows => 6, class: "summernote",:data => { provider: "summernote"}, placeholder: "예의 있게 써주세요"  %>
+            <br/>
+            <div class='text-center'>
+      		    <%= f.submit "덧글달기",class: "btn-u" %>
+      		  </div>
+      		</div>
+      	</fieldset>
+      <% end %>
   	</div>
   </div>
 <!-- End Form -->

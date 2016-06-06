@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *= require_tree ./bootstrap
+ *= require font-awesome
  *= require_tree ./plugins
  *= require_tree ./css
  *= require_tree ./pages
@@ -18,4 +19,4 @@
  *= require_self
  */
  
-@import "summernote.css";
+@import "summernote";

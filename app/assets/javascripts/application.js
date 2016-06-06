@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require_tree .
 //= require summernote
+//= require summernote/locales/ko-KR
 //= require rails-timeago

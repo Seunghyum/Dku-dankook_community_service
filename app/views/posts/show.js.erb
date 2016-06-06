@@ -4,3 +4,7 @@ $('#paginator').html('<%= escape_javascript(paginate(@posts, remote: true).to_s)
 
 //댓글 ajax
 $('#ajax_comment').html('<%= escape_javascript render(partial: 'comment') %>');
+
+$('[data-provider="summernote"]').each(function(){
+  $(this).summernote();
+});

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+#icon cdn
+gem "font-awesome-rails"
 #카카오 로그인
 gem 'omniauth-kakao'
 #전화번호부 긁어오기
