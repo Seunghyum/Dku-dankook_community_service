@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160602120023) do
+ActiveRecord::Schema.define(version: 20160607023750) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "name"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20160602120023) do
     t.integer  "cached_weighted_score",   default: 0
     t.integer  "cached_weighted_total",   default: 0
     t.float    "cached_weighted_average", default: 0.0
+    t.string   "image_url"
   end
 
   add_index "posts", ["board_id"], name: "index_posts_on_board_id"

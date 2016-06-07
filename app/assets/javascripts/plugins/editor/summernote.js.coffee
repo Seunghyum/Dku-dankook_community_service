@@ -2,6 +2,7 @@ $ ->
 #댓글 시 
   $('[data-provider="summernote"]').each ->
     $(this).summernote
+      height:100
       lang: 'ko-KR'
 
 #새글 작성 시

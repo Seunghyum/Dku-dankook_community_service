@@ -1,7 +1,12 @@
 //댓글 ajax
-$('#ajax_comment').html('<%= escape_javascript render(partial: @post.comments ) %>');
+$('#ajax_comment').html('<%= escape_javascript render(partial: "posts/comments/comment" ) %>')
+                  .find('.blog-comments:last-child').addClass('wow fadeInRight');
 
 //summernote 에디터 ajax대응
-$('[data-provider="summernote"]').each(function(){
-  $(this).summernote();
+$(document).ready(function(){
+  $('[data-provider="summernote"]').each(function(){
+    $(this).summernote();
+  });
+  
+  new WOW().init();
 });

@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:update, :destroy, :upvote, :downvote]
-  before_action :set_post, only: [:create, :update, :destroy]
-  before_action :set_board, only: [:create, :update, :destroy]
+  before_action :set_post, only: [:create,:update]
+  before_action :set_board, only: [:create,:update]
 
   def create
     # respond_to do |format|
@@ -26,22 +26,20 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    #   # 덧글 삭제 ajax
-    # respond_to do |format|
-    # 	format.html
-    #   format.js
-    # end
-    redirect_to :back
+      # 덧글 삭제 ajax
+    respond_to do |format|
+    	format.html
+      format.js
+    end
   end
 
   def update
     @comment.update(comment_params)
-    #   # 덧글 수정 ajax
-    # respond_to do |format|
-    # 	format.html
-    #   format.js
-    # end
-    redirect_to :back
+      # 덧글 수정 ajax
+    respond_to do |format|
+    	format.html
+      format.js
+    end
   end
 
   def upvote
