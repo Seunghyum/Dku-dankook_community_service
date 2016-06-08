@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     @posts = @board.posts.search(params[:search]).page(params[:page]).per(20)
     respond_to do |format|
       format.js
-      format.html
+      format.html 
     end
   end
 
@@ -17,11 +17,27 @@ class PostsController < ApplicationController
   def show
     @post.hits = @post.hits + 1
     @post.save
-    @posts = @board.posts.all.page(params[:page]).per(20)
+    # @all_posts = @board.posts.all
+    # params_page = (@post.id / 20).to_i
+    # @posts = @board.posts.all.page(params_page).per(20)
+    # @posts = @board.posts.all.page(params[:page]).per(20)
+    
     #좋아요 버튼 ajax -  up / down vote.js
+    
     respond_to do |format|
-    	format.html
-      format.js
+    	format.html {
+        @last_post = @board.posts.search(params[:search])
+        
+    	  if @post.id % 20 > 0
+          params_page = ((@last_post.first.id).to_i / 20).to_i - (((@post.id).to_i) / 20).to_i
+        else
+          params_page = ((@last_post.first.id).to_i / 20).to_i + 1 - (((@post.id).to_i) / 20).to_i
+        end
+        @posts = @last_post.page(params_page).per(20)
+    	}
+      format.js {
+        @posts = @board.posts.all.page(params[:page]).per(20)
+      }
     end
   end
 

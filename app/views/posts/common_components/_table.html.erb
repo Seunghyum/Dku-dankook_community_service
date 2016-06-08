@@ -73,7 +73,7 @@
           <!-- paginate Start -->
           <center>
             <div id="paginator">
-              <%= paginate @posts, remote: true %>
+              <%= paginate @posts, :param_name => 'page', remote: true %>
             </div>
           </center>
           <!-- paginate END-->
