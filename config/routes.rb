@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :posts do
       member do
         get "like" => "posts#upvote"
-        post "dislike" => "posts#downvote"
+        get "dislike" => "posts#downvote"
       end
       # resources :comments, module: :posts, shallow: true
       resources :comments, module: :posts do

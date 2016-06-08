@@ -1,4 +1,4 @@
-var like_num = <%= @post.get_upvotes.size %>;
-var dislike_num = <%= @post.get_downvotes.size %>;
-$("#like-btn span").text(like_num);
-$("#dislike-btn span").text(dislike_num);
+var post_like_num = <%= @post.get_upvotes.size %>;
+var post_dislike_num = <%= @post.get_downvotes.size %>;
+$("#like-btn span").text(post_like_num);
+$("#dislike-btn span").text(post_dislike_num);
