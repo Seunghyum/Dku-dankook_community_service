@@ -1,5 +1,5 @@
 //kaminari 페이지네이션
-$('#posts').html('<%= escape_javascript render(partial: 'posts/ajax_components/tr') %>');
+$('#posts').html('<%= escape_javascript render(partial: 'posts/common_components/tr') %>');
 $('#paginator').html('<%= escape_javascript(paginate(@posts, remote: true).to_s) %>');
 
 //summernote 에디터 ajax대응
