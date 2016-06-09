@@ -33,14 +33,11 @@ class PostsController < ApplicationController
         post_id = @post.id
         num_of_last_pages = last_post_id % pagination_per
         first_post_id_except_last_page = last_post_id + (pagination_per - num_of_last_pages) 
-        if post_id <= num_of_last_pages
-          params_page = last_post_id / pagination_per + 1
-        else
-          if (post_id - num_of_last_pages) % (pagination_per) == 0
-            params_page = last_post_id / pagination_per - (post_id - num_of_last_pages) / (pagination_per) + 1
-          else 
-            params_page = last_post_id / pagination_per - (post_id - num_of_last_pages) / (pagination_per)
-          end
+
+        if (post_id - num_of_last_pages) % (pagination_per) == 0
+          params_page = last_post_id / pagination_per - (post_id - num_of_last_pages) / (pagination_per) + 1
+        else 
+          params_page = last_post_id / pagination_per - (post_id - num_of_last_pages) / (pagination_per)
         end
         
         @posts = @last_post.page(params_page).per(pagination_per)
