@@ -7,11 +7,13 @@
 
   <% meetings.each do |meeting| %>
     <div>
+      <%= link_to meeting_path(meeting) do %>
       <div class="contex-bg">
-        <p class="bg-info rounded">
-          <%= link_to meeting.display_tag, meeting_path(meeting) %>
+        <p class="bg-<%= meeting.type_class %> rounded">
+           <%= meeting.display_tag %>
         </p>
       </div>
+      <% end %>
     </div>
   <% end %>
 <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160611092013) do
+ActiveRecord::Schema.define(version: 20160611115817) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "name"
@@ -93,6 +93,8 @@ ActiveRecord::Schema.define(version: 20160611092013) do
     t.string   "photo"
     t.string   "display_tag"
     t.datetime "end_time"
+    t.string   "event_type"
+    t.string   "type_class"
   end
 
   create_table "posts", force: :cascade do |t|

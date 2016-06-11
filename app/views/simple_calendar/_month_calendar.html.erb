@@ -2,7 +2,13 @@
   <div class="calendar-heading">
     <ul class="pager">
       <li class='previous'><%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view, class: 'rounded' %></li>
-      <span class="calendar-title text-center lead"><%= t('date.month_names')[start_date.month] %> 학사 및 이벤트 일정<%#= start_date.year %></span>
+      <%= link_to meetings_path do %>
+        <span class="calendar-title text-center lead">
+            <%= t('date.month_names') [start_date.month] %> 
+            학사 및 이벤트 일정 
+            <span class="label label-blue">자세히</span>
+        </span>
+      <% end %>
       <li class='next'><%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view, class: 'rounded' %></li>
     </ul>
   </div>

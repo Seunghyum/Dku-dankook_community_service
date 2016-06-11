@@ -1,11 +1,12 @@
 <div class="container content">
 	<div class="row margin-bottom-30">
-		<div class="col-md-9 mb-margin-bottom-30">
-			<div class="headline"><h2>Contact Form</h2></div>
-			<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas feugiat. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit landitiis.</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas feugiat.</p><br>
+		<div class="col-md-7 mb-margin-bottom-30">
+			<div class="headline"><h2>새 글 작성하기</h2></div>
+			<p>우측에 있는 규칙들을 충분히 숙지하시고 작성해주세요.</p>
+			<p>예의없는 학생은 무시해주세요. 운영자가 처리하겠습니다.</p>
+			<p>우리는 같은 학교를 다니고 있는 학생입니다. 반드시 예의를 지켜주세요.</p><br>
 
-      <%= form_for [@board, @post], html: {multipart: true, id: "sky-form3", class: "sky-form sky-changes-3", novalidate: "novalidate"} do |f| %>
+      <%= form_for [@board, @post], html: {multipart: true, id: "sky-form3", class: "sky-form sky-changes-3 contact-style", novalidate: "novalidate"} do |f| %>
         <% if @post.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -45,32 +46,36 @@
 			<% end %>
 		</div><!--/col-md-9-->
 
-		<div class="col-md-3">
-			<!-- Contacts -->
-			<div class="headline"><h2>Contacts</h2></div>
-			<ul class="list-unstyled who margin-bottom-30">
-				<li><a href="#"><i class="fa fa-home"></i>5B Streat, City 50987 New Town US</a></li>
-				<li><a href="#"><i class="fa fa-envelope"></i>info@example.com</a></li>
-				<li><a href="#"><i class="fa fa-phone"></i>1(222) 5x86 x97x</a></li>
-				<li><a href="#"><i class="fa fa-globe"></i>http://www.example.com</a></li>
-			</ul>
-
-			<!-- Business Hours -->
-			<div class="headline"><h2>Business Hours</h2></div>
+		<div class="col-md-5">		
+			<!-- 운영자 준수 규칙 -->
+			<div class="headline"><h2>운영자 규칙</h2></div>
+			<p>아래의 규칙은 운영자가 반드시 지킬 규칙입니다.</p>
 			<ul class="list-unstyled margin-bottom-30">
-				<li><strong>Monday-Friday:</strong> 10am to 8pm</li>
-				<li><strong>Saturday:</strong> 11am to 3pm</li>
-				<li><strong>Sunday:</strong> Closed</li>
+				<li><i class="fa fa-check color-green"></i> 사용자에게 중요한 <strong>개인정보</strong>는 받지도 않겠습니다.</li>
+				<li><i class="fa fa-check color-green"></i> 광고로 <strong>영리추구</strong>를 하지 않겠습니다.</li>
+				<li><i class="fa fa-check color-green"></i> 단국인들이 <strong>원하는 서비스</strong>를 개발하겠습니다.</li>
+				<li><i class="fa fa-check color-green"></i> 단국인들의 <strong>학교생활에 도움이 되는 서비스</strong>를 개발하겠습니다.</li>
 			</ul>
-
-			<!-- Why we are? -->
-			<div class="headline"><h2>Why we are?</h2></div>
-			<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.</p>
-			<ul class="list-unstyled">
-				<li><i class="fa fa-check color-green"></i> Odio dignissimos ducimus</li>
-				<li><i class="fa fa-check color-green"></i> Blanditiis praesentium volup</li>
-				<li><i class="fa fa-check color-green"></i> Eos et accusamus</li>
+			
+			<!-- 규칙 -->
+			<div class="headline"><h2>커뮤니티 규칙</h2></div>
+			<p>아래의 규칙을 어기는 글은 삭제되며 작성자는 최소 1년 동안 서비스 이용이 정지됩니다.</p>
+			<ul class="list-unstyled margin-bottom-30">
+				<li><i class="fa fa-check color-green"></i> 다른 학생의 <strong>실명</strong>을 언급하지 마세요.</li>
+				<li><i class="fa fa-check color-green"></i> 다른 학생을 비난하기 위해 <strong>묘사</strong>하셔도 안됩니다.</li>
+				<li><i class="fa fa-check color-green"></i> 누구에게든 <strong>반말</strong>을 금지합니다.</li>
+				<li><i class="fa fa-check color-green"></i> 다른 학생에 대한 <strong>인신공격, 비속어 사용</strong> 등을 금지해주세요.</li>
 			</ul>
+			
+			<!-- 매너 -->
+			<div class="headline"><h2>커뮤니티 매너</h2></div>
+			<p>아래의 기본적인 예의를 지켜주세요.</p>
+			<ul class="list-unstyled margin-bottom-30">
+				<li><i class="fa fa-check color-green"></i> <strong>예의</strong>를 지켜주세요.</li>
+				<li><i class="fa fa-check color-green"></i> 상대를 <strong>존중</strong>해주세요.</li>
+				<li><i class="fa fa-check color-green"></i> 타인을 지칭할 때 <strong>***님</strong>으로 불러주세요.</li>
+			</ul>
+			
 		</div><!--/col-md-3-->
 	</div><!--/row-->
 </div>

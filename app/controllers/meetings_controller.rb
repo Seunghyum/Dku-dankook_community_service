@@ -27,6 +27,19 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.new(meeting_params)
     @meeting.save
     
+    event_type_check = @meeting.event_type
+    if event_type_check == "학사"
+      @meeting.update(type_class: "primary")
+    elsif event_type_check == "동아리"
+      @meeting.update(type_class: "success")      
+    elsif event_type_check == "총학"
+      @meeting.update(type_class: "info")
+    elsif event_type_check == "강연"
+      @meeting.update(type_class: "warning")
+    elsif event_type_check == "기타"
+      @meeting.update(type_class: "danger")
+    end
+    
     t = @meeting.end_time - @meeting.start_time
     
     date_inerval = Time.at(t).strftime("%d").to_i
@@ -39,7 +52,9 @@ class MeetingsController < ApplicationController
                         content: @meeting.content,
                         photo: @meeting.photo,
                         display_tag: @meeting.display_tag,
-                        end_time: @meeting.end_time + (x + 1).day
+                        end_time: @meeting.end_time + (x + 1).day,
+                        event_type: @meeting.event_type,
+                        type_class: @meeting.type_class
           )
       end
     end  
@@ -87,6 +102,6 @@ class MeetingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meeting_params
-      params.require(:meeting).permit(:name, :start_time, :content, :display_tag, :photo, :end_time)
+      params.require(:meeting).permit(:name, :start_time, :content, :display_tag, :photo, :end_time, :event_type, :type_class)
     end
 end

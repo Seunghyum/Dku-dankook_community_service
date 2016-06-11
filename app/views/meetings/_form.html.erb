@@ -20,6 +20,10 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :event_type %><br>
+    <%= f.select :event_type, ['학사', '총학', '동아리', '강연', '기타']%>
+  </div>
+  <div class="field">
     <%= f.label :start_time %><br>
     <%= f.datetime_select :start_time, :discard_hour => true %>
   </div>
