@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+
+#calender gem
+gem "simple_calendar"
 #icon cdn
 gem "font-awesome-rails"
 #카카오 로그인

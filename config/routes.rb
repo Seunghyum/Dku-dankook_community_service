@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :meetings
 #사물함
   get 'locker/index'
 

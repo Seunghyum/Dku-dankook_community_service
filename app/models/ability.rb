@@ -8,6 +8,7 @@ class Ability
       can :manage, :all
     else
       can [:create, :read], [Post, Comment]
+      can [:read], [Meeting]
       can [:update, :destroy], Post do |post|
         post.user_id == user.id
       end

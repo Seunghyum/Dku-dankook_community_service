@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+  <%= link_to '새 일정 만들기', new_meeting_path if can? :create, @meetings %>
+<% end %>
+
+<%= month_calendar events: @meetings do |date, meetings| %>
+  <%= date.day %>
+
+  <% meetings.each do |meeting| %>
+    <div>
+      <div class="contex-bg">
+        <p class="bg-info rounded">
+          <%= link_to meeting.display_tag, meeting_path(meeting) %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+<% end %>

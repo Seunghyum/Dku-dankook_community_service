@@ -2,7 +2,7 @@
 		<div class="container content profile">
 			<div class="row magazine-page">
 				<!-- Begin Content -->
-				<div class="col-md-9">
+				<div class="col-md-8">
 					<!-- Magazine Slider -->
 					<div class="carousel slide carousel-v1 margin-bottom-40" id="myCarousel-1">
 						<div class="carousel-inner">
@@ -67,6 +67,16 @@
 						</div>
 					</div>
 					<!-- End Magazine News -->
+					
+					<div class="margin-bottom-35"><hr class="hr-md"></div>
+					
+					<!-- Calendar News -->
+            <div class='row'>
+              <div class='col-md-12'>
+                <%= render 'simple_calendar/calendar' %>
+              </div>
+            </div>
+					<!-- End Calendar News -->
 
 					<div class="margin-bottom-35"><hr class="hr-md"></div>
 
@@ -137,8 +147,7 @@
 				<!-- End Content -->
 
 				<!-- Begin Sidebar -->
-				<div class="col-md-3">
-				
+				<div class="col-md-4">
 					<!--Profile Event-->
 					<div class="profile-body md-margin-bottom-20">
 						<div class="panel panel-profile no-bg">
