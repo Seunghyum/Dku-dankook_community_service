@@ -1,23 +1,20 @@
-<div class='row'>
-  <div class='col-md-offset-3 col-md-6'>
-    <p id="notice"><%= notice %></p>
-    
-    <p>
-      <strong>Name:</strong>
-      <%= @meeting.name %>
-    </p>
-    
-    <p>
-      <strong>Start time:</strong>
-      <%= @meeting.start_time %>
-    </p>
-    
-    <p>
-      <strong>Content:</strong>
-      <%= @meeting.content %>
-    </p>
-    
-    <%= link_to 'Edit', edit_meeting_path(@meeting) if can? :update, @meetings %> |
-    <%= link_to 'Back', meetings_path %>
-  </div>
+<div class="job-description">
+	<div class="container content">
+		<div class="title-box-v2">
+      <p id="notice"><%= notice %></p>
+			<span class="label rounded label-<%= @meeting.type_class %>"><%= @meeting.event_type %></span>
+			<h2><%= @meeting.name %></h2>
+      <p>작성일 : <%= timeago_tag @meeting.created_at %></p>
+      <p>이벤트 기간 : <%= @event_time %></p>
+      <%= link_to 'Edit', edit_meeting_path(@meeting), class: 'btn-u btn-u-orange btn-u-xs' if can? :update, @meetings %>
+		</div>    
+		<!-- Left Inner -->
+		<div class="left-inner">
+			<%= @meeting.content.html_safe %>
+			<div class='text-center'>
+        <%= link_to '다른 일정 살펴보기', meetings_path, class: 'btn-u btn-u-aqua btn-u-sm' %>
+      </div>
+		</div>
+		<!-- End Left Inner -->
+	</div>   
 </div>

@@ -10,6 +10,11 @@ class MeetingsController < ApplicationController
   # GET /meetings/1
   # GET /meetings/1.json
   def show
+    unless @meeting.start_time == @meeting.end_time
+      @event_time = Time.at(@meeting.start_time).strftime("%Y년 %m월 %d일") + " ~ " + Time.at(@meeting.end_time).strftime("%Y년 %m월 %d일")
+    else
+      @event_time = Time.at(@meeting.start_time).strftime("%Y년 %m월 %d일")
+    end
   end
 
   # GET /meetings/new
