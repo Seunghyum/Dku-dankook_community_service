@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: true, presence: true
   validates :username, uniqueness: true, presence: true
-  validates :gender, presence: true
+  validates :gender, presence: true, 
+            inclusion: { in: %w(남자 여자) }
   validate :validate_username
 
   #투표자
