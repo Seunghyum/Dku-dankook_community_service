@@ -48,21 +48,6 @@ ActiveRecord::Schema.define(version: 20160611115817) do
   add_index "comments", ["post_id"], name: "index_comments_on_post_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
-  create_table "estimates", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "identities", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "identities", ["user_id"], name: "index_identities_on_user_id"
-
   create_table "lockers", force: :cascade do |t|
     t.integer  "lnum"
     t.datetime "created_at", null: false
