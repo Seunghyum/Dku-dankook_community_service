@@ -2,7 +2,8 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-  # user ||= User.new(role: 'guest') # guest user (not logged in)
+  #롤을 만들 경우 여기에서 User.new를 통해 role: 외부인 으로 설정하면 외부 session을 롤이 외부인인 유저로 인식한다. 이걸으로 조정하면 된다.
+  # user ||= User.new(role: '외부인') # guest user (not logged in)
 
     if user.is_admin
       can :manage, :all

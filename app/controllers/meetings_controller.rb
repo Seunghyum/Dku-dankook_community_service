@@ -1,4 +1,8 @@
 class MeetingsController < ApplicationController
+
+  #auth
+  load_and_authorize_resource
+
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
 
   # GET /meetings
@@ -31,12 +35,12 @@ class MeetingsController < ApplicationController
   def create
     @meeting = Meeting.new(meeting_params)
     @meeting.save
-    
+
     event_type_check = @meeting.event_type
     if event_type_check == "학사"
       @meeting.update(type_class: "primary")
     elsif event_type_check == "동아리"
-      @meeting.update(type_class: "success")      
+      @meeting.update(type_class: "success")
     elsif event_type_check == "총학"
       @meeting.update(type_class: "info")
     elsif event_type_check == "강연"
@@ -44,15 +48,15 @@ class MeetingsController < ApplicationController
     elsif event_type_check == "기타"
       @meeting.update(type_class: "danger")
     end
-    
+
     t = @meeting.end_time - @meeting.start_time
-    
+
     date_inerval = Time.at(t).strftime("%d").to_i
-    
+
     if date_inerval > 0
       (date_inerval - 1).times do |x|
           Meeting.create(
-                        name: @meeting.name, 
+                        name: @meeting.name,
                         start_time: @meeting.start_time + (x + 1).day,
                         content: @meeting.content,
                         photo: @meeting.photo,
@@ -62,8 +66,8 @@ class MeetingsController < ApplicationController
                         type_class: @meeting.type_class
           )
       end
-    end  
-    
+    end
+
     respond_to do |format|
       if @meeting
         format.html { redirect_to @meeting, notice: 'Meeting was successfully created.' }

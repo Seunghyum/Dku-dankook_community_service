@@ -1,4 +1,7 @@
 class LockerController < ApplicationController
+  #auth
+  load_and_authorize_resource
+
   before_action :set_numbering, only: [:first_check]
   before_action :set_locker, only: [:lockerselect, :destroy]
   before_action :set_time, only: [:lockerselect, :first_check, :nottime ]

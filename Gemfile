@@ -1,41 +1,48 @@
 source 'https://rubygems.org'
 
-#calender gem
-gem "simple_calendar"
-#icon cdn
-gem "font-awesome-rails"
-#카카오 로그인
-gem 'omniauth-kakao'
-#전화번호부 긁어오기
-gem 'nokogiri'
-# 시간표기
-gem 'rails-timeago'
-#권한설정
-gem 'cancancan'
-#투표기능
-gem 'acts_as_votable'
-#editor
-gem 'summernote-rails'
-
-#pagnation gem
-gem 'kaminari'
-
-gem 'devise'
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
-# Use sqlite3 as the database for Active Record
+
+#db
 gem 'sqlite3'
-# Use SCSS for stylesheets
+
+
+#tool
+##calender gem
+gem "simple_calendar"
+##전화번호부 긁어오기
+gem 'nokogiri'
+##시간표기
+gem 'rails-timeago'
+##투표기능
+gem 'acts_as_votable'
+##editor
+gem 'summernote-rails'
+##pagnation gem
+gem 'kaminari'
+##tag
+gem 'acts-as-taggable-on'
+
+#auth
+gem 'devise'
+gem 'omniauth-kakao'
+##권한설정
+gem 'cancancan'
+gem 'rails_admin'
+
+
+# UI
 gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
+## Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
+gem 'jquery-rails'
+##icon cdn
+gem "font-awesome-rails"
+
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 #gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

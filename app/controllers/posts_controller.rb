@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  #auth
+  load_and_authorize_resource
+
   before_action :set_board
   before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   # GET /posts
@@ -8,7 +11,7 @@ class PostsController < ApplicationController
     @posts = @board.posts.search(params[:search]).page(params[:page]).per(20)
     respond_to do |format|
       format.js
-      format.html 
+      format.html
     end
   end
 
@@ -21,9 +24,9 @@ class PostsController < ApplicationController
     # params_page = (@post.id / 20).to_i
     # @posts = @board.posts.all.page(params_page).per(20)
     # @posts = @board.posts.all.page(params[:page]).per(20)
-    
+
     #좋아요 버튼 ajax -  up / down vote.js
-    
+
     respond_to do |format|
     	format.html {
     	  #페이지 클릭 시 페이지네이션 + table 세팅
@@ -32,14 +35,14 @@ class PostsController < ApplicationController
         last_post_id = @last_post.first.id
         post_id = @post.id
         num_of_last_pages = last_post_id % pagination_per
-        first_post_id_except_last_page = last_post_id + (pagination_per - num_of_last_pages) 
+        first_post_id_except_last_page = last_post_id + (pagination_per - num_of_last_pages)
 
         if (post_id - num_of_last_pages) % (pagination_per) == 0
           params_page = last_post_id / pagination_per - (post_id - num_of_last_pages) / (pagination_per) + 1
-        else 
+        else
           params_page = last_post_id / pagination_per - (post_id - num_of_last_pages) / (pagination_per)
         end
-        
+
         @posts = @last_post.page(params_page).per(pagination_per)
     	}
       format.js {

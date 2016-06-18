@@ -1,4 +1,9 @@
 class CommentsController < ApplicationController
+
+
+  #auth
+  load_and_authorize_resource
+
   before_action :set_comment, only: [:update, :destroy, :upvote, :downvote]
   before_action :set_post, only: [:create]
   before_action :set_board, only: [:create]
@@ -59,17 +64,17 @@ class CommentsController < ApplicationController
       format.js
     end
   end
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
     end
-    
+
     def set_post
       @post = Post.find(params[:post_id])
     end
-    
+
     def set_board
       @board = Board.find(params[:board_id])
     end
