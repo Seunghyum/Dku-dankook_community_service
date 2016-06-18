@@ -12,6 +12,10 @@ class Post < ActiveRecord::Base
   #투표대상
   acts_as_votable
 
+  #태그
+  acts_as_taggable
+
+
   def self.search(search)
     if search
       where(["title LIKE ?","%#{search}%"])

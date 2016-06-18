@@ -10,7 +10,7 @@
         <% if @post.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-      
+
             <ul>
             <% @post.errors.full_messages.each do |message| %>
               <li><%= message %></li>
@@ -27,12 +27,21 @@
 						</label>
 					</section>
 
-					<section>
-						<label class="label">content</label>
+					<section
+            <%= f.label :content %>
 						<label class="textarea">
               <%= f.text_area :content, class: "summernote", id: "summernote-post" %>
 						</label>
 					</section>
+
+					<section>
+            <%#= f.label :tag_list, "Tag" %>
+						<!-- <label class="input">
+							<i class="icon-append fa fa-tag"></i> -->
+              <%= f.text_field :tag_list, id: "tag-input"%>
+						<!-- </label> -->
+					</section>
+
 				</fieldset>
 
 				<footer class='text-center'>
@@ -46,7 +55,7 @@
 			<% end %>
 		</div><!--/col-md-9-->
 
-		<div class="col-md-5">		
+		<div class="col-md-5">
 			<!-- 운영자 준수 규칙 -->
 			<div class="headline"><h2>운영자 규칙</h2></div>
 			<p>아래의 규칙은 운영자가 반드시 지킬 규칙입니다.</p>
@@ -56,7 +65,7 @@
 				<li><i class="fa fa-check color-green"></i> 단국인들이 <strong>원하는 서비스</strong>를 개발하겠습니다.</li>
 				<li><i class="fa fa-check color-green"></i> 단국인들의 <strong>학교생활에 도움이 되는 서비스</strong>를 개발하겠습니다.</li>
 			</ul>
-			
+
 			<!-- 규칙 -->
 			<div class="headline"><h2>커뮤니티 규칙</h2></div>
 			<p>아래의 규칙을 어기는 글은 삭제되며 작성자는 최소 1년 동안 서비스 이용이 정지됩니다.</p>
@@ -66,7 +75,7 @@
 				<li><i class="fa fa-check color-green"></i> 누구에게든 <strong>반말</strong>을 금지합니다.</li>
 				<li><i class="fa fa-check color-green"></i> 다른 학생에 대한 <strong>인신공격, 비속어 사용</strong> 등을 금지해주세요.</li>
 			</ul>
-			
+
 			<!-- 매너 -->
 			<div class="headline"><h2>커뮤니티 매너</h2></div>
 			<p>아래의 기본적인 예의를 지켜주세요.</p>
@@ -75,7 +84,15 @@
 				<li><i class="fa fa-check color-green"></i> 상대를 <strong>존중</strong>해주세요.</li>
 				<li><i class="fa fa-check color-green"></i> 타인을 지칭할 때 <strong>***님</strong>으로 불러주세요.</li>
 			</ul>
-			
+
 		</div><!--/col-md-3-->
 	</div><!--/row-->
 </div>
+
+<script>
+		$(document).ready(function() {
+				$("#tag-input").tagit({
+					placeholderText: '태그를 입력해주세요'
+				});
+		});
+</script>

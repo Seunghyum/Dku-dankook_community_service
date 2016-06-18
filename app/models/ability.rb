@@ -3,19 +3,21 @@ class Ability
 
   def initialize(user)
   #롤을 만들 경우 여기에서 User.new를 통해 role: 외부인 으로 설정하면 외부 session을 롤이 외부인인 유저로 인식한다. 이걸으로 조정하면 된다.
-  # user ||= User.new(role: '외부인') # guest user (not logged in)
-
-    if user.is_admin
+    user ||= User.new(role: '외부인') # guest user (not logged in)
+    if user.role == '슈퍼관리자'
       can :manage, :all
-    else
+    elsif user.role == '일반대표' && user.role == '학생'
       can [:create, :read], [Post, Comment]
       can [:read], [Meeting]
+
       can [:update, :destroy], Post do |post|
         post.user_id == user.id
       end
       can [:update, :destroy], Comment do |comment|
         comment.user_id == user.id
       end
+    else
+      can :read, [Post, Meeting]
     end
     # Define abilities for the passed in user here. For example:
     #

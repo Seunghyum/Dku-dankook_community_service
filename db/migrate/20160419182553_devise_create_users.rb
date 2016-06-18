@@ -5,10 +5,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
       t.string :profile
-      t.string :role, default: :student
+      t.string :role, default: '일반학생'
       t.string :username
       t.string :gender
-      t.boolean :is_admin, default: false
 
       #사물함  first_check 번호표
       t.integer :my_num, default: 0, uniqueness: true

@@ -6,8 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(username: "admin_moon", gender: "남자", email: 'qwe@qwe.com', password: "12341234", password_confirmation: "12341234", is_admin: true)
-User.create(username: "moon", gender: "남자", email: '123@123.com', password: "12341234", password_confirmation: "12341234", is_admin: false)
+User.create(username: "admin_moon", gender: "남자", email: 'qwe@qwe.com', password: "12341234", password_confirmation: "12341234", role: "슈퍼관리자")
+User.create(username: "moon", gender: "남자", email: '123@123.com', password: "12341234", password_confirmation: "12341234", role: "학생")
 Board.create(name: "자유게시판", description: "자유롭게 말하세요")
 85.times do
     Post.create(title: "테스트 타이틀", content: "내용테스트", user_id: 1, board_id: 1)

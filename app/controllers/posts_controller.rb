@@ -26,7 +26,9 @@ class PostsController < ApplicationController
     # @posts = @board.posts.all.page(params[:page]).per(20)
 
     #좋아요 버튼 ajax -  up / down vote.js
-
+    @samples = ["u", "blue", 'red', 'green', 'sea',
+          'orange', 'yellow', 'purple', 'aqua',
+          'brown', 'dark-blue', 'light-green', 'dark', 'light']
     respond_to do |format|
     	format.html {
     	  #페이지 클릭 시 페이지네이션 + table 세팅
@@ -118,6 +120,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :attachment, :board_id)
+      params.require(:post).permit(:title, :content, :attachment, :board_id, :tag_list)
     end
 end

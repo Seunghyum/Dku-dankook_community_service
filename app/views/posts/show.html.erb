@@ -5,19 +5,19 @@
         <center>
           <p id="notice"><%= notice %></p>
         </center>
-        
+
     		<!-- News v3 -->
         <%= link_to @board.name, board_posts_path(@board), class: "btn-u btn-u-lg" %>
-        
+
     		<div class="news-v3 bg-color-white margin-bottom-30">
     			<div class="news-v3-in clearfix row">
-    			
+
         		<div class="col-sm-3 shadow-wrapper col-md-2 text-center">
         			<div class="box-shadow shadow-effect-2 rounded-2x col-xs-8 col-sm-12">
         				<%= image_tag current_user.photo ? current_user.photo : "placeholder.jpg", class: "img-responsive rounded-2x img-bordered" %>
         			</div>
       				<h3><%= @post.user.username%></h3>
-      				
+
               <% if can? :update, @post %>
                 <!--수정버튼-->
                   <%= link_to edit_board_post_path(@post.board, @post) do %>
@@ -36,15 +36,27 @@
                   <% end %>
               <% end %>
         		</div>
-      		
+
     		    <div class="col-sm-9 col-md-10 ">
     		      <center>
                 <h3 class="title"><%= @post.title %></h3>
                 <h6 class="title-uppercase"><%= timeago_tag @post.created_at %></h6>
               </center>
-      			  <%= image_tag "cafe.jpg", class: "img-responsive full-width" %>
-      				<p><%= @post.content.html_safe %></p>
-      						
+							<!-- 이미지 나오는 곳 -->
+							<div class='margin-bottom-5'>
+      			  	<%= image_tag "cafe.jpg", class: "img-responsive full-width" %>
+							</div>
+							<!-- 태그출력 -->
+							<div class='margin-bottom-5'>
+								<% @post.tag_list.each do |x| %>
+									<span class='label rounded label-<%= @samples.sample %> margin-right-5'>
+										<i class="fa fa-tags"></i><%= x %>
+									</span>
+								<% end %>
+							</div>
+							<!-- 글 출력 -->
+							<p><%= @post.content.html_safe %></p>
+
       				<ul class="list-inline badge-lists badge-box-v1 margin-bottom-30 text-center">
       					<li>
                   <%= link_to like_board_post_path(@board, @post), id: "like-btn", remote: true  do %>
@@ -63,7 +75,7 @@
     			</div>
     		</div>
     		<!-- End News v3 -->
-    
+
     		<hr>
   		<!-- Blog Comments -->
   		  <div id='ajax_comment'>
@@ -71,51 +83,6 @@
     		</div>
   		  <%= render "posts/comments/form" %>
   		<!-- End Blog Comments -->
-    		
-  	   <!-- <div class="row news-v2 margin-bottom-50">-->
-    		<!--	<div class="col-sm-4 sm-margin-bottom-30">-->
-    		<!--		<div class="news-v2-badge">-->
-    		<!--			<img class="img-responsive" src="assets/img/main/img3.jpg" alt="">-->
-    		<!--			<p>-->
-    		<!--				<span>24</span>-->
-    		<!--				<small>Jan</small>-->
-    		<!--			</p>-->
-    		<!--		</div>-->
-    		<!--		<div class="news-v2-desc">-->
-    		<!--			<h3><a href="#">Blog Image Post</a></h3>-->
-    		<!--			<small>By Admin | California, US | In <a href="#">Art</a></small>-->
-    		<!--			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae.</p>-->
-    		<!--		</div>-->
-    		<!--	</div>-->
-    		<!--	<div class="col-sm-4 sm-margin-bottom-30">-->
-    		<!--		<div class="news-v2-badge">-->
-    		<!--			<img class="img-responsive" src="assets/img/main/img6.jpg" alt="">-->
-    		<!--			<p>-->
-    		<!--				<span>23</span>-->
-    		<!--				<small>Jan</small>-->
-    		<!--			</p>-->
-    		<!--		</div>-->
-    		<!--		<div class="news-v2-desc">-->
-    		<!--			<h3><a href="#">Blog Image Post</a></h3>-->
-    		<!--			<small>By Admin | California, US | In <a href="#">Art</a></small>-->
-    		<!--			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae.</p>-->
-    		<!--		</div>-->
-    		<!--	</div>-->
-    		<!--	<div class="col-sm-4">-->
-    		<!--		<div class="news-v2-badge">-->
-    		<!--			<img class="img-responsive" src="assets/img/main/img4.jpg" alt="">-->
-    		<!--			<p>-->
-    		<!--				<span>22</span>-->
-    		<!--				<small>Jan</small>-->
-    		<!--			</p>-->
-    		<!--		</div>-->
-    		<!--		<div class="news-v2-desc">-->
-    		<!--			<h3><a href="#">Blog Image Post</a></h3>-->
-    		<!--			<small>By Admin | California, US | In <a href="#">Art</a></small>-->
-    		<!--			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae.</p>-->
-    		<!--		</div>-->
-    		<!--	</div>-->
-    		<!--</div>-->
     	</div><!--/end container-->
     </div>
   </div>

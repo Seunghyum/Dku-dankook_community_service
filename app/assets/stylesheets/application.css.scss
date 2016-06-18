@@ -19,8 +19,10 @@
  *= require_tree ./theme-skins
  *= require_tree ./theme-colors
  *= require_tree ./fonts
+ *= require jquery-ui
+ *= require jquery.tagit.css
  *= require custom
  *= require_self
  */
- 
+
 @import "summernote";

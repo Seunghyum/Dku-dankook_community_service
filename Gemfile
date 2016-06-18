@@ -21,6 +21,8 @@ gem 'summernote-rails'
 gem 'kaminari'
 ##tag
 gem 'acts-as-taggable-on'
+##tag
+gem 'tag-it-rails'
 
 #auth
 gem 'devise'

@@ -17,3 +17,5 @@
 //= require summernote/locales/ko-KR
 //= require rails-timeago
 //= require locales/jquery.timeago.ko.js
+//= require jquery-ui
+//= require tag-it
