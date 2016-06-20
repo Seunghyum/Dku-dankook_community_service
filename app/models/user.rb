@@ -19,6 +19,9 @@ class User < ActiveRecord::Base
 
   #투표자
   acts_as_voter
+  #태그 한 사람
+  acts_as_tagger
+
   #로그인시 서로의 username과 email이 같은 유저 발생시 예외처리
   def validate_username
     if User.where(email: username).exists?

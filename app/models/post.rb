@@ -13,7 +13,7 @@ class Post < ActiveRecord::Base
   acts_as_votable
 
   #태그
-  acts_as_taggable
+  acts_as_taggable_on :tags
 
 
   def self.search(search)

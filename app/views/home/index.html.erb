@@ -67,9 +67,9 @@
 						</div>
 					</div>
 					<!-- End Magazine News -->
-					
+
 					<div class="margin-bottom-35"><hr class="hr-md"></div>
-					
+
 					<!-- Calendar News -->
             <div class='row'>
               <div class='col-md-12'>
@@ -290,29 +290,31 @@
 
 					<!-- Quick Links -->
 					<div class="magazine-sb-categories margin-bottom-20">
-						<div class="headline"><h2 class="heading-sm">Quick Links</h2></div>
+						<div class="headline"><h2 class="heading-sm">Top Tag 20</h2></div>
 						<div class="row">
 							<ul class="list-unstyled col-xs-6">
-								<li><a href="#">Revolution Slider</a></li>
-								<li><a href="#">Parralax Page</a></li>
-								<li><a href="#">Backgrounds</a></li>
-								<li><a href="#">Parralax Slider</a></li>
-								<li><a href="#">Responsive</a></li>
-								<li><a href="#">Bootstrap 3x</a></li>
+								<% @listing_a.each do |x| %>
+								<li>
+									<span class='label rounded label-<%= @samples.sample %> margin-right-5'>
+										<i class="fa fa-tags"></i><%= x.name %>
+									</span>
+								</li>
+								<% end %>
 							</ul>
 							<ul class="list-unstyled col-xs-6">
-								<li><a href="#">50+ Valid Pages</a></li>
-								<li><a href="#">Layer Slider</a></li>
-								<li><a href="#">Bootstrap 2x</a></li>
-								<li><a href="#">Fixed Header</a></li>
-								<li><a href="#">Best Template</a></li>
-								<li><a href="#">And Many More</a></li>
+								<% @listing_b.each do |x| %>
+								<li>
+									<span class='label rounded label-<%= @samples.sample %> margin-right-5'>
+										<i class="fa fa-tags"></i><%= x.name %>
+									</span>
+								</li>
+								<% end %>
 							</ul>
 						</div>
 					</div>
 					<!-- End Quick Links -->
 
-					
+
 
 					<!-- Latest News -->
 					<div class="margin-bottom-40">
@@ -349,7 +351,7 @@
 			</div>
 		</div><!--/container-->
 		<!-- End Content Part -->
-	
+
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			App.init();

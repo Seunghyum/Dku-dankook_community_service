@@ -10,6 +10,25 @@ var App = function () {
 	  return this.attr(name) !== undefined;
 	};
 
+
+  // More Articles
+  function handleMoreArticles() {
+    var is_box_visible = true;
+    var distance_from_top = $('.outside-more-articles').attr('data-scrollTop');
+
+	  $(window).scroll(function() {
+	    if (($(window).scrollTop() > distance_from_top)&&(is_box_visible === true)) {
+	      $('.outside-more-articles').addClass('outside-more-articles--show');
+	    } else {
+	      $('.outside-more-articles').removeClass('outside-more-articles--show');
+	    }
+    });
+    $('.outside-more-articles__close').on('click', function(e) {
+      $('.outside-more-articles').removeClass('outside-more-articles--show');
+      is_box_visible = false;
+    });
+  }
+
 	// Fixed Header
 	function handleHeader() {
 		jQuery(window).scroll(function() {
@@ -253,15 +272,16 @@ var App = function () {
 			handleValignMiddle();
 			handleEqualHeightColumns();
 			handleEqualHeightColumns__Images();
+			handleMoreArticles();
 		},
 
 		// Counters
-		initCounter: function () {
-			jQuery('.counter').counterUp({
-				delay: 10,
-				time: 1000
-			});
-		},
+		// initCounter: function () {
+		// 	jQuery('.counter').counterUp({
+		// 		delay: 10,
+		// 		time: 1000
+		// 	});
+		// },
 
 		// Parallax Backgrounds
 		initParallaxBg: function () {
