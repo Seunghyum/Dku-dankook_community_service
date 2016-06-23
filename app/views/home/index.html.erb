@@ -293,6 +293,7 @@
 						<div class="headline"><h2 class="heading-sm">Top Tag 20</h2></div>
 						<div class="row">
 							<ul class="list-unstyled col-xs-6">
+								<% if @listing_a %>
 								<% @listing_a.each do |x| %>
 								<li>
 									<span class='label rounded label-<%= @samples.sample %> margin-right-5'>
@@ -308,6 +309,7 @@
 										<i class="fa fa-tags"></i><%= x.name %>
 									</span>
 								</li>
+								<% end %>
 								<% end %>
 							</ul>
 						</div>
