@@ -16,8 +16,9 @@ class Ability
       can [:update, :destroy], Comment do |comment|
         comment.user_id == user.id
       end
-    else
+    elsif user.role == '외부인'
       can :read, [Post, Meeting]
+      can :manage, [SchoolPhoneSearching]
     end
     # Define abilities for the passed in user here. For example:
     #
