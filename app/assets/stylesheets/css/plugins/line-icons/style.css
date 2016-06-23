@@ -6,17 +6,17 @@
 /*
 
 
-       PLEASE NOTE: 
+       PLEASE NOTE:
        ============
 
-       THIS FILE IS NOT PART OF THE *REQUIRED FONT ICON FILES* 
+       THIS FILE IS NOT PART OF THE *REQUIRED FONT ICON FILES*
        THIS FILE IS USED TO STYLE THE ICON DEMO TEMPLATE FOUND AT DEMO.HTML
 
 
 
 */
 
-*,
+/**,
 *:before,
 *:after {
 	border: 0 none;
@@ -27,7 +27,7 @@
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
 	        box-sizing: border-box;
-}
+}*/
 
 ::-webkit-scrollbar {
 	width: 12px;
@@ -45,8 +45,8 @@
 	background-color: rgba(0, 0, 0, 0.6);
 }
 
-section, 
-header, 
+/*section,
+header,
 footer {
 	display: block;
 	position: relative;
@@ -59,9 +59,9 @@ body {
 	line-height: 1.5;
 	font-size: 1em;
 }
+*/
 
-
-section:after,
+/*section:after,*/
 .masthead:after {
 	content: '';
 	pointer-events: none;
@@ -77,11 +77,11 @@ section:after,
 	transform: translateX(-50%) rotate(45deg);
 }
 
-section header {
+/*section header {
 	position: relative;
-}
+}*/
 
-section header:after {
+/*section header:after {
 	background-color: transparent;
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
@@ -92,7 +92,7 @@ section header:after {
 		bottom: 0;
 	width: 20%;
 	height: 0;
-}
+}*/
 
 .masthead {
 	background-color: #fff;
@@ -138,7 +138,7 @@ section header:after {
 	text-transform: uppercase;
 }
 
-.glyphs, 
+.glyphs,
 .classes {
 	margin-left: -1.5em;
 	padding: 4.5em 3em;
@@ -167,9 +167,9 @@ section header:after {
 	text-transform: uppercase;
 }
 
-h2 code {
+/*h2 code {
 	text-transform: lowercase;
-}
+}*/
 
 
 .glyphs {
@@ -204,22 +204,22 @@ h2 code {
 .glyph:hover .glyph-item {
 	background-color: #0e8a65;
 	color: #fff;
-} 
+}
 
 .mega {
 	font-size: 3em;
 }
 
-a, 
+/*a,
 a:visited {
 	color: #74f3c8;
 	text-decoration: none;
 }
 
-a:hover, 
+a:hover,
 a:focus {
 		color: #0e8a65;
-}
+}*/
 
 .item-box {
 	display: inline-block;
@@ -286,7 +286,7 @@ a:focus {
 		font-size: 4.5em;
 	}
 
-	.glyphs, 
+	.glyphs,
 	.classes {
 		padding: 9em 6em;
 	}
@@ -307,7 +307,7 @@ a:focus {
 		font-size: 6em;
 	}
 
-    
+
     .glyph {
 		width: 16.66666666666667%;
     }
@@ -315,9 +315,8 @@ a:focus {
     .item-box {
 		width: 33.333%;
     }
-    
+
     .colophon .group {
     	padding: 6em;
     }
 }
-

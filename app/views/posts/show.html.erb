@@ -56,7 +56,7 @@
 							</div>
 							<!-- 글 출력 -->
 							<p><%= @post.content.html_safe %></p>
-
+							<!-- 좋아요 / 싫어요 -->
       				<ul class="list-inline badge-lists badge-box-v1 margin-bottom-30 text-center">
       					<li>
                   <%= link_to like_board_post_path(@board, @post), id: "like-btn", remote: true  do %>
