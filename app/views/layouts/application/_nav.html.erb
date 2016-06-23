@@ -29,11 +29,12 @@
 						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
 							게시판
 						</a>
-						<ul class="dropdown-menu">
+						<%= render_navigation :level => 1, :renderer => :bootstrap %>
+						<!-- <ul class="dropdown-menu">
 							<% Board.all.each do |board| %>
 								<li><%= link_to board.name, board_posts_path(board) %></li>
 							<% end %>
-						</ul>
+						</ul> -->
 					</li>
 					<!-- End Home -->
 
@@ -314,11 +315,6 @@
 					</li>
 					<!-- End Pages -->
 
-					<!-- Blog -->
-					<li class="no-border"><%= link_to "단대 일정", meetings_path%></li>
-						
-					<!-- End Blog -->
-
 					<!-- Portfolio -->
 					<li class="dropdown">
 						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
@@ -504,6 +500,13 @@
 						<%= link_to "전화번호 검색", new_school_phone_searching_path %>
 					</li>
 					<!-- End Demo Pages -->
+
+
+					<!-- Blog -->
+					<li class="no-border">
+						<%= link_to "단대 일정", meetings_path%>
+					</li>
+					<!-- End Blog -->
 				</ul>
 
 				<!-- Search Block -->

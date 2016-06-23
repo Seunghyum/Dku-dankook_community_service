@@ -205,6 +205,11 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    simple-navigation (3.14.0)
+      activesupport (>= 2.3.2)
+    simple-navigation-bootstrap (1.0.2)
+      railties (>= 3.1)
+      simple-navigation (>= 3.7.0, < 4.0.0)
     simple_calendar (2.1.5)
       rails (>= 3.0)
     slop (3.6.0)
@@ -262,6 +267,7 @@ DEPENDENCIES
   rails_admin
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  simple-navigation-bootstrap
   simple_calendar
   spring
   sqlite3
