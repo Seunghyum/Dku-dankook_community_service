@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reason: MyString
+  average: 1
+  fun: 1
+  teaching: 1
+  get_grade: 1
+  grade_nego: 1
+  male_view: 1
+  female_view: 1
+  all_view: 1
+
+two:
+  reason: MyString
+  average: 1
+  fun: 1
+  teaching: 1
+  get_grade: 1
+  grade_nego: 1
+  male_view: 1
+  female_view: 1
+  all_view: 1

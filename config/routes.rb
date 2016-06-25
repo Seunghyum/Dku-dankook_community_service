@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lecture_estimates
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :meetings
 #사물함

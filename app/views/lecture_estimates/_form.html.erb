@@ -1,0 +1,57 @@
+<%= form_for(@lecture_estimate) do |f| %>
+  <% if @lecture_estimate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lecture_estimate.errors.count, "error") %> prohibited this lecture_estimate from being saved:</h2>
+
+      <ul>
+      <% @lecture_estimate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :reason %><br>
+    <%= f.text_field :reason %>
+  </div>
+  <div class="field">
+    <%= f.label :average %><br>
+    <%= f.number_field :average %>
+  </div>
+  <div class="field">
+    <%= f.label :fun %><br>
+    <%= f.number_field :fun %>
+  </div>
+  <div class="field">
+    <%= f.label :teaching %><br>
+    <%= f.number_field :teaching %>
+  </div>
+  <div class="field">
+    <%= f.label :get_grade %><br>
+    <%= f.number_field :get_grade %>
+  </div>
+  <div class="field">
+    <%= f.label :generous %><br>
+    <%= f.number_field :generous %>
+  </div>
+  <div class="field">
+    <%= f.label :male_view %><br>
+    <%= f.number_field :male_view %>
+  </div>
+  <div class="field">
+    <%= f.label :female_view %><br>
+    <%= f.number_field :female_view %>
+  </div>
+  <div class="field">
+    <%= f.label :all_view %><br>
+    <%= f.number_field :all_view %>
+  </div>
+  <div class="field">
+    <%= f.label :tip %><br>
+    <%= f.text_area :tip %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

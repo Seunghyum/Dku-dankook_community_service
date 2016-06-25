@@ -71,4 +71,7 @@ end
     1..@row.times do |a|
         SchoolChun.create(belong: @html.css("table//tr:nth-child(#{a})//td:nth-child(3)").inner_text, name: @html.css("table//tr:nth-child(#{a})//td:nth-child(4)").inner_text, phone: @html.css("table//tr:nth-child(#{a})//td:nth-child(5)").inner_text )
     end
+LectureInfo.create(name: "경영학", l_type: "전공필수", time: 10, semester: 2 )
+LectureEstimate.create(fun: 1, teaching: 2, get_grade: 3, generous: 4, teamwork_n_asg: 5, user_id: 2, lecture_info_id: 1)
+
 end

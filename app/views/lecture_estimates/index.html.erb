@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Lecture Estimates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Average</th>
+      <th>All view</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lecture_estimates.each do |lecture_estimate| %>
+      <tr>
+        <td><%= lecture_estimate.average %></td>
+        <td><%= lecture_estimate.all_view %></td>
+        <td><%= link_to 'Show', lecture_estimate %></td>
+        <td><%= link_to 'Edit', edit_lecture_estimate_path(lecture_estimate) %></td>
+        <td><%= link_to 'Destroy', lecture_estimate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lecture estimate', new_lecture_estimate_path %>

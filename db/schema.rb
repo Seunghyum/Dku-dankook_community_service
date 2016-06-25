@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160618151253) do
+ActiveRecord::Schema.define(version: 20160625190806) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "name"
@@ -47,6 +47,36 @@ ActiveRecord::Schema.define(version: 20160618151253) do
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   add_index "comments", ["post_id"], name: "index_comments_on_post_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "lecture_estimates", force: :cascade do |t|
+    t.string   "reason"
+    t.integer  "average"
+    t.integer  "fun"
+    t.integer  "teaching"
+    t.integer  "get_grade"
+    t.integer  "generous"
+    t.integer  "teamwork_n_asg"
+    t.integer  "male_view"
+    t.integer  "female_view"
+    t.integer  "all_view"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "user_id"
+    t.integer  "lecture_info_id"
+    t.text     "tip"
+  end
+
+  add_index "lecture_estimates", ["lecture_info_id"], name: "index_lecture_estimates_on_lecture_info_id"
+  add_index "lecture_estimates", ["user_id"], name: "index_lecture_estimates_on_user_id"
+
+  create_table "lecture_infos", force: :cascade do |t|
+    t.string   "name"
+    t.string   "l_type"
+    t.integer  "time"
+    t.integer  "semester"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "lockers", force: :cascade do |t|
     t.integer  "lnum"

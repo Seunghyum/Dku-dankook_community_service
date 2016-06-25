@@ -23,6 +23,11 @@ gem 'kaminari'
 gem 'acts-as-taggable-on'
 ##tag
 gem 'tag-it-rails'
+##radar chart
+gem 'chart-js-rails'
+##Passing Data to JavaScript
+gem 'gon'
+
 
 #auth
 gem 'devise'
