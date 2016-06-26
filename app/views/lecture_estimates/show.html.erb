@@ -7,146 +7,241 @@
 
   	<div class="row">
   		<!-- Right Inner -->
-  		<div class="col-md-5 col-sm-push-7">
+  		<div class="col-md-5 col-md-push-7">
   			<div class="right-inner">
-  				<h3>교수 정보</h3>
-  				<img src="assets/img/testimonials/img1.jpg" alt="">
-  				<div class="overflow-h">
-  					<span class="font-s">김수경</span>
-  					<p class="color-green">담당: <span class="hex">국제학부</span></p>
-  				</div>
-
-          <ul class="list-unstyled save-job">
-            <li>이력1</li>
-            <li>이력2</li>
-            <li>이력3</li>
-            <li>이력4</li>
-          </ul>
-
-  				<hr>
-
-          <!-- radar chart -->
+          <!-- radar chart start-->
+  				<h3>강의 정보</h3>
+          <div class="alert alert-warning fade in alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						<strong>주의!</strong><i> 학점따기, 과제 & 조모임의 경우 점수가 높을수록 수업듣기 편합니다.</i>
+					</div>
           <canvas id="canvas" width="400" height="400"></canvas>
+          <!-- radar chart end-->
 
-  				<hr>
+          <hr>
 
-  				<h3>Overview</h3>
-  				<div class="row">
-  					<!-- Overview -->
-  					<div class="col-sm-6">
-  						<div class="overview">
-  							<i class="fa fa-user"></i>
-  							<div class="overflow-h">
-  								<small>Followers</small>
-  								<small>2,1k</small>
-  								<div class="progress progress-u progress-xxs">
-  									<div style="width: 92%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="92" role="progressbar" class="progress-bar progress-bar-u">
-  									</div>
-  								</div>
-  							</div>
-  						</div>
-  					</div>
-  					<!-- End Overview -->
+          <h3>스탯 설명</h3>
+          <!-- 스탯 설명 아코디언 start -->
+          <div class="panel-group acc-v1" id="accordion-1">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-One" aria-expanded="false">
+										재미 & 흥미
+									</a>
+								</h4>
+							</div>
+							<div id="collapse-One" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+								<div class="panel-body">
+                  <p>수업의 분위기를 평가하는 기준입니다.</p>
+									<ul class="list-unstyled">
+                    <li><i class="fa fa-check color-green"></i> 학생 참여도</li>
+                    <li><i class="fa fa-check color-green"></i> 교수님의 유머</li>
+                    <li><i class="fa fa-check color-green"></i> 수업 내용의 흥미 유발</li>
+                  </ul>
+								</div>
+							</div>
+						</div>
 
-  					<!-- Overview -->
-  					<div class="col-sm-6">
-  						<div class="overview">
-  							<i class="fa fa-share"></i>
-  							<div class="overflow-h">
-  								<small>VieSharews</small>
-  								<small>749k</small>
-  								<div class="progress progress-u progress-xxs">
-  									<div style="width: 77%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="77" role="progressbar" class="progress-bar progress-bar-u">
-  									</div>
-  								</div>
-  							</div>
-  						</div>
-  					</div>
-  					<!-- End Overview -->
-  				</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-Two" aria-expanded="false">
+										교수력
+									</a>
+								</h4>
+							</div>
+							<div id="collapse-Two" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+								<div class="panel-body">
+									<p>강의를 들은 후에 배웠다는 느낌 등을 평가합니다.</p>
+									<ul class="list-unstyled">
+										<li><i class="fa fa-check color-green"></i> 수업내용의 퀄리티</li>
+										<li><i class="fa fa-check color-green"></i> 학생들의 수준에 맞는 교수법</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+            <!-- 스탯 설명 아코디언 end -->
 
-  				<div class="row margin-bottom-20">
-  					<!-- Overview -->
-  					<div class="col-sm-6">
-  						<div class="overview">
-  							<i class="fa fa-eye"></i>
-  							<div class="overflow-h">
-  								<small>Views</small>
-  								<small>15,7k</small>
-  								<div class="progress progress-u progress-xxs">
-  									<div style="width: 88%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="88" role="progressbar" class="progress-bar progress-bar-u">
-  									</div>
-  								</div>
-  							</div>
-  						</div>
-  					</div>
-  					<!-- End Overview -->
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-Three" aria-expanded="false">
+										학점따기
+									</a>
+								</h4>
+							</div>
+							<div id="collapse-Three" class="panel-collapse collapse" aria-expanded="false">
+								<div class="panel-body">
+									<p>학점따기 쉬운 정도를 평가합니다. 높을수록 학점따기 쉽습니다.</p>
+									<ul class="list-unstyled">
+										<li><i class="fa fa-check color-green"></i> 점수에 상관없이 비율에 맞게 학점 배분</li>
+										<li><i class="fa fa-check color-green"></i> 교수님의 관대함</li>
+									</ul>
+								</div>
+							</div>
+						</div>
 
-  					<!-- Overview -->
-  					<div class="col-sm-6">
-  						<div class="overview">
-  							<i class="fa fa-group"></i>
-  							<div class="overflow-h">
-  								<small>Opportunity Views</small>
-  								<small>202,8k</small>
-  								<div class="progress progress-u progress-xxs">
-  									<div style="width: 76%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="76" role="progressbar" class="progress-bar progress-bar-u">
-  									</div>
-  								</div>
-  							</div>
-  						</div>
-  					</div>
-  					<!-- End Overview -->
-  				</div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-Five" aria-expanded="false">
+                    과제 & 조모임
+                  </a>
+                </h4>
+              </div>
+              <div id="collapse-Five" class="panel-collapse collapse" aria-expanded="false">
+                <div class="panel-body">
+									<p>과제와 조모임의 쉬운 정도를 평가합니다. 높을수록 횟수가 적고 난이도가 쉽습니다.</p>
+									<ul class="list-unstyled">
+										<li><i class="fa fa-check color-green"></i> 조모임의 횟수, 난이도</li>
+										<li><i class="fa fa-check color-green"></i> 과제의 횟수, 난이도</li>
+									</ul>
+                </div>
+              </div>
+            </div>
+					</div>
+
   			</div>
   		</div>
   		<!-- End Right Inner -->
+
       <!-- Left Inner -->
-  		<div class="col-md-7 col-sm-pull-5">
+  		<div class="col-md-7 col-md-pull-5">
   			<div class="left-inner">
-  				<h3>강의 이름</h3>
-  				<a href="#"><i class="position-top fa fa-print"></i></a>
+  				<h3>교수 정보</h3>
   				<div class="overflow-h">
-  					<p class="hex">전공 OR 교양</p>
-  					<ul class="list-inline star-vote">
-  					강의 평점
-              <li><i class="color-green fa fa-star"></i></li>
-  						<li><i class="color-green fa fa-star"></i></li>
-  						<li><i class="color-green fa fa-star"></i></li>
-  						<li><i class="color-green fa fa-star-half-o"></i></li>
-  						<li><i class="color-green fa fa-star-o"></i></li>
-  					</ul>
-  					<span><a href="#">34 reviews</a></span>
+  					<p class="hex">이름 : <%= @lecture_professor.name %></p>
+  					<p>소속 : <span class="hex"><%= @lecture_professor.belong %></span></p>
+            <h4>
+              <%= link_to "이력 & 경력 확인하기", @lecture_professor.intro_url, target: "_blank" %>
+            </h4>
+          </div>
+
+  				<hr>
+  				<h3>강의 정보</h3>
+  				<div class="overflow-h">
+            <h4 class="hex">
+              <strong>
+                강의명 : <%= @lecture_info.name %>
+                <span class="badge badge-red"><%= @lecture_info.l_type %></span>
+              </strong>
+            </h4>
+  					<p class="hex">개설학기 : <%= @lecture_info.semester %>학기</p>
+  					<p class="hex">시간 : <%= @lecture_info.time %>교시</p>
   				</div>
 
   				<hr>
 
-  				<div class="progression">
-  					<span>Revenue</span>
-  					<div class="progress progress-u progress-xs">
-  						<div style="width: 88%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="88" role="progressbar" class="progress-bar progress-bar-u">
-  						</div>
-  					</div>
+          <h3>
+            강의 평가
+            &nbsp;<small><a href="#" id='display-inline'>34 reviews</a></small>
 
-  					<span>Staff Salaries</span>
-  					<div class="progress progress-u progress-xs">
-  						<div style="width: 76%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="76" role="progressbar" class="progress-bar progress-bar-u">
-  						</div>
-  					</div>
+          </h3>
+          <div class="content-boxes-v2 content-boxes-v2-o">
+    				<h2 class="heading-sm overflow-h">
+              <span>평점 :
+                <ul class="list-inline star-vote" id='display-inline'>
+                  <% 1.upto(@lecture_estimate.average/20) do |x| %>
+                    <li><i class="color-green fa fa-star"></i></li>
+                  <% end %>
+                  <% 1.upto(5 - @lecture_estimate.average/20) do |y| %>
+                    <li><i class="color-green fa fa-star-o"></i></li>
+                  <% end %>
+                </ul>
+                <%= @lecture_estimate.average %>점
+              </span>
+            </h2>
+          </div>
+          <div class="row content-boxes-v2 content-boxes-v2-o">
+            <div class="col-sm-6">
+              <h2 class="heading-sm overflow-h">
+    						<i class="icon-custom rounded-x icon-sm icon-bg-blue fa fa-music"></i>
+    						<span>재미 & 흥미
+                  <small>
+          					<ul class="list-inline star-vote">
+                      <% 1.upto(@lecture_estimate.fun/20) do |x| %>
+                        <li><i class="color-green fa fa-star"></i></li>
+                      <% end %>
+                      <% 1.upto(5 - @lecture_estimate.fun/20) do |y| %>
+                        <li><i class="color-green fa fa-star-o"></i></li>
+                      <% end %>
+          					</ul>
+                    <%= @lecture_estimate.fun %>점
+                  </small>
+                </span>
+    					</h2>
+            </div>
+            <div class="col-sm-6">
+              <h2 class="heading-sm overflow-h">
+    						<i class="icon-custom rounded-x icon-sm icon-bg-blue fa fa-graduation-cap"></i>
+    						<span>
+                  교수력
+                  <small>
+          					<ul class="list-inline star-vote">
+                      <% 1.upto(@lecture_estimate.teaching/20) do |x| %>
+                        <li><i class="color-green fa fa-star"></i></li>
+                      <% end %>
+                      <% 1.upto(5 - @lecture_estimate.teaching/20) do |y| %>
+                        <li><i class="color-green fa fa-star-o"></i></li>
+                      <% end %>
+          					</ul>
+                    <%= @lecture_estimate.teaching %>점
+                  </small>
+                </span>
+    					</h2>
+            </div>
+          </div>
+          <div class="row content-boxes-v2 content-boxes-v2-o">
+            <div class="col-sm-6">
+              <h2 class="heading-sm overflow-h">
+    						<i class="icon-custom rounded-x icon-sm icon-bg-blue fa fa-trophy"></i>
+    						<span>
+                  학점따기
+                  <small>
+          					<ul class="list-inline star-vote">
+                      <% 1.upto(@lecture_estimate.get_grade/20) do |x| %>
+                        <li><i class="color-green fa fa-star"></i></li>
+                      <% end %>
+                      <% 1.upto(5 - @lecture_estimate.get_grade/20) do |y| %>
+                        <li><i class="color-green fa fa-star-o"></i></li>
+                      <% end %>
+          					</ul>
+                    <%= @lecture_estimate.get_grade %>점
+                  </small>
+                </span>
+    					</h2>
+            </div>
+            <div class="col-sm-6">
+              <h2 class="heading-sm overflow-h">
+    						<i class="icon-custom rounded-x icon-sm icon-bg-blue fa fa-file-text"></i>
+    						<span>
+                  과제 & 조모임
+                  <small>
+          					<ul class="list-inline star-vote">
+                      <% 1.upto(@lecture_estimate.teamwork_n_asg/20) do |x| %>
+                        <li><i class="color-green fa fa-star"></i></li>
+                      <% end %>
+                      <% 1.upto(5 - @lecture_estimate.teamwork_n_asg/20) do |y| %>
+                        <li><i class="color-green fa fa-star-o"></i></li>
+                      <% end %>
+          					</ul>
+                    <%= @lecture_estimate.teamwork_n_asg %>점
+                  </small>
+                </span>
+    					</h2>
+            </div>
+          </div>
 
-  					<span>Possibility of Dismissial</span>
-  					<div class="progress progress-u progress-xs">
-  						<div style="width: 97%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="97" role="progressbar" class="progress-bar progress-bar-u">
-  						</div>
-  					</div>
-  				</div>
+          <hr>
+
+  				<h2>수강 선배의 Tip</h2>
+  				<p><%= @lecture_estimate.tip %></p>
 
   				<hr>
 
-  				<h2>Job Description</h2>
-  				<p>This job was a great job for the pay and benefits when compared to waiting table and working fast food. I also preferred working for the vs other stores like . The biggest problem was unreasonable expectations from management. Even as one of there top employees you feel taken advantage of and over worked. Dealing with the customers was the other issue.</p>
-
-  				<hr>
+  				<h2>수강 선배의 후기</h2>
+  				<p><%= @lecture_estimate.msg %></p>
 
   			</div>
   		</div>
@@ -154,55 +249,3 @@
   	</div>
   </div>
 </div>
-<p>
-  <strong>Reason:</strong>
-  <%= @lecture_estimate.reason %>
-</p>
-
-<p>
-  <strong>Average:</strong>
-  <%= @lecture_estimate.average %>
-</p>
-
-<p>
-  <strong>Fun:</strong>
-  <%= @lecture_estimate.fun %>
-</p>
-
-<p>
-  <strong>Teaching:</strong>
-  <%= @lecture_estimate.teaching %>
-</p>
-
-<p>
-  <strong>Get grade:</strong>
-  <%= @lecture_estimate.get_grade %>
-</p>
-
-<p>
-  <strong>Grade nego:</strong>
-  <%= @lecture_estimate.generous %>
-</p>
-
-<p>
-  <strong>Male view:</strong>
-  <%= @lecture_estimate.male_view %>
-</p>
-
-<p>
-  <strong>Female view:</strong>
-  <%= @lecture_estimate.female_view %>
-</p>
-
-<p>
-  <strong>All view:</strong>
-  <%= @lecture_estimate.all_view %>
-</p>
-
-<p>
-  <strong>Tip</strong>
-  <%= @lecture_estimate.tip %>
-</p>
-
-<%= link_to 'Edit', edit_lecture_estimate_path(@lecture_estimate) %> |
-<%= link_to 'Back', lecture_estimates_path %>

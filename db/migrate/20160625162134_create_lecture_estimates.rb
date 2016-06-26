@@ -6,7 +6,6 @@ class CreateLectureEstimates < ActiveRecord::Migration
       t.integer :fun
       t.integer :teaching
       t.integer :get_grade
-      t.integer :generous
       t.integer :teamwork_n_asg
       t.integer :male_view
       t.integer :female_view

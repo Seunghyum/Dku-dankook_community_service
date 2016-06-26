@@ -1,6 +1,29 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Lecture Estimates</h1>
+<div class="bg-grey">
+	<div class="container content-sm">
+		<div class="row">
+			<!-- Bordered Funny Boxes -->
+      <% @lecture_estimates.each do |lecture_estimate| %>
+        <%= link_to lecture_estimate do %>
+    			<div class="col-md-10 col-md-offset-1">
+    				<div class="funny-boxes funny-boxes-top-<%= @color_pick.sample %> bg-color-white">
+    					<h2><%= lecture_estimate.lecture_info.name %> - <%= lecture_estimate.lecture_info.professor.name %> 교수님</h2>
+    					<ul class="list-unstyled funny-boxes-rating">
+                <% 1.upto(lecture_estimate.average/20) do |x| %>
+      						<li><i class="fa fa-star"></i></li>
+                <% end %>
+                <% 1.upto(5 - lecture_estimate.average/20) do |y| %>
+    				      <li><i class="fa fa-star-o"></i></li>
+                <% end %>
+    					</ul>
+    					<p><%= lecture_estimate.tip %></p>
+    				</div>
+    			</div>
+        <% end %>
+      <% end %>
+			<!-- End Bordered Funny Boxes -->
+		</div>
+	</div>
+</div>
 
 <table>
   <thead>

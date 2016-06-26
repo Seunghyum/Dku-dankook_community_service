@@ -1209,6 +1209,34 @@
 	border-top-color: #814fb5;
 }
 
+/*Orange Top Bordered Funny Box**/
+.funny-boxes-top-orange {
+	border-top: solid 2px #e67e22;
+}
+
+.funny-boxes-top-orange:hover {
+	border-top-color: #d35400;
+}
+
+/*Green Top Bordered Funny Box**/
+.funny-boxes-top-green {
+	border-top: solid 2px #72c02c;
+}
+
+.funny-boxes-top-green:hover {
+	border-top-color: #5fb611;
+}
+
+/*Blue top Bordered Funny Box**/
+.funny-boxes-top-blue {
+	border-top: solid 2px #3498db;
+}
+
+.funny-boxes-top-blue:hover {
+	border-top-color: #2980b9;
+}
+
+
 /*Orange Left Bordered Funny Box**/
 .funny-boxes-left-orange {
 	border-left: solid 2px #e67e22;

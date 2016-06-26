@@ -1,7 +1,7 @@
 var config = {
     type: 'radar',
     data: {
-        labels: ["재미 & 흥미", "교수력", "점수받기", "관대함", "과제 & 조모임"],
+        labels: ["재미 & 흥미", "교수력", "학점따기", "과제 & 조모임"],
         datasets: [{
             label: gon.lecture_title,
             backgroundColor: "rgba(255,165,0,0.4)",
@@ -18,7 +18,7 @@ var config = {
             // pointBorderColor: "#fff",
             // pointHoverBackgroundColor: "#fff",
             // pointHoverBorderColor: "rgba(255,99,132,1)",
-            data: [gon.fun, gon.teaching, gon.get_grade, gon.generous, gon.teamwork_n_asg]
+            data: [gon.fun, gon.teaching, gon.get_grade, gon.teamwork_n_asg]
         }]
     },
     options: {

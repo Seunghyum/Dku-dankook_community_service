@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160625190806) do
+ActiveRecord::Schema.define(version: 20160626180448) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "name"
@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20160625190806) do
     t.integer  "fun"
     t.integer  "teaching"
     t.integer  "get_grade"
-    t.integer  "generous"
     t.integer  "teamwork_n_asg"
     t.integer  "male_view"
     t.integer  "female_view"
@@ -64,6 +63,7 @@ ActiveRecord::Schema.define(version: 20160625190806) do
     t.integer  "user_id"
     t.integer  "lecture_info_id"
     t.text     "tip"
+    t.text     "msg"
   end
 
   add_index "lecture_estimates", ["lecture_info_id"], name: "index_lecture_estimates_on_lecture_info_id"
@@ -74,9 +74,12 @@ ActiveRecord::Schema.define(version: 20160625190806) do
     t.string   "l_type"
     t.integer  "time"
     t.integer  "semester"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "professor_id"
   end
+
+  add_index "lecture_infos", ["professor_id"], name: "index_lecture_infos_on_professor_id"
 
   create_table "lockers", force: :cascade do |t|
     t.integer  "lnum"
@@ -140,6 +143,14 @@ ActiveRecord::Schema.define(version: 20160625190806) do
   add_index "posts", ["cached_weighted_score"], name: "index_posts_on_cached_weighted_score"
   add_index "posts", ["cached_weighted_total"], name: "index_posts_on_cached_weighted_total"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "professors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "belong"
+    t.string   "intro_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "school_chuns", force: :cascade do |t|
     t.string   "belong"
