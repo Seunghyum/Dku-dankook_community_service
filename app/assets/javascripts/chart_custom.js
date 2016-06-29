@@ -11,7 +11,6 @@ var config = {
             pointBorderColor: "#fff",
             pointHoverBackgroundColor: "#fff",
             pointHighlightStroke: "rgba(255,165,0,1)",
-
             // backgroundColor: "rgba(255,99,132,0.2)",
             // borderColor: "rgba(255,99,132,1)",
             // pointBackgroundColor: "rgba(255,99,132,1)",
@@ -22,9 +21,12 @@ var config = {
         }]
     },
     options: {
-        // legend: {
-        //     position: 'bottom',
-        // },
+        legend: {
+            position: 'top',
+            labels: {
+              fontSize: 18
+            },
+        },
         title: {
             display: false,
             text: gon.lecture_title

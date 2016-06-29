@@ -20,119 +20,6 @@
 
           <hr>
 
-          <h3>스탯 설명</h3>
-          <!-- 스탯 설명 아코디언 start -->
-          <div class="panel-group acc-v1" id="accordion-1">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title">
-									<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-One" aria-expanded="false">
-										재미 & 흥미
-									</a>
-								</h4>
-							</div>
-							<div id="collapse-One" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-								<div class="panel-body">
-                  <p>수업의 분위기를 평가하는 기준입니다.</p>
-									<ul class="list-unstyled">
-                    <li><i class="fa fa-check color-green"></i> 학생 참여도</li>
-                    <li><i class="fa fa-check color-green"></i> 교수님의 유머</li>
-                    <li><i class="fa fa-check color-green"></i> 수업 내용의 흥미 유발</li>
-                  </ul>
-								</div>
-							</div>
-						</div>
-
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title">
-									<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-Two" aria-expanded="false">
-										교수력
-									</a>
-								</h4>
-							</div>
-							<div id="collapse-Two" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-								<div class="panel-body">
-									<p>강의를 들은 후에 배웠다는 느낌 등을 평가합니다.</p>
-									<ul class="list-unstyled">
-										<li><i class="fa fa-check color-green"></i> 수업내용의 퀄리티</li>
-										<li><i class="fa fa-check color-green"></i> 학생들의 수준에 맞는 교수법</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-            <!-- 스탯 설명 아코디언 end -->
-
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title">
-									<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-Three" aria-expanded="false">
-										학점따기
-									</a>
-								</h4>
-							</div>
-							<div id="collapse-Three" class="panel-collapse collapse" aria-expanded="false">
-								<div class="panel-body">
-									<p>학점따기 쉬운 정도를 평가합니다. 높을수록 학점따기 쉽습니다.</p>
-									<ul class="list-unstyled">
-										<li><i class="fa fa-check color-green"></i> 점수에 상관없이 비율에 맞게 학점 배분</li>
-										<li><i class="fa fa-check color-green"></i> 교수님의 관대함</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-Five" aria-expanded="false">
-                    과제 & 조모임
-                  </a>
-                </h4>
-              </div>
-              <div id="collapse-Five" class="panel-collapse collapse" aria-expanded="false">
-                <div class="panel-body">
-									<p>과제와 조모임의 쉬운 정도를 평가합니다. 높을수록 횟수가 적고 난이도가 쉽습니다.</p>
-									<ul class="list-unstyled">
-										<li><i class="fa fa-check color-green"></i> 조모임의 횟수, 난이도</li>
-										<li><i class="fa fa-check color-green"></i> 과제의 횟수, 난이도</li>
-									</ul>
-                </div>
-              </div>
-            </div>
-					</div>
-
-  			</div>
-  		</div>
-  		<!-- End Right Inner -->
-
-      <!-- Left Inner -->
-  		<div class="col-md-7 col-md-pull-5">
-  			<div class="left-inner">
-  				<h3>교수 정보</h3>
-  				<div class="overflow-h">
-  					<p class="hex">이름 : <%= @lecture_professor.name %></p>
-  					<p>소속 : <span class="hex"><%= @lecture_professor.belong %></span></p>
-            <h4>
-              <%= link_to "이력 & 경력 확인하기", @lecture_professor.intro_url, target: "_blank" %>
-            </h4>
-          </div>
-
-  				<hr>
-  				<h3>강의 정보</h3>
-  				<div class="overflow-h">
-            <h4 class="hex">
-              <strong>
-                강의명 : <%= @lecture_info.name %>
-                <span class="badge badge-red"><%= @lecture_info.l_type %></span>
-              </strong>
-            </h4>
-  					<p class="hex">개설학기 : <%= @lecture_info.semester %>학기</p>
-  					<p class="hex">시간 : <%= @lecture_info.time %>교시</p>
-  				</div>
-
-  				<hr>
-
           <h3>
             강의 평가
             &nbsp;<small><a href="#" id='display-inline'>34 reviews</a></small>
@@ -235,12 +122,129 @@
 
           <hr>
 
-  				<h2>수강 선배의 Tip</h2>
+          <h3>스탯 설명</h3>
+          <!-- 스탯 설명 아코디언 start -->
+          <div class="panel-group acc-v1" id="accordion-1">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-One" aria-expanded="false">
+										재미 & 흥미
+									</a>
+								</h4>
+							</div>
+							<div id="collapse-One" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+								<div class="panel-body">
+                  <p>수업의 분위기를 평가하는 기준입니다.</p>
+									<ul class="list-unstyled">
+                    <li><i class="fa fa-check color-green"></i> 학생 참여도</li>
+                    <li><i class="fa fa-check color-green"></i> 교수님의 유머</li>
+                    <li><i class="fa fa-check color-green"></i> 수업 내용의 흥미 유발</li>
+                  </ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-Two" aria-expanded="false">
+										교수력
+									</a>
+								</h4>
+							</div>
+							<div id="collapse-Two" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+								<div class="panel-body">
+									<p>강의를 들은 후에 배웠다는 느낌 등을 평가합니다.</p>
+									<ul class="list-unstyled">
+										<li><i class="fa fa-check color-green"></i> 수업내용의 퀄리티</li>
+										<li><i class="fa fa-check color-green"></i> 학생들의 수준에 맞는 교수법</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+            <!-- 스탯 설명 아코디언 end -->
+
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-Three" aria-expanded="false">
+										학점따기
+									</a>
+								</h4>
+							</div>
+							<div id="collapse-Three" class="panel-collapse collapse" aria-expanded="false">
+								<div class="panel-body">
+									<p>학점따기 쉬운 정도를 평가합니다. 높을수록 학점따기 쉽습니다.</p>
+									<ul class="list-unstyled">
+										<li><i class="fa fa-check color-green"></i> 점수에 상관없이 비율에 맞게 학점 배분</li>
+										<li><i class="fa fa-check color-green"></i> 교수님의 관대함</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-Five" aria-expanded="false">
+                    과제 & 조모임
+                  </a>
+                </h4>
+              </div>
+              <div id="collapse-Five" class="panel-collapse collapse" aria-expanded="false">
+                <div class="panel-body">
+									<p>과제와 조모임의 쉬운 정도를 평가합니다. 높을수록 횟수가 적고 난이도가 쉽습니다.</p>
+									<ul class="list-unstyled">
+										<li><i class="fa fa-check color-green"></i> 조모임의 횟수, 난이도</li>
+										<li><i class="fa fa-check color-green"></i> 과제의 횟수, 난이도</li>
+									</ul>
+                </div>
+              </div>
+            </div>
+					</div>
+
+  			</div>
+  		</div>
+  		<!-- End Right Inner -->
+
+      <!-- Left Inner -->
+  		<div class="col-md-7 col-md-pull-5">
+  			<div class="left-inner">
+          <div class='row'>
+            <div class="col-md-6">
+      				<h3>교수 정보</h3>
+      				<div class="overflow-h">
+      					<p class="hex">이름 : <%#= @lecture_professor.name %> </p>
+      					<p>소속 : <span class="hex"> <%#= @lecture_professor.belong %> </span></p>
+                <h4>
+                  <%#= link_to "이력 & 경력 확인하기", @lecture_professor.intro_url, target: "_blank" %>
+                </h4>
+              </div>
+            </div>
+            <div class="col-md-6">
+      				<h3>강의 정보</h3>
+      				<div class="overflow-h">
+                <p class="hex">
+                  <strong>
+                    강의명 : <%= @lecture_info.name %>
+                    <span class="badge badge-red"><%= @lecture_info.l_type %></span>
+                  </strong>
+                </p>
+      					<p class="hex">개설학기 : <%= @lecture_info.semester %>학기</p>
+      					<p class="hex">시간 : <%= @lecture_info.time %>교시</p>
+      				</div>
+            </div>
+          </div>
+
+          <hr>
+
+          <h2><%= @lecture_estimate.reason %>위해 수강한 선배의 Tip</h2>
   				<p><%= @lecture_estimate.tip %></p>
 
   				<hr>
 
-  				<h2>수강 선배의 후기</h2>
+  				<h2><%= @lecture_estimate.reason %>위해 수강한 후기</h2>
   				<p><%= @lecture_estimate.msg %></p>
 
   			</div>

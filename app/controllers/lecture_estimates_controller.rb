@@ -1,7 +1,8 @@
 class LectureEstimatesController < ApplicationController
   before_action :set_lecture_estimate, only: [:show, :edit, :update, :destroy]
-  before_action :set_lecture_professor, only: [:show]
+  # before_action :set_lecture_professor, only: [:show]
   before_action :set_lecture_info, only: [:show]
+  
   # GET /lecture_estimates
   # GET /lecture_estimates.json
   def index
@@ -16,7 +17,9 @@ class LectureEstimatesController < ApplicationController
     gon.teaching = @lecture_estimate.teaching
     gon.get_grade = @lecture_estimate.get_grade
     gon.teamwork_n_asg = @lecture_estimate.teamwork_n_asg
-    gon.lecture_title = @lecture_estimate.lecture_info.name
+    gon.lecture_title = LectureInfo.last.name
+
+    # gon.lecture_title = @lecture_estimate.lecture_info.name
   end
 
   # GET /lecture_estimates/new
@@ -74,9 +77,9 @@ class LectureEstimatesController < ApplicationController
       @lecture_estimate = LectureEstimate.find(params[:id])
     end
 
-    def set_lecture_professor
-      @lecture_professor = LectureEstimate.find(params[:id]).lecture_info.professor
-    end
+    # def set_lecture_professor
+    #   @lecture_professor = LectureEstimate.find(params[:id]).lecture_info.professor
+    # end
 
     def set_lecture_info
       @lecture_info = LectureEstimate.find(params[:id]).lecture_info
@@ -84,6 +87,6 @@ class LectureEstimatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lecture_estimate_params
-      params.require(:lecture_estimate).permit(:reason, :average, :fun, :teaching, :get_grade, :male_view, :female_view, :all_view, :tip, :msg)
+      params.require(:lecture_estimate).permit(:reason, :average, :fun, :teaching, :get_grade, :male_view, :female_view, :all_view, :tip, :msg, :teamwork_n_asg, :lecture_info_id)
     end
 end
