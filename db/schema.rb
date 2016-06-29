@@ -55,9 +55,6 @@ ActiveRecord::Schema.define(version: 20160628121210) do
     t.integer  "teaching",        default: 0
     t.integer  "get_grade",       default: 0
     t.integer  "teamwork_n_asg",  default: 0
-    t.integer  "male_view"
-    t.integer  "female_view"
-    t.integer  "all_view"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "user_id"
@@ -74,8 +71,15 @@ ActiveRecord::Schema.define(version: 20160628121210) do
     t.string   "l_type"
     t.integer  "time"
     t.integer  "semester"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "male_view",         default: 0
+    t.integer  "female_view",       default: 0
+    t.integer  "all_view",          default: 0
+    t.integer  "av_fun"
+    t.integer  "av_teaching"
+    t.integer  "av_get_grade"
+    t.integer  "av_teamwork_n_asg"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "professor_id"
     t.integer  "average"
   end

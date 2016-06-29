@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  resources :lecture_estimates
+#강의평가
+  resources :lecture_infos do
+    resources :lecture_estimates
+  end
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+#달력
   resources :meetings
 #사물함
   get 'locker/index'
@@ -16,8 +21,6 @@ Rails.application.routes.draw do
 # 전화번호부
   resources :school_phone_searchings
 
-  resources :estimates
-  resources :comments
   get 'home/index'
 
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords'}
