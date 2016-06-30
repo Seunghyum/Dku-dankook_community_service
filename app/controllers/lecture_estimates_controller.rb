@@ -47,40 +47,24 @@ class LectureEstimatesController < ApplicationController
   # POST /lecture_estimates.json
   def create
     @lecture_estimate = LectureEstimate.new(lecture_estimate_params)
+    @lecture_estimate.lecture_info_id = @lecture_info.id
 
-    respond_to do |format|
-      if @lecture_estimate.save
-        format.html { redirect_to @lecture_estimate, notice: 'Lecture estimate was successfully created.' }
-        format.json { render :show, status: :created, location: @lecture_estimate }
-      else
-        format.html { render :new }
-        format.json { render json: @lecture_estimate.errors, status: :unprocessable_entity }
-      end
-    end
+    @lecture_estimate.save
+    redirect_to lecture_info_lecture_estimates_path(@lecture_info)
   end
 
   # PATCH/PUT /lecture_estimates/1
   # PATCH/PUT /lecture_estimates/1.json
   def update
-    respond_to do |format|
-      if @lecture_estimate.update(lecture_estimate_params)
-        format.html { redirect_to @lecture_estimate, notice: 'Lecture estimate was successfully updated.' }
-        format.json { render :show, status: :ok, location: @lecture_estimate }
-      else
-        format.html { render :edit }
-        format.json { render json: @lecture_estimate.errors, status: :unprocessable_entity }
-      end
-    end
+    @lecture_estimate.update(lecture_estimate_params)
+    redirect_to lecture_info_lecture_estimates_path(@lecture_info)
   end
 
   # DELETE /lecture_estimates/1
   # DELETE /lecture_estimates/1.json
   def destroy
     @lecture_estimate.destroy
-    respond_to do |format|
-      format.html { redirect_to lecture_estimates_url, notice: 'Lecture estimate was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to lecture_info_lecture_estimates_path(@lecture_info)
   end
 
   private

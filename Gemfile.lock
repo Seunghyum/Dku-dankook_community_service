@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actionmailer (4.2.5)
       actionpack (= 4.2.5)
@@ -47,6 +48,7 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap_form (2.3.0)
     builder (3.2.2)
     byebug (9.0.5)
     callsite (0.0.11)
@@ -165,6 +167,9 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.5)
       sprockets-rails
+    rails-assets-jquery (3.0.0)
+    rails-assets-jquery-bar-rating (1.2.0)
+      rails-assets-jquery (>= 1.7.2)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -258,6 +263,7 @@ DEPENDENCIES
   acts_as_votable
   better_errors
   binding_of_caller
+  bootstrap_form
   byebug
   cancancan
   chart-js-rails
@@ -273,6 +279,7 @@ DEPENDENCIES
   omniauth-kakao
   pry-rails
   rails (= 4.2.5)
+  rails-assets-jquery-bar-rating!
   rails-timeago
   rails_admin
   sass-rails (~> 5.0)

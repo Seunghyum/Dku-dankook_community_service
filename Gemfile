@@ -47,8 +47,9 @@ gem 'jquery-rails'
 gem "font-awesome-rails"
 ##nav
 gem 'simple-navigation-bootstrap'
-
-
+gem 'bootstrap_form'
+##rating
+gem 'rails-assets-jquery-bar-rating', source: 'https://rails-assets.org'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

@@ -256,13 +256,8 @@
 									</div>
 									<% if esti.msg %>
 					  				<strong><h4>후기</h4></strong>
-					  				<p><%= esti.msg %></p>
+					  				<p><%= esti.msg.html_safe %></p>
 										<br>
-									<% end %>
-
-									<% if esti.tip %>
-										<strong><h4>Tip</h4></strong>
-										<p><%= esti.tip %></p>
 									<% end %>
 									<p class='text-right'><%= timeago_tag esti.created_at %></p>
 		    				</div>

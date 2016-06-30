@@ -1,3 +1,76 @@
-<h1>New Lecture Estimate</h1>
+<div class="container content">
+	<div class="row margin-bottom-30">
+		<div class="col-md-7 mb-margin-bottom-30">
+			<div class="headline"><h2>강의 평가 작성하기</h2></div>
+			<p>우측(데스크탑) 또는 하단(모바일)에 있는 규칙들을 충분히 숙지하시고 작성해주세요.</p>
 
-<%= render 'form' %>
+			<br />
+      <%= bootstrap_form_for [@lecture_info, @lecture_estimate], html: {multipart: true, id: "sky-form3", class: "sky-form sky-changes-3 contact-style", novalidate: "novalidate"} do |f| %>
+        <% if @lecture_estimate.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+            <ul>
+            <% @lecture_estimate.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+					<div class='row'>
+						<div class="col-md-4 col-md-offset-4 text-center">
+              <%= f.select(:reason, options_for_select([['학점', '학점'], ['흥미', '흥미'],['배움', '배움']]), label: "수강 이유" ) %>
+						</div>
+					</div>
+					<br />
+					<div class='row'>
+						<div class="col-md-3 text-center">
+							<div class="br-theme-fontawesome-stars" >
+	              <%= f.select(:fun, options_for_select([['1', 20], ['2', 40],['3', 60],['4', 80],['5', 100]]),{label: "흥미 & 재미"}, class: "star-rating" ) %>
+							</div>
+						</div>
+						<div class="col-md-3 text-center">
+							<div class="br-theme-fontawesome-stars" >
+              	<%= f.select(:teaching, options_for_select([['1', 20], ['2', 40],['3', 60],['4', 80],['5', 100]]),{label: "교수력"}, class: "star-rating" ) %>
+							</div>
+						</div>
+						<div class="col-md-3 text-center">
+							<div class="br-theme-fontawesome-stars" >
+		            <%= f.select(:get_grade, options_for_select([['1', 20], ['2', 40],['3', 60],['4', 80],['5', 100]]),{label: "학점따기"}, class: "star-rating" ) %>
+							</div>
+						</div>
+						<div class="col-md-3 text-center">
+							<div class="br-theme-fontawesome-stars">
+              	<%= f.select(:teamwork_n_asg, options_for_select([['1', 20], ['2', 40],['3', 60],['4', 80],['5', 100]]),{label: "과제 & 조모임"}, class: "star-rating" ) %>
+							</div>
+						</div>
+					</div>
+
+					<div class='row'>
+            <%= f.text_area :msg, class: "summernote", id: "summernote-post", label: "후기" %>
+					</div>
+				</fieldset>
+
+				<footer class='text-center'>
+          <%= f.submit "작성하기", class: "btn-u btn-u-lg" %>
+				</footer>
+
+				<div class="message">
+					<i class="rounded-x fa fa-check"></i>
+					<p>Your message was successfully sent!</p>
+				</div>
+			<% end %>
+		</div><!--/col-md-9-->
+
+		<div class="col-md-5">
+			<div class="headline"><h2>커뮤니티 매너</h2></div>
+			<p>아래의 기본적인 예의를 지켜주세요.</p>
+			<ul class="list-unstyled margin-bottom-30">
+				<li><i class="fa fa-check color-green"></i> <strong>예의</strong>를 지켜주세요.</li>
+				<li><i class="fa fa-check color-green"></i> 상대를 <strong>존중</strong>해주세요.</li>
+				<li><i class="fa fa-check color-green"></i> 타인을 지칭할 때 <strong>***님</strong>으로 불러주세요.</li>
+			</ul>
+
+		</div><!--/col-md-3-->
+	</div><!--/row-->
+</div>

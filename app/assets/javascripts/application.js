@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-bar-rating
 //= require_tree .
 //= require summernote
 //= require summernote/locales/ko-KR
