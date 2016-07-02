@@ -20,4 +20,6 @@ $(document).ready(function(){
             $(toggle).slideUp();
         }
     });
+
+    App.init();
 });

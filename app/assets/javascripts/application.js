@@ -21,5 +21,7 @@
 //= require locales/jquery.timeago.ko.js
 //= require jquery-ui
 //= require tag-it
+//= require comment_edit
 //= require Chart
-//= require_tree .
+//= require_tree ./js
+//= require_tree ./plugins
