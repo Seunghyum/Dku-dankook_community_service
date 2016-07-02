@@ -50,6 +50,8 @@ gem 'simple-navigation-bootstrap'
 gem 'bootstrap_form'
 ##rating
 gem 'rails-assets-jquery-bar-rating', source: 'https://rails-assets.org'
+gem 'bootstrap'
+gem 'rails-assets-tether', '~> 1.1', '>= 1.1.1'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
