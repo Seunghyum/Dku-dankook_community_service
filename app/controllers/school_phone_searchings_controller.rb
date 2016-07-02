@@ -1,11 +1,10 @@
 class SchoolPhoneSearchingsController < ApplicationController
-  #auth
-  load_and_authorize_resource
 
   def new
       @new_search = SchoolPhoneSearching.new
       @campus = ["죽전", "천안"]
   end
+
   def create
       @search = SchoolPhoneSearching.create(search_params)
       redirect_to @search
@@ -18,6 +17,7 @@ class SchoolPhoneSearchingsController < ApplicationController
       @search = SchoolPhoneSearching.find(params[:id])
       @search_school_phone = @search.search_school_phone
   end
+
   def update
       @search = SchoolPhoneSearching.create(search_params)
       redirect_to @search

@@ -12,6 +12,9 @@
 //
 //= require jquery2
 //= require jquery_ujs
+//= require jquery-ui
+//= require_tree ./js
+//= require_tree ./plugins
 //= require tether
 //= require bootstrap-sprockets
 //= require jquery-bar-rating
@@ -19,9 +22,7 @@
 //= require summernote/locales/ko-KR
 //= require rails-timeago
 //= require locales/jquery.timeago.ko.js
-//= require jquery-ui
 //= require tag-it
 //= require comment_edit
 //= require Chart
-//= require_tree ./js
-//= require_tree ./plugins
+//= require custom
