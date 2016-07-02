@@ -74,9 +74,9 @@ Major.create(mname: "모바일" )
 # end
 LectureInfo.create!(name: "경영학", l_type: "전공필수", time: 10, semester: 2, professor_id: 1)
 LectureInfo.create!(name: "경제학", l_type: "전공선택", time: 10, semester: 2, professor_id: 1)
-LectureEstimate.create(fun: 20, teaching: 40, get_grade: 60, teamwork_n_asg: 80, user_id: 1, lecture_info_id: 1, average: 23, tip: "학점따기 좋아용1", reason: "학점")
-LectureEstimate.create(fun: 40, teaching: 60, get_grade: 80, teamwork_n_asg: 100, user_id: 2, lecture_info_id: 1, average: 77, tip: "학점따기 좋아용2", reason: "흥미")
-LectureEstimate.create(fun: 60, teaching: 80, get_grade: 100, teamwork_n_asg: 60, user_id: 3, lecture_info_id: 2, average: 50, tip: "학점따기 좋아용3", reason: "배움")
+LectureEstimate.create(fun: 20, teaching: 40, get_grade: 60, teamwork_n_asg: 80, user_id: 1, lecture_info_id: 1, average: 23, reason: "학점")
+LectureEstimate.create(fun: 40, teaching: 60, get_grade: 80, teamwork_n_asg: 100, user_id: 2, lecture_info_id: 1, average: 77, reason: "흥미")
+LectureEstimate.create(fun: 60, teaching: 80, get_grade: 100, teamwork_n_asg: 60, user_id: 3, lecture_info_id: 2, average: 50,  reason: "배움")
 
 
 #교수정보 가져오기
