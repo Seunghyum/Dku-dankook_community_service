@@ -1,8 +1,8 @@
 class LectureEstimatesController < ApplicationController
 
-  before_action :set_lecture_estimate, only: [:show, :edit, :update, :destroy]
+  before_action :set_lecture_estimate, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :set_professor, only: [:index, :show]
-  before_action :set_lecture_info, only: [:show, :index, :new, :create, :edit]
+  before_action :set_lecture_info, only: [:show, :index, :new, :create, :edit, :upvote, :downvote]
 
   # GET /lecture_estimates
   # GET /lecture_estimates.json
@@ -11,13 +11,7 @@ class LectureEstimatesController < ApplicationController
     @color_pick = ["yellow", "purple", "sea", "red", "blue", "orange", "green"]
 
 
-    @lecture_info.all_view =+ 1
-    # 개별 강의 평가
-    # gon.average = @lecture_estimate.average
-    # gon.fun = @lecture_estimate.fun
-    # gon.teaching = @lecture_estimate.teaching
-    # gon.get_grade = @lecture_estimate.get_grade
-    # gon.teamwork_n_asg = @lecture_estimate.teamwork_n_asg
+    @lecture_info.all_view += 1
 
     # 총 강의 평가
     gon.lecture_title = @lecture_info.name
@@ -65,6 +59,22 @@ class LectureEstimatesController < ApplicationController
   def destroy
     @lecture_estimate.destroy
     redirect_to lecture_info_lecture_estimates_path(@lecture_info)
+  end
+
+  def upvote
+    @lecture_estimate.upvote_by current_user
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def downvote
+    @lecture_estimate.downvote_by current_user
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private

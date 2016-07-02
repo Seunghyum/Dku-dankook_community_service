@@ -2,6 +2,7 @@ class LectureEstimate < ActiveRecord::Base
   belongs_to :user
   belongs_to :lecture_info
 
+  acts_as_votable
   # 강의 평가 점수 합계 평균
   after_save :score_average, :total_average
 

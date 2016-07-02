@@ -4,8 +4,7 @@ class PostsController < ApplicationController
 
   before_action :set_board
   before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
-  # GET /posts
-  # GET /posts.json
+
   def index
     # @posts = @board.posts.all.page(params[:page]).per(20)
     @posts = @board.posts.search(params[:search]).page(params[:page]).per(20)
@@ -15,20 +14,11 @@ class PostsController < ApplicationController
     end
   end
 
-  # GET /posts/1
-  # GET /posts/1.json
   def show
     @post.hits = @post.hits + 1
     @post.save
-    # @all_posts = @board.posts.all
-    # params_page = (@post.id / 20).to_i
-    # @posts = @board.posts.all.page(params_page).per(20)
-    # @posts = @board.posts.all.page(params[:page]).per(20)
 
-    #좋아요 버튼 ajax -  up / down vote.js
-    @samples = ["u", "blue", 'red', 'green', 'sea',
-          'orange', 'yellow', 'purple', 'aqua',
-          'brown', 'dark-blue', 'light-green', 'dark', 'light']
+    #좋아요 버튼 ajax -  up / down vote.
     respond_to do |format|
     	format.html {
     	  #페이지 클릭 시 페이지네이션 + table 세팅
@@ -68,7 +58,6 @@ class PostsController < ApplicationController
   def create
     @post = @board.posts.new(post_params)
     @post.user = current_user
-
     if @post.save
       redirect_to [@post.board, @post]
     else
@@ -108,7 +97,7 @@ class PostsController < ApplicationController
       format.js
     end
   end
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post

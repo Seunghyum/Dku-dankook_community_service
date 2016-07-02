@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160630140736) do
+ActiveRecord::Schema.define(version: 20160702043959) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "name"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20160630140736) do
     t.datetime "updated_at",                    null: false
     t.integer  "professor_id"
     t.integer  "average"
+    t.string   "div_color"
   end
 
   add_index "lecture_infos", ["professor_id"], name: "index_lecture_infos_on_professor_id"

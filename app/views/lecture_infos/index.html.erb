@@ -1,12 +1,60 @@
 <div class="bg-grey">
 	<div class="container content-sm">
 			<!-- Bordered Funny Boxes -->
+
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div id="navbar-warning" class='card'>
+					<nav class="navbar content tag-box tag-box-v7">
+						<div class="container-fluid">
+							<!-- Brand and toggle get grouped for better mobile display -->
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+
+								<%= link_to lecture_infos_path , class: "navbar-brand text-info" do%>
+									<strong>강의 평가</strong>
+								<% end %>
+							</div>
+
+							<!-- Collect the nav links, forms, and other content for toggling -->
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<!-- <div class="navbar-form navbar-right">
+									<%#= link_to new_board_post_path, class: "btn-u btn-sm hover btn-u-yellow" do %>
+										<i class='fa fa-pencil'></i> 새 글쓰기
+									<%# end %>
+								</div> -->
+								<%= form_tag lecture_infos_path, :method => 'get', class: "navbar-form navbar-right", role: "search" do %>
+									<div class="input-group">
+										<%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search" %>
+										<span class="input-group-btn">
+											<%= button_tag type: "submit" , class: "btn-u" do %>
+												<i class='fa fa-search'></i>
+											<% end %>
+										</span>
+									</div>
+								<% end %>
+
+							</div><!-- /.navbar-collapse -->
+						</div><!-- /.container-fluid -->
+					</nav>
+				</div>
+			</div>
+		</div>
     <% @lecture_infos.each do |info| %>
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<%= link_to lecture_info_lecture_estimates_path(info) do %>
-    				<div class="funny-boxes funny-boxes-top-<%= @color_pick.sample %> bg-color-white">
-    					<h2><%= info.name %> - <%= info.professor.name %> 교수님</h2>
+    				<div class="funny-boxes funny-boxes-top-<%= info.div_color %> bg-color-white">
+							<button class="btn-u btn-u-xs rounded btn-u-<%= info.div_color %> pull-right" type="button"><%= info.l_type %></button>
+    					<h2>
+								<%= info.name %> - <%= info.professor.name %> 교수님
+							</h2>
+
 							<ul class="list-inline comment-list-v2 pull-left block-grid-v1-add-inf">
 								<li><i class="fa fa-eye"></i> <%= info.all_view %></li>
 								<li><i class="fa fa-comments"></i> <%= info.lecture_estimates.count %></li>

@@ -1,11 +1,8 @@
 class LectureInfosController < ApplicationController
   before_action :set_lecture_info, only: [:show, :edit, :update, :destroy]
 
-  # GET /lecture_infos
-  # GET /lecture_infos.json
   def index
     @lecture_infos = LectureInfo.all
-    @color_pick = ["yellow", "purple", "sea", "red", "blue", "orange", "green"] 
   end
 
   private

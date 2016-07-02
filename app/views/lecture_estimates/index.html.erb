@@ -226,7 +226,7 @@
                 <p class="hex">
                   <strong>
                     강의명 : <%= @lecture_info.name %>
-                    <span class="badge badge-red"><%= @lecture_info.l_type %></span>
+                    <button class="btn-u btn-u-xs rounded btn-u-<%= @lecture_info.div_color %>"><%= @lecture_info.l_type %></button>
                   </strong>
                 </p>
       					<p class="hex">개설학기 : <%= @lecture_info.semester %>학기</p>
@@ -242,7 +242,8 @@
 			      <% @lecture_estimates.each do |esti| %>
 			        <%#= link_to lecture_info_lecture_estimate_path(@lecture_info, esti) do %>
 		    				<div class="funny-boxes funny-boxes-top-<%= @color_pick.sample %> bg-color-white">
-		    					<!-- <h4><%= esti.reason %> 위해 수강했던 선배</h4> -->
+                  <p class='pull-right'><%= esti.created_at.year %>년 <%= esti.created_at.month %>월</p>
+		    					<h4><%= esti.reason %> 위해 수강했던 선배</h4>
 									<div class='pull-right'>
 										<ul class="list-unstyled funny-boxes-rating">
 											평가 점수 :
@@ -259,7 +260,23 @@
 					  				<p><%= esti.msg.html_safe %></p>
 										<br>
 									<% end %>
-									<p class='text-right'><%= timeago_tag esti.created_at %></p>
+
+                  <!-- 좋아요 / 싫어요 -->
+                  <ul class="list-inline badge-lists badge-box-v1 margin-bottom-30 text-center">
+                      <li>
+                          <%= link_to like_lecture_info_lecture_estimate_path(@lecture_info, esti),id: "esti-like-btn-#{esti.id}", remote: true  do %>
+                            <i class="rounded-x ti-heart text-danger"></i>
+                            <span class="badge badge-red rounded-x"><%= esti.get_upvotes.size %></span>
+                          <% end %>
+                      </li>
+                      <li>
+                          <%= link_to dislike_lecture_info_lecture_estimate_path(@lecture_info, esti), id: "esti-dislike-btn-#{esti.id}", remote: true do %>
+                            <i class="rounded-x ti-heart-broken"></i>
+                            <span class="badge badge-gray rounded-x"><%= esti.get_downvotes.size %></span>
+                          <% end %>
+                      </li>
+                  </ul>
+
 		    				</div>
 			        <%# end %>
 			      <% end %>
