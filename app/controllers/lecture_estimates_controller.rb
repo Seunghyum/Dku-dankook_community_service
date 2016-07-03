@@ -10,7 +10,6 @@ class LectureEstimatesController < ApplicationController
     @lecture_estimates = @lecture_info.lecture_estimates
     @color_pick = ["yellow", "purple", "sea", "red", "blue", "orange", "green"]
 
-
     @lecture_info.all_view += 1
 
     # 총 강의 평가
@@ -19,13 +18,6 @@ class LectureEstimatesController < ApplicationController
     gon.av_teaching = @lecture_info.av_teaching
     gon.av_get_grade = @lecture_info.av_get_grade
     gon.av_teamwork_n_asg = @lecture_info.av_teamwork_n_asg
-  end
-
-  # GET /lecture_estimates/1
-  # GET /lecture_estimates/1.json
-  def show
-
-    # gon.lecture_title = @lecture_estimate.lecture_info.name
   end
 
   # GET /lecture_estimates/new
