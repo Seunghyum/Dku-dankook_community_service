@@ -10,11 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery2
 //= require jquery_ujs
 //= require jquery-ui
-//= require_tree ./js
-//= require_tree ./plugins
 //= require tether
 //= require bootstrap-sprockets
 //= require jquery-bar-rating
@@ -23,6 +21,8 @@
 //= require rails-timeago
 //= require locales/jquery.timeago.ko.js
 //= require tag-it
-//= require comment_edit
 //= require Chart
+//= require comment_edit
+//= require_tree ./js
+//= require_tree ./plugins
 //= require custom

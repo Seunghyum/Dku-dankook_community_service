@@ -18,6 +18,8 @@ class PostsController < ApplicationController
     @post.hits = @post.hits + 1
     @post.save
 
+    @samples = ["red", "green", "blue"]
+
     #좋아요 버튼 ajax -  up / down vote.
     respond_to do |format|
     	format.html {
