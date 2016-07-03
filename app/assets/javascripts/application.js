@@ -13,6 +13,7 @@
 //= require jquery2
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery.vticker.min.js
 //= require tether
 //= require bootstrap-sprockets
 //= require jquery-bar-rating

@@ -23,4 +23,10 @@ $(document).ready(function(){
 
     App.init();
     App.initScrollBar();
+
+
+
+    $(function() {
+    	$('#example').vTicker();
+    });
 });
