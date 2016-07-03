@@ -4,6 +4,19 @@ class LectureInfo < ActiveRecord::Base
 
   after_save :color_pick
 
+
+    def self.search(search)
+      if search
+        where(["name LIKE :search", search: "%#{search}%"])
+      else
+        all
+      end
+    end
+
+    def self.professor_search(professor)
+      where(["name LIKE :professor", professor: "%#{professor}%"])
+    end
+
   private
     def color_pick
       if self.l_type == "학부기초"

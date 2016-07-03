@@ -2,7 +2,11 @@ class LectureInfosController < ApplicationController
   before_action :set_lecture_info, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lecture_infos = LectureInfo.all
+    if params[:category] == "강의명" || params[:category].nil? 
+      @lecture_infos = LectureInfo.search(params[:search])
+    elsif params[:category] == "교수 이름"
+      @lecture_infos = LectureInfo.professor_search(params[:professor])
+    end
   end
 
   private

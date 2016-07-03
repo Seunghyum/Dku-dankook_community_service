@@ -29,6 +29,7 @@
 									<%# end %>
 								</div> -->
 								<%= form_tag lecture_infos_path, :method => 'get', class: "navbar-form navbar-right", role: "search" do %>
+									<%= select_tag "category", options_for_select([['강의명', '강의명'], ['교수명', '교수명']]), {class: "btn-u form-control",    style: "height: 34px;" } %>
 									<div class="input-group">
 										<%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search" %>
 										<span class="input-group-btn">
