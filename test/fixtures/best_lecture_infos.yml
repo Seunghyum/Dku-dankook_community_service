@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  l_type: MyString
+  best_1: MyString
+  best_2: MyString
+  best_3: MyString
+  best_4: MyString
+  best_5: MyString
+
+two:
+  l_type: MyString
+  best_1: MyString
+  best_2: MyString
+  best_3: MyString
+  best_4: MyString
+  best_5: MyString

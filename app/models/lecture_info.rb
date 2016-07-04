@@ -1,9 +1,11 @@
 class LectureInfo < ActiveRecord::Base
   has_many :lecture_estimates
   belongs_to :professor
+  belongs_to :best_five
+
+  default_scope {order('all_view DESC')}
 
   after_save :color_pick
-
 
     def self.search(search)
       if search

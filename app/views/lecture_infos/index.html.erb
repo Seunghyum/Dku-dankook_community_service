@@ -3,12 +3,19 @@
 			<!-- Bordered Funny Boxes -->
 
 
-			<div id="example">
-			  <ul>
-			    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</li>
-			    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut</li>
-			    <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</li>
-			  </ul>
+			<div class="panel panel-red">
+				<div class="panel-heading">
+					<h3 class="panel-title"><i class="fa fa-tasks"></i>Hot 강의</h3>
+				</div>
+				<div class="panel-body">
+					<div id="vertical_banner">
+					  <ul>
+							<% @best_liberal.each do |best| %>
+					    	<li>. <%= best.name %></li>
+							<% end %>
+					  </ul>
+					</div>
+				</div>
 			</div>
 
 		<div class="row">
@@ -94,12 +101,14 @@
 								<li><i class="fa fa-comments"></i> <%= info.lecture_estimates.count %></li>
 							</ul>
 							<ul class="list-inline funny-boxes-rating pull-right">
-                <% 1.upto(info.average/20) do |x| %>
-      						<li><i class="color-green fa fa-star"></i></li>
-                <% end %>
-                <% 1.upto(5 - info.average/20) do |y| %>
-    				      <li><i class="color-green fa fa-star-o"></i></li>
-                <% end %>
+								<% if info.average %>
+	                <% 1.upto(info.average/20) do |x| %>
+	      						<li><i class="color-green fa fa-star"></i></li>
+	                <% end %>
+	                <% 1.upto(5 - info.average/20) do |y| %>
+	    				      <li><i class="color-green fa fa-star-o"></i></li>
+	                <% end %>
+								<% end %>
     					</ul>
 							<br>
 							<br>

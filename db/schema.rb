@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160702043959) do
+ActiveRecord::Schema.define(version: 20160703174726) do
+
+  create_table "best_fives", force: :cascade do |t|
+    t.string   "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "boards", force: :cascade do |t|
     t.string   "name"
@@ -82,8 +88,10 @@ ActiveRecord::Schema.define(version: 20160702043959) do
     t.integer  "professor_id"
     t.integer  "average"
     t.string   "div_color"
+    t.integer  "best_five_id"
   end
 
+  add_index "lecture_infos", ["best_five_id"], name: "index_lecture_infos_on_best_five_id"
   add_index "lecture_infos", ["professor_id"], name: "index_lecture_infos_on_professor_id"
 
   create_table "lockers", force: :cascade do |t|
