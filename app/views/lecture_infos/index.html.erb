@@ -3,23 +3,8 @@
 			<!-- Bordered Funny Boxes -->
 
 
-			<div class="panel panel-red">
-				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fa fa-tasks"></i>Hot 강의</h3>
-				</div>
-				<div class="panel-body">
-					<div id="vertical_banner">
-					  <ul>
-							<% @best_liberal.each do |best| %>
-					    	<li>. <%= best.name %></li>
-							<% end %>
-					  </ul>
-					</div>
-				</div>
-			</div>
-
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
+			<div class="col-md-7 col-md-offset-1">
 				<div id="navbar-warning" class='card'>
 					<nav class="navbar content tag-box tag-box-v7">
 						<div class="container-fluid">
@@ -80,46 +65,65 @@
 									</div>
 								</div>
 
+
+
 							</div><!-- /.navbar-collapse -->
 						</div><!-- /.container-fluid -->
 					</nav>
 				</div>
-			</div>
-		</div>
-    <% @lecture_infos.each do |info| %>
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-					<%= link_to lecture_info_lecture_estimates_path(info) do %>
-    				<div class="funny-boxes funny-boxes-top-<%= info.div_color %> bg-color-white">
-							<button class="btn-u btn-u-xs rounded btn-u-<%= info.div_color %> pull-right" type="button"><%= info.l_type %></button>
-    					<h2>
-								<%= info.name %> - <%= info.professor.name %> 교수님
-							</h2>
 
-							<ul class="list-inline comment-list-v2 pull-left block-grid-v1-add-inf">
-								<li><i class="fa fa-eye"></i> <%= info.all_view %></li>
-								<li><i class="fa fa-comments"></i> <%= info.lecture_estimates.count %></li>
-							</ul>
-							<ul class="list-inline funny-boxes-rating pull-right">
-								<% if info.average %>
-	                <% 1.upto(info.average/20) do |x| %>
-	      						<li><i class="color-green fa fa-star"></i></li>
-	                <% end %>
-	                <% 1.upto(5 - info.average/20) do |y| %>
-	    				      <li><i class="color-green fa fa-star-o"></i></li>
-	                <% end %>
+				<% @lecture_infos.each do |info| %>
+							<%= link_to lecture_info_lecture_estimates_path(info) do %>
+		    				<div class="funny-boxes funny-boxes-top-<%= info.div_color %> bg-color-white">
+									<button class="btn-u btn-u-xs rounded btn-u-<%= info.div_color %> pull-right" type="button"><%= info.l_type %></button>
+		    					<h2>
+										<%= info.name %> - <%= info.professor.name %> 교수님
+									</h2>
+
+									<ul class="list-inline comment-list-v2 pull-left block-grid-v1-add-inf">
+										<li><i class="fa fa-eye"></i> <%= info.all_view %></li>
+										<li><i class="fa fa-comments"></i> <%= info.lecture_estimates.count %></li>
+									</ul>
+									<ul class="list-inline funny-boxes-rating pull-right">
+										<% if info.average %>
+			                <% 1.upto(info.average/20) do |x| %>
+			      						<li><i class="color-green fa fa-star"></i></li>
+			                <% end %>
+			                <% 1.upto(5 - info.average/20) do |y| %>
+			    				      <li><i class="color-green fa fa-star-o"></i></li>
+			                <% end %>
+										<% end %>
+		    					</ul>
+									<br>
+									<br>
+									<div>
+		    						<p>평소 수업이 널널하고 출석에 신경을 안쓰심 앞 타임 시험이랑 뒷타임 시험이랑 문제가 똑같음 막걸리와 파전을 좋아하심</p>
+									</div>
+								</div>
+				      <% end %>
+		    <% end %>
+			</div>
+
+			<div class='col-md-3'>
+				<div class="panel panel-red">
+					<div class="panel-heading">
+						<h3 class="panel-title"><i class="fa fa-tasks"></i>실시간 Hot 강의</h3>
+					</div>
+					<div class="panel-body">
+						<div id="vertical_banner">
+						  <ul>
+								<% x = 1 %>
+								<% @best_liberal.each do |best| %>
+						    	<li><%= x %>. <%= best.name %></li>
+									<% x = x + 1 %>
 								<% end %>
-    					</ul>
-							<br>
-							<br>
-							<div>
-    						<p>평소 수업이 널널하고 출석에 신경을 안쓰심 앞 타임 시험이랑 뒷타임 시험이랑 문제가 똑같음 막걸리와 파전을 좋아하심</p>
-							</div>
+						  </ul>
 						</div>
-		      <% end %>
+					</div>
 				</div>
 			</div>
-    <% end %>
+		</div>
+
 		<!-- End Bordered Funny Boxes -->
 	</div>
 </div>

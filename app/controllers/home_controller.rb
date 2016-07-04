@@ -12,6 +12,9 @@ class HomeController < ApplicationController
           'orange', 'yellow', 'purple', 'aqua',
           'brown', 'dark-blue', 'light-green', 'dark', 'light']
 
+    # 강의 순위
+    @best_liberal = BestFive.find_by(category: "교양").lecture_infos
+
     respond_to do |format|
       format.js
       format.html

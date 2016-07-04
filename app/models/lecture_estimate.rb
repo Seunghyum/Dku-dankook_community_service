@@ -39,7 +39,7 @@ class LectureEstimate < ActiveRecord::Base
       #     info.update_column(:best_five_id, nil)
       #   end
       # end
-      best_5 = LectureInfo.where(l_type: type).limit(5)
+      best_5 = LectureInfo.where(l_type: type).limit(7)
       if best_5.length > 2
         best_5.each do |best|
           best.update_column(:best_five_id, best_category.id)

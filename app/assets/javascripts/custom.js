@@ -29,9 +29,9 @@ $(document).ready(function(){
     $(function(){
         $('#vertical_banner').vTicker({
             // 스크롤 속도(default: 700)
-            speed: 500,
+            speed: 700,
             // 스크롤 사이의 대기시간(default: 4000)
-            pause: 1000,
+            pause: 2000,
             // 스크롤 애니메이션
             animation: 'fade',
             // 마우스 over 일때 멈출 설정
