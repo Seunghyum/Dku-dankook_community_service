@@ -70,6 +70,8 @@
 
       <!-- cont -->
       <div class="cont">
+        <div class="f_l w_74">
+
           <!-- 타이틀 -->
           <div id="titleSection" class="section_top_tit" style="">
             <!-- 현재위치 -->
@@ -101,7 +103,9 @@
 
                     </th><!-- 학기 --><!-- 학년 -->
                     <th scope="row">소속</th><!-- 소속 -->
-                    <td colspan="3">국제학부 국제경영학전공</td>
+                    <td>국제학부 국제경영학전공</td>
+                    <th scope="row">소속</th><!-- 소속 -->
+                    <td>국제학부 국제경영학전공</td>
                   </tr>
                   <tr>
                     <th scope="row">학번</th><!-- 학번 -->
@@ -129,18 +133,19 @@
                     <th scope="row">학점 계</th><!-- 학점계 -->
                     <td class="ta_c"></td>
                   </tr>
+                    <tr>
+                      <th scope="row">과목 수</th><!-- 과목수 -->
+                      <td class="ta_c"></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">학점 계</th><!-- 학점계 -->
+                      <td class="ta_c"></td>
+                    </tr>
                 </tbody>
               </table>
             </div>
           </div>
           <br />
-
-
-
-
-
-
-
 
           <div id="target"></div>
 
@@ -153,7 +158,7 @@
               <table id="tkcrsPlTbl">
                 <thead>
                   <colgroup>
-                    <col style="width: 5%;">
+                    <col style="width: 7%;">
                     <col style="width: 5%;">
                     <col style="width: 25%;">
                     <col style="width: 5%;">
@@ -194,6 +199,124 @@
             </div>
           </form>
 
+          <br>
+          <br>
+
+          <div class="section_mid_tit">
+            <h4 class="tit_mid f_l">수강신청내역</h4>
+          </div>
+
+          <div class="tbl_column">
+            <table class="tbl_striped" id="opLtrTbl">
+              <caption></caption>
+              <colgroup>
+                <col style="width: 6%;">
+
+                <col style="width: 10%;">
+                <col style="width: 7%;">
+                <col style="width: 4%;">
+                <col style="width: 20%;">
+                <col style="width: 4%;">
+                <col style="width: 10%;">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th scope="col">삭제</th>
+
+                  <th scope="col">캠퍼스</th>
+                  <th scope="col">교과목번호</th>
+                  <th scope="col">분반</th>
+                  <th scope="col">교과목명</th>
+                  <th scope="col">학점</th>
+                  <th scope="col">교강사명</th>
+                  <th scope="col">재수강 연도학기</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @rehearsals.each do |rehearsal| %>
+                  <tr>
+                    <td scope="rowgroup" rowspan="2" class="bg_striped">
+
+                    </td><!-- 학기 --><!-- 학년 -->
+                    <td>죽전</td>
+                    <td><%= rehearsal.lnum %></td>
+                    <td><%= rehearsal.divide %></td>
+                    <td><%= rehearsal.name %></td>
+                    <td><%= rehearsal.score %></td>
+                    <td><%= rehearsal.teacher %></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th colspan="7">
+                      <div class="ta_l" style="margin-left: 20px;">
+                        [사이버]<!-- 확정과목수 --><!-- 확정학점 -->
+                      </div>
+                    </th>
+                  </tr>
+                <% end %>
+
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="f_r w_25">
+          <div class="tbl_column">
+            <table id="tkcrsTmtblListTbl" class="tbl_mixed">
+              <caption>수강시간표</caption>
+              <colgroup>
+                <col style="width: 15%;">
+                <col style="width: 14%;">
+                <col style="width: 14%;">
+                <col style="width: 14%;">
+                <col style="width: 14%;">
+                <col style="width: 14%;">
+                <col style="width: 14%;">
+                <col>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th scope="col"></th><!-- 교시 -->
+                  <th scope="col">월</th><!-- 월 -->
+                  <th scope="col">화</th><!-- 화 -->
+                  <th scope="col">수</th><!-- 수 -->
+                  <th scope="col">목</th><!-- 목 -->
+                  <th scope="col">금</th><!-- 금 -->
+                  <th scope="col">토</th><!-- 토 -->
+                </tr>
+              </thead>
+              <tbody>
+                <% 1.upto(20) do |x| %>
+                <tr class="numbering">
+              		<td><%= x %>
+                  </td>
+
+                  <td>
+                  </td>
+
+                  <td>
+                  </td>
+
+                  <td>
+                  </td>
+
+                  <td>
+                  </td>
+
+                  <td>
+                  </td>
+
+                  <td>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
       <!-- //cont -->
     </div>
