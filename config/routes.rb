@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :rehearsals do
+    collection do
+      get "sign_in" => "rehearsals#sign_in"
+      get "sign_up" => "rehearsals#sign_up"
+      get "home" => "rehearsals#home"
+    end
+  end
 #강의평가
   resources :lecture_infos do
     resources :lecture_estimates do

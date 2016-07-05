@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>수강신청 리허설</title>
+  <% if params[:action] == "sign_in" || params[:action] == "sign_up" %>
+    <%= stylesheet_link_tag    'rehearsal_sign', media: 'all' %>
+    <%= javascript_include_tag 'rehearsal_sign' %>
+  <% else %>
+    <%= stylesheet_link_tag    'rehearsal', media: 'all'  %>
+    <%= javascript_include_tag 'rehearsal' %>
+  <% end %>
+  <%= csrf_meta_tags %>
+</head>
+  <%= yield %>
+</html>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @rehearsal.name %>
+</p>
+
+<p>
+  <strong>L type:</strong>
+  <%= @rehearsal.l_type %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @rehearsal.time %>
+</p>
+
+<p>
+  <strong>Ranking:</strong>
+  <%= @rehearsal.ranking %>
+</p>
+
+<%= link_to 'Edit', edit_rehearsal_path(@rehearsal) %> |
+<%= link_to 'Back', rehearsals_path %>

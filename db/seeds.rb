@@ -221,3 +221,8 @@ LectureEstimate.create(fun: 60, teaching: 40, get_grade: 80, teamwork_n_asg: 20,
 # BestLectureInfo.create(l_type: "전공필수")
 # BestLectureInfo.create(l_type: "학부기초")
 # BestFive.create(category: "교양")
+
+Rehearsal.create(name: "경제학", ldate: "수 11,12,13,14", lnum: "32400")
+Rehearsal.create(name: "빅데이터", ldate: "금 11,12,13,14", lnum: "42340")
+Rehearsal.create(name: "파이썬", ldate: "월 11,12,13,14", lnum: "123343")
+Rehearsal.create(name: "아이오닉", ldate: "화 11,12,13,14", lnum: "642232")

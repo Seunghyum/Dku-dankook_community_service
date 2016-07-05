@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703174726) do
+ActiveRecord::Schema.define(version: 20160705131538) do
 
   create_table "best_fives", force: :cascade do |t|
     t.string   "category"
@@ -165,6 +165,20 @@ ActiveRecord::Schema.define(version: 20160703174726) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rehearsals", force: :cascade do |t|
+    t.integer  "lnum"
+    t.string   "divide"
+    t.string   "name"
+    t.integer  "score"
+    t.string   "teacher"
+    t.string   "ldate"
+    t.string   "regi_num"
+    t.string   "limit_num"
+    t.integer  "ranking",    default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "school_chuns", force: :cascade do |t|
     t.string   "belong"
     t.string   "name"
@@ -211,6 +225,13 @@ ActiveRecord::Schema.define(version: 20160703174726) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+
+  create_table "test_users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",     null: false
