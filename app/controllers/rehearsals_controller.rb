@@ -1,6 +1,6 @@
 class RehearsalsController < ApplicationController
   layout "rehearsal"
-  before_action :set_rehearsal, only: [:show, :edit, :update, :destroy]
+  before_action :set_test_lecture, only: [:show, :edit, :update, :destroy]
 
   def home
   end
@@ -10,74 +10,74 @@ class RehearsalsController < ApplicationController
 
   def sign_up
   end
-  # GET /rehearsals
-  # GET /rehearsals.json
+  # GET /test_lectures
+  # GET /test_lectures.json
   def index
-    @rehearsals = Rehearsal.all
+    @test_lectures = TestLecture.all
   end
 
-  # GET /rehearsals/1
-  # GET /rehearsals/1.json
+  # GET /test_lectures/1
+  # GET /test_lectures/1.json
   def show
   end
 
-  # GET /rehearsals/new
+  # GET /test_lectures/new
   def new
-    @rehearsal = Rehearsal.new
+    @test_lecture = TestLecture.new
   end
 
-  # GET /rehearsals/1/edit
+  # GET /test_lectures/1/edit
   def edit
   end
 
-  # POST /rehearsals
-  # POST /rehearsals.json
+  # POST /test_lectures
+  # POST /test_lectures.json
   def create
-    @rehearsal = Rehearsal.new(rehearsal_params)
+    @test_lecture = TestLecture.new(test_lecture_params)
 
     respond_to do |format|
-      if @rehearsal.save
-        format.html { redirect_to @rehearsal, notice: 'Rehearsal was successfully created.' }
-        format.json { render :show, status: :created, location: @rehearsal }
+      if @test_lecture.save
+        format.html { redirect_to @test_lecture, notice: 'TestLecture was successfully created.' }
+        format.json { render :show, status: :created, location: @test_lecture }
       else
         format.html { render :new }
-        format.json { render json: @rehearsal.errors, status: :unprocessable_entity }
+        format.json { render json: @test_lecture.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /rehearsals/1
-  # PATCH/PUT /rehearsals/1.json
+  # PATCH/PUT /test_lectures/1
+  # PATCH/PUT /test_lectures/1.json
   def update
     respond_to do |format|
-      if @rehearsal.update(rehearsal_params)
-        format.html { redirect_to @rehearsal, notice: 'Rehearsal was successfully updated.' }
-        format.json { render :show, status: :ok, location: @rehearsal }
+      if @test_lecture.update(test_lecture_params)
+        format.html { redirect_to @test_lecture, notice: 'test_lecture was successfully updated.' }
+        format.json { render :show, status: :ok, location: @test_lecture }
       else
         format.html { render :edit }
-        format.json { render json: @rehearsal.errors, status: :unprocessable_entity }
+        format.json { render json: @test_lecture.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /rehearsals/1
-  # DELETE /rehearsals/1.json
+  # DELETE /test_lectures/1
+  # DELETE /test_lectures/1.json
   def destroy
-    @rehearsal.destroy
+    @test_lecture.destroy
     respond_to do |format|
-      format.html { redirect_to rehearsals_url, notice: 'Rehearsal was successfully destroyed.' }
+      format.html { redirect_to rehearsals_url, notice: 'test_lecture was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_rehearsal
-      @rehearsal = Rehearsal.find(params[:id])
+    def set_test_lecture
+      @test_lecture = TestLecture.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def rehearsal_params
-      params.require(:rehearsal).permit(:name, :l_type, :time, :ranking)
+    def test_lecture_params
+      params.require(:test_lecture).permit(:lnum, :name, :divide, :score, :teacher, :ldate, :limit_num, :counting)
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160705131538) do
+ActiveRecord::Schema.define(version: 20160706005539) do
 
   create_table "best_fives", force: :cascade do |t|
     t.string   "category"
@@ -166,18 +166,14 @@ ActiveRecord::Schema.define(version: 20160705131538) do
   end
 
   create_table "rehearsals", force: :cascade do |t|
-    t.integer  "lnum"
-    t.string   "divide"
-    t.string   "name"
-    t.integer  "score"
-    t.string   "teacher"
-    t.string   "ldate"
-    t.string   "regi_num"
-    t.string   "limit_num"
-    t.integer  "ranking",    default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "counting"
+    t.integer  "rehearsalible_id"
+    t.string   "rehearsalible_type"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
+
+  add_index "rehearsals", ["rehearsalible_type", "rehearsalible_id"], name: "index_rehearsals_on_rehearsalible_type_and_rehearsalible_id"
 
   create_table "school_chuns", force: :cascade do |t|
     t.string   "belong"
@@ -225,6 +221,19 @@ ActiveRecord::Schema.define(version: 20160705131538) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+
+  create_table "test_lectures", force: :cascade do |t|
+    t.integer  "lnum"
+    t.integer  "divide"
+    t.string   "name"
+    t.integer  "score"
+    t.string   "teacher"
+    t.string   "ldate"
+    t.string   "limit_num"
+    t.integer  "counting",   default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "test_users", force: :cascade do |t|
     t.string   "username"

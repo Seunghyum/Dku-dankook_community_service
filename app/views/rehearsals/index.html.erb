@@ -181,16 +181,16 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% @rehearsals.each do |rehearsal| %>
+                  <% @test_lectures.each do |test_lecture| %>
                     <tr>
-                      <td class="left_line ta_c numbering"><%= rehearsal.lnum %></td>
-                      <td class="ta_c"><%= rehearsal.divide %></td>
-                      <td class="ta_l"><%= rehearsal.name %></td>
-                      <td class="ta_c"><%= rehearsal.score %></td>
-                      <td class="ta_c"><%= rehearsal.teacher %></td>
-                      <td class="ta_l"><%= rehearsal.ldate %></td>
-                      <td class="ta_c"><%= rehearsal.regi_num %></td>
-                      <td class="ta_c"><%= rehearsal.limit_num %></td>
+                      <td class="left_line ta_c numbering"><%= test_lecture.lnum %></td>
+                      <td class="ta_c"><%= test_lecture.divide %></td>
+                      <td class="ta_l"><%= test_lecture.name %></td>
+                      <td class="ta_c"><%= test_lecture.score %></td>
+                      <td class="ta_c"><%= test_lecture.teacher %></td>
+                      <td class="ta_l"><%= test_lecture.ldate %></td>
+                      <td class="ta_c"><%= test_lecture.counting %></td>
+                      <td class="ta_c"><%= test_lecture.limit_num %></td>
                       <td class="ta_c"> </td>
                     </tr>
                   <% end %>
@@ -233,17 +233,17 @@
                 </tr>
               </thead>
               <tbody>
-                <% @rehearsals.each do |rehearsal| %>
+                <% @test_lectures.each do |test_lecture| %>
                   <tr>
                     <td scope="rowgroup" rowspan="2" class="bg_striped">
 
                     </td><!-- 학기 --><!-- 학년 -->
                     <td>죽전</td>
-                    <td><%= rehearsal.lnum %></td>
-                    <td><%= rehearsal.divide %></td>
-                    <td><%= rehearsal.name %></td>
-                    <td><%= rehearsal.score %></td>
-                    <td><%= rehearsal.teacher %></td>
+                    <td><%= test_lecture.lnum %></td>
+                    <td><%= test_lecture.divide %></td>
+                    <td><%= test_lecture.name %></td>
+                    <td><%= test_lecture.score %></td>
+                    <td><%= test_lecture.teacher %></td>
                     <td></td>
                   </tr>
                   <tr>
@@ -339,4 +339,3 @@
   <!-- //wrap -->
 
 </body>
-<%= link_to 'New Rehearsal', new_rehearsal_path %>

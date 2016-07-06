@@ -6,19 +6,19 @@
 # #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 # #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
-# User.create(username: "admin_moon", gender: "남자", email: 'qwe@qwe.com', password: "12341234", password_confirmation: "12341234", role: "슈퍼관리자")
-# User.create(username: "moon", gender: "남자", email: '123@123.com', password: "12341234", password_confirmation: "12341234", role: "학생")
-# User.create(username: "female", gender: "여자", email: '23@123.com', password: "12341234", password_confirmation: "12341234", role: "학생")
-#
-# Board.create(name: "자유게시판", description: "자유롭게 말하세요")
-# 85.times do
-#     Post.create(title: "테스트 타이틀", content: "내용테스트", user_id: 1, board_id: 1)
-# end
-#
-# #사물함 갯수 제한( 전체 사물함 갯수 - 이미 지정된 사물함 갯수 )
-# Major.create(mname: "국제경영" )
-#
-# Major.create(mname: "모바일" )
+User.create(username: "admin_moon", gender: "남자", email: 'qwe@qwe.com', password: "12341234", password_confirmation: "12341234", role: "슈퍼관리자")
+User.create(username: "moon", gender: "남자", email: '123@123.com', password: "12341234", password_confirmation: "12341234", role: "학생")
+User.create(username: "female", gender: "여자", email: '23@123.com', password: "12341234", password_confirmation: "12341234", role: "학생")
+
+Board.create(name: "자유게시판", description: "자유롭게 말하세요")
+85.times do
+    Post.create(title: "테스트 타이틀", content: "내용테스트", user_id: 1, board_id: 1)
+end
+
+#사물함 갯수 제한( 전체 사물함 갯수 - 이미 지정된 사물함 갯수 )
+Major.create(mname: "국제경영" )
+
+Major.create(mname: "모바일" )
 #
 # #노코기리 전화번호부 긁어오기
 # require 'nokogiri'
@@ -222,7 +222,7 @@ LectureEstimate.create(fun: 60, teaching: 40, get_grade: 80, teamwork_n_asg: 20,
 # BestLectureInfo.create(l_type: "학부기초")
 # BestFive.create(category: "교양")
 
-Rehearsal.create(name: "경제학", ldate: "수 11,12,13,14", lnum: "32400")
-Rehearsal.create(name: "빅데이터", ldate: "금 11,12,13,14", lnum: "42340")
-Rehearsal.create(name: "파이썬", ldate: "월 11,12,13,14", lnum: "123343")
-Rehearsal.create(name: "아이오닉", ldate: "화 11,12,13,14", lnum: "642232")
+TestLecture.create(name: "경제학", ldate: "수 11,12,13,14", lnum: "32400", limit_num: 55, teacher: "빌게이츠", score: 3, divide: 2)
+TestLecture.create(name: "빅데이터", ldate: "금 11,12,13,14", lnum: "42340", limit_num: 33, teacher: "잡스", score: 3, divide: 1)
+TestLecture.create(name: "파이썬", ldate: "월 11,12,13,14", lnum: "123343", limit_num: 44, teacher: "강신주", score: 3, divide: 3)
+TestLecture.create(name: "아이오닉", ldate: "화 11,12,13,14", lnum: "642232", limit_num: 20, teacher: "김제동", score: 2, divide: 2)
