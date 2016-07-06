@@ -1,5 +1,7 @@
 class SchoolPhoneSearchingsController < ApplicationController
 
+  #auth
+  load_and_authorize_resource
   def new
       @new_search = SchoolPhoneSearching.new
       @campus = ["죽전", "천안"]

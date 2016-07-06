@@ -1,15 +1,11 @@
-class RehearsalsController < ApplicationController
-  layout "rehearsal"
+class Rehearsals::RehearsalsController < Rehearsals::ApplicationController
   before_action :set_test_lecture, only: [:show, :edit, :update, :destroy]
 
+  #auth
+  load_and_authorize_resource
   def home
   end
 
-  def sign_in
-  end
-
-  def sign_up
-  end
   # GET /test_lectures
   # GET /test_lectures.json
   def index

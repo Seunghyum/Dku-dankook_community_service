@@ -23,7 +23,7 @@ class Ability
 
     elsif user.role == '외부인'
       can :read, [Post, Meeting, LectureEstimate]
-      can :manage, [SchoolPhoneSearching, TestUser, TestLecture, Rehearsal]
+      can :read, [SchoolPhoneSearching, TestUser, TestLecture, Rehearsal]
     end
     # Define abilities for the passed in user here. For example:
     #

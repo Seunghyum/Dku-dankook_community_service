@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   resources :rehearsals do
     collection do
-      get "sign_in" => "rehearsals#sign_in"
-      get "sign_up" => "rehearsals#sign_up"
-      get "home" => "rehearsals#home"
+      get "sign_in" => "rehearsals/test_users#sign_in", as: "test_sign_in"
+      get "sign_up" => "rehearsals/test_users#sign_up", as: "test_sign_up"
+      get "user_check" => "rehearsals/test_users#user_check", as: "test_user_check"
+      get "home" => "rehearsals/rehearsals#home"
     end
   end
 #강의평가
