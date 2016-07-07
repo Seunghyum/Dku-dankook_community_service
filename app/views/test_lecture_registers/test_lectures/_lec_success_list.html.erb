@@ -1,0 +1,21 @@
+<% @test_lectures.each do |test_lecture| %>
+  <tr>
+    <td scope="rowgroup" rowspan="2" class="bg_striped">
+
+    </td><!-- 학기 --><!-- 학년 -->
+    <td>죽전</td>
+    <td><%= test_lecture.lnum %></td>
+    <td><%= test_lecture.divide %></td>
+    <td><%= test_lecture.name %></td>
+    <td><%= test_lecture.score %></td>
+    <td><%= test_lecture.teacher %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th colspan="7">
+      <div class="ta_l" style="margin-left: 20px;">
+        [사이버]<!-- 확정과목수 --><!-- 확정학점 -->
+      </div>
+    </th>
+  </tr>
+<% end %>

@@ -1,0 +1,13 @@
+<% @test_lectures.each do |test_lecture| %>
+  <tr>
+    <td class="left_line ta_c numbering"><%= test_lecture.lnum %></td>
+    <td class="ta_c"><%= test_lecture.divide %></td>
+    <td class="ta_l"><%= test_lecture.name %></td>
+    <td class="ta_c"><%= test_lecture.score %></td>
+    <td class="ta_c"><%= test_lecture.teacher %></td>
+    <td class="ta_l"><%= test_lecture.ldate %></td>
+    <td class="ta_c"><%= test_lecture.counting %></td>
+    <td class="ta_c"><%= test_lecture.limit_num %></td>
+    <td class="ta_c"> </td>
+  </tr>
+<% end %>

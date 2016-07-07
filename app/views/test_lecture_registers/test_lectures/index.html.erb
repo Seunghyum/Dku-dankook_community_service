@@ -126,36 +126,56 @@
                 </colgroup>
                 <tbody>
                   <tr>
-                    <th scope="row">과목 수</th><!-- 과목수 -->
+                    <th scope="row" class="certain">최대학점</th><!-- 과목수 -->
                     <td class="ta_c"></td>
                   </tr>
                   <tr>
-                    <th scope="row">학점 계</th><!-- 학점계 -->
+                    <th scope="row"class="certain">최소학점</th><!-- 학점계 -->
                     <td class="ta_c"></td>
                   </tr>
-                    <tr>
-                      <th scope="row">과목 수</th><!-- 과목수 -->
-                      <td class="ta_c"></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">학점 계</th><!-- 학점계 -->
-                      <td class="ta_c"></td>
-                    </tr>
+                  <tr>
+                    <th scope="row"class="certain">초과가능</th><!-- 과목수 -->
+                    <td class="ta_c"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"class="certain">이월학점</th><!-- 학점계 -->
+                    <td class="ta_c"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"class="certain">이수학기</th><!-- 학점계 -->
+                    <td class="ta_c"></td>
+                  </tr>
                 </tbody>
               </table>
             </div>
           </div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+
+          <div id="tabs" class="tabs ui-tabs ui-widget ui-widget-content ui-corner-all">
+            <div class="tab_header_box">
+              <ul class="tab_header f_l ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist"><!-- 오른쪽에 버튼 있을때 f_l 추가 -->
+                <li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="tab-1" aria-labelledby="ui-id-1" aria-selected="true"><a href="/tiac/univ/cusl/cslm/views/findCuslApl.do?_view=ok#tab-1" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1">수강계획도우미</a></li>
+                <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-2" aria-labelledby="ui-id-2" aria-selected="false" style="margin-right: 0px;"><a href="/tiac/univ/cusl/cslm/views/findCuslApl.do?_view=ok#tab-2" class="current ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">교과목번호-분반</a></li>
+              </ul>
+            </div>
+          </div>
+
           <br />
 
           <div id="target"></div>
 
           <form name="utilAgrForm" id="utilAgrForm" method="post" action="http://sugang.dankook.ac.kr/logon.do">
             <div class="section_mid_tit">
-              <h4 class="tit_mid f_l">수강신청</h4>
+              <h4 style="float: right;">더블 클릭하면 해당 강좌가 수강신청 됩니다.</h4>
             </div>
 
             <div class="tbl_column">
-              <table id="tkcrsPlTbl">
+              <table class="tbl_mixed tablesorter tablesorter-default" id="tkcrsPlTbl">
                 <thead>
                   <colgroup>
                     <col style="width: 7%;">
@@ -181,25 +201,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% @test_lectures.each do |test_lecture| %>
-                    <tr>
-                      <td class="left_line ta_c numbering"><%= test_lecture.lnum %></td>
-                      <td class="ta_c"><%= test_lecture.divide %></td>
-                      <td class="ta_l"><%= test_lecture.name %></td>
-                      <td class="ta_c"><%= test_lecture.score %></td>
-                      <td class="ta_c"><%= test_lecture.teacher %></td>
-                      <td class="ta_l"><%= test_lecture.ldate %></td>
-                      <td class="ta_c"><%= test_lecture.counting %></td>
-                      <td class="ta_c"><%= test_lecture.limit_num %></td>
-                      <td class="ta_c"> </td>
-                    </tr>
-                  <% end %>
+                  <%= render "test_lecture_registers/test_lectures/lec_register" %>
                 </tbody>
               </table>
             </div>
           </form>
 
           <br>
+          <div class="tab_header_box">
+            <ul class="tab_header f_l ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist"><!-- 오른쪽에 버튼 있을때 f_l 추가 -->
+            </ul>
+          </div>
           <br>
 
           <div class="section_mid_tit">
@@ -233,35 +245,11 @@
                 </tr>
               </thead>
               <tbody>
-                <% @test_lectures.each do |test_lecture| %>
-                  <tr>
-                    <td scope="rowgroup" rowspan="2" class="bg_striped">
-
-                    </td><!-- 학기 --><!-- 학년 -->
-                    <td>죽전</td>
-                    <td><%= test_lecture.lnum %></td>
-                    <td><%= test_lecture.divide %></td>
-                    <td><%= test_lecture.name %></td>
-                    <td><%= test_lecture.score %></td>
-                    <td><%= test_lecture.teacher %></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th colspan="7">
-                      <div class="ta_l" style="margin-left: 20px;">
-                        [사이버]<!-- 확정과목수 --><!-- 확정학점 -->
-                      </div>
-                    </th>
-                  </tr>
-                <% end %>
-
-
-
+                <%= render "test_lecture_registers/test_lectures/lec_success_list" %>
               </tbody>
             </table>
           </div>
         </div>
-
 
         <div class="f_r w_25">
           <div class="tbl_column">

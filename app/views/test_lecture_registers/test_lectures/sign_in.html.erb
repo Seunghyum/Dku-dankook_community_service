@@ -16,18 +16,29 @@
         <div class="login_box">
           <h1><%= image_tag "txt_login.png", alt: "course registration system" %></h1><!-- 0427 h태그변경 -->
           <!-- 로그인 폼 -->
-          <form id="logonForm" method="post" action="logon.do" data-message="alert">
-          
+          <!-- <form id="logonForm" method="post" action="logon.do" data-message="alert"> -->
+          <%#= form_tag test_user_check_rehearsals_path do %>
+          <form>
             <div class="login_frm">
               <h2>수강신청시스템 리허설 로그인</h2>
               <ul>
-                <li><input type="text" id="id" name="id" placeholder="아이디를 입력하여 주세요."></li>
-                <li><input type="password" id="password" name="password" placeholder="비밀번호를 입력하여 주세요."></li>
+                <li>
+                  <!-- <input type="text" id="id" name="id" placeholder="아이디를 입력하여 주세요."> -->
+                  <%= text_field_tag :username,"" ,id: "id", placeholder: "아이디를 입력해주세요." %>
+                </li>
+                <li>
+                  <!-- <input type="password" id="password" name="password" placeholder="비밀번호를 입력하여 주세요."> -->
+                  <%= password_field_tag :password, "" ,id: "password", placeholder: "비밀번호를 입력하여 주세요." %>
+                </li>
               </ul>
-              <a id="submit" href="#"><%= image_tag "btn_login.png", alt: "로그인" %></a>
+              <%= link_to test_lectures_path do %>
+                <%= image_tag "btn_login.png", alt: "로그인" %>
+              <% end %>
               <button></button>
             </div>
           </form>
+          <%# end %>
+          <!-- </form> -->
           <!-- //로그인 폼 -->
 
           <div class="find_frm">

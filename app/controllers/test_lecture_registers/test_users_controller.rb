@@ -1,9 +1,13 @@
-class Rehearsals::TestUsersController < Rehearsals::ApplicationController
-  before_action :set_test_lecture, only: [:show, :edit, :update, :destroy]
+class TestLectureRegisters::TestUsersController < TestLectureRegisters::ApplicationController
 
   #auth
   load_and_authorize_resource
+
   def sign_in
+  end
+
+  def sign_up
+    @test_user = TestUser.new
   end
 
   def user_check
@@ -11,10 +15,6 @@ class Rehearsals::TestUsersController < Rehearsals::ApplicationController
       redirect_to rehearsals_path
     end
     redirect_to test_sign_in_rehearsals_path
-  end
-
-  def sign_up
-    TestUser.new
   end
 
   def create
@@ -29,14 +29,7 @@ class Rehearsals::TestUsersController < Rehearsals::ApplicationController
     end
   end
 
-
-
-
   private
-    def set_test_user
-      @test_user = TestUser.find(params[:id])
-    end
-    
     def test_user_params
       params.require(:test_user).permit(:username, :pwd)
     end

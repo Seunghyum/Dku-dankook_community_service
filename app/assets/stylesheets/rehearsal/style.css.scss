@@ -530,7 +530,8 @@ table td .btn { border-bottom: 0; }
 
 .tbl_row { border-left: 1px solid #d3d3d3; }
 .tbl_row th,
-.tbl_row td { padding: 4px 9px; height: 22px; background: #fff; border: 1px solid #d3d3d3; border-left: 0; color: #787981; }
+.tbl_row td { padding: 4px 9px; background: #fff; border: 1px solid #d3d3d3; border-left: 0; color: #787981; }
+.tbl_row th.certain { padding: 0px 9px;}
 .tbl_row th { font-weight: bold; text-align: left; background: #ecf0f9; color: #686868; }
 .tbl_row thead th { text-align: center; }
 .tbl_row a { color: #787981; }
@@ -565,8 +566,11 @@ table td .btn { border-bottom: 0; }
 /* 행 테이블 줄무늬 */
 .tbl_row .tbl_striped tr th { background: #ecf0f9; }
 .tbl_row .tbl_striped tr td { background: #fff; }
-.tbl_row .tbl_striped tr th { font-weight: normal; background: #f6f6f6; }
+.tbl_row .tbl_striped tr th { font-weight: normal; background: #f6f6f6; height: 39px; }
+
+
 .tbl_row .tbl_striped tr th.bg_striped { font-weight: bold; background: #ecf0f9; text-align: center; }
+
 
 #body .bot_no { border-bottom: 0; }
 #body .bg_no { background: none; }
