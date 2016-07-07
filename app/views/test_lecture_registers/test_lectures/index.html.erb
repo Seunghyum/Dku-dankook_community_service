@@ -171,7 +171,7 @@
 
           <form name="utilAgrForm" id="utilAgrForm" method="post" action="http://sugang.dankook.ac.kr/logon.do">
             <div class="section_mid_tit">
-              <h4 style="float: right;">더블 클릭하면 해당 강좌가 수강신청 됩니다.</h4>
+              <h4 style="float: right;">더블 클릭하면 해당 강좌가 리허설 신청 됩니다.</h4>
             </div>
 
             <div class="tbl_column">
@@ -215,14 +215,14 @@
           <br>
 
           <div class="section_mid_tit">
-            <h4 class="tit_mid f_l">수강신청내역</h4>
+            <h4 class="tit_mid f_l">리허설 수강신청내역</h4>
           </div>
 
           <div class="tbl_column">
             <table class="tbl_striped" id="opLtrTbl">
               <caption></caption>
               <colgroup>
-                <col style="width: 6%;">
+                <col style="width: 9%;">
 
                 <col style="width: 10%;">
                 <col style="width: 7%;">
@@ -244,8 +244,8 @@
                   <th scope="col">재수강 연도학기</th>
                 </tr>
               </thead>
-              <tbody>
-                <%= render "test_lecture_registers/test_lectures/lec_success_list" %>
+              <tbody id='sucess-list'>
+                
               </tbody>
             </table>
           </div>

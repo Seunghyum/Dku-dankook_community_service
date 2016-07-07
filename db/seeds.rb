@@ -221,8 +221,9 @@ LectureEstimate.create(fun: 60, teaching: 40, get_grade: 80, teamwork_n_asg: 20,
 # BestLectureInfo.create(l_type: "전공필수")
 # BestLectureInfo.create(l_type: "학부기초")
 # BestFive.create(category: "교양")
-
-TestLecture.create(name: "경제학", ldate: "수 11,12,13,14", lnum: "32400", limit_num: 55, teacher: "빌게이츠", score: 3, divide: 2)
+TestLecture.create(name: "멋쟁이 사자처럼", ldate: "[사이버]", lnum: "32400", limit_num: 55, teacher: "이두희", score: 3, divide: 2)
+TestLecture.create(name: "루비 온 레일즈", ldate: "월 11,12,13,14", lnum: "123343", limit_num: 44, teacher: "문승현", score: 3, divide: 3)
+TestLecture.create(name: "경영학원론", ldate: "수 11,12,13,14", lnum: "32400", limit_num: 55, teacher: "빌게이츠", score: 3, divide: 2)
+TestLecture.create(name: "마케팅", ldate: "수 11,12,13,14", lnum: "32400", limit_num: 55, teacher: "강동주", score: 3, divide: 2)
 TestLecture.create(name: "빅데이터", ldate: "금 11,12,13,14", lnum: "42340", limit_num: 33, teacher: "잡스", score: 3, divide: 1)
-TestLecture.create(name: "파이썬", ldate: "월 11,12,13,14", lnum: "123343", limit_num: 44, teacher: "강신주", score: 3, divide: 3)
-TestLecture.create(name: "아이오닉", ldate: "화 11,12,13,14", lnum: "642232", limit_num: 20, teacher: "김제동", score: 2, divide: 2)
+TestLecture.create(name: "아이오닉", ldate: "화 11,12,13,14", lnum: "642232", limit_num: 20, teacher: "마크 주커버그", score: 2, divide: 2)
