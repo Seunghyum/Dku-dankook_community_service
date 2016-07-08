@@ -1,0 +1,27 @@
+= render "/school_phone_searchings/search"
+.container
+  - if @search_school_phone.empty?
+    %h4.text-danger.text-center No Records Found
+  - else
+    .row
+      .col-md-12
+        .panel.panel-blue.margin-bottom-40
+          .panel-heading
+            %h3.panel-title
+              %i.fa.fa-phone
+              총 #{@search_school_phone.length}개의 결과가 나왔습니다
+          .panel-body
+            %table.table.table-striped.table-hover
+              %thead
+                %tr
+                  %th 캠퍼스
+                  %th 과/학과
+                  %th 명칭/이름
+                  %th 전화번호
+              %tbody
+                - @search_school_phone.each do |c|
+                  %tr
+                    %td= c.campus
+                    %td= c.belong
+                    %td= c.name
+                    %td= c.phone

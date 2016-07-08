@@ -1,0 +1,111 @@
+.container.content
+  .row.margin-bottom-30
+    .col-md-7.mb-margin-bottom-30
+      .headline
+        %h2 &#xC0C8; &#xAE00; &#xC791;&#xC131;&#xD558;&#xAE30;
+      %p &#xC6B0;&#xCE21;&#xC5D0; &#xC788;&#xB294; &#xADDC;&#xCE59;&#xB4E4;&#xC744; &#xCDA9;&#xBD84;&#xD788; &#xC219;&#xC9C0;&#xD558;&#xC2DC;&#xACE0; &#xC791;&#xC131;&#xD574;&#xC8FC;&#xC138;&#xC694;.
+      %p &#xC608;&#xC758;&#xC5C6;&#xB294; &#xD559;&#xC0DD;&#xC740; &#xBB34;&#xC2DC;&#xD574;&#xC8FC;&#xC138;&#xC694;. &#xC6B4;&#xC601;&#xC790;&#xAC00; &#xCC98;&#xB9AC;&#xD558;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;.
+      %p &#xC6B0;&#xB9AC;&#xB294; &#xAC19;&#xC740; &#xD559;&#xAD50;&#xB97C; &#xB2E4;&#xB2C8;&#xACE0; &#xC788;&#xB294; &#xD559;&#xC0DD;&#xC785;&#xB2C8;&#xB2E4;. &#xBC18;&#xB4DC;&#xC2DC; &#xC608;&#xC758;&#xB97C; &#xC9C0;&#xCF1C;&#xC8FC;&#xC138;&#xC694;.
+      %br
+        = form_for [@board, @post], html: {multipart: true, id: "sky-form3", class: "sky-form sky-changes-3 contact-style", novalidate: "novalidate"} do |f|
+          - if @post.errors.any?
+            #error_explanation
+              %h2
+                = pluralize(@post.errors.count, "error")
+                prohibited this post from being saved:
+              %ul
+                - @post.errors.full_messages.each do |message|
+                  %li= message
+          %section
+            = f.label :title
+            %label.input
+              %i.icon-append.fa.fa-tag
+              = f.text_field :title, id: "subject"
+          %section
+          = f.label :content
+          %label.textarea
+            = f.text_area :content, class: summernote, id: summernote-post
+        %section
+          /
+            <label class="input">
+            <i class="icon-append fa fa-tag"></i>
+          = f.text_field :tag_list, id: tag-input
+          / </label>
+      %footer.text-center
+        = f.submit 작성하기, class: btn-u btn-u-lg
+      .message
+        %i.rounded-x.fa.fa-check
+        %p Your message was successfully sent!
+  / /col-md-9
+  .col-md-5
+    / 운영자 준수 규칙
+    .headline
+      %h2 &#xC6B4;&#xC601;&#xC790; &#xADDC;&#xCE59;
+    %p &#xC544;&#xB798;&#xC758; &#xADDC;&#xCE59;&#xC740; &#xC6B4;&#xC601;&#xC790;&#xAC00; &#xBC18;&#xB4DC;&#xC2DC; &#xC9C0;&#xD0AC; &#xADDC;&#xCE59;&#xC785;&#xB2C8;&#xB2E4;.
+    %ul.list-unstyled.margin-bottom-30
+      %li
+        %i.fa.fa-check.color-green
+        \&#xC0AC;&#xC6A9;&#xC790;&#xC5D0;&#xAC8C; &#xC911;&#xC694;&#xD55C;
+        = succeed "\u{b294}" do
+          %strong &#xAC1C;&#xC778;&#xC815;&#xBCF4;
+      %li
+        %i.fa.fa-check.color-green
+        \&#xAD11;&#xACE0;&#xB85C;
+        = succeed "\u{b97c}" do
+          %strong &#xC601;&#xB9AC;&#xCD94;&#xAD6C;
+      %li
+        %i.fa.fa-check.color-green
+        \&#xB2E8;&#xAD6D;&#xC778;&#xB4E4;&#xC774;
+        = succeed "\u{b97c}" do
+          %strong &#xC6D0;&#xD558;&#xB294; &#xC11C;&#xBE44;&#xC2A4;
+      %li
+        %i.fa.fa-check.color-green
+        \&#xB2E8;&#xAD6D;&#xC778;&#xB4E4;&#xC758;
+        = succeed "\u{b97c}" do
+          %strong &#xD559;&#xAD50;&#xC0DD;&#xD65C;&#xC5D0; &#xB3C4;&#xC6C0;&#xC774; &#xB418;&#xB294; &#xC11C;&#xBE44;&#xC2A4;
+    / 규칙
+    .headline
+      %h2 &#xCEE4;&#xBBA4;&#xB2C8;&#xD2F0; &#xADDC;&#xCE59;
+    %p &#xC544;&#xB798;&#xC758; &#xADDC;&#xCE59;&#xC744; &#xC5B4;&#xAE30;&#xB294; &#xAE00;&#xC740; &#xC0AD;&#xC81C;&#xB418;&#xBA70; &#xC791;&#xC131;&#xC790;&#xB294; &#xCD5C;&#xC18C; 1&#xB144; &#xB3D9;&#xC548; &#xC11C;&#xBE44;&#xC2A4; &#xC774;&#xC6A9;&#xC774; &#xC815;&#xC9C0;&#xB429;&#xB2C8;&#xB2E4;.
+    %ul.list-unstyled.margin-bottom-30
+      %li
+        %i.fa.fa-check.color-green
+        \&#xB2E4;&#xB978; &#xD559;&#xC0DD;&#xC758;
+        = succeed "\u{c744}" do
+          %strong &#xC2E4;&#xBA85;
+      %li
+        %i.fa.fa-check.color-green
+        \&#xB2E4;&#xB978; &#xD559;&#xC0DD;&#xC744; &#xBE44;&#xB09C;&#xD558;&#xAE30; &#xC704;&#xD574;
+        = succeed "\u{d558}\u{c154}\u{b3c4}" do
+          %strong &#xBB18;&#xC0AC;
+      %li
+        %i.fa.fa-check.color-green
+        \&#xB204;&#xAD6C;&#xC5D0;&#xAC8C;&#xB4E0;
+        = succeed "\u{c744}" do
+          %strong &#xBC18;&#xB9D0;
+      %li
+        %i.fa.fa-check.color-green
+        \&#xB2E4;&#xB978; &#xD559;&#xC0DD;&#xC5D0; &#xB300;&#xD55C;
+        %strong &#xC778;&#xC2E0;&#xACF5;&#xACA9;, &#xBE44;&#xC18D;&#xC5B4; &#xC0AC;&#xC6A9;
+        \&#xB4F1;&#xC744; &#xAE08;&#xC9C0;&#xD574;&#xC8FC;&#xC138;&#xC694;.
+    / 매너
+    .headline
+      %h2 &#xCEE4;&#xBBA4;&#xB2C8;&#xD2F0; &#xB9E4;&#xB108;
+    %p &#xC544;&#xB798;&#xC758; &#xAE30;&#xBCF8;&#xC801;&#xC778; &#xC608;&#xC758;&#xB97C; &#xC9C0;&#xCF1C;&#xC8FC;&#xC138;&#xC694;.
+    %ul.list-unstyled.margin-bottom-30
+      %li
+        %i.fa.fa-check.color-green
+        = succeed "\u{b97c}" do
+          %strong &#xC608;&#xC758;
+      %li
+        %i.fa.fa-check.color-green
+        \&#xC0C1;&#xB300;&#xB97C;
+        = succeed "\u{d574}\u{c8fc}\u{c138}\u{c694}." do
+          %strong &#xC874;&#xC911;
+      %li
+        %i.fa.fa-check.color-green
+        \&#xD0C0;&#xC778;&#xC744; &#xC9C0;&#xCE6D;&#xD560; &#xB54C;
+        = succeed "\u{c73c}\u{b85c}" do
+          %strong ***&#xB2D8;
+  / /col-md-3
+/ /row

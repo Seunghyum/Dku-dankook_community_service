@@ -1,0 +1,11 @@
+= form_for(@estimate) do |f|
+  - if @estimate.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@estimate.errors.count, "error")
+        prohibited this estimate from being saved:
+      %ul
+        - @estimate.errors.full_messages.each do |message|
+          %li= message
+  .actions
+    = f.submit

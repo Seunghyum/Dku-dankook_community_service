@@ -1,0 +1,57 @@
+.container
+  .row
+    .col-md-10.col-md-offset-1
+      %p#notice= notice
+      / 도구바 Start
+      #navbar-warning.card
+        %nav.navbar.content.tag-box.tag-box-v7
+          .container-fluid
+            / Brand and toggle get grouped for better mobile display
+            .navbar-header
+              %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+                %span.sr-only Toggle navigation
+                %span.icon-bar
+                %span.icon-bar
+                %span.icon-bar
+              = link_to board_posts_path(@board), class: "navbar-brand text-info" do
+                %strong= @board.name
+            / Collect the nav links, forms, and other content for toggling
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
+              .navbar-form.navbar-right
+                = link_to new_board_post_path, class: "btn-u btn-sm hover btn-u-yellow" do
+                  %i.fa.fa-pencil
+                  새 글쓰기
+              = form_tag board_posts_path(@board), :method => 'get', class: "navbar-form navbar-right", role: "search" do
+                .input-group
+                  = text_field_tag :search, params[:search], class: "form-control", placeholder: "Search"
+                  %span.input-group-btn
+                    = button_tag type: "submit" , class: "btn-u" do
+                      %i.fa.fa-search
+            / /.navbar-collapse
+          / /.container-fluid
+      / 도구바 End
+      .table-responsive
+        #table
+          %table.table.table-striped.table-hover
+            %thead
+              %tr
+                %th.text-center{"data-field" => "num"} #
+                %th{"data-field" => "title"} Title
+                %th{"data-field" => "user"} User
+                %th.text-center{"data-field" => "like"}
+                  / <button id='like' href="#" class="btn btn-icon btn-danger btn-simple">
+                  %i.ti-heart.text-danger
+                  / </button>
+                  \/
+                  / <button id='like' href="#" class="btn btn-icon btn-simple">
+                  %i.ti-heart-broken.text-muted
+                  / </button>
+                %th.text-center{"data-field" => "hits"} view
+                %th{"data-field" => "time"} Since
+            %tbody#posts
+              = render partial: "posts/common_components/tr"
+        / paginate Start
+        %center
+          #paginator
+            = paginate @posts, :param_name => 'page', remote: true
+        / paginate END

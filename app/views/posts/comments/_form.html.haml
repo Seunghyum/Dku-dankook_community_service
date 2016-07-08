@@ -1,0 +1,14 @@
+/ 덧글작성 Form
+.row.blog-comments.margin-bottom-30
+  .col-sm-2.sm-margin-bottom-40.text-right_sm-left_xs
+    = image_tag current_user.photo ? current_user.photo : "placeholder.jpg"
+  .col-sm-10
+    / Form
+    = form_for [@board, @post, @post.comments.new], class: "comment-style", novalidate:"novalidate", remote: true do |f|
+      %fieldset
+        .comments-itself
+          = f.text_area :content, :rows => 6, class: "summernote",:data => { provider: "summernote"}, placeholder: "예의 있게 써주세요"
+          %br/
+          .text-center
+            = f.submit "덧글달기", data: { disable_with: "작성 중..."},class: "btn-u"
+/ End Form

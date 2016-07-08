@@ -1,0 +1,70 @@
+/ <h2>Edit <haml_loud> resource_name.to_s.humanize </haml_loud></h2>
+/ <haml_loud> form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| </haml_loud><haml_block>
+/ <haml_loud> devise_error_messages! </haml_loud>
+/ <div class="field">
+/ <haml_loud> f.label :email </haml_loud><br />
+/ <haml_loud> f.email_field :email, autofocus: true </haml_loud>
+/ </div>
+/ <haml_silent> if devise_mapping.confirmable? &amp;&amp; resource.pending_reconfirmation? </haml_silent><haml_block>
+/ <div>Currently waiting confirmation for: <haml_loud> resource.unconfirmed_email </haml_loud></div>
+/ </haml_block>
+/ <div class="field">
+/ <haml_loud> f.label :password </haml_loud> <i>(leave blank if you don't want to change it)</i><br />
+/ <haml_loud> f.password_field :password, autocomplete: &quot;off&quot; </haml_loud>
+/ </div>
+/ <div class="field">
+/ <haml_loud> f.label :password_confirmation </haml_loud><br />
+/ <haml_loud> f.password_field :password_confirmation, autocomplete: &quot;off&quot; </haml_loud>
+/ </div>
+/ <div class="field">
+/ <haml_loud> f.label :current_password </haml_loud> <i>(we need your current password to confirm your changes)</i><br />
+/ <haml_loud> f.password_field :current_password, autocomplete: &quot;off&quot; </haml_loud>
+/ </div>
+/ <div class="actions">
+/ <haml_loud> f.submit &quot;Update&quot; </haml_loud>
+/ </div>
+/ </haml_block>
+/ <h3>Cancel my account</h3>
+/ <p>Unhappy? <haml_loud> button_to &quot;Cancel my account&quot;, registration_path(resource_name), data: { confirm: &quot;Are you sure?&quot; }, method: :delete </haml_loud></p>
+/ <haml_loud> link_to &quot;Back&quot;, :back </haml_loud>
+.wrapper.settings
+  .profile-background.settings-background
+    .filter-black
+  .profile-content.section-white
+    .container
+      .row.owner
+        .col-md-2.col-md-offset-5.col-sm-4.col-sm-offset-4.col-xs-6.col-xs-offset-3.text-center
+          .fileinput.fileinput-new.text-center{"data-provides" => "fileinput"}
+            .fileinput-new.thumbnail.img-circle.img-no-padding{:style => "width: 150px; height: 150px;"}
+              = image_tag "placeholder.jpg", alt: "Circle Image"
+            .fileinput-preview.fileinput-exists.thumbnail.img-circle.img-no-padding{:style => "max-width: 150px; max-height: 150px;"}
+            %div
+              %span.btn.btn-default.btn-file
+                %span.fileinput-new 사진 바꾸기
+                %span.fileinput-exists Change
+                %input{:name => "...", :type => "file"}/
+              %br/
+              %a.btn.btn-simple.btn-danger.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"}
+                %i.fa.fa-times
+                Remove
+      .row
+        .col-md-6.col-md-offset-3
+          = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "settings-form" }) do |f|
+            = devise_error_messages!
+            .row
+              .col-md-6.col-sm-6
+                .form-group
+                  %label 닉네임
+                  = f.text_field :username, autofocus: true, class: "form-control border-input", placeholder: "닉네임"
+            .form-group
+              %label 현재 비밀번호
+              = f.password_field :current_password, autocomplete: "off", class: "form-control border-input", placeholder: "비밀번호 재확인"
+            .form-group
+              %label 바꿀 비밀번호
+              = f.password_field :password, autocomplete: "off", class: "form-control border-input", placeholder: "비밀번호 재확인"
+            .form-group
+              %label 바꿀 비밀번호 재확인
+              = f.password_field :password_confirmation, autocomplete: "off", class: "form-control border-input", placeholder: "비밀번호 재확인"
+            .row
+              .col-md-4.col-md-offset-4.col-sm-6.col-sm-offset-3
+                = f.submit "저장하기", class: "btn btn-block btn-info"

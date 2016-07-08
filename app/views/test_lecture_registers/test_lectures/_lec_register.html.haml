@@ -1,0 +1,11 @@
+- @test_lectures.each do |test_lecture|
+  %tr{:id => "click_list#{test_lecture.id}", :style => "cursor: pointer;"}
+    %td.left_line.ta_c.numbering= test_lecture.lnum
+    %td.ta_c= test_lecture.divide
+    %td.ta_l= test_lecture.name
+    %td.ta_c= test_lecture.score
+    %td.ta_c= test_lecture.teacher
+    %td.ta_l= test_lecture.ldate
+    %td.ta_c= test_lecture.counting
+    %td.ta_c= test_lecture.limit_num
+    %td.ta_c

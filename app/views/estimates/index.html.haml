@@ -1,0 +1,14 @@
+%p#notice= notice
+%h1 Listing Estimates
+%table
+  %thead
+    %tr
+      %th{:colspan => "3"}
+  %tbody
+    - @estimates.each do |estimate|
+      %tr
+        %td= link_to 'Show', estimate
+        %td= link_to 'Edit', edit_estimate_path(estimate)
+        %td= link_to 'Destroy', estimate, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Estimate', new_estimate_path

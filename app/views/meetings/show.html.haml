@@ -1,0 +1,17 @@
+.job-description
+  .container.content
+    .title-box-v2
+      %p#notice= notice
+      %span{:class => "label rounded label-#{@meeting.type_class}"}= @meeting.event_type
+      %h2= @meeting.name
+      %p
+        작성일 : #{timeago_tag @meeting.created_at}
+      %p
+        이벤트 기간 : #{@event_time}
+      = link_to 'Edit', edit_meeting_path(@meeting), class: 'btn-u btn-u-orange btn-u-xs' if can? :update, @meetings
+    / Left Inner
+    .left-inner
+      = @meeting.content.html_safe
+      .text-center
+        = link_to '다른 일정 살펴보기', meetings_path, class: 'btn-u btn-u-aqua btn-u-sm'
+    / End Left Inner

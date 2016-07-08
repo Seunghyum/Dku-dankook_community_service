@@ -1,4 +1,0 @@
-var like_num = <%= @comment.get_upvotes.size %>;
-var dislike_num = <%= @comment.get_downvotes.size %>;
-$("#comment-like-btn-<%=@comment.id%> span").text(like_num);
-$("#comment-dislike-btn-<%=@comment.id%> span").text(dislike_num);

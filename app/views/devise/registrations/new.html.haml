@@ -1,0 +1,49 @@
+.wrapper.full-screen.register
+  .background
+    .filter-black
+    .container
+      .row
+        .col-md-6.col-md-offset-1.col-sm-7.col-xs-12
+          .info.info-horizontal
+            .icon
+              %i.fa.fa-umbrella
+            .description
+              %h3 We've got you covered
+              %p Larger, yet dramatically thinner. More powerful, but remarkably power efficient. Everything you need in a single case.
+          .info.info-horizontal
+            .icon.icon-primary
+              %i.fa.fa-map-signs
+            .description
+              %h3 Clear Directions
+              %p Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
+          .info.info-horizontal
+            .icon.icon-info
+              %i.fa.fa-user-secret
+            .description
+              %h3 We value your privacy
+              %p Completely synergize resource taxing relationships via premier niche markets.
+        .col-md-4.col-sm-5.col-xs-12
+          .demo-card
+            %h3.title.text-center 회원가입
+            %br/
+            = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {:class => "register-form"}) do |f|
+              = devise_error_messages!
+              = f.email_field :email, autofocus: true, class: "form-control",  placeholder: "학교 웹메일"
+              = f.text_field :username, class: "form-control",  placeholder: "닉네임"
+              = f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "비밀번호(6개 이상)"
+              = f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "비밀번호 재입력"
+              .text-center
+                = f.label :gender, "여자"
+                = f.radio_button(:gender, "여자")
+                  
+                \#{f.label :gender, "남자"}
+                \#{f.radio_button(:gender, "남자")}
+              = f.submit "회원가입",class: "btn btn-fill btn-block"
+            .login
+              %p
+                Already have an account? #{render "devise/shared/links"}.
+    .demo-footer.text-center
+      %h6
+        © 2016, made with
+        %i.fa.fa-heart.heart
+        by 멋쟁이 사자처럼 at 단국
