@@ -22,12 +22,13 @@
               %span
                 \&#xD3C9;&#xC810; :
                 %ul#display-inline.list-inline.star-vote
-                  - 1.upto(@lecture_info.average/20) do |x|
-                    %li
-                      %i.color-green.fa.fa-star
-                  - 1.upto(5 - @lecture_info.average/20) do |y|
-                    %li
-                      %i.color-green.fa.fa-star-o
+                  - unless @lecture_info.average.nil?
+                    - 1.upto(@lecture_info.average/20) do |x|
+                      %li
+                        %i.color-green.fa.fa-star
+                    - 1.upto(5 - @lecture_info.average/20) do |y|
+                      %li
+                        %i.color-green.fa.fa-star-o
                 = @lecture_info.average
                 \&#xC810;
           .row.content-boxes-v2.content-boxes-v2-o
@@ -38,12 +39,13 @@
                   \&#xC7AC;&#xBBF8;  &#xD765;&#xBBF8;
                   %small
                     %ul.list-inline.star-vote
-                      - 1.upto(@lecture_info.av_fun/20) do |x|
-                        %li
-                          %i.color-green.fa.fa-star
-                      - 1.upto(5 - @lecture_info.av_fun/20) do |y|
-                        %li
-                          %i.color-green.fa.fa-star-o
+                      - unless @lecture_info.av_fun.nil?
+                        - 1.upto(@lecture_info.av_fun/20) do |x|
+                          %li
+                            %i.color-green.fa.fa-star
+                        - 1.upto(5 - @lecture_info.av_fun/20) do |y|
+                          %li
+                            %i.color-green.fa.fa-star-o
                     = @lecture_info.av_fun
                     \&#xC810;
             .col-sm-6
@@ -53,12 +55,13 @@
                   \&#xAD50;&#xC218;&#xB825;
                   %small
                     %ul.list-inline.star-vote
-                      - 1.upto(@lecture_info.av_teaching/20) do |x|
-                        %li
-                          %i.color-green.fa.fa-star
-                      - 1.upto(5 - @lecture_info.av_teaching/20) do |y|
-                        %li
-                          %i.color-green.fa.fa-star-o
+                      - unless @lecture_info.av_teaching.nil?
+                        - 1.upto(@lecture_info.av_teaching/20) do |x|
+                          %li
+                            %i.color-green.fa.fa-star
+                        - 1.upto(5 - @lecture_info.av_teaching/20) do |y|
+                          %li
+                            %i.color-green.fa.fa-star-o
                     = @lecture_info.av_teaching
                     \&#xC810;
           .row.content-boxes-v2.content-boxes-v2-o
@@ -69,12 +72,13 @@
                   \&#xD559;&#xC810;&#xB530;&#xAE30;
                   %small
                     %ul.list-inline.star-vote
-                      - 1.upto(@lecture_info.av_get_grade/20) do |x|
-                        %li
-                          %i.color-green.fa.fa-star
-                      - 1.upto(5 - @lecture_info.av_get_grade/20) do |y|
-                        %li
-                          %i.color-green.fa.fa-star-o
+                      - unless @lecture_info.av_get_grade.nil?
+                        - 1.upto(@lecture_info.av_get_grade/20) do |x|
+                          %li
+                            %i.color-green.fa.fa-star
+                        - 1.upto(5 - @lecture_info.av_get_grade/20) do |y|
+                          %li
+                            %i.color-green.fa.fa-star-o
                     = @lecture_info.av_get_grade
                     \&#xC810;
             .col-sm-6
@@ -84,12 +88,13 @@
                   \&#xACFC;&#xC81C;  &#xC870;&#xBAA8;&#xC784;
                   %small
                     %ul.list-inline.star-vote
-                      - 1.upto(@lecture_info.av_teamwork_n_asg/20) do |x|
-                        %li
-                          %i.color-green.fa.fa-star
-                      - 1.upto(5 - @lecture_info.av_teamwork_n_asg/20) do |y|
-                        %li
-                          %i.color-green.fa.fa-star-o
+                      - unless @lecture_info.av_teamwork_n_asg.nil?
+                        - 1.upto(@lecture_info.av_teamwork_n_asg/20) do |x|
+                          %li
+                            %i.color-green.fa.fa-star
+                        - 1.upto(5 - @lecture_info.av_teamwork_n_asg/20) do |y|
+                          %li
+                            %i.color-green.fa.fa-star-o
                     = @lecture_info.av_teamwork_n_asg
                     \&#xC810;
           %hr
@@ -164,72 +169,69 @@
                           %i.fa.fa-check.color-green
                           \&#xACFC;&#xC81C;&#xC758; &#xD69F;&#xC218;, &#xB09C;&#xC774;&#xB3C4;
           / End Right Inner
-          / Left Inner
-          .col-md-7.col-md-pull-5
-            .left-inner
-              .row
-                .col-md-6
-                  %h3 &#xAD50;&#xC218; &#xC815;&#xBCF4;
-                  .overflow-h
-                    %p.hex
-                      \&#xC774;&#xB984; : #{@professor.name}
-                    %p
-                      \&#xC18C;&#xC18D; :
-                      %span.hex
-                        = @professor.belong
-                    %h5
-                      = link_to 이력  경력 확인하기, @professor.intro_url, target: _blank
-                .col-md-6
-                  %h3 &#xAC15;&#xC758; &#xC815;&#xBCF4;
-                  .overflow-h
-                    %p.hex
-                      %strong
-                        \&#xAC15;&#xC758;&#xBA85; : #{@lecture_info.name}
-                        %button.btn-u.btn-u-xs.rounded.btn-u-
-                        = @lecture_info.div_color
-                        "&gt;#{@lecture_info.l_type}
-                  %p.hex
-                    \&#xAC1C;&#xC124;&#xD559;&#xAE30; : #{@lecture_info.semester}&#xD559;&#xAE30;
-                  %p.hex
-                    \&#xC2DC;&#xAC04; : #{@lecture_info.time}&#xAD50;&#xC2DC;
-            %br
-              / Bordered Funny Boxes
-              - unless @lecture_estimates.nil?
-                - @lecture_estimates.each do |esti|
-                  .funny-boxes.funny-boxes-top-
-                  = @color_pick.sample
-                  bg-color-white"&gt;
-                  %p.pull-right
-                    = esti.created_at.year
-                    \&#xB144; #{esti.created_at.month}&#xC6D4;
-                  %h4
-                    = esti.reason
-                    \&#xC704;&#xD574; &#xC218;&#xAC15;&#xD588;&#xB358; &#xC120;&#xBC30;
-                  .pull-right
-                    %ul.list-unstyled.funny-boxes-rating
-                      \&#xD3C9;&#xAC00; &#xC810;&#xC218; :
-                      - 1.upto(esti.average/20) do |x|
-                        %li
-                          %i.fa.fa-star
-                      - 1.upto(5 - esti.average/20) do |y|
-                        %li
-                          %i.fa.fa-star-o
-                  - if esti.msg
-                    %strong
-                      %h4 &#xD6C4;&#xAE30;
-                    %p= esti.msg.html_safe
-                    %br
-                    / 좋아요 / 싫어요
-                    %ul.list-inline.badge-lists.badge-box-v1.margin-bottom-30.text-center
-                      %li
-                        = link_to like_lecture_info_lecture_estimate_path(@lecture_info, esti),id: esti-like-btn-#{esti.id}, remote: true  do
-                          %i.rounded-x.ti-heart.text-danger
-                          %span.badge.badge-red.rounded-x= esti.get_upvotes.size
-                      %li
-                        = link_to dislike_lecture_info_lecture_estimate_path(@lecture_info, esti), id: esti-dislike-btn-#{esti.id}, remote: true do
-                          %i.rounded-x.ti-heart-broken
-                          %span.badge.badge-gray.rounded-x= esti.get_downvotes.size
-              / End Bordered Funny Boxes
-              %center
-                = link_to 강의평가 작성하기, new_lecture_info_lecture_estimate_path(@lecture_info), class: btn-u btn-u-yellow
-          / End Left Inner
+      / Left Inner
+      .col-md-7.col-md-pull-5
+        .left-inner
+          .row
+            .col-md-6
+              %h3 교수 정보
+              .overflow-h
+                %p.hex
+                  이름 : #{@professor.name}
+                %p
+                  소속 :
+                  %span.hex
+                    = @professor.belong
+                %h5
+                  = link_to "이력  경력 확인하기", @professor.intro_url, target: "_blank"
+            .col-md-6
+              %h3 강의 정보
+              .overflow-h
+                %p.hex
+                  %strong
+                    강의명 : #{@lecture_info.name}
+                    %button{ class: "btn-u-#{@lecture_info.div_color} btn-u btn-u-xs rounded"}
+                      = @lecture_info.l_type
+              %p.hex
+                개설학기 : #{@lecture_info.semester}학기
+              %p.hex
+                수업시간 : #{@lecture_info.time}교시
+        %br
+          / Bordered Funny Boxes
+          - unless @lecture_estimates.nil?
+            - @lecture_estimates.each do |esti|
+              .funny-boxes.bg-color-white{class: "funny-boxes-top-#{@color_pick.sample}"}
+              %p.pull-right
+                = esti.created_at.year
+                \&#xB144; #{esti.created_at.month}&#xC6D4;
+              %h4
+                = esti.reason
+                \&#xC704;&#xD574; &#xC218;&#xAC15;&#xD588;&#xB358; &#xC120;&#xBC30;
+              .pull-right
+                %ul.list-unstyled.funny-boxes-rating
+                  \&#xD3C9;&#xAC00; &#xC810;&#xC218; :
+                  - 1.upto(esti.average/20) do |x|
+                    %li
+                      %i.fa.fa-star
+                  - 1.upto(5 - esti.average/20) do |y|
+                    %li
+                      %i.fa.fa-star-o
+              - if esti.msg
+                %strong
+                  %h4 &#xD6C4;&#xAE30;
+                %p= esti.msg.html_safe
+                %br
+                / 좋아요 / 싫어요
+                %ul.list-inline.badge-lists.badge-box-v1.margin-bottom-30.text-center
+                  %li
+                    = link_to like_lecture_info_lecture_estimate_path(@lecture_info, esti),id: "esti-like-btn-#{esti.id}", remote: true  do
+                      %i.rounded-x.ti-heart.text-danger
+                      %span.badge.badge-red.rounded-x= esti.get_upvotes.size
+                  %li
+                    = link_to dislike_lecture_info_lecture_estimate_path(@lecture_info, esti), id: "esti-dislike-btn-#{esti.id}", remote: true do
+                      %i.rounded-x.ti-heart-broken
+                      %span.badge.badge-gray.rounded-x= esti.get_downvotes.size
+          / End Bordered Funny Boxes
+          %center
+            = link_to "강의평가 작성하기", new_lecture_info_lecture_estimate_path(@lecture_info), class: "btn-u btn-u-yellow"
+      / End Left Inner

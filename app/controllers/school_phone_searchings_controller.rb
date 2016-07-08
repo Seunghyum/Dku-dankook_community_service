@@ -1,7 +1,8 @@
 class SchoolPhoneSearchingsController < ApplicationController
 
   #auth
-  load_and_authorize_resource
+
+  load_and_authorize_resource  param_method: :search_params 
   def new
       @new_search = SchoolPhoneSearching.new
       @campus = ["죽전", "천안"]
