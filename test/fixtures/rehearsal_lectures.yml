@@ -1,23 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  lnum: 1
-  divide: 1
+  lnum: MyString
+  divide: MyString
   name: MyString
   score: 1
   teacher: MyString
   ldate: MyString
-  regi_num: 1
-  limit_num: MyString
+  limit_num: 1
   counting: 1
 
 two:
-  lnum: 1
-  divide: 1
+  lnum: MyString
+  divide: MyString
   name: MyString
   score: 1
   teacher: MyString
   ldate: MyString
-  regi_num: 1
-  limit_num: MyString
+  limit_num: 1
   counting: 1

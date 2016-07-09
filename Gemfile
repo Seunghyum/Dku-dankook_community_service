@@ -27,7 +27,7 @@ gem 'tag-it-rails'
 gem 'chart-js-rails'
 ##Passing Data to JavaScript
 gem 'gon'
-
+gem "haml-rails"
 
 #auth
 gem 'devise'

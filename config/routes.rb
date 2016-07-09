@@ -1,20 +1,18 @@
 Rails.application.routes.draw do
   scope module: :test_lecture_registers do
-    resources :test_lectures do
-      collection do
-        get "sign_in" => "test_lectures#sign_in", as: "sign_in"
-        get "sign_up" => "test_lectures#sign_up", as: "sign_up"
-        get "user_check" => "test_lectures#user_check", as: "user_check"
-      end
-    end
+    get "home" => "test_lectures#home", as:"test_home"
+    resources :test_lectures
     resources :test_users do
       collection do
         get "sign_in" => "test_users#sign_in", as: "sign_in"
-        get "sign_up" => "test_users#sign_up", as: "sign_up"
-        get "user_check" => "test_users#user_check", as: "user_check"
       end
     end
-    get "home" => "test_lectures#home", as:"test_home"
+    resources :rehearsal_users do
+      collection do
+        get "sign_in" => "rehearsal_users#sign_in", as: "sign_in"
+      end
+      resources :rehearsal_lectures
+    end
   end
 #강의평가
   resources :lecture_infos do

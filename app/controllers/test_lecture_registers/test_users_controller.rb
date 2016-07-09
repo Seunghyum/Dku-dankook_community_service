@@ -1,9 +1,19 @@
 class TestLectureRegisters::TestUsersController < TestLectureRegisters::ApplicationController
 
   #auth
-  load_and_authorize_resource
+  # load_and_authorize_resource param_method: :test_user_params
 
   def sign_in
+  end
+
+  def remote_ip
+    # 개발환경에서만 적용
+    if request.remote_ip == '::1'
+      # Hard coded remote address
+      '123.45.67.89'
+    else
+      request.remote_ip
+    end
   end
 
   def sign_up
@@ -18,13 +28,18 @@ class TestLectureRegisters::TestUsersController < TestLectureRegisters::Applicat
   end
 
   def create
-    @test_user = TestUser.new(test_user_params)
+    user_ip = UserIp.where(user_ip: remote_ip).take
 
+    if user_ip.nil?
+      @test_user = TestUser.new(address: remote_ip)
+    else
+      @test_user = TestUser.new(user_ip: remote_ip)
+    end
     respond_to do |format|
       if @test_user.save
-        format.html { redirect_to rehearsals_path }
+        format.html{ redirect_to test_lectures_path }
       else
-        format.html { render :new }
+        format.html{ redirect_to :back }
       end
     end
   end
