@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # 수강신청 리허설
   scope module: :test_lecture_registers do
     get "home" => "test_lectures#home", as:"test_home"
     resources :test_lectures
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
       resources :rehearsal_lectures
     end
   end
+
 #강의평가
   resources :lecture_infos do
     resources :lecture_estimates do
@@ -27,16 +29,25 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 #달력
   resources :meetings
+
 #사물함
-  get 'locker/index'
+post '/lockers/lockerselect' => 'lockers#lockerselect', as: "lockerselect_lockers"
 
-  get 'locker/manage'
+post '/lockers/destroy' => 'lockers#destroy', as: "destroy_lockers"
 
-  get 'locker/nottime'
+post 'lockers/first_check' => "lockers#first_check", as: "first_check_lockers"
 
-  get 'locker/reject'
+get 'lockers/home' => "lockers#home", as: "home_lockers"
 
-  get 'locker/selecting'
+get 'lockers/reject' => "lockers#reject", as: "reject_lockers"
+
+get 'lockers/index' => "lockers#index", as: "index_lockers"
+
+get 'lockers/manage' => "lockers#manage", as: "manage_lockers"
+
+get 'lockers/selecting_page' => "lockers#selecting_page", as: "selecting_page_lockers"
+
+get 'lockers/nottime' => "lockers#nottime", as: "nottime_lockers"
 
 # 전화번호부
   resources :school_phone_searchings

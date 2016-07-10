@@ -1,4 +1,5 @@
 class Major < ActiveRecord::Base
-    belongs_to :user
-    has_one :locker
+  has_many :users
+  has_many :books
+  has_one :locker
 end

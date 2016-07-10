@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708144953) do
+ActiveRecord::Schema.define(version: 20160710094541) do
 
   create_table "best_fives", force: :cascade do |t|
     t.string   "category"
@@ -25,6 +25,31 @@ ActiveRecord::Schema.define(version: 20160708144953) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "bookables", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "user_id"
+    t.integer  "counting"
+    t.string   "giver"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bookables", ["book_id"], name: "index_bookables_on_book_id"
+  add_index "bookables", ["user_id"], name: "index_bookables_on_user_id"
+
+  create_table "books", force: :cascade do |t|
+    t.integer  "limit_num"
+    t.integer  "counting",   default: 0
+    t.string   "name"
+    t.string   "cname"
+    t.string   "grade"
+    t.integer  "major_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "books", ["major_id"], name: "index_books_on_major_id"
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -94,25 +119,38 @@ ActiveRecord::Schema.define(version: 20160708144953) do
   add_index "lecture_infos", ["best_five_id"], name: "index_lecture_infos_on_best_five_id"
   add_index "lecture_infos", ["professor_id"], name: "index_lecture_infos_on_professor_id"
 
-  create_table "lockers", force: :cascade do |t|
-    t.integer  "lnum"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "locker_particulars", force: :cascade do |t|
+    t.integer  "locker_id"
     t.integer  "user_id"
+    t.string   "type",       default: "일반"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "locker_particulars", ["locker_id"], name: "index_locker_particulars_on_locker_id"
+  add_index "locker_particulars", ["user_id"], name: "index_locker_particulars_on_user_id"
+
+  create_table "lockers", force: :cascade do |t|
+    t.integer  "limit_num"
+    t.integer  "counting",   default: 0
     t.integer  "major_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "lockers", ["major_id"], name: "index_lockers_on_major_id"
-  add_index "lockers", ["user_id"], name: "index_lockers_on_user_id"
 
   create_table "majors", force: :cascade do |t|
-    t.string   "mname"
-    t.integer  "locker_limit"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "name"
     t.integer  "user_id"
+    t.integer  "locker_id"
+    t.datetime "locker_time"
+    t.datetime "book_time"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
+  add_index "majors", ["locker_id"], name: "index_majors_on_locker_id"
   add_index "majors", ["user_id"], name: "index_majors_on_user_id"
 
   create_table "meetings", force: :cascade do |t|
@@ -249,7 +287,7 @@ ActiveRecord::Schema.define(version: 20160708144953) do
     t.string   "role",                   default: "일반학생"
     t.string   "username"
     t.string   "gender"
-    t.integer  "my_num",                 default: 0
+    t.integer  "lnum",                   default: 0
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -266,10 +304,15 @@ ActiveRecord::Schema.define(version: 20160708144953) do
     t.string   "uid"
     t.string   "image"
     t.string   "photo"
+    t.integer  "lcounting"
+    t.integer  "locker_id"
+    t.integer  "major_id"
   end
 
   add_index "users", ["comment_id"], name: "index_users_on_comment_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["locker_id"], name: "index_users_on_locker_id"
+  add_index "users", ["major_id"], name: "index_users_on_major_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "votes", force: :cascade do |t|

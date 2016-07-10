@@ -7,7 +7,7 @@ class Ability
     if user.role == '슈퍼관리자'
       can :manage, :all
     elsif user.role == '일반대표' && user.role == '학생'
-      can [:create, :read], [Post, Comment, LectureEstimate]
+      can [:create, :read], [Post, Comment, LectureEstimate, Locker]
       can [:read], [Meeting]
       can :sign_in [SchoolPhoneSearching, TestLecture, TestUser]
 
@@ -20,9 +20,13 @@ class Ability
       can [:update, :destroy], LectureEstimate do |esimate|
         esimate.user_id == user.id
       end
+      can [:first_check, :lockerselect], LectureEstimate do |esimate|
+        esimate.user_id == user.id
+      end
 
     elsif user.role == '외부인'
       can :read, [Post, Meeting, LectureEstimate]
+      can :home [Locker]
       can :manage [SchoolPhoneSearching, TestLecture, TestUser]
     end
     # Define abilities for the passed in user here. For example:

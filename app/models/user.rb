@@ -6,9 +6,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :lecture_estimates
-  has_one :locker
  	has_many :posts
  	has_many :comments
+  has_many :books, through: :bookables
+#사물함의 경우 개념상 has_one이지만 모델에서 조건을 줘서 1개로 제어하면 됨.
+  has_many :locker, through: :locker_particulars
+  has_many :locker_particulars
+
   belongs_to :major
 
   validates :email, uniqueness: true, presence: true

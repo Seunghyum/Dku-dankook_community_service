@@ -3,13 +3,15 @@
 one:
   limit_num: 1
   counting: 1
-  start_time: 2016-07-10 17:40:11
+  name: MyString
+  cname: MyString
+  grade: MyString
   major_id: 
-  particular_id: 
 
 two:
   limit_num: 1
   counting: 1
-  start_time: 2016-07-10 17:40:11
+  name: MyString
+  cname: MyString
+  grade: MyString
   major_id: 
-  particular_id: 

@@ -1,0 +1,103 @@
+<div class='row'>
+    <div class='col-sm-offset-4 col-sm-4'>
+        <div class='text-center'>
+            <% flash.each do |key, value| %>
+                <div class="alert alert-<%= key %>"><%= value %></div>
+            <% end %>
+        </div>
+        <h4 class='blue-1'>
+            <strong>
+                <i class="fa fa-caret-right"></i>
+                현재 정보
+            </strong>
+        </h4>
+
+        <table class="table" id='locker'>
+            <tbody>
+                <tr>
+                    <td>성명</td>
+                    <td><%= current_user.name %></td>
+                </tr>
+                <tr>
+                    <td>소속</td>
+                    <td><%= current_user.major.name %></td>
+                </tr>
+                <tr>
+                    <td>보유 사물함</td>
+                    <% if current_user.lcounting.nil? %>
+                        <td class='red'>불가</td>
+                    <% elsif !current_user.major.locker.empty? %>
+                        <td class='red'><%= current_user.major.locker.limit_num %></td>
+                    <% else %>
+                        <td>미정</td>
+                    <% end %>
+                </tr>
+            </tbody>
+        </table>
+        <div class='row text-center'>
+            <div class='col-sm-4'>
+                <% if current_user.lcounting.nil? && current_user.major.locker.limit_num > current_user.major.locker.counting %>
+                    <div class="form-group">
+                        <h5 class='silver'>아직 1차 접수하지 않았습니다.</h5>
+                    </div>
+                    <div class="form-group">
+                        <%= link_to first_check_lockers_path, method: "post" do %>
+                        <%= button_tag "1차 접수하기", class: "locker-button" %>
+                        <% end %>
+                    </div>
+                <% elsif !current_user.lcounting.nil? && current_user.lnum == 0 %>
+                    <div class="form-group">
+                        <h5 class='silver'>
+                            사물함 권한을가졌습니다
+                            <br>
+                            하지만 아직 사물함을 선택하지 않았습니다
+                        </h5>
+                    </div>
+                    <div class="form-group">
+                        <%= link_to  selecting_page_lockers_path, class: "form-group" do %>
+                        <%= button_tag "사물함 고르기", class: "locker-button" %>
+                        <% end %>
+                    </div>
+                <% elsif current_user.lnum > current_user.major.locker_limit %>
+                    <div class="form-group">
+                        <h5 class='silver'>
+                            1차 선발에서 떨어졌습니다.<br>
+                            사물함 제한 인원
+                            <%= current_user.major.locker_limit %>명 중
+                            <% current_user.lnum %>번째로 접수했습니다.</h5>
+                        <br>
+                        <br>
+                        <%= link_to "처음으로", "/home/index" %>
+                    </div>
+                <% else %>
+                    <div class="form-group">
+                        <h5 class='silver'>
+                            사물함 권한을 가졌습니다
+                            <br>
+                            반납하고 다른 사물함을 찾을 수 있습니다.
+                        </h5>
+                    </div>
+                    <div class="form-group">
+                        <%= link_to destroy_lockers_path, method: 'post' do %>
+                        <%= button_tag "반납 & 다시 고르기", class: "locker-button" %>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+            <div class='col-sm-4'>
+                <div class="form-group">
+                    <%= link_to home_lockers_path method: "get" do %>
+                    <%= button_tag "홈으로 가기", class: "locker-button" %>
+                    <% end %>
+                </div>
+            </div>
+            <div class='col-sm-4'>
+                <div class="form-group">
+                    <%= link_to manage_lockers_path do%>
+                    <%= button_tag "우리 학과 현황", class: "locker-button" %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

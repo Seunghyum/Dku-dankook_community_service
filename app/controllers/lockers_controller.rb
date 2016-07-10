@@ -1,11 +1,11 @@
-class LockerController < ApplicationController
+class LockersController < ApplicationController
   #auth
-  load_and_authorize_resource
+  # load_and_authorize_resource
 
   before_action :set_numbering, only: [:first_check]
   before_action :set_locker, only: [:lockerselect, :destroy]
   before_action :set_time, only: [:lockerselect, :first_check, :nottime ]
-  before_action :authenticate_user!, :except => "nottime"
+  # before_action :authenticate_user!, :except => "nottime"
 
 #자신의 로커 상태 표시 page + 첫번째 번호표 뽑기 view page
   def index
@@ -83,7 +83,7 @@ class LockerController < ApplicationController
   end
 
 #두번째 로커 선택하는 view page
-  def selecting
+  def selecting_page
   end
 
 #두번째 로커 선택 로직
