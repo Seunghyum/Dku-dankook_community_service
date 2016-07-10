@@ -287,7 +287,7 @@ ActiveRecord::Schema.define(version: 20160710094541) do
     t.string   "role",                   default: "일반학생"
     t.string   "username"
     t.string   "gender"
-    t.integer  "lnum",                   default: 0
+    t.integer  "lnum"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -305,13 +305,11 @@ ActiveRecord::Schema.define(version: 20160710094541) do
     t.string   "image"
     t.string   "photo"
     t.integer  "lcounting"
-    t.integer  "locker_id"
     t.integer  "major_id"
   end
 
   add_index "users", ["comment_id"], name: "index_users_on_comment_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["locker_id"], name: "index_users_on_locker_id"
   add_index "users", ["major_id"], name: "index_users_on_major_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 

@@ -14,16 +14,15 @@ class User < ActiveRecord::Base
   has_many :locker_particulars
 
   belongs_to :major
-
-  validates :email, uniqueness: true, presence: true
-  validates :username, uniqueness: true, presence: true
+  validates :username, :email, uniqueness: true, presence: true
   validates :gender, presence: true,
             inclusion: { in: %w(남자 여자) }
+  validates_uniqueness_of :lnum, allow_blank: true, scope: [:major_id]
   validate :validate_username
 
   #투표자
   acts_as_voter
-  #태그 한 사람
+  #태그자
   acts_as_tagger
 
   #로그인시 서로의 username과 email이 같은 유저 발생시 예외처리

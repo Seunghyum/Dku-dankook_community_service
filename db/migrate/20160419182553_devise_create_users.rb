@@ -10,7 +10,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :gender
 
       #사물함  first_check 번호표
-      t.integer :lnum, default: 0
+      t.integer :lnum
 
       ## Recoverable
       t.string   :reset_password_token
