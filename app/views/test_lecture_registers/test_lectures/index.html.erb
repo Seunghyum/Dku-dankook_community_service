@@ -531,7 +531,7 @@
                             <li>수강신청</li>
                         </ul>
                         <!-- //현재위치 -->
-                        <h3 id="title" class="tit_now tit_school">수강신청</h3>
+                        <h3 id="title" class="tit_now tit_school">수강신청 리허설</h3>
                     </div>
 
                     <div class="clear_box">
@@ -671,6 +671,14 @@
                                 </tbody>
                             </table>
                         </div>
+
+
+                        <div class="ly_help" style="width:300px; padding: 10px 20px;">
+                            <strong>이 리스트는</strong>
+                            <p>수강계획도우미에 등록한 수업리스트가 나옵니다.<br />여기에서는 임의로 주어진 수업리스트를 사용하겠습니다.</p>
+                            <a href="#" class="clse" style="float: right;"><img src="http://static.naver.com/kin/09renewal/btn_close_layer.gif" width="19" height="19" alt="닫기"></a>
+                            <div class="edge_cen"></div><!-- 꼭지가 우측에 있어야 할때는 edge_rgt 클래스 사용 -->
+                        </div>
                     </form>
 
                     <br>
@@ -792,5 +800,24 @@
         <!-- //footer -->
     </div>
     <!-- //wrap -->
-
+    <style media="screen">
+        .ly_help{position:absolute;z-index:10;margin-top:6px;border:1px solid #888;background:#fff;text-align:left; display: none;}
+        .ly_help .clse{position:absolute;top:3px;right:4px}
+        .ly_help strong{display:block;margin-bottom:-5px;padding:9px 0 0 9px;font-size:11px;color:#2c2c2c;letter-spacing:-1px}
+        .ly_help p{padding:8px 0 6px 9px;font-size:11px;color:#828282;line-height:16px;letter-spacing:-1px}
+        .ly_help p em{color:#268e00}
+        .ly_help .edge_cen{position:absolute;top:0;left:50%;width:9px;height:6px;margin:-6px 0 0 -5px;background:url(http://static.naver.com/kin/09renewal/bg_layer_edge.gif) no-repeat 0 0;font-size:0}
+        .ly_help .edge_rgt{position:absolute;top:0;right:0;width:9px;height:6px;margin-top:-6px;background:url(http://static.naver.com/kin/09renewal/bg_layer_edge.gif) no-repeat 0 0;font-size:0}
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(window).load(function(){
+                $(".ly_help").fadeIn("fast").delay(3000).fadeOut("slow");
+            });
+            $(".clse").click(function(e){
+                e.preventDefault();
+                $(".ly_help").remove();
+            });
+        });
+    </script>
 </body>
