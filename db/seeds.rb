@@ -6,9 +6,9 @@
 # #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 # #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
-User.create(username: "admin_moon", gender: "남자", email: 'qwe@qwe.com', password: "12341234", password_confirmation: "12341234", role: "슈퍼관리자")
-User.create(username: "moon", gender: "남자", email: '123@123.com', password: "12341234", password_confirmation: "12341234", role: "학생")
-User.create(username: "female", gender: "여자", email: '23@123.com', password: "12341234", password_confirmation: "12341234", role: "학생")
+User.create(username: "admin_moon", gender: "남자", email: 'qwe@qwe.com', password: "12341234", password_confirmation: "12341234", role: "슈퍼관리자", major_id: 1)
+User.create(username: "moon", gender: "남자", email: '123@123.com', password: "12341234", password_confirmation: "12341234", role: "학생", major_id: 1)
+User.create(username: "female", gender: "여자", email: '23@123.com', password: "12341234", password_confirmation: "12341234", role: "학생", major_id: 1)
 
 Board.create(name: "자유게시판", description: "자유롭게 말하세요")
 85.times do
@@ -16,9 +16,11 @@ Board.create(name: "자유게시판", description: "자유롭게 말하세요")
 end
 
 #사물함 갯수 제한( 전체 사물함 갯수 - 이미 지정된 사물함 갯수 )
-Major.create(mname: "국제경영" )
+Major.create(name: "국제경영" )
+Locker.create(limit_num: 2, major_id: 1)
 
-Major.create(mname: "모바일" )
+Major.create(name: "모바일" )
+Locker.create(limit_num: 3, major_id: 2)
 #
 # #노코기리 전화번호부 긁어오기
 # require 'nokogiri'
