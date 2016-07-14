@@ -208,16 +208,115 @@ ko:
       short: "%y/%m/%d %H:%M"
     pm: 오후
   activerecord:
+    model:
+      best_five: "Best 5"
+      board: "주제"
+      book: "책"
+      post: "게시판"
+      comment: "덧글"
+      lecture_info: "수업 정보"
+      lecture_estimate: "강의 평가"
+      professor: "교수님 정보"
+      locker_particular: "예외사항"
+      locker: "사물함"
+      major: "전공"
+      meeting: "일정"
+      school_chun: "단국대 천안"
+      school_jook: "단국대 죽전"
+      user: "유저"
+
     attributes:
-      submission:
-        image: "스크린샷"
-        user_id: "사용자"
-      reservation:
-        num_of_member: "사용자"
-        date: "날짜"
-        use_time: "사용할 시간"
-        location: "장소"
-        user_id: "예약자"
+      best_five:
+        category: "주제"
+      board:
+        name: "주제 이름"
+        description: "게시판 설명"
+      book:
+        limit_num: "제한 갯수"
+        counting: "이미 가져간 책"
+        name: "책 제목"
+        cname: "수업"
+        grade: "학년"
+        major_id: "학과"
+      comment:
+        content: "내용"
+        user_id: "작성자"
+      lecture_estimate:
+        reason: "수강 이유"
+        average: "평점"
+        fun: "재미 & 흥미"
+        teaching: "교수력"
+        get_grade: "학점따기"
+        teamwork_n_asg: "팀플 & 과제"
+        user_id: "작성자"
+        lecture_info_id: "관련 강의"
+        msg: "하고싶은 말"
+      lecture_info:
+        name: "강의명"
+        # l_type: ""
+        semester: "개강학기"
+        male_view: "남학생 조회수"
+        female_view: "여학생 조회수"
+        all_view: "총 조회수"
+        av_fun: "재미 & 흥미 총점"
+        av_teaching: "교수력 총점"
+        av_get_grade: "학점따기 총점"
+        av_teamwork_n_asg: "팀플 & 과제 총점"
+        professor_id: "관련 교수"
+      locker_particular:
+        locker_id: "사물함"
+        # user_id: ""
+        type: "예외 이유"
+      locker:
+        limit_num: "총 사물함 갯수"
+        counting: "이미 점유한 사물함"
+        major_id: "학과"
+      major:
+        name: "학과명"
+        locker_id: "관련 사물함"
+        locker_time: "사물함 접수 시작시간"
+        book_time: "중고책 접수 시작시간"
+      meeting:
+        name: "일정 이름"
+        start_time: "시작 시간"
+        end_time: "종료 시간"
+        content: "내용"
+        photo: "이미지"
+        display_tag: "달력에 씌여질 태그명"
+        event_type: "행사 종류"
+        # type_class: ""
+      post:
+        title: "제목"
+        content: "내용"
+        attachment: "첨부자료"
+        user_id: "작성자"
+        hits: "조회수"
+        board_id: "게시판 종류"
+        image_url: "이미지"
+      professor:
+        name: "성함"
+        belong: "소속"
+        intro_url: "이력"
+      school_jook:
+        belong: "소속"
+        name: "기관명"
+        phone: "전화번호"
+        campus: "캠퍼스"
+      school_chun:
+        belong: "소속"
+        name: "기관명"
+        phone: "전화번호"
+        campus: "캠퍼스"
+      user:
+        email: "이메일"
+        profile: "프로필 이미지"
+        role: "권한"
+        username: "별명"
+        gender: "성별"
+        lnum: "사물함 번호"
+        name: "실명"
+        lcounting: "사물함 1차접수 번호표"
+        major_id: "전공"
     errors:
       messages:
         record_invalid: 데이터 검증에 실패하였습니다. %{errors}
