@@ -26,8 +26,8 @@
                     <td>보유 사물함</td>
                     <% if current_user.lcounting.nil? %>
                         <td class='red'>불가</td>
-                    <% elsif !current_user.major.locker.empty? %>
-                        <td class='red'><%= current_user.major.locker.limit_num %></td>
+                    <% elsif current_user.major.locker.present? %>
+                        <td class='red'><%= current_user.lnum %></td>
                     <% else %>
                         <td>미정</td>
                     <% end %>
@@ -48,26 +48,24 @@
                 <% elsif !current_user.lcounting.nil? && current_user.lnum == 0 %>
                     <div class="form-group">
                         <h5 class='silver'>
-                            사물함 권한을가졌습니다
+                            사물함 권한을 가졌습니다.
                             <br>
-                            하지만 아직 사물함을 선택하지 않았습니다
+                            사물함을 골라주세요.
                         </h5>
                     </div>
                     <div class="form-group">
                         <%= link_to  selecting_page_lockers_path, class: "form-group" do %>
-                        <%= button_tag "사물함 고르기", class: "locker-button" %>
+                            <%= button_tag "사물함 고르기", class: "locker-button" %>
                         <% end %>
                     </div>
-                <% elsif current_user.lnum > current_user.major.locker_limit %>
+                <% elsif current_user.lcounting > @our_locker.limit_num %>
                     <div class="form-group">
                         <h5 class='silver'>
                             1차 선발에서 떨어졌습니다.<br>
                             사물함 제한 인원
-                            <%= current_user.major.locker_limit %>명 중
-                            <% current_user.lnum %>번째로 접수했습니다.</h5>
-                        <br>
-                        <br>
-                        <%= link_to "처음으로", "/home/index" %>
+                            <%= @our_locker.limit_num %>명 중
+                            <%= current_user.lcounting %>번째로 접수했습니다.
+                        </h5>
                     </div>
                 <% else %>
                     <div class="form-group">
@@ -79,7 +77,7 @@
                     </div>
                     <div class="form-group">
                         <%= link_to destroy_lockers_path, method: 'post' do %>
-                        <%= button_tag "반납 & 다시 고르기", class: "locker-button" %>
+                            <%= button_tag "반납 & 다시 고르기", class: "locker-button" %>
                         <% end %>
                     </div>
                 <% end %>

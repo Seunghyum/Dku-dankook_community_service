@@ -2,7 +2,7 @@ class LockersController < ApplicationController
   #auth
   # load_and_authorize_resource
 
-  before_action :set_locker, only: [:lockerselect, :destroy]
+  before_action :set_locker, only: [:index, :lockerselect, :destroy, :first_check, :selecting_page, :check_lcounting_for_reject]
   before_action :set_time, only: [:lockerselect, :first_check, :nottime ]
   # before_action :authenticate_user!, :except => "nottime"
 #1차 접수 전 제한인원안에 들지 못한 유저의 사물함 선택 방어
@@ -29,18 +29,20 @@ class LockersController < ApplicationController
     if current_user.lcounting.nil?
       @our_locker.counting += 1
       @our_locker.save
-      current_user.update(lcounting: @our_locker.counting + 1)
+      current_user.update(lcounting: @our_locker.counting)
+      redirect_to action: "selecting_page"
     end
   end
 
 #두번째 로커 선택하는 view page
   def selecting_page
+    if current_user.lcounting > @our_locker.limit_num
+      redirect_to action: "reject"
+    end
   end
 
 #두번째 로커 선택 로직
   def lockerselect
-
-
       #현재 유저가 사물함 가진것이 없을때
       if current_user.lnum == 0
         current_user.update(lnum: @lnum)
@@ -59,7 +61,7 @@ class LockersController < ApplicationController
   end
 
   def destroy
-      current_user.update(lnum: nil)
+      current_user.update(lnum: 0)
       redirect_to action: "selecting_page"
   end
 
@@ -82,12 +84,12 @@ class LockersController < ApplicationController
     def check_lcounting_nil
       if current_user.lcounting.nil?
         redirect_to action: "index"
-      else
+      end
     end
 
     def check_lcounting_for_reject
       if current_user.lcounting > @our_locker.limit_num
-        flash[:danger] = "1차 접수 - 총 제한 인원 #{@our_locker_limit}명 중 #{current_user.lcounting}번째 입니다. 다음학기에....."
+        flash[:danger] = "1차 접수 - 총 제한 인원 #{@our_locker.limit_num}명 중 #{current_user.lcounting}번째 입니다. 다음학기에....."
         redirect_to action: "reject"
       end
     end
