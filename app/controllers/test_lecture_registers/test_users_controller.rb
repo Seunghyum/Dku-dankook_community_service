@@ -1,8 +1,5 @@
 class TestLectureRegisters::TestUsersController < TestLectureRegisters::ApplicationController
 
-  #auth
-  # load_and_authorize_resource param_method: :test_user_params
-
   def sign_in
   end
 

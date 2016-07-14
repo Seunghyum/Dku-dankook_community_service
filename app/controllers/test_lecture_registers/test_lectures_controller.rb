@@ -1,9 +1,6 @@
 class TestLectureRegisters::TestLecturesController < TestLectureRegisters::ApplicationController
   before_action :set_test_lecture, only: [:show, :edit, :update, :destroy]
 
-  #auth
-  # load_and_authorize_resource param_method: :test_lecture_params
-
   def home
   end
 

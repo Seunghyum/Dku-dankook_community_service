@@ -2,18 +2,14 @@ Rails.application.routes.draw do
   # 수강신청 리허설
   scope module: :test_lecture_registers do
     get "home" => "test_lectures#home", as:"test_home"
-    resources :test_lectures
-    resources :test_users do
-      collection do
-        get "sign_in" => "test_users#sign_in", as: "sign_in"
-      end
-    end
-    resources :rehearsal_users do
-      collection do
-        get "sign_in" => "rehearsal_users#sign_in", as: "sign_in"
-      end
-      resources :rehearsal_lectures
-    end
+    get "test_lectures/index" => "test_lectures#index", as: "test_lectures"
+    get "test_users/sign_in" => "test_users#sign_in", as: "sign_in_test_users"
+    # resources :rehearsal_users do
+    #   collection do
+    #     get "sign_in" => "rehearsal_users#sign_in", as: "sign_in"
+    #   end
+    #   resources :rehearsal_lectures
+    # end
   end
 
 #강의평가
