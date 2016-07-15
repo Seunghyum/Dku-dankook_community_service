@@ -1,4 +1,0 @@
-var like_num = <%= @lecture_estimate.get_upvotes.size %>;
-var dislike_num = <%= @lecture_estimate.get_downvotes.size %>;
-$("#esti-like-btn-<%= @lecture_estimate.id %> span").text(like_num);
-$("#esti-dislike-btn-<%= @lecture_estimate.id %> span").text(dislike_num);

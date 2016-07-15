@@ -1,0 +1,356 @@
+/ === Header v4 ===
+.header-v4
+  / Navbar
+  .navbar.navbar-default.mega-menu{:role => "navigation"}
+    .container.text-center
+      / Brand and toggle get grouped for better mobile display
+      = link_to root_path  do
+        %h2 로고
+      %button.navbar-toggle{"data-target" => ".navbar-responsive-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.full-width-menu Menu Bar
+        %span.icon-toggle
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+    .clearfix
+    / Collect the nav links, forms, and other content for toggling
+    .collapse.navbar-collapse.navbar-responsive-collapse
+      .container
+        %ul.nav.navbar-nav
+          / Home
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0);"}
+              게시판
+            = render_navigation :level => 1, :renderer => :bootstrap
+            /
+              <ul class="dropdown-menu">
+              <haml_silent>							 Board.all.each do |board|
+              </haml_silent><haml_block>								<li><haml_loud> link_to board.name, board_posts_path(board) </haml_loud></li>
+              </haml_block>						</ul>
+          %li
+            = link_to "강의평가", lecture_infos_path
+          %li
+            = link_to "수강 리허설", sign_in_test_users_path
+          %li
+            = link_to "사물함 신청", home_lockers_path
+          / Portfolio
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0);"}
+              Portfolio
+            %ul.dropdown-menu
+              %li.dropdown-submenu
+                %a{:href => "javascript:void(0);"} No Space Boxed
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "portfolio_2_columns_grid_no_space.html"} 2 Columns
+                  %li
+                    %a{:href => "portfolio_3_columns_grid_no_space.html"} 3 Columns
+                  %li
+                    %a{:href => "portfolio_4_columns_grid_no_space.html"} 4 Columns
+              %li.dropdown-submenu
+                %a{:href => "javascript:void(0);"} Grid Boxed
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "portfolio_2_columns_grid.html"} 2 Columns
+                  %li
+                    %a{:href => "portfolio_3_columns_grid.html"} 3 Columns
+                  %li
+                    %a{:href => "portfolio_4_columns_grid.html"} 4 Columns
+              %li.dropdown-submenu
+                %a{:href => "javascript:void(0);"} Grid Text Boxed
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "portfolio_2_columns_grid_text.html"} 2 Columns
+                  %li
+                    %a{:href => "portfolio_3_columns_grid_text.html"} 3 Columns
+                  %li
+                    %a{:href => "portfolio_4_columns_grid_text.html"} 4 Columns
+              %li.dropdown-submenu
+                %a{:href => "javascript:void(0);"} No Space Full Width
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "portfolio_2_columns_fullwidth_no_space.html"} 2 Columns
+                  %li
+                    %a{:href => "portfolio_3_columns_fullwidth_no_space.html"} 3 Columns
+                  %li
+                    %a{:href => "portfolio_4_columns_fullwidth_no_space.html"} 4 Columns
+                  %li
+                    %a{:href => "portfolio_5_columns_fullwidth_no_space.html"} 5 Columns
+                  %li
+                    %a{:href => "portfolio_6_columns_fullwidth_no_space.html"} 6 Columns
+              %li.dropdown-submenu
+                %a{:href => "javascript:void(0);"} Grid Full Width
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "portfolio_2_columns_fullwidth.html"} 2 Columns
+                  %li
+                    %a{:href => "portfolio_3_columns_fullwidth.html"} 3 Columns
+                  %li
+                    %a{:href => "portfolio_4_columns_fullwidth.html"} 4 Columns
+                  %li
+                    %a{:href => "portfolio_5_columns_fullwidth.html"} 5 Columns
+                  %li
+                    %a{:href => "portfolio_6_columns_fullwidth.html"} 6 Columns
+              %li.dropdown-submenu
+                %a{:href => "javascript:void(0);"} Grid Text Full Width
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "portfolio_2_columns_fullwidth_text.html"} 2 Columns
+                  %li
+                    %a{:href => "portfolio_3_columns_fullwidth_text.html"} 3 Columns
+                  %li
+                    %a{:href => "portfolio_4_columns_fullwidth_text.html"} 4 Columns
+                  %li
+                    %a{:href => "portfolio_5_columns_fullwidth_text.html"} 5 Columns
+                  %li
+                    %a{:href => "portfolio_6_columns_fullwidth_text.html"} 6 Columns
+              %li
+                %a{:href => "portfolio_hover_colors.html"} Portfolio Hover Colors
+              %li.dropdown-submenu
+                %a{:href => "javascript:void(0);"} Portfolio Items
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "portfolio_single_item.html"} Single Item
+                  %li
+                    %a{:href => "portfolio_old_item.html"} Basic Item 1
+                  %li
+                    %a{:href => "portfolio_old_item1.html"} Basic Item 2
+              %li.dropdown-submenu
+                %a{:href => "javascript:void(0);"} Portfolio Basic Pages
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "portfolio_old_text_blocks.html"} Basic Grid Text
+                  %li
+                    %a{:href => "portfolio_old_2_column.html"} Basic 2 Columns
+                  %li
+                    %a{:href => "portfolio_old_3_column.html"} Basic 3 Columns
+                  %li
+                    %a{:href => "portfolio_old_4_column.html"} Basic 4 Columns
+          / End Portfolio
+          / Shortcodes
+          %li.dropdown.mega-menu-fullwidth
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0);"}
+              Shortcodes
+            %ul.dropdown-menu
+              %li
+                .mega-menu-content.disable-icons
+                  .container
+                    .row.equal-height
+                      .col-md-3.equal-height-in
+                        %ul.list-unstyled.equal-height-list
+                          %li
+                            %h3 Typography &amp; Components
+                          / Typography
+                          %li
+                            %a{:href => "shortcode_typo_general.html"}
+                              %i.fa.fa-sort-alpha-asc
+                              General Typography
+                          %li
+                            %a{:href => "shortcode_typo_headings.html"}
+                              %i.fa.fa-magic
+                              Headings Options
+                          %li
+                            %a{:href => "shortcode_typo_dividers.html"}
+                              %i.fa.fa-ellipsis-h
+                              Dividers
+                          %li
+                            %a{:href => "shortcode_typo_blockquote.html"}
+                              %i.fa.fa-quote-left
+                              Blockquote Blocks
+                          %li
+                            %a{:href => "shortcode_typo_boxshadows.html"}
+                              %i.fa.fa-asterisk
+                              Box Shadows
+                          %li
+                            %a{:href => "shortcode_typo_testimonials.html"}
+                              %i.fa.fa-comments
+                              Testimonials
+                          %li
+                            %a{:href => "shortcode_typo_tagline_boxes.html"}
+                              %i.fa.fa-tasks
+                              Tagline Boxes
+                          %li
+                            %a{:href => "shortcode_typo_grid.html"}
+                              %i.fa.fa-align-justify
+                              Grid Layouts
+                          / End Typography
+                          / Components
+                          %li
+                            %a{:href => "shortcode_compo_messages.html"}
+                              %i.fa.fa-comment
+                              Alerts &amp; Messages
+                          %li
+                            %a{:href => "shortcode_compo_labels.html"}
+                              %i.fa.fa-tags
+                              Labels &amp; Badges
+                          %li
+                            %a{:href => "shortcode_compo_media.html"}
+                              %i.fa.fa-volume-down
+                              Audio/Videos &amp; Images
+                          %li
+                            %a{:href => "shortcode_compo_pagination.html"}
+                              %i.fa.fa-arrows-h
+                              Paginations
+                          / End Components
+                      .col-md-3.equal-height-in
+                        %ul.list-unstyled.equal-height-list
+                          %li
+                            %h3 Buttons &amp; Icons
+                          / Buttons
+                          %li
+                            %a{:href => "shortcode_btn_general.html"}
+                              %i.fa.fa-flask
+                              General Buttons
+                          %li
+                            %a{:href => "shortcode_btn_brands.html"}
+                              %i.fa.fa-html5
+                              Brand &amp; Social Buttons
+                          %li
+                            %a{:href => "shortcode_btn_effects.html"}
+                              %i.fa.fa-bolt
+                              Loading &amp; Hover Effects
+                          / End Buttons
+                          / Icons
+                          %li
+                            %a{:href => "shortcode_icon_general.html"}
+                              %i.fa.fa-chevron-circle-right
+                              General Icons
+                          %li
+                            %a{:href => "shortcode_icon_fa.html"}
+                              %i.fa.fa-chevron-circle-right
+                              Font Awesome Icons
+                          %li
+                            %a{:href => "shortcode_icon_line.html"}
+                              %i.fa.fa-chevron-circle-right
+                              Line Icons
+                          %li
+                            %a{:href => "shortcode_icon_line_christmas.html"}
+                              %i.fa.fa-chevron-circle-right
+                              Line Icons Pro
+                          %li
+                            %a{:href => "shortcode_icon_glyph.html"}
+                              %i.fa.fa-chevron-circle-right
+                              Glyphicons Icons (Bootstrap)
+                          / End Icons
+                      .col-md-3.equal-height-in
+                        %ul.list-unstyled.equal-height-list
+                          %li
+                            %h3 Common elements
+                          / Common Elements
+                          %li
+                            %a{:href => "shortcode_thumbnails.html"}
+                              %i.fa.fa-image
+                              Thumbnails
+                          %li
+                            %a{:href => "shortcode_accordion_and_tabs.html"}
+                              %i.fa.fa-list-ol
+                              Accordion &amp; Tabs
+                          %li
+                            %a{:href => "shortcode_timeline1.html"}
+                              %i.fa.fa-dot-circle-o
+                              Timeline Option 1
+                          %li
+                            %a{:href => "shortcode_timeline2.html"}
+                              %i.fa.fa-dot-circle-o
+                              Timeline Option 2
+                          %li
+                            %a{:href => "shortcode_table_general.html"}
+                              %i.fa.fa-table
+                              Tables
+                          %li
+                            %a{:href => "shortcode_compo_progress_bars.html"}
+                              %i.fa.fa-align-left
+                              Progress Bars
+                          %li
+                            %a{:href => "shortcode_compo_panels.html"}
+                              %i.fa.fa-columns
+                              Panels
+                          %li
+                            %a{:href => "shortcode_carousels.html"}
+                              %i.fa.fa-sliders
+                              Carousel Examples
+                          %li
+                            %a{:href => "shortcode_maps_google.html"}
+                              %i.fa.fa-map-marker
+                              Google Maps
+                          %li
+                            %a{:href => "shortcode_maps_vector.html"}
+                              %i.fa.fa-align-center
+                              Vector Maps
+                          / End Common Elements
+                      .col-md-3.equal-height-in
+                        %ul.list-unstyled.equal-height-list
+                          %li
+                            %h3 Forms &amp; Infographics
+                          / Forms
+                          %li
+                            %a{:href => "shortcode_form_general.html"}
+                              %i.fa.fa-bars
+                              Common Bootstrap Forms
+                          %li
+                            %a{:href => "shortcode_form_general1.html"}
+                              %i.fa.fa-bars
+                              General Unify Forms
+                          %li
+                            %a{:href => "shortcode_form_advanced.html"}
+                              %i.fa.fa-bars
+                              Advanced Forms
+                          %li
+                            %a{:href => "shortcode_form_layouts.html"}
+                              %i.fa.fa-bars
+                              Form Layouts
+                          %li
+                            %a{:href => "shortcode_form_layouts_advanced.html"}
+                              %i.fa.fa-bars
+                              Advanced Layout Forms
+                          %li
+                            %a{:href => "shortcode_form_states.html"}
+                              %i.fa.fa-bars
+                              Form States
+                          %li
+                            %a{:href => "shortcode_form_sliders.html"}
+                              %i.fa.fa-bars
+                              Form Sliders
+                          %li
+                            %a{:href => "shortcode_form_modals.html"}
+                              %i.fa.fa-bars
+                              Modals
+                          / End Forms
+                          / Infographics
+                          %li
+                            %a{:href => "shortcode_compo_charts.html"}
+                              %i.fa.fa-pie-chart
+                              Charts &amp; Countdowns
+                          / End Infographics
+          / End Shortcodes
+          / Demo Pages
+          %li
+            = link_to "전화번호 검색", new_school_phone_searching_path
+          / End Demo Pages
+          / Blog
+          %li.no-border
+            = link_to "단대 일정", meetings_path
+          / End Blog
+        / Search Block
+        %ul.nav.navbar-nav.navbar-border-bottom.navbar-right
+          - if user_signed_in?
+            %li.no-border= link_to "회원정보 수정", edit_user_registration_path
+            %li.no-border= link_to "로그아웃", destroy_user_session_path, method: "delete"
+          - else
+            %li.no-border= link_to "로그인", new_user_session_path if !user_signed_in?
+          / <li class="no-border">
+          / <i class="search fa fa-search search-btn"></i>
+          / <div class="search-open">
+          / <div class="input-group animated fadeInDown">
+          / <input type="text" class="form-control" placeholder="Search">
+          / <span class="input-group-btn">
+          / <button class="btn-u" type="button">Go</button>
+          / </span>
+          / </div>
+          / </div>
+          / </li>
+        / End Search Block
+      / /end container
+    / /navbar-collapse
+  / End Navbar
+/ === End Header v4 ===

@@ -1,0 +1,144 @@
+.bg-grey
+  .container.content-sm
+    / Bordered Funny Boxes
+    .row
+      .col-md-7.col-md-offset-1
+        #navbar-warning.card
+          %nav.navbar.content.tag-box.tag-box-v7
+            .container-fluid
+              / Brand and toggle get grouped for better mobile display
+              .navbar-header
+                %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+                  %span.sr-only Toggle navigation
+                  %span.icon-bar
+                  %span.icon-bar
+                  %span.icon-bar
+                = link_to lecture_infos_path , class: "navbar-brand text-info" do
+                  %strong 강의 평가
+              #bs-example-navbar-collapse-1.collapse.navbar-collapse
+                = form_tag lecture_infos_path, :method => 'get', class: "navbar-form navbar-right", role: "search" do
+                  = select_tag "category", options_for_select([['강의명', '강의명'], ['교수명', '교수명']]), {class: "btn-u form-control",    style: "height: 34px;" }
+                  .input-group
+                    = text_field_tag :search, params[:search], class: "form-control", placeholder: "Search"
+                    %span.input-group-btn
+                      = button_tag type: "submit" , class: "btn-u" do
+                        %i.fa.fa-search
+                .row
+                .row
+                  = link_to lecture_infos_path(filter: "전체") do
+                    %button.btn-u.btn-u-sm.rounded.btn-u-yellow.pull-right{:type => "button"} 전체
+                  = link_to lecture_infos_path(filter: "교양") do
+                    %button.btn-u.btn-u-sm.rounded.btn-u-green.pull-right{:type => "button"} 교양
+                  = link_to lecture_infos_path(filter: "전공필수") do
+                    %button.btn-u.btn-u-sm.rounded.btn-u-red.pull-right{:type => "button"} 전공필수
+                  = link_to lecture_infos_path(filter: "학부기초") do
+                    %button.btn-u.btn-u-sm.rounded.btn-u-orange.pull-right{:type => "button"} 학부기초
+                  = link_to lecture_infos_path(filter: "전공선택") do
+                    %button.btn-u.btn-u-sm.rounded.btn-u-blue.pull-right{:type => "button"} 전공선택
+                %hr/
+                .row.job-content
+                  .col-sm-4.md-margin-bottom-40
+                    %ul.list-unstyled.categories
+                      %li
+                        %a{:href => "#"}
+                          %h5.margin-bottom-5
+                            Pharmaceutical
+                            %small.hex (109 jobs)
+                      %li
+                        %a{:href => "#"}
+                          %h5.margin-bottom-5
+                            Pharmaceutical
+                            %small.hex (109 jobs)
+                      %li
+                        %a{:href => "#"}
+                          %h5.margin-bottom-5
+                            Pharmaceutical
+                            %small.hex (109 jobs)
+                  .col-sm-4.md-margin-bottom-40
+                    %ul.list-unstyled.categories
+                      %li
+                        %a{:href => "#"}
+                          %h5.margin-bottom-5
+                            Pharmaceutical
+                            %small.hex (109 jobs)
+                      %li
+                        %a{:href => "#"}
+                          %h5.margin-bottom-5
+                            Pharmaceutical
+                            %small.hex (109 jobs)
+                      %li
+                        %a{:href => "#"}
+                          %h5.margin-bottom-5
+                            Pharmaceutical
+                            %small.hex (109 jobs)
+                      %li
+                        %a{:href => "#"}
+                          %h5.margin-bottom-5
+                            Pharmaceutical
+                            %small.hex (109 jobs)
+                  .col-sm-4.md-margin-bottom-40
+                    %ul.list-unstyled.categories
+                      %li
+                        %a{:href => "#"}
+                          %h5.margin-bottom-5
+                            Pharmaceutical
+                            %small.hex (109 jobs)
+                      %li
+                        %a{:href => "#"}
+                          %h5.margin-bottom-5
+                            Pharmaceutical
+                            %small.hex (109 jobs)
+                      %li
+                        %a{:href => "#"}
+                          %h5.margin-bottom-5
+                            Pharmaceutical
+                            %small.hex (109 jobs)
+                      %li
+                        %a{:href => "#"}
+                          %h5.margin-bottom-5
+                            Pharmaceutical
+                            %small.hex (109 jobs)
+              / /.navbar-collapse
+            / /.container-fluid
+        - @lecture_infos.each do |info|
+          = link_to lecture_info_lecture_estimates_path(info) do
+            %div{:class => "funny-boxes funny-boxes-top-#{info.div_color} bg-color-white"}
+              %button{:class => "btn-u btn-u-xs rounded btn-u-#{info.div_color} pull-right", :type => "button"}= info.l_type
+              %h2
+                = info.name
+                \- #{info.professor.name} 교수님
+              %ul.list-inline.comment-list-v2.pull-left.block-grid-v1-add-inf
+                %li
+                  %i.fa.fa-eye
+                  = info.all_view
+                %li
+                  %i.fa.fa-comments
+                  = info.lecture_estimates.count
+              %ul.list-inline.funny-boxes-rating.pull-right
+                - if info.average
+                  - 1.upto(info.average/20) do |x|
+                    %li
+                      %i.color-green.fa.fa-star
+                  - 1.upto(5 - info.average/20) do |y|
+                    %li
+                      %i.color-green.fa.fa-star-o
+              %br/
+              %br/
+              %div
+                %p 평소 수업이 널널하고 출석에 신경을 안쓰심 앞 타임 시험이랑 뒷타임 시험이랑 문제가 똑같음 막걸리와 파전을 좋아하심
+      .col-md-3
+        .panel.panel-red
+          .panel-heading
+            %h3.panel-title
+              %i.fa.fa-tasks>
+              실시간 Hot 강의
+          .panel-body
+            #vertical_banner
+              %ul
+                - x = 1
+                - @best_liberal.each do |best|
+                  %li
+                    = x
+                    \. #{best.name}
+                  - x = x + 1
+    / End Bordered Funny Boxes

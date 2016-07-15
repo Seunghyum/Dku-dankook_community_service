@@ -1,0 +1,235 @@
+.block-description
+  .container
+    %center
+      = link_to "강의평가 작성하기", new_lecture_info_lecture_estimate_path(@lecture_info), class: "btn-u btn-u-yellow margin-bottom-20"
+    .row
+      / Right Inner
+      .col-md-5.col-md-push-7
+        .right-inner
+          / radar chart start
+          .alert.alert-warning.fade.in.alert-dismissable
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &#xD7;
+            %strong &#xC8FC;&#xC758;!
+            %i &#xD559;&#xC810;&#xB530;&#xAE30;, &#xACFC;&#xC81C;  &#xC870;&#xBAA8;&#xC784;&#xC758; &#xACBD;&#xC6B0; &#xC810;&#xC218;&#xAC00; &#xB192;&#xC744;&#xC218;&#xB85D; &#xC218;&#xC5C5;&#xB4E3;&#xAE30; &#xD3B8;&#xD569;&#xB2C8;&#xB2E4;.
+          %h3.text-center
+            \&#xAC15;&#xC758; &#xD3C9;&#xAC00; &#xD3C9;&#xADE0;
+            %small
+              %a#display-inline{:href => "#"}
+                = @lecture_info.lecture_estimates.count
+                reviews
+          .content-boxes-v2.content-boxes-v2-o
+            %h2.heading-sm.overflow-h
+              %span
+                \&#xD3C9;&#xC810; :
+                %ul#display-inline.list-inline.star-vote
+                  - 1.upto(@lecture_info.average/20) do |x|
+                    %li
+                      %i.color-green.fa.fa-star
+                  - 1.upto(5 - @lecture_info.average/20) do |y|
+                    %li
+                      %i.color-green.fa.fa-star-o
+                = @lecture_info.average
+                \&#xC810;
+          .row.content-boxes-v2.content-boxes-v2-o
+            .col-sm-6
+              %h3.heading-sm.overflow-h
+                %i.icon-custom.rounded-x.icon-sm.icon-bg-blue.fa.fa-music
+                %span.text-left
+                  \&#xC7AC;&#xBBF8;  &#xD765;&#xBBF8;
+                  %small
+                    %ul.list-inline.star-vote
+                      - 1.upto(@lecture_info.av_fun/20) do |x|
+                        %li
+                          %i.color-green.fa.fa-star
+                      - 1.upto(5 - @lecture_info.av_fun/20) do |y|
+                        %li
+                          %i.color-green.fa.fa-star-o
+                    = @lecture_info.av_fun
+                    \&#xC810;
+            .col-sm-6
+              %h3.heading-sm.overflow-h
+                %i.icon-custom.rounded-x.icon-sm.icon-bg-blue.fa.fa-graduation-cap
+                %span.text-left
+                  \&#xAD50;&#xC218;&#xB825;
+                  %small
+                    %ul.list-inline.star-vote
+                      - 1.upto(@lecture_info.av_teaching/20) do |x|
+                        %li
+                          %i.color-green.fa.fa-star
+                      - 1.upto(5 - @lecture_info.av_teaching/20) do |y|
+                        %li
+                          %i.color-green.fa.fa-star-o
+                    = @lecture_info.av_teaching
+                    \&#xC810;
+          .row.content-boxes-v2.content-boxes-v2-o
+            .col-sm-6
+              %h3.heading-sm.overflow-h
+                %i.icon-custom.rounded-x.icon-sm.icon-bg-blue.fa.fa-trophy
+                %span.text-left
+                  \&#xD559;&#xC810;&#xB530;&#xAE30;
+                  %small
+                    %ul.list-inline.star-vote
+                      - 1.upto(@lecture_info.av_get_grade/20) do |x|
+                        %li
+                          %i.color-green.fa.fa-star
+                      - 1.upto(5 - @lecture_info.av_get_grade/20) do |y|
+                        %li
+                          %i.color-green.fa.fa-star-o
+                    = @lecture_info.av_get_grade
+                    \&#xC810;
+            .col-sm-6
+              %h3.heading-sm.overflow-h
+                %i.icon-custom.rounded-x.icon-sm.icon-bg-blue.fa.fa-file-text
+                %span.text-left
+                  \&#xACFC;&#xC81C;  &#xC870;&#xBAA8;&#xC784;
+                  %small
+                    %ul.list-inline.star-vote
+                      - 1.upto(@lecture_info.av_teamwork_n_asg/20) do |x|
+                        %li
+                          %i.color-green.fa.fa-star
+                      - 1.upto(5 - @lecture_info.av_teamwork_n_asg/20) do |y|
+                        %li
+                          %i.color-green.fa.fa-star-o
+                    = @lecture_info.av_teamwork_n_asg
+                    \&#xC810;
+          %hr
+            %canvas#canvas{:height => "200", :width => "200"}
+            / radar chart end
+            %hr
+              %h3 &#xC2A4;&#xD0EF; &#xC124;&#xBA85;
+              / 스탯 설명 아코디언 start
+              #accordion-1.panel-group.acc-v1
+                .panel.panel-default
+                  .panel-heading
+                    %h4.panel-title
+                      %a.accordion-toggle.collapsed{"aria-expanded" => "false", "data-parent" => "#accordion-1", "data-toggle" => "collapse", :href => "#collapse-One"}
+                        \&#xC7AC;&#xBBF8;  &#xD765;&#xBBF8;
+                  #collapse-One.panel-collapse.collapse{"aria-expanded" => "false", :style => "height: 0px;"}
+                    .panel-body
+                      %p &#xC218;&#xC5C5;&#xC758; &#xBD84;&#xC704;&#xAE30;&#xB97C; &#xD3C9;&#xAC00;&#xD558;&#xB294; &#xAE30;&#xC900;&#xC785;&#xB2C8;&#xB2E4;.
+                      %ul.list-unstyled
+                        %li
+                          %i.fa.fa-check.color-green
+                          \&#xD559;&#xC0DD; &#xCC38;&#xC5EC;&#xB3C4;
+                        %li
+                          %i.fa.fa-check.color-green
+                          \&#xAD50;&#xC218;&#xB2D8;&#xC758; &#xC720;&#xBA38;
+                        %li
+                          %i.fa.fa-check.color-green
+                          \&#xC218;&#xC5C5; &#xB0B4;&#xC6A9;&#xC758; &#xD765;&#xBBF8; &#xC720;&#xBC1C;
+                .panel.panel-default
+                  .panel-heading
+                    %h4.panel-title
+                      %a.accordion-toggle.collapsed{"aria-expanded" => "false", "data-parent" => "#accordion-1", "data-toggle" => "collapse", :href => "#collapse-Two"}
+                        \&#xAD50;&#xC218;&#xB825;
+                  #collapse-Two.panel-collapse.collapse{"aria-expanded" => "false", :style => "height: 0px;"}
+                    .panel-body
+                      %p &#xAC15;&#xC758;&#xB97C; &#xB4E4;&#xC740; &#xD6C4;&#xC5D0; &#xBC30;&#xC6E0;&#xB2E4;&#xB294; &#xB290;&#xB08C; &#xB4F1;&#xC744; &#xD3C9;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;.
+                      %ul.list-unstyled
+                        %li
+                          %i.fa.fa-check.color-green
+                          \&#xC218;&#xC5C5;&#xB0B4;&#xC6A9;&#xC758; &#xD004;&#xB9AC;&#xD2F0;
+                        %li
+                          %i.fa.fa-check.color-green
+                          \&#xD559;&#xC0DD;&#xB4E4;&#xC758; &#xC218;&#xC900;&#xC5D0; &#xB9DE;&#xB294; &#xAD50;&#xC218;&#xBC95;
+                / 스탯 설명 아코디언 end
+                .panel.panel-default
+                  .panel-heading
+                    %h4.panel-title
+                      %a.accordion-toggle.collapsed{"aria-expanded" => "false", "data-parent" => "#accordion-1", "data-toggle" => "collapse", :href => "#collapse-Three"}
+                        \&#xD559;&#xC810;&#xB530;&#xAE30;
+                  #collapse-Three.panel-collapse.collapse{"aria-expanded" => "false"}
+                    .panel-body
+                      %p &#xD559;&#xC810;&#xB530;&#xAE30; &#xC26C;&#xC6B4; &#xC815;&#xB3C4;&#xB97C; &#xD3C9;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;. &#xB192;&#xC744;&#xC218;&#xB85D; &#xD559;&#xC810;&#xB530;&#xAE30; &#xC27D;&#xC2B5;&#xB2C8;&#xB2E4;.
+                      %ul.list-unstyled
+                        %li
+                          %i.fa.fa-check.color-green
+                          \&#xC810;&#xC218;&#xC5D0; &#xC0C1;&#xAD00;&#xC5C6;&#xC774; &#xBE44;&#xC728;&#xC5D0; &#xB9DE;&#xAC8C; &#xD559;&#xC810; &#xBC30;&#xBD84;
+                        %li
+                          %i.fa.fa-check.color-green
+                          \&#xAD50;&#xC218;&#xB2D8;&#xC758; &#xAD00;&#xB300;&#xD568;
+                .panel.panel-default
+                  .panel-heading
+                    %h4.panel-title
+                      %a.accordion-toggle.collapsed{"aria-expanded" => "false", "data-parent" => "#accordion-1", "data-toggle" => "collapse", :href => "#collapse-Five"}
+                        \&#xACFC;&#xC81C;  &#xC870;&#xBAA8;&#xC784;
+                  #collapse-Five.panel-collapse.collapse{"aria-expanded" => "false"}
+                    .panel-body
+                      %p &#xACFC;&#xC81C;&#xC640; &#xC870;&#xBAA8;&#xC784;&#xC758; &#xC26C;&#xC6B4; &#xC815;&#xB3C4;&#xB97C; &#xD3C9;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;. &#xB192;&#xC744;&#xC218;&#xB85D; &#xD69F;&#xC218;&#xAC00; &#xC801;&#xACE0; &#xB09C;&#xC774;&#xB3C4;&#xAC00; &#xC27D;&#xC2B5;&#xB2C8;&#xB2E4;.
+                      %ul.list-unstyled
+                        %li
+                          %i.fa.fa-check.color-green
+                          \&#xC870;&#xBAA8;&#xC784;&#xC758; &#xD69F;&#xC218;, &#xB09C;&#xC774;&#xB3C4;
+                        %li
+                          %i.fa.fa-check.color-green
+                          \&#xACFC;&#xC81C;&#xC758; &#xD69F;&#xC218;, &#xB09C;&#xC774;&#xB3C4;
+          / End Right Inner
+          / Left Inner
+          .col-md-7.col-md-pull-5
+            .left-inner
+              .row
+                .col-md-6
+                  %h3 &#xAD50;&#xC218; &#xC815;&#xBCF4;
+                  .overflow-h
+                    %p.hex
+                      \&#xC774;&#xB984; : #{@professor.name}
+                    %p
+                      \&#xC18C;&#xC18D; :
+                      %span.hex
+                        = @professor.belong
+                    %h5
+                      = link_to 이력  경력 확인하기, @professor.intro_url, target: _blank
+                .col-md-6
+                  %h3 &#xAC15;&#xC758; &#xC815;&#xBCF4;
+                  .overflow-h
+                    %p.hex
+                      %strong
+                        \&#xAC15;&#xC758;&#xBA85; : #{@lecture_info.name}
+                        %button.btn-u.btn-u-xs.rounded.btn-u-
+                        = @lecture_info.div_color
+                        "&gt;#{@lecture_info.l_type}
+                  %p.hex
+                    \&#xAC1C;&#xC124;&#xD559;&#xAE30; : #{@lecture_info.semester}&#xD559;&#xAE30;
+                  %p.hex
+                    \&#xC2DC;&#xAC04; : #{@lecture_info.time}&#xAD50;&#xC2DC;
+            %br
+              / Bordered Funny Boxes
+              - unless @lecture_estimates.nil?
+                - @lecture_estimates.each do |esti|
+                  .funny-boxes.funny-boxes-top-
+                  = @color_pick.sample
+                  bg-color-white"&gt;
+                  %p.pull-right
+                    = esti.created_at.year
+                    \&#xB144; #{esti.created_at.month}&#xC6D4;
+                  %h4
+                    = esti.reason
+                    \&#xC704;&#xD574; &#xC218;&#xAC15;&#xD588;&#xB358; &#xC120;&#xBC30;
+                  .pull-right
+                    %ul.list-unstyled.funny-boxes-rating
+                      \&#xD3C9;&#xAC00; &#xC810;&#xC218; :
+                      - 1.upto(esti.average/20) do |x|
+                        %li
+                          %i.fa.fa-star
+                      - 1.upto(5 - esti.average/20) do |y|
+                        %li
+                          %i.fa.fa-star-o
+                  - if esti.msg
+                    %strong
+                      %h4 &#xD6C4;&#xAE30;
+                    %p= esti.msg.html_safe
+                    %br
+                    / 좋아요 / 싫어요
+                    %ul.list-inline.badge-lists.badge-box-v1.margin-bottom-30.text-center
+                      %li
+                        = link_to like_lecture_info_lecture_estimate_path(@lecture_info, esti),id: esti-like-btn-#{esti.id}, remote: true  do
+                          %i.rounded-x.ti-heart.text-danger
+                          %span.badge.badge-red.rounded-x= esti.get_upvotes.size
+                      %li
+                        = link_to dislike_lecture_info_lecture_estimate_path(@lecture_info, esti), id: esti-dislike-btn-#{esti.id}, remote: true do
+                          %i.rounded-x.ti-heart-broken
+                          %span.badge.badge-gray.rounded-x= esti.get_downvotes.size
+              / End Bordered Funny Boxes
+              %center
+                = link_to 강의평가 작성하기, new_lecture_info_lecture_estimate_path(@lecture_info), class: btn-u btn-u-yellow
+          / End Left Inner

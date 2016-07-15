@@ -1,0 +1,45 @@
+- @post.comments.each do |comment|
+  .row.blog-comments.margin-bottom-30
+    .col-sm-2.sm-margin-bottom-40.text-right_sm-left_xs
+      = image_tag comment.user.photo ? comment.user.photo : "placeholder.jpg"
+    .col-sm-10
+      .comments-itself
+        %h5
+          %strong= comment.user.username
+               
+          %small
+            %i= timeago_tag comment.created_at
+          %span
+            %ul.list-inline.badge-lists.badge-box-v1
+              %li
+                = link_to like_board_post_comment_path(@board, @post, comment),id: "comment-like-btn-#{comment.id}" , remote: true  do
+                  %i.rounded-x.ti-heart.text-danger
+                  %span#text-white.badge.badge-red.rounded-x= comment.get_upvotes.size
+              %li
+                = link_to dislike_board_post_comment_path(@board, @post, comment),id: "comment-dislike-btn-#{comment.id}" , remote: true do
+                  %i.rounded-x.ti-heart-broken
+                  %span#text-white.badge.badge-gray.rounded-x= comment.get_downvotes.size
+        / 덧글 내용
+        %p= comment.content.html_safe
+        / 덧글 수정 및 삭제
+        - if current_user == comment.user
+          / 수정버튼
+          %a.edit-toggle{"data-edit" => "edit-#{comment.id}", :style => "cursor:pointer"}
+            %button.btn-u.btn-brd.btn-brd-hover.rounded-4x.btn-u-orange.btn-u-sm{:rel => "tooltip", :title => "수정하기"}
+              %i.fa.fa-edit
+          / 삭제버튼
+          - if can? :destroy, comment
+            = link_to comment, method: :delete, data: { confirm: 'Are you sure?' } do
+              %button.btn-u.btn-brd.btn-brd-hover.btn-u-red.btn-u-sm.rounded-4x{:rel => "tooltip", :title => "삭제하기"}
+                %i.fa.fa-trash-o
+          / 수정 폼
+          %br/
+          - if can? :update, comment
+            .media.media-post{:id => "edit-#{comment.id}", :style => "display: none;"}
+              .media-body
+                = form_for [comment] do |f|
+                  = f.text_area :content, :rows => 4, class: "summernote",:data => { provider: "summernote"}, placeholder: "예의 있게 써주세요"
+                  %br/
+                  .text-center
+                    = f.submit "수정하기",class: "btn-u btn-brd-hover btn-u-yellow"
+            / end media-post

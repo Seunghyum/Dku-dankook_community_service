@@ -1,0 +1,38 @@
+- @sucess_lectures.each do |sucess_lecture|
+  %tr.tr-6
+    %td.bg_striped{:rowspan => "2", :scope => "rowgroup"}
+      #div_btn.f_r{:style => "padding:3px 0px 3px 0px"}
+        %button.btn.btn_ctr.delete_click{"data-value" => "#{sucess_lecture.id}", :type => "button"}
+          %span.btn_txt 삭제
+    %td 죽전
+    %td= sucess_lecture.lnum
+    %td= sucess_lecture.divide
+    %td= sucess_lecture.name
+    %td= sucess_lecture.score
+    %td= sucess_lecture.teacher
+    %td
+  %tr.tr-6
+    %th{:colspan => "7"}
+      .ta_l{:style => "margin-left: 20px;"}= sucess_lecture.ldate
+:javascript
+  $(document).ready(function(){
+    // var = lnum, divide, name, score, teacher, ldate, counting, limit_num;
+    // var rehearsal = [];
+    var rehearsal_user_id = location.pathname.split("/")[2];
+    $(".delete_click").click(function(){
+      var data_value = $(this).data("value");
+      $.ajax({
+        method: "DELETE",
+        url: "/rehearsal_users/" + rehearsal_user_id + "/rehearsal_lectures/delete",
+        data: {
+          data_value: data_value
+        },
+        success: function(){
+          alert("신청을 취소했습니다.");
+        },
+        error:function(request,status,error){
+          alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+      });
+    });
+  });

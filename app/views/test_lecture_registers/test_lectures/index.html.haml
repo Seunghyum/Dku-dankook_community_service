@@ -1,0 +1,674 @@
+%body#body
+  / wrap
+  #wrap
+    / header
+    #header
+      .top_sec
+        %h1
+          %a{:href => "/main.do"}= image_tag "top_logo.png", alt: "DKU Web Information System"
+        %a.btn_portal{:href => "#"} portal 바로가기
+        .util_box
+          %form
+            / my_name
+            .my_name
+              %p 홍길동(국제 국제경영학전공-12341234)
+              %span.my_count{:style => "display:none"}
+            / //my_name
+            / 학과
+            .study_select
+              %select#changeUsers.chosen-select-no-single{:name => "changeId", :style => "display: none;", :title => "조직"}
+                %option 재학생-12341234
+              #changeUsers_chosen.chosen-container.chosen-container-single.chosen-container-single-nosearch{:style => "width: 100%;", :title => "조직"}
+                %a.chosen-single.chosen-default{:tabindex => "-1"}
+                  %span Select an Option
+                  %div
+                    %b
+                .chosen-drop
+                  .chosen-search
+                    %input{:autocomplete => "off", :readonly => "readonly", :type => "text"}/
+                  %ul.chosen-results
+              %input#orgid{:name => "orgid", :type => "hidden"}/
+            / //학과
+            %a.btn_logout{:href => "#"}
+              %span.blind 로그아웃
+      .nav_wrap
+        %h2.nav_tit= image_tag "nav_tit.png", alt: "단국대학교 웹정보시스템"
+        / 메인메뉴
+        %ul.nav
+          %li#WCOMM
+            %a.ico_nav.ico_common{:href => "#"} 공통
+          %li#WUNIV.on
+            %a.ico_nav.ico_school{:href => "#"} 학사정보
+            .nav_bookmark
+          %li#WADMI
+            %a.ico_nav.ico_admin{:href => "#"} 행정정보
+          %li#WADJT
+            %a.ico_nav.ico_research{:href => "#"} 부속행정
+          %li#WPOTF
+            %a.ico_nav.ico_pofol{"data-context" => "/ptfo", :href => "#"} 포트폴리오
+        / //메인메뉴
+        / 다국어 선택
+        %form#localeChange
+          .language_select
+            %select#lang{:name => "lang", :selected => "selected", :title => "다국어선택"}
+              %option{:value => "ko"} 한글
+              %option{:value => "en"} English
+        / //다국어 선택
+    / //header
+    / contents
+    #contents{:style => "min-height: 637px;"}
+      / 사이드메뉴 폴더
+      .btn_fold
+        %a{:href => "#"}
+          %span.blind 사이드메뉴 보기
+      / //사이드메뉴 폴더
+      / aside
+      .aside
+        .snb
+          %h2.aside_tit 학사정보
+          %ul.sub_nav
+            %li#WSREC{"data-parent" => "WUNIV"}
+              %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 학적관리
+              %ul{:style => "display: none;"}
+                %li#3893{"data-parent" => "WSREC"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "#"}
+                    %span.lnb_lst_header> -
+                    기본학적(신상정보변경)
+                %li#3895{"data-parent" => "WSREC"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "#"}
+                    %span.lnb_lst_header> -
+                    전공신청
+                %li#3896{"data-parent" => "WSREC"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "#"}
+                    %span.lnb_lst_header> -
+                    교류전공신청
+                %li#3897{"data-parent" => "WSREC"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "#"}
+                    %span.lnb_lst_header> -
+                    학적변동신청
+                %li#3898{"data-parent" => "WSREC"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "#"}
+                    %span.lnb_lst_header> -
+                    전부(과)신청
+                %li#3899{"data-parent" => "WSREC"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "#"}
+                    %span.lnb_lst_header> -
+                    전부(과)경쟁률조회
+                %li#3900{"data-parent" => "WSREC"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "#"}
+                    %span.lnb_lst_header> -
+                    상벌정보조회
+            %li#WPROQ{"data-parent" => "WUNIV"}
+              %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 자격관리
+              %ul{:style => "display: none;"}
+                %li#3903{"data-parent" => "WPROQ"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "#"}
+                    %span.lnb_lst_header> -
+                    교직이수신청
+                %li#3905{"data-parent" => "WPROQ"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "#"}
+                    %span.lnb_lst_header> -
+                    교직복수(연계)전공신청
+                %li#5730{"data-parent" => "WPROQ"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/proq/teac/views/findFieldTrainingBssForm.do"}
+                    %span.lnb_lst_header> -
+                    학교현장실습기초조사
+                %li#5660{"data-parent" => "WPROQ"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "#"}
+                    %span.lnb_lst_header> -
+                    학교현장실습동의서제출
+                %li#3909{"data-parent" => "WPROQ"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/proq/teac/views/findFieldTraining.do"}
+                    %span.lnb_lst_header> -
+                    학교현장실습신청
+                %li#5071{"data-parent" => "WPROQ"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/proq/teac/views/findFieldPresence.do"}
+                    %span.lnb_lst_header> -
+                    학교현장실습 출석인정서
+                %li#5657{"data-parent" => "WPROQ"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/proq/teac/views/findTeacSvcDscBasListW.do"}
+                    %span.lnb_lst_header> -
+                    개인별교육봉사조회
+                %li#3911{"data-parent" => "WPROQ"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/proq/teac/views/findPslTestApp.do"}
+                    %span.lnb_lst_header> -
+                    적성ㆍ인성검사 신청 및 결과
+                %li#3912{"data-parent" => "WPROQ"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/proq/teac/views/findIndTrainingApp.do"}
+                    %span.lnb_lst_header> -
+                    공업계현장실습신청
+                %li#3913{"data-parent" => "WPROQ"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/proq/teac/views/findTeacQualificationsApp.do"}
+                    %span.lnb_lst_header> -
+                    교원자격무시험검정신청
+            %li#WGRAD{"data-parent" => "WUNIV"}
+              %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 졸업관리
+              %ul{:style => "display: none;"}
+                %li#3917{"data-parent" => "WGRAD"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/grad/egpm/views/findGrdFast.do"}
+                    %span.lnb_lst_header> -
+                    조기졸업신청
+                %li#3918{"data-parent" => "WGRAD"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/grad/egpm/views/findGrdDelay.do"}
+                    %span.lnb_lst_header> -
+                    졸업연기신청
+                %li#3919{"data-parent" => "WGRAD"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/grad/gasm/views/findGrdtObjrDscGeneration.do"}
+                    %span.lnb_lst_header> -
+                    자가진단시뮬레이션
+            %li#WLSSN.on{"data-parent" => "WUNIV"}
+              %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 수업관리
+              %ul{:style => "display: block;"}
+                %li#WSSTM.on{"data-parent" => "WLSSN"}
+                  %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 수강신청
+                  %ul{:style => "display: block;"}
+                    %li#5465{"data-parent" => "WSSTM"}
+                      %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "#"}
+                        %span.lnb_lst_header> -
+                        수강안내문
+                    %li#5160.on{"data-parent" => "WSSTM"}
+                      %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "#"}
+                        %span.lnb_lst_header> -
+                        수강신청
+                    %li#5726{"data-parent" => "WSSTM"}
+                      %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "#"}
+                        %span.lnb_lst_header> -
+                        수강신청확인서
+                    %li#5313{"data-parent" => "WSSTM"}
+                      %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "#"}
+                        %span.lnb_lst_header> -
+                        수강계획도우미
+                    %li#5159{"data-parent" => "WSSTM"}
+                      %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "#"}
+                        %span.lnb_lst_header> -
+                        수강시간표
+                    %li#5323{"data-parent" => "WSSTM"}
+                      %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "#"}
+                        %span.lnb_lst_header> -
+                        수강철회 신청
+                    %li#3954{"data-parent" => "WSSTM"}
+                      %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "#"}
+                        %span.lnb_lst_header> -
+                        계절학기 수강확인 및 고지서 출력
+                %li#WLPCI{"data-parent" => "WLSSN"}
+                  %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 강의시간표
+                  %ul{:style => "display: none;"}
+                    %li#3955{"data-parent" => "WLPCI"}
+                      %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/lssn/lpci/views/findLctTmtblDscList.do"}
+                        %span.lnb_lst_header> -
+                        강의시간표(전체용)
+                %li#WBZTM{"data-parent" => "WLSSN"}
+                  %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 출강관리
+                  %ul{:style => "display: none;"}
+                    %li#3927{"data-parent" => "WBZTM"}
+                      %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/lssn/bztm/views/findLecrAttndCfmDscList.do"}
+                        %span.lnb_lst_header> -
+                        출석확인 조회
+                %li#WLEQI{"data-parent" => "WLSSN"}
+                  %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 강의평가
+                  %ul{:style => "display: none;"}
+                    %li#3930{"data-parent" => "WLEQI"}
+                      %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/lssn/leqi/views/findLecevSrvshDscList.do"}
+                        %span.lnb_lst_header> -
+                        강의평가 입력
+                    %li#5314{"data-parent" => "WLEQI"}
+                      %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/lssn/lepc/views/findLecevCfm.do"}
+                        %span.lnb_lst_header> -
+                        강의평가 확인조회
+                %li#WETCM{"data-parent" => "WLSSN"}
+                  %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 교양영어
+                  %ul{:style => "display: none;"}
+                    %li#5120{"data-parent" => "WETCM"}
+                      %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/lssn/etcm/views/findVldComplForm.do"}
+                        %span.lnb_lst_header> -
+                        영어특별학습 신청
+                    %li#5503{"data-parent" => "WETCM"}
+                      %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/lssn/etcm/views/findStuTkcrsEngLvlDsc.do"}
+                        %span.lnb_lst_header> -
+                        영어 레벨 조회
+            %li#WGDMG{"data-parent" => "WUNIV"}
+              %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 성적관리
+              %ul{:style => "display: none;"}
+                %li#4018{"data-parent" => "WGDMG"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/cret/rgcm/views/findSvcAplForm.do"}
+                    %span.lnb_lst_header> -
+                    사회봉사 입력 및 조회
+                %li#5335{"data-parent" => "WGDMG"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/cret/rgcm/views/findEngSbjtExmpAplForm.do"}
+                    %span.lnb_lst_header> -
+                    영어교과면제신청
+                %li#4019{"data-parent" => "WGDMG"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/cret/auem/views/findOaengAplForm.do"}
+                    %span.lnb_lst_header> -
+                    공인영어 입력 및 조회
+                %li#4020{"data-parent" => "WGDMG"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/cret/auem/views/findOaengSprtAmtAplForm.do"}
+                    %span.lnb_lst_header> -
+                    공인영어 지원금 신청
+                %li#4021{"data-parent" => "WGDMG"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/cret/gdmg/views/findLtrClTskStuList.do"}
+                    %span.lnb_lst_header> -
+                    과제/기타성적 조회
+                %li#4022{"data-parent" => "WGDMG"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/cret/gdmg/views/findMidExamStuList.do"}
+                    %span.lnb_lst_header> -
+                    중간고사성적 조회
+                %li#4023{"data-parent" => "WGDMG"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/cret/gdim/views/findTkcrsGrWList.do"}
+                    %span.lnb_lst_header> -
+                    최종성적 조회
+                %li#4024{"data-parent" => "WGDMG"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/cret/gdmg/views/findGrCrapyAplWForm.do"}
+                    %span.lnb_lst_header> -
+                    성적정정 신청
+                %li#4025{"data-parent" => "WGDMG"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/cret/gdcm/views/findGrDscWList.do"}
+                    %span.lnb_lst_header> -
+                    누적성적 조회
+                %li#4026{"data-parent" => "WGDMG"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/cret/gdmg/views/findSubjAbdntList.do"}
+                    %span.lnb_lst_header> -
+                    교과목포기 조회
+            %li#WCLIN{"data-parent" => "WUNIV"}
+              %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 클리닉
+              %ul{:style => "display: none;"}
+                %li#5117{"data-parent" => "WCLIN"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/lssn/etcm/views/findEclinicGuide.do"}
+                    %span.lnb_lst_header> -
+                    English Clinic 신청
+            %li#WEFLN{"data-parent" => "WUNIV"}
+              %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 장학관리
+              %ul{:style => "display: none;"}
+                %li#3959{"data-parent" => "WEFLN"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/efln/sssm/views/findGrSchlrApl.do"}
+                    %span.lnb_lst_header> -
+                    성적장학신청
+                %li#3962{"data-parent" => "WEFLN"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/efln/sssm/views/findSchspBnfDscList.do"}
+                    %span.lnb_lst_header> -
+                    장학금수혜내역조회
+            %li#WENRL{"data-parent" => "WUNIV"}
+              %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 등록관리
+              %ul{:style => "display: none;"}
+                %li#3963{"data-parent" => "WENRL"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/enrl/ismm/views/findInstmApl.do"}
+                    %span.lnb_lst_header> -
+                    분납신청
+                %li#3964{"data-parent" => "WENRL"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/enrl/rgom/views/findTfeeNtshtDsc.do"}
+                    %span.lnb_lst_header> -
+                    등록금고지서출력
+                %li#3965{"data-parent" => "WENRL"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/enrl/rcmg/views/findTfeePymtgDscList.do"}
+                    %span.lnb_lst_header> -
+                    등록금납부내역조회
+            %li#WSTUD{"data-parent" => "WUNIV"}
+              %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 학생관리
+              %ul{:style => "display: none;"}
+                %li#3966{"data-parent" => "WSTUD"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/stud/cbmg/views/findClubJoinApl.do"}
+                    %span.lnb_lst_header> -
+                    동아리가입신청
+                %li#3973{"data-parent" => "WSTUD"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/stud/cbmg/views/findClubActyCrtList.do"}
+                    %span.lnb_lst_header> -
+                    동아리활동확인서발급
+                %li#3968{"data-parent" => "WSTUD"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/stud/sppm/views/findStpcnPgmList.do"}
+                    %span.lnb_lst_header> -
+                    학생참여프로그램신청
+                %li#3971{"data-parent" => "WSTUD"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/stud/sppm/views/findStpcnPgmRsl.do"}
+                    %span.lnb_lst_header> -
+                    학생참여프로그램보고서등록
+                %li#5297{"data-parent" => "WSTUD"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/stud/sppm/views/findStpcnPgmCrtList.do"}
+                    %span.lnb_lst_header> -
+                    학생참여프로그램확인서발급
+                %li#3972{"data-parent" => "WSTUD"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/stud/essm/views/findStutActyCrtList.do"}
+                    %span.lnb_lst_header> -
+                    학생활동확인서발급
+                %li#5891{"data-parent" => "WSTUD"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/stud/milg/views/findStudMilgAplDscList.do"}
+                    %span.lnb_lst_header> -
+                    창업마일리지신청
+            %li#WCUSL{"data-parent" => "WUNIV"}
+              %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 상담관리
+              %ul{:style => "display: none;"}
+                %li#3974{"data-parent" => "WCUSL"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/cusl/cslm/views/findCuslApl.do"}
+                    %span.lnb_lst_header> -
+                    상담신청
+            %li#WMILT{"data-parent" => "WUNIV"}
+              %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 예비군민방위
+              %ul{:style => "display: none;"}
+                %li#WRFMM{"data-parent" => "WMILT"}
+                  %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 예비군전출입관리
+                  %ul{:style => "display: none;"}
+                    %li#3982{"data-parent" => "WRFMM"}
+                      %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/milt/rfmm/views/findRsvfcFrmtRepor.do"}
+                        %span.lnb_lst_header> -
+                        예비군편성신고
+            %li#WMUDM{"data-parent" => "WUNIV"}
+              %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 음악관리
+              %ul{:style => "display: none;"}
+                %li#5534{"data-parent" => "WMUDM"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/mudm/mcss/views/findMusicDataInq.do"}
+                    %span.lnb_lst_header> -
+                    음악 자료 조회
+                %li#5535{"data-parent" => "WMUDM"}
+                  %a{"data-context" => "/tiac", "data-leap" => "Y", :href => "/tiac/univ/mudm/mcss/views/findMusicDataLnRtnInq.do"}
+                    %span.lnb_lst_header> -
+                    음악 자료 대출 반납 조회
+            %li#WEXCH{"data-parent" => "WUNIV"}
+              %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 국제교류
+              %ul{:style => "display: none;"}
+                %li#WISSM{"data-parent" => "WEXCH"}
+                  %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} ISS/IWS
+                  %ul{:style => "display: none;"}
+                    %li#4031{"data-parent" => "WISSM"}
+                      %a{"data-context" => "/tiaf", "data-leap" => "Y", :href => "/tiaf/adjt/exch/issm/tcsr/views/findIssTkcrsAplForm.do"}
+                        %span.lnb_lst_header> -
+                        수강신청
+                    %li#4032{"data-parent" => "WISSM"}
+                      %a{"data-context" => "/tiaf", "data-leap" => "Y", :href => "/tiaf/adjt/exch/issm/tcsr/views/findIssTkcrsAplList.do"}
+                        %span.lnb_lst_header> -
+                        수강조회
+                    %li#5672{"data-parent" => "WISSM"}
+                      %a{"data-context" => "/tiaf", "data-leap" => "Y", :href => "/tiaf/adjt/exch/issm/tcsr/views/findIssRfndAplForm.do"}
+                        %span.lnb_lst_header> -
+                        환불신청
+                %li#WESOM{"data-parent" => "WEXCH"}
+                  %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 교환학생
+                  %ul{:style => "display: none;"}
+                    %li#4034{"data-parent" => "WESOM"}
+                      %a{"data-context" => "/tiaf", "data-leap" => "Y", :href => "/tiaf/adjt/exch/esom/views/findExstdOutAplRslList.do"}
+                        %span.lnb_lst_header> -
+                        교환학생신청
+                    %li#4035{"data-parent" => "WESOM"}
+                      %a{"data-context" => "/tiaf", "data-leap" => "Y", :href => "/tiaf/adjt/exch/esom/views/findExstdOutRgcdtAplList.do"}
+                        %span.lnb_lst_header> -
+                        학점인정신청
+                %li#WESVT{"data-parent" => "WEXCH"}
+                  %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 방문학생
+                  %ul{:style => "display: none;"}
+                    %li#5599{"data-parent" => "WESVT"}
+                      %a{"data-context" => "/tiaf", "data-leap" => "Y", :href => "/tiaf/adjt/exch/esvt/views/findExstdOutAplRslList.do"}
+                        %span.lnb_lst_header> -
+                        방문학생신청
+                    %li#5601{"data-parent" => "WESVT"}
+                      %a{"data-context" => "/tiaf", "data-leap" => "Y", :href => "/tiaf/adjt/exch/esvt/views/findExstdOutRgcdtAplList.do"}
+                        %span.lnb_lst_header> -
+                        학점인정신청
+                %li#WLGST{"data-parent" => "WEXCH"}
+                  %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 어학연수
+                  %ul{:style => "display: none;"}
+                    %li#4036{"data-parent" => "WLGST"}
+                      %a{"data-context" => "/tiaf", "data-leap" => "Y", :href => "/tiaf/adjt/exch/lgst/views/findLangsTrngAplRslList.do"}
+                        %span.lnb_lst_header> -
+                        어학연수신청
+                    %li#4038{"data-parent" => "WLGST"}
+                      %a{"data-context" => "/tiaf", "data-leap" => "Y", :href => "/tiaf/adjt/exch/lgst/views/findLangsTrngSfBudenRgcdtAplList.do"}
+                        %span.lnb_lst_header> -
+                        학점인정신청(자비)
+                %li#WFCIS{"data-parent" => "WEXCH"}
+                  %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 해외인턴십
+                  %ul{:style => "display: none;"}
+                    %li#4040{"data-parent" => "WFCIS"}
+                      %a{"data-context" => "/tiaf", "data-leap" => "Y", :href => "/tiaf/adjt/exch/fcis/views/findFcntyItspAplRslList.do"}
+                        %span.lnb_lst_header> -
+                        해외인턴십신청
+                    %li#5383{"data-parent" => "WFCIS"}
+                      %a{"data-context" => "/tiaf", "data-leap" => "Y", :href => "/tiaf/adjt/exch/fcis/views/findFcntyItspSfRgcdtAplList.do"}
+                        %span.lnb_lst_header> -
+                        학점인정신청(자비)
+                %li#WFSAS{"data-parent" => "WEXCH"}
+                  %a{"data-context" => "/ptfo", "data-leap" => "N", :href => "#"} 외국인유학생
+                  %ul{:style => "display: none;"}
+                    %li#4042{"data-parent" => "WFSAS"}
+                      %a{"data-context" => "/tiaf", "data-leap" => "Y", :href => "/tiaf/adjt/exch/fsas/views/findSablvStudOathSbmForm.do"}
+                        %span.lnb_lst_header> -
+                        서약서제출
+                    %li#4043{"data-parent" => "WFSAS"}
+                      %a{"data-context" => "/tiaf", "data-leap" => "Y", :href => "/tiaf/adjt/exch/fsas/views/findSablvStudDormAplForm.do"}
+                        %span.lnb_lst_header> -
+                        생활관신청
+      / //aside
+      / cont
+      .cont
+        .f_l.w_74
+          / 타이틀
+          #titleSection.section_top_tit{:style => ""}
+            / 현재위치
+            %ul.gps
+              %li.home
+                %span.blind home
+              %li 수업관리
+              %li 수강신청
+              %li 수강신청
+            / //현재위치
+            %h3#title.tit_now.tit_school 수강신청 리허설
+          .clear_box
+            .f_l.w_79.tbl_row
+              %table.tbl_striped
+                %caption 수강신청 내 정보
+                %colgroup
+                  %col{:style => "width: 150px"}/
+                  %col{:style => "width: 15%"}/
+                  %col{:style => "width: 20%"}/
+                  %col{:style => "width: 15%"}/
+                  %col/
+                %tbody
+                  %tr
+                    %th.bg_striped{:rowspan => "2", :scope => "rowgroup"}
+                      2016-하계계절
+                      = succeed "(2\u{d559}\u{b144}-2)" do
+                        %br/
+                    / 학기
+                    / 학년
+                    %th{:scope => "row"} 소속
+                    / 소속
+                    %td 국제학부 국제경영학전공
+                    %th{:scope => "row"} 소속
+                    / 소속
+                    %td 국제학부 국제경영학전공
+                  %tr
+                    %th{:scope => "row"} 학번
+                    / 학번
+                    %td 32141620
+                    %th{:scope => "row"} 성명
+                    / 성명
+                    %td 문승현
+            .f_r.w_20.tbl_row
+              %table
+                %caption 학점
+                %colgroup
+                  %col{:style => "width: 50%"}/
+                  %col/
+                %tbody
+                  %tr
+                    %th.certain{:scope => "row"} 최대학점
+                    / 과목수
+                    %td.ta_c
+                  %tr
+                    %th.certain{:scope => "row"} 최소학점
+                    / 학점계
+                    %td.ta_c
+                  %tr
+                    %th.certain{:scope => "row"} 초과가능
+                    / 과목수
+                    %td.ta_c
+                  %tr
+                    %th.certain{:scope => "row"} 이월학점
+                    / 학점계
+                    %td.ta_c
+                  %tr
+                    %th.certain{:scope => "row"} 이수학기
+                    / 학점계
+                    %td.ta_c
+          %br/
+          %br/
+          %br/
+          %br/
+          %br/
+          %br/
+          #tabs.tabs.ui-tabs.ui-widget.ui-widget-content.ui-corner-all
+            .tab_header_box
+              %ul.tab_header.f_l.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all{:role => "tablist"}
+                / 오른쪽에 버튼 있을때 f_l 추가
+                %li.ui-state-default.ui-corner-top.ui-tabs-active.ui-state-active{"aria-controls" => "tab-1", "aria-labelledby" => "ui-id-1", "aria-selected" => "true", :role => "tab", :tabindex => "0"}
+                  %a#ui-id-1.ui-tabs-anchor{:href => "javascript:void;", :role => "presentation", :tabindex => "-1"} 수강계획도우미
+                %li.ui-state-default.ui-corner-top{"aria-controls" => "tab-2", "aria-labelledby" => "ui-id-2", "aria-selected" => "false", :role => "tab", :style => "margin-right: 0px;", :tabindex => "-1"}
+                  %a#ui-id-2.current.ui-tabs-anchor{:href => "javascript:void;", :role => "presentation", :tabindex => "-1"} 교과목번호-분반
+          %br/
+          #target
+          %form#utilAgrForm{:action => "http://sugang.dankook.ac.kr/logon.do", :method => "post", :name => "utilAgrForm"}
+            .section_mid_tit
+              %h4{:style => "float: right;"} 더블 클릭하면 해당 강좌가 리허설 신청 됩니다.
+            .tbl_column
+              %table#tkcrsPlTbl.tbl_mixed.tablesorter.tablesorter-default
+                %thead
+                  %colgroup
+                    %col{:style => "width: 7%;"}/
+                    %col{:style => "width: 5%;"}/
+                    %col{:style => "width: 25%;"}/
+                    %col{:style => "width: 5%;"}/
+                    %col{:style => "width: 8%;"}/
+                    %col/
+                    %col{:style => "width: 8%;"}/
+                    %col{:style => "width: 5%;"}/
+                    %col{:style => "width: 5%;"}/
+                  %tr
+                    %th{:scope => "col"}
+                      교과목
+                      %br>/
+                      번호
+                    %th{:scope => "col"} 분반
+                    %th{:scope => "col"} 교과목명
+                    %th{:scope => "col"} 학점
+                    %th{:scope => "col"} 교강사명
+                    %th{:scope => "col"} 요일/교시/강의실
+                    %th{:scope => "col"}
+                      신청
+                      %br>/
+                      인원
+                    %th{:scope => "col"}
+                      제한
+                      %br>/
+                      인원
+                    %th{:scope => "col"} 폐강
+                %tbody
+                  = render "test_lecture_registers/test_lectures/lec_register"
+            .ly_help{:style => "width:300px; padding: 10px 20px;"}
+              %strong 이 리스트는
+              %p
+                수강계획도우미에 등록한 수업리스트가 나옵니다.
+                %br>/
+                여기에서는 임의로 주어진 수업리스트를 사용하겠습니다.
+              %a.clse{:href => "#", :style => "float: right;"}
+                %img{:alt => "닫기", :height => "19", :src => "http://static.naver.com/kin/09renewal/btn_close_layer.gif", :width => "19"}/
+              .edge_cen
+              / 꼭지가 우측에 있어야 할때는 edge_rgt 클래스 사용
+          %br/
+          .tab_header_box
+            %ul.tab_header.f_l.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all{:role => "tablist"}
+              / 오른쪽에 버튼 있을때 f_l 추가
+          %br/
+          .section_mid_tit
+            %h4.tit_mid.f_l 리허설 수강신청내역
+          .tbl_column
+            %table#opLtrTbl.tbl_striped
+              %caption
+              %colgroup
+                %col{:style => "width: 9%;"}/
+                %col{:style => "width: 10%;"}/
+                %col{:style => "width: 7%;"}/
+                %col{:style => "width: 4%;"}/
+                %col{:style => "width: 20%;"}/
+                %col{:style => "width: 4%;"}/
+                %col{:style => "width: 10%;"}/
+              %thead
+                %tr
+                  %th{:scope => "col"} 삭제
+                  %th{:scope => "col"} 캠퍼스
+                  %th{:scope => "col"} 교과목번호
+                  %th{:scope => "col"} 분반
+                  %th{:scope => "col"} 교과목명
+                  %th{:scope => "col"} 학점
+                  %th{:scope => "col"} 교강사명
+                  %th{:scope => "col"} 재수강 연도학기
+              %tbody#sucess-list
+        .f_r.w_25
+          .tbl_column
+            %table#tkcrsTmtblListTbl.tbl_mixed
+              %caption 수강시간표
+              %colgroup
+                %col{:style => "width: 15%;"}/
+                %col{:style => "width: 14%;"}/
+                %col{:style => "width: 14%;"}/
+                %col{:style => "width: 14%;"}/
+                %col{:style => "width: 14%;"}/
+                %col{:style => "width: 14%;"}/
+                %col{:style => "width: 14%;"}/
+                %col/
+              %thead
+                %tr
+                  %th{:scope => "col"}
+                  / 교시
+                  %th{:scope => "col"} 월
+                  / 월
+                  %th{:scope => "col"} 화
+                  / 화
+                  %th{:scope => "col"} 수
+                  / 수
+                  %th{:scope => "col"} 목
+                  / 목
+                  %th{:scope => "col"} 금
+                  / 금
+                  %th{:scope => "col"} 토
+                  / 토
+              %tbody
+                - 1.upto(20) do |x|
+                  %tr.numbering
+                    %td
+                      = x
+                    %td
+                    %td
+                    %td
+                    %td
+                    %td
+                    %td
+      / //cont
+    / //contents
+    / footer
+    #footer
+      .addr_box
+        %p.addr
+          죽전캠퍼스 경기도 용인시 수지구 죽전로 152 (우)16890 / 천안캠퍼스 충남 천안시 동남구 단대로 119 (우)31116
+        %p.copy COPYRIGHT(C) 2015 BY DANKOOK UNIVERSITY. ALL RIGHTS RESERVED.
+      /
+        <ul class="footer_btn">
+        <li><a href="#" id="help"><img src="images/layout/footer_help.gif" alt="문의하기" /></a></li>
+        </ul>
+    / //footer
+  / //wrap
+  %style{:media => "screen"}
+    :cdata
+      \.ly_help{position:absolute;z-index:10;margin-top:6px;border:1px solid #888;background:#fff;text-align:left; display: none;}
+      \.ly_help .clse{position:absolute;top:3px;right:4px}
+      \.ly_help strong{display:block;margin-bottom:-5px;padding:9px 0 0 9px;font-size:11px;color:#2c2c2c;letter-spacing:-1px}
+      \.ly_help p{padding:8px 0 6px 9px;font-size:11px;color:#828282;line-height:16px;letter-spacing:-1px}
+      \.ly_help p em{color:#268e00}
+      \.ly_help .edge_cen{position:absolute;top:0;left:50%;width:9px;height:6px;margin:-6px 0 0 -5px;background:url(http://static.naver.com/kin/09renewal/bg_layer_edge.gif) no-repeat 0 0;font-size:0}
+      \.ly_help .edge_rgt{position:absolute;top:0;right:0;width:9px;height:6px;margin-top:-6px;background:url(http://static.naver.com/kin/09renewal/bg_layer_edge.gif) no-repeat 0 0;font-size:0}
+  :javascript
+    $(document).ready(function(){
+        $(window).load(function(){
+            $(".ly_help").fadeIn("fast").delay(3000).fadeOut("slow");
+        });
+        $(".clse").click(function(e){
+            e.preventDefault();
+            $(".ly_help").remove();
+        });
+    });

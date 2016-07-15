@@ -1,0 +1,160 @@
+/ 국제경영
+.row
+  .col-xs-12.col-sm-12.col-md-12.col-lg-12
+    = image_tag "locker_book/iba.png", style: "width: 100%;"
+/ 왼쪽 사물함
+.row
+  .col-xs-4.col-sm-4.col-md-4.col-lg-4{:style => "margin: 55px 0px;"}
+    %table.table.table-bordered
+      %tbody
+        / gba table START
+        - 1.upto(2) do |x|
+          %tr
+            - unless @our_locker.users.find_by(lnum: 1 + ( 11 * ( x  - 1 )))
+              %td{:style => "border: 5px solid yellow;"}= link_to "#{ 1 + ( 11 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 1 + ( 11 * ( x  - 1 ))}"), method: :post
+            - else
+              %td.red-box X
+            - unless @our_locker.users.find_by(lnum: 2 + ( 11 * ( x  - 1 )))
+              %td{:style => "border: 5px solid yellow;"}= link_to "#{ 2 + ( 11 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 2 + ( 11 * ( x  - 1 ))}"), method: :post
+            - else
+              %td.red-box X
+            - unless @our_locker.users.find_by(lnum: 3 + ( 11 * ( x  - 1 )))
+              %td{:style => "border: 5px solid yellow;"}= link_to "#{ 3 + ( 11 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 3 + ( 11 * ( x  - 1 ))}"), method: :post
+            - else
+              %td.red-box X
+        / gba table END
+        - 1.upto(2) do |x|
+          %tr
+            - unless @our_locker.users.find_by(lnum: 23 + ( 11 * ( x  - 1 )))
+              %td= link_to "#{ 23 + ( 11 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 23 + ( 11 * ( x  - 1 ))}"), method: :post
+            - else
+              %td.red-box X
+            - unless @our_locker.users.find_by(lnum: 24 + ( 11 * ( x  - 1 )))
+              %td= link_to "#{ 24 + ( 11 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 24 + ( 11 * ( x  - 1 ))}"), method: :post
+            - else
+              %td.red-box X
+            - unless @our_locker.users.find_by(lnum: 25 + ( 11 * ( x  - 1 )))
+              %td= link_to "#{ 25 + ( 11 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 25 + ( 11 * ( x  - 1 ))}"), method: :post
+            - else
+              %td.red-box X
+  / 가운데 사물함
+  .col-xs-4.col-sm-4.col-md-4.col-lg-4
+    %table.table.table-bordered
+      %tbody
+        - 1.upto(4) do |x|
+          %tr
+            - unless @our_locker.users.find_by(lnum: 4 + ( 11 * ( x  - 1 )))
+              %td= link_to "#{ 4 + ( 11 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 4 + ( 11 * ( x  - 1 ))}"), method: :post
+            - else
+              %td.red-box X
+            - unless @our_locker.users.find_by(lnum: 5 + ( 11 * ( x  - 1 )))
+              %td= link_to "#{ 5 + ( 11 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 5 + ( 11 * ( x  - 1 ))}"), method: :post
+            - else
+              %td.red-box X
+            - unless @our_locker.users.find_by(lnum: 6 + ( 11 * ( x  - 1 )))
+              %td= link_to "#{ 6 + ( 11 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 6 + ( 11 * ( x  - 1 ))}"), method: :post
+            - else
+              %td.red-box X
+            - unless @our_locker.users.find_by(lnum: 7 + ( 11 * ( x  - 1 )))
+              %td= link_to "#{ 7 + ( 11 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 7 + ( 11 * ( x  - 1 ))}"), method: :post
+            - else
+              %td.red-box X
+        %tr
+          - unless @our_locker.users.find_by(lnum:45)
+            %td= link_to "45", lockerselect_lockers_path( :lnum => 45 ), method: :post
+          - else
+            %td.red-box X
+          - unless @our_locker.users.find_by(lnum:46)
+            %td= link_to "46", lockerselect_lockers_path( :lnum => 46 ), method: :post
+          - else
+            %td.red-box X
+          - unless @our_locker.users.find_by(lnum:47)
+            %td= link_to "47", lockerselect_lockers_path( :lnum => 47 ), method: :post
+          - else
+            %td.red-box X
+          - unless @our_locker.users.find_by(lnum:48)
+            %td= link_to "48", lockerselect_lockers_path( :lnum => 48), method: :post
+          - else
+            %td.red-box X
+  / 오른쪽 사물함
+  .col-xs-4.col-sm-4.col-md-4.col-lg-4
+    %table.table.table-bordered
+      %tbody
+        %tr
+          - unless @our_locker.users.find_by(lnum: 8)
+            %td= link_to "8", lockerselect_lockers_path( :lnum => 8 ), method: :post
+          - else
+            %td.red-box X
+          - unless @our_locker.users.find_by(lnum: 9)
+            %td= link_to "9", lockerselect_lockers_path( :lnum => 9 ), method: :post
+          - else
+            %td.red-box X
+          - unless @our_locker.users.find_by(lnum: 10)
+            %td= link_to "10", lockerselect_lockers_path( :lnum => 10 ), method: :post
+          - else
+            %td.red-box X
+          - unless @our_locker.users.find_by(lnum: 11)
+            %td= link_to "11", lockerselect_lockers_path( :lnum => 11), method: :post
+          - else
+            %td.red-box X
+        %tr
+          %td.red-box X
+          / 19
+          - unless @our_locker.users.find_by(lnum: 20)
+            %td= link_to "20", lockerselect_lockers_path( :lnum => 20 ), method: :post
+          - else
+            %td.red-box X
+          - unless @our_locker.users.find_by(lnum: 21)
+            %td= link_to "21", lockerselect_lockers_path( :lnum => 21 ), method: :post
+          - else
+            %td.red-box X
+          - unless @our_locker.users.find_by(lnum: 22)
+            %td= link_to "22", lockerselect_lockers_path( :lnum => 22), method: :post
+          - else
+            %td.red-box X
+        %tr
+          / 오른쪽 사물함
+          %td.red-box X
+          / 30
+          %td.red-box X
+          / 31
+          %td.red-box X
+          / 32
+          - unless @our_locker.users.find_by(lnum: 33)
+            %td= link_to "33", lockerselect_lockers_path( :lnum => 33 ), method: :post
+          - else
+            %td.red-box X
+        %tr
+          - unless @our_locker.users.find_by(lnum: 41)
+            %td= link_to "41", lockerselect_lockers_path( :lnum => 41 ), method: :post
+          - else
+            %td.red-box X
+          - unless @our_locker.users.find_by(lnum: 42)
+            %td= link_to "41", lockerselect_lockers_path( :lnum => 42 ), method: :post
+          - else
+            %td.red-box X
+          - unless @our_locker.users.find_by(lnum: 43)
+            %td= link_to "42", lockerselect_lockers_path( :lnum => 43), method: :post
+          - else
+            %td.red-box X
+          - unless @our_locker.users.find_by(lnum: 44)
+            %td= link_to "43", lockerselect_lockers_path( :lnum => 44), method: :post
+          - else
+            %td.red-box X
+        %tr
+          - unless @our_locker.users.find_by(lnum: 49)
+            %td= link_to "49", lockerselect_lockers_path( :lnum => 49 ), method: :post
+          - else
+            %td.red-box X
+          - unless @our_locker.users.find_by(lnum: 50)
+            %td= link_to "50", lockerselect_lockers_path( :lnum => 50 ), method: :post
+          - else
+            %td.red-box X
+          - unless @our_locker.users.find_by(lnum: 51)
+            %td= link_to "51", lockerselect_lockers_path( :lnum => 51), method: :post
+          - else
+            %td.red-box X
+          - unless @our_locker.users.find_by(lnum: 52)
+            %td= link_to "52", lockerselect_lockers_path( :lnum => 52), method: :post
+          - else
+            %td.red-box X

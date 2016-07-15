@@ -1,0 +1,251 @@
+/ === Content Part ===
+.container.content.profile
+  .row.magazine-page
+    / Begin Content
+    .col-md-8
+      / Magazine Slider
+      #myCarousel-1.carousel.slide.carousel-v1.margin-bottom-40
+        .carousel-inner
+          .item.active
+            = image_tag "unify/4.jpg"
+            .carousel-caption
+              %p &#xC0AC;&#xBB3C;&#xD568;  &#xC911;&#xACE0;&#xCC45; &#xC608;&#xC57D; &#xBC14;&#xB85C;&#xAC00;&#xAE30;
+          .item
+            = image_tag unify/3.jpg
+            .carousel-caption
+              %p &#xC0AC;&#xBB3C;&#xD568;  &#xC911;&#xACE0;&#xCC45; &#xC608;&#xC57D; &#xBC14;&#xB85C;&#xAC00;&#xAE30;
+          .item
+            = image_tag unify/2.jpg
+            .carousel-caption
+              %p &#xC0AC;&#xBB3C;&#xD568;  &#xC911;&#xACE0;&#xCC45; &#xC608;&#xC57D; &#xBC14;&#xB85C;&#xAC00;&#xAE30;
+        .carousel-arrow
+          %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel-1"}
+            %i.fa.fa-angle-left
+          %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel-1"}
+            %i.fa.fa-angle-right
+      / End Magazine Slider
+      / Magazine News
+      .magazine-news
+        .row
+          .col-md-6
+            .magazine-news-img
+              %span.magazine-badge.label-red Travel
+            %h3
+              %a{:href => "#"} Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium
+            .by-author
+              %strong By Jack Villo
+              %span / September 19, 2013
+            %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...
+          .col-md-6
+            .magazine-news-img
+              %span.magazine-badge.label-blue Event
+            %h3
+              %a{:href => "#"} Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium
+            .by-author
+              %strong By Admin
+              %span / September 19, 2013
+            %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...
+      / End Magazine News
+      .margin-bottom-35
+        %hr.hr-md/
+        / Calendar News
+        .row
+          .col-md-12
+            = render 'simple_calendar/calendar'
+        / End Calendar News
+        .margin-bottom-35
+          %hr.hr-md/
+          / Magazine News
+          .magazine-news
+            .row
+              .col-md-6
+                .magazine-news-img
+                  %span.magazine-badge.label-yellow Media
+                %h3
+                  %a{:href => "#"} Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium
+                .by-author
+                  %strong By Jack Villo
+                  %span / September 19, 2013
+                %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...
+              .col-md-6
+                .magazine-news-img
+                  %span.magazine-badge.label-green Relax
+                %h3
+                  %a{:href => "#"} Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium
+                .by-author
+                  %strong By Admin
+                  %span / September 19, 2013
+                %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...
+          / End Magazine News
+          .margin-bottom-35
+            %hr.hr-md/
+            / Magazine News
+            .magazine-news
+              .row
+                .col-md-6
+                  .magazine-news-img
+                    %span.magazine-badge.label-purple Design
+                  %h3
+                    %a{:href => "#"} Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium
+                  .by-author
+                    %strong By Jack Villo
+                    %span / September 19, 2013
+                  %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...
+                .col-md-6
+                  .magazine-news-img
+                    %span.magazine-badge.label-dark-blue Interior
+                  %h3
+                    %a{:href => "#"} Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium
+                  .by-author
+                    %strong By Admin
+                    %span / September 19, 2013
+                  %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...
+            / End Magazine News
+          / End Content
+          / Begin Sidebar
+          .col-md-4
+            / Profile Event
+            .profile-body.md-margin-bottom-20
+              .panel.panel-profile.no-bg
+                .tag-box-v1.panel-heading.overflow-h
+                  %h2.panel-title.heading-sm.pull-left
+                    %i.fa.fa-briefcase>
+                    \&#xC2E4;&#xC2DC;&#xAC04; Hot &#xAC15;&#xC758;
+                  = link_to 바로가기, lecture_infos_path, class: btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right
+                = succeed "," do
+                  .panel-body.no-padding
+                .profile-event
+                  #vertical_banner
+                    %ul
+                      - x = 1
+                      - @best_liberal.each do |best|
+                        %li
+                          = x
+                          \. #{best.name}
+                        - x = x + 1
+          / End Profile Event
+          .profile-body
+            .panel.panel-profile
+              .tag-box-v1.panel-heading.overflow-h
+                %h2.panel-title.heading-sm.pull-left
+                  %i.fa.fa-comments-o
+                  \&#xD1A0;&#xB860;
+                %a.btn-u.btn-brd.btn-brd-hover.btn-u-dark.btn-u-xs.pull-right{:href => "page_profile_comments.html"} View All
+              #scrollbar4.panel-body.no-padding.mCustomScrollbar{"data-mcs-theme" => "minimal-dark"}
+                .comment
+                  .overflow-h
+                    %strong
+                      Taylor Lee
+                      %small.pull-right 25m
+                    %p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    %ul.list-inline.comment-list
+                      %li
+                        %i.fa.fa-heart
+                        %a{:href => "#"} 23
+                      %li
+                        %i.fa.fa-comments
+                        %a{:href => "#"} 5
+                .comment
+                  .overflow-h
+                    %strong
+                      Miranda Clarsson
+                      %small.pull-right 44m
+                    %p Donec cursus, orci non posuere luctus, risus massa luctus nisi, sit amet cursus leo massa id arcu. Nunc tincidunt magna sit amet sapien congue.
+                    %ul.list-inline.comment-list
+                      %li
+                        %i.fa.fa-heart
+                        %a{:href => "#"} 23
+                      %li
+                        %i.fa.fa-comments
+                        %a{:href => "#"} 5
+                .comment
+                  .overflow-h
+                    %strong
+                      Natasha Kolnikova
+                      %small.pull-right 7h
+                    %p Suspendisse est est, sollicitudin eget auctor et, pharetra eu sapien. Mauris mollis libero ac auctor iaculis.
+                    %ul.list-inline.comment-list
+                      %li
+                        %i.fa.fa-heart
+                        %a{:href => "#"} 23
+                      %li
+                        %i.fa.fa-comments
+                        %a{:href => "#"} 5
+                .comment
+                  .overflow-h
+                    %strong
+                      Mikel Andrews
+                      %small.pull-right 15h
+                    %p Nam ut dolor cursus nibh aliquet bibendum in eget risus.
+                    %ul.list-inline.comment-list
+                      %li
+                        %i.fa.fa-heart
+                        %a{:href => "#"} 20
+                      %li
+                        %i.fa.fa-comments
+                        %a{:href => "#"} 5
+                .comment
+                  .overflow-h
+                    %strong
+                      Edward Rooster
+                      %small.pull-right 1d
+                    %p Nam ut dolor cursus nibh aliquet bibendum in eget risus. Mauris mollis libero ac auctor iaculis.
+                    %ul.list-inline.comment-list
+                      %li
+                        %i.fa.fa-heart
+                        %a{:href => "#"} 23
+                      %li
+                        %i.fa.fa-comments
+                        %a{:href => "#"} 5
+          / Quick Links
+          .magazine-sb-categories.margin-bottom-20
+            .headline
+              %h2.heading-sm Top Tag 20
+            .row
+              %ul.list-unstyled.col-xs-6
+                - if @listing_a
+                  - @listing_a.each do |x|
+                    %li
+                      %span.label.rounded.label-
+                      = @samples.sample
+                      margin-right-5'&gt;
+                      %i.fa.fa-tags
+                      = x.name
+              %ul.list-unstyled.col-xs-6
+                - @listing_b.each do |x|
+                  %li
+                    %span.label.rounded.label-
+                    = @samples.sample
+                    margin-right-5'&gt;
+                    %i.fa.fa-tags
+                    = x.name
+      / End Quick Links
+      / Latest News
+      .margin-bottom-40
+        .magazine-mini-news
+          %h3
+            %a{:href => "#"} Blanditiis Praesentium Volupeto
+          .post-author
+            %strong By Adam Bvio
+            %span / September 19, 2013
+          %p At vero eos et accusamus et iusto odiodig nissimos ducimus usce condimentum eleifend enim a feugiat.
+        %hr.hr-md
+          .magazine-mini-news
+            %h3
+              %a{:href => "#"} Blanditiis Praesentium Volupeto
+            .post-author
+              %strong By Kate Baur
+              %span / September 19, 2013
+            %p At vero eos et accusamus et iusto odiodig nissimos ducimus usce condimentum eleifend enim a feugiat.
+          %hr.hr-md
+            .magazine-mini-news
+              %h3
+                %a{:href => "#"} Blanditiis Praesentium Volupeto
+              .post-author
+                %strong By Admin
+                %span / September 19, 2013
+              %p At vero eos et accusamus et iusto odiodig nissimos ducimus usce condimentum eleifend enim a feugiat.
+          / End Latest News
+        / End Sidebar
+    / /container
+    / End Content Part

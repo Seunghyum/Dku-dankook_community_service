@@ -1,0 +1,18 @@
+.search-block.parallaxBg{:style => "background-position: 50% 16px;"}
+  .container
+    .col-md-6.col-md-offset-3
+      %h1
+        단국대
+        %span.color-green 전화번호
+        검색
+      = form_for @new_search, html: {role: "search"} do |f|
+        .row
+          .col-md-3.col-xs-4
+            .input-group
+              = f.select :campus, options_for_select(@campus), {:prompt => "캠퍼스"}, {class: "btn-u form-control" }
+          .col-md-9.col-xs-8
+            .input-group.border-input
+              = f.text_field :belong, class: "form-control",  placeholder: "과/학과 OR 명칭/이름"
+              %span.input-group-btn
+                = button_tag(type: 'submit', class: "btn-u btn-u-lg") do
+                  %i.fa.fa-search

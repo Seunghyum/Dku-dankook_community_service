@@ -1,0 +1,109 @@
+/ === Content Part ===
+.container-fluid
+  .row.equal-height-columns
+    .col-md-6.col-sm-6.hidden-xs.equal-height-column{:style => "background-image: url(#{image_url "cat.jpg"}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
+      .row.image-block{:style => "background: none rgba(255, 255, 255, 0.6);"}
+        .col-md-offset-2.col-md-8
+          .headline
+            %h2 운영자 규칙
+          %p 아래의 규칙은 운영자가 반드시 지킬 규칙입니다.
+          %ul.list-unstyled.margin-bottom-30
+            %li
+              %i.fa.fa-check.color-green
+              사용자에게 중요한
+              = succeed "\u{b294}" do
+                %strong 개인정보
+            %li
+              %i.fa.fa-check.color-green
+              단국인들이
+              = succeed "\u{b97c}" do
+                %strong 원하는 서비스
+            %li
+              %i.fa.fa-check.color-green
+              단국인들의
+              = succeed "\u{b97c}" do
+                %strong 학교생활에 도움이 되는 서비스
+          / 규칙
+          .headline
+            %h2 커뮤니티 규칙
+          %p 아래의 규칙을 어기는 글은 삭제되며 작성자는 최소 1년 동안 서비스 이용이 정지됩니다.
+          %ul.list-unstyled.margin-bottom-30
+            %li
+              %i.fa.fa-check.color-green
+              다른 학생의
+              = succeed "\u{c744}" do
+                %strong 실명
+            %li
+              %i.fa.fa-check.color-green
+              다른 학생을 비난하기 위해
+              = succeed "\u{d558}\u{c154}\u{b3c4}" do
+                %strong 묘사
+            %li
+              %i.fa.fa-check.color-green
+              누구에게든
+              = succeed "\u{c744}" do
+                %strong 반말
+            %li
+              %i.fa.fa-check.color-green
+              다른 학생에 대한
+              %strong 인신공격, 비속어 사용
+              등을 금지해주세요.
+          / 매너
+          .headline
+            %h2 커뮤니티 매너
+          %p 아래의 기본적인 예의를 지켜주세요.
+          %ul.list-unstyled.margin-bottom-30
+            %li
+              %i.fa.fa-check.color-green
+              = succeed "\u{b97c}" do
+                %strong 예의
+            %li
+              %i.fa.fa-check.color-green
+              상대를
+              = succeed "\u{d574}\u{c8fc}\u{c138}\u{c694}." do
+                %strong 존중
+            %li
+              %i.fa.fa-check.color-green
+              타인을 지칭할 때
+              = succeed "\u{c73c}\u{b85c}" do
+                %strong ***님
+    .col-md-6.col-sm-6.form-block.equal-height-column
+      %h2.margin-bottom-30.hidden-xs.text-center 로그인 페이지
+      = form_for(resource, as: resource_name, url: session_path(resource_name) ) do |f|
+        .login-block
+          .social-login.text-center
+            %ul.list-inline.margin-bottom-20
+              %li
+                %button.btn.rounded.btn-lg.btn-rss
+                    
+                  %strong Kakao Talk
+                  Sign in 
+              %li
+                %button.btn.rounded.btn-lg.btn-facebook
+                  %i.fa.fa-facebook
+                  Facebook Sign in
+          .input-group.margin-bottom-20
+            %span.input-group-addon.rounded-left
+              %i.icon-user.color-blue
+            = f.text_field :login, class: "form-control rounded-right", placeholder: "닉네임"
+          .input-group.margin-bottom-20
+            %span.input-group-addon.rounded-left
+              %i.icon-lock.color-blue
+            = f.password_field :password, class: "form-control rounded-right", placeholder: "비밀번호"
+          - if devise_mapping.rememberable?
+            .checkbox
+              %ul.list-inline
+                %li
+                  %label
+                    = f.check_box :remember_me
+                    아이디 기억하기
+                %li.pull-right
+                  = link_to "비밀번호 찾기", new_user_password_path
+          .row.margin-bottom-20
+            .col-md-12
+              = f.submit "로그인", class: "btn-u btn-u-blue btn-block rounded"
+          .row.margin-bottom-20
+            .col-md-12
+              = link_to "회원가입", new_user_registration_path , class: "btn-u btn-u-aqua btn-block rounded"
+/ /container
+/ === End Content Part ===
