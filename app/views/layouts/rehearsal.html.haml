@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title 수강신청 리허설
+    - if params[:action] == "sign_in" || params[:action] == "sign_up"
+      = stylesheet_link_tag    'rehearsal_sign', media: 'all'
+      = javascript_include_tag 'rehearsal_sign'
+    - else
+      = stylesheet_link_tag    'rehearsal', media: 'all'
+      = javascript_include_tag 'rehearsal'
+    = csrf_meta_tags
+  %body
+    = yield
