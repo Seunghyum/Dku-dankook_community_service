@@ -14,7 +14,7 @@ class LectureInfosController < ApplicationController
       @lecture_infos = LectureInfo.professor_search(params[:professor]).where(l_type: params[:filter])
     end
 
-    if params[:filter] == "전체"
+    if params[:category].nil? && params[:filter] == "전체" || params[:filter].nil?
       @lecture_infos = LectureInfo.all
     end
     @best_liberal = BestFive.find_by(category: "교양").lecture_infos
