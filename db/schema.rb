@@ -301,7 +301,7 @@ ActiveRecord::Schema.define(version: 20160715185840) do
     t.string   "role",                   default: "일반학생"
     t.string   "username"
     t.string   "gender"
-    t.integer  "lnum",                   default: 0
+    t.integer  "lnum"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

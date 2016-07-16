@@ -44,7 +44,7 @@ class LockersController < ApplicationController
 #두번째 로커 선택 로직
   def lockerselect
       #현재 유저가 사물함 가진것이 없을때
-      if current_user.lnum == 0
+      if current_user.lnum.nil?
         current_user.update(lnum: @lnum)
 
         flash[:success] = "#{@lnum}번 사물함을 획득했습니다."
@@ -61,7 +61,7 @@ class LockersController < ApplicationController
   end
 
   def destroy
-      current_user.update(lnum: 0)
+      current_user.update(lnum: nil)
       redirect_to action: "selecting_page"
   end
 
@@ -88,14 +88,17 @@ class LockersController < ApplicationController
     end
 
     def check_lcounting_for_reject
-      if current_user.lcounting > @our_locker.limit_num
+      if current_user.lcounting.nil?
+        flash[:danger] = "1차 접수 이후에 가능합니다."
+        redirect_to action: "index"
+      elsif current_user.lcounting > @our_locker.limit_num
         flash[:danger] = "1차 접수 - 총 제한 인원 #{@our_locker.limit_num}명 중 #{current_user.lcounting}번째 입니다. 다음학기에....."
         redirect_to action: "reject"
       end
     end
 
     def check_lcounting_for_selecting
-      if current_user.lcounting < @our_locker.limit_num
+      if current_user.lcounting > @our_locker.limit_num
         flash[:success] = "1차 접수 - 총 제한 인원 #{@our_locker.limit_num}명 중 #{current_user.lcounting}번째 입니다."
         redirect_to action: "selecting_page"
       end

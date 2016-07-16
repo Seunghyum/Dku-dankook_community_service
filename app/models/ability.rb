@@ -5,6 +5,8 @@ class Ability
   #롤을 만들 경우 여기에서 User.new를 통해 role: 외부인 으로 설정하면 외부 session을 롤이 외부인인 유저로 인식한다. 이걸으로 조정하면 된다.
     user ||= User.new(role: '외부인') # guest user (not logged in)
     if user.role == '슈퍼관리자'
+      can :access, :rails_admin   # grant access to rails_admin
+      can :dashboard              # grant access to the dashboard
       can :manage, :all
     elsif user.role == '일반대표' && user.role == '학생'
       can [:create, :read], [Post, Comment, LectureEstimate, Locker]

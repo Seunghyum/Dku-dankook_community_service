@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # 수강신청 리허설
   scope module: :test_lecture_registers do
     get "home" => "test_lectures#home", as:"test_home"
@@ -22,7 +23,6 @@ Rails.application.routes.draw do
     end
   end
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 #달력
   resources :meetings
 
