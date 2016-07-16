@@ -9,7 +9,6 @@ class Ability
     elsif user.role == '일반대표' && user.role == '학생'
       can [:create, :read], [Post, Comment, LectureEstimate, Locker]
       can [:read], [Meeting]
-      can :sign_in [SchoolPhoneSearching, TestLecture, TestUser]
 
       can [:update, :destroy], Post do |post|
         post.user_id == user.id
@@ -26,8 +25,7 @@ class Ability
 
     elsif user.role == '외부인'
       can :read, [Post, Meeting, LectureEstimate]
-      can :home [Locker]
-      can :manage [SchoolPhoneSearching, TestLecture, TestUser]
+      can :home, [Locker]
     end
     # Define abilities for the passed in user here. For example:
     #

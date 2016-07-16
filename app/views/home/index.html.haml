@@ -114,15 +114,12 @@
             = link_to "바로가기", lecture_infos_path, class: "btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right"
           = succeed "," do
             .panel-body.no-padding
-          .profile-event
-            #vertical_banner
-              %ul
-                - x = 1
-                - @best_liberal.each do |best|
-                  %li
-                    = x
-                    \. #{best.name}
-                  - x = x + 1
+              .profile-event
+                #vertical_banner
+                  %ul
+                    - @best_liberal.each_with_index do |best, index|
+                      %li
+                        = "#{index + 1}. #{best.name}"
       / End Profile Event
       .profile-body
         .panel.panel-profile
