@@ -1,0 +1,2 @@
+$('#lecture_info_pages').html("#{escape_javascript(render 'lecture_infos/list')}");
+$('#paginator').html("#{escape_javascript(paginate(@lecture_info_pages, :remote => true)) }");

@@ -29,22 +29,8 @@
         %td.title{:align => "center"}
           %p  후에 열립니다.
         %td{:align => "center"}
-              #{link_to("/home/index") do}
+          = link_to( home_lockers_path) do
             = image_tag("refresh.png", width: "40")
-        / <haml_silent></haml_silent>
-        / <td align="center" class="title">
-        / <p>국제학부 책 대여 & 사물함 프로젝트에 오신 것을 환영합니다~!</p>
-        / </td>
-        / <haml_silent></haml_silent>
-      /
-        <tr id="spacer2">
-        <td align="center" ></td>
-        <td align="center" ><div class="title" id="days">Days</div></td>
-        <td align="center" ><div class="title" id="hours">Hours</div></td>
-        <td align="center" ><div class="title" id="minutes">Minutes</div></td>
-        <td align="center" ><div class="title" id="seconds">Seconds</div></td>
-        <td align="center" ><div class="title" ></div></td>
-        </tr>
 .row
   #book_button.col-xs-6.col-md-6.col-lg-6.text-center
     = link_to(index_lockers_path) do

@@ -6,7 +6,7 @@ class LectureEstimate < ActiveRecord::Base
 
   # 강의 평가 점수 합계 평균
   after_create :lecture_best_ranking, if: :is_liberal
-  after_save :score_average, :total_average
+  after_save :score_average, :total_average, :best_review
 
   private
     def score_average
@@ -34,16 +34,15 @@ class LectureEstimate < ActiveRecord::Base
     def lecture_best_ranking
       type = self.lecture_info.l_type
       best_category = BestFive.find_by(category: type)
-      # unless BestFive.first.lecture_info.error?
-      #   BestFive.first.lecture_infos.each do |info|
-      #     info.update_column(:best_five_id, nil)
-      #   end
-      # end
       best_5 = LectureInfo.where(l_type: type).limit(7)
       if best_5.length > 2
         best_5.each do |best|
           best.update_column(:best_five_id, best_category.id)
         end
       end
+    end
+
+    def best_review
+
     end
 end

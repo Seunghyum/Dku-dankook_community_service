@@ -1,7 +1,7 @@
 .block-description
   .container
-    %center
-      = link_to "강의평가 작성하기", new_lecture_info_lecture_estimate_path(@lecture_info), class: "btn-u btn-u-yellow margin-bottom-20"
+    -# %center
+    -#   = link_to "강의평가 작성하기", new_lecture_info_lecture_estimate_path(@lecture_info), class: "btn-u btn-u-yellow margin-bottom-20"
     .row
       / Right Inner
       .col-md-5.col-md-push-7
@@ -15,6 +15,7 @@
             \&#xAC15;&#xC758; &#xD3C9;&#xAC00; &#xD3C9;&#xADE0;
             %small
               %a#display-inline{:href => "#"}
+                &nbsp;
                 = @lecture_info.lecture_estimates.count
                 reviews
           .content-boxes-v2.content-boxes-v2-o
@@ -191,44 +192,42 @@
                 \&#xAC1C;&#xC124;&#xD559;&#xAE30; : #{@lecture_info.semester}&#xD559;&#xAE30;
               %p.hex
                 \&#xC2DC;&#xAC04; : #{@lecture_info.time}&#xAD50;&#xC2DC;
-        %br
-          / Bordered Funny Boxes
-          - unless @lecture_estimates.nil?
-            - @lecture_estimates.each do |esti|
-              .funny-boxes.funny-boxes-top-
-              = @color_pick.sample
-              .bg-color-white
-                %p.pull-right
-                  = esti.created_at.year
-                  \&#xB144; #{esti.created_at.month}&#xC6D4;
-                %h4
-                  = esti.reason
-                  \&#xC704;&#xD574; &#xC218;&#xAC15;&#xD588;&#xB358; &#xC120;&#xBC30;
-                .pull-right
-                  %ul.list-unstyled.funny-boxes-rating
-                    \&#xD3C9;&#xAC00; &#xC810;&#xC218; :
-                    - 1.upto(esti.average/20) do |x|
+          %br
+            / Bordered Funny Boxes
+            - unless @lecture_estimates.nil?
+              - @lecture_estimates.each do |esti|
+                .funny-boxes.bg-color-white{class: "funny-boxes-top-#{@color_pick.sample}"}
+                  %p.pull-right
+                    = esti.created_at.year
+                    \&#xB144; #{esti.created_at.month}&#xC6D4;
+                  %h4
+                    = esti.reason
+                    \&#xC704;&#xD574; &#xC218;&#xAC15;&#xD588;&#xB358; &#xC120;&#xBC30;
+                  .pull-right
+                    %ul.list-unstyled.funny-boxes-rating
+                      \&#xD3C9;&#xAC00; &#xC810;&#xC218; :
+                      - 1.upto(esti.average/20) do |x|
+                        %li
+                          %i.fa.fa-star
+                      - 1.upto(5 - esti.average/20) do |y|
+                        %li
+                          %i.fa.fa-star-o
+                  - if esti.msg
+                    %strong
+                      %h4 &#xD6C4;&#xAE30;
+                    %p= esti.msg.html_safe
+                    %br
+                    / 좋아요 / 싫어요
+                    %ul.list-inline.badge-lists.badge-box-v1.margin-bottom-30.text-center
                       %li
-                        %i.fa.fa-star
-                    - 1.upto(5 - esti.average/20) do |y|
+                        = link_to like_lecture_info_lecture_estimate_path(@lecture_info, esti),id: "esti-like-btn-#{esti.id}", remote: true  do
+                          %i.rounded-x.ti-heart.text-danger
+                          %span.badge.badge-red.rounded-x= esti.get_upvotes.size
                       %li
-                        %i.fa.fa-star-o
-              - if esti.msg
-                %strong
-                  %h4 &#xD6C4;&#xAE30;
-                %p= esti.msg.html_safe
-                %br
-                / 좋아요 / 싫어요
-                %ul.list-inline.badge-lists.badge-box-v1.margin-bottom-30.text-center
-                  %li
-                    = link_to like_lecture_info_lecture_estimate_path(@lecture_info, esti),id: "esti-like-btn-#{esti.id}", remote: true  do
-                      %i.rounded-x.ti-heart.text-danger
-                      %span.badge.badge-red.rounded-x= esti.get_upvotes.size
-                  %li
-                    = link_to dislike_lecture_info_lecture_estimate_path(@lecture_info, esti), id: "esti-dislike-btn-#{esti.id}", remote: true do
-                      %i.rounded-x.ti-heart-broken
-                      %span.badge.badge-gray.rounded-x= esti.get_downvotes.size
-          / End Bordered Funny Boxes
+                        = link_to dislike_lecture_info_lecture_estimate_path(@lecture_info, esti), id: "esti-dislike-btn-#{esti.id}", remote: true do
+                          %i.rounded-x.ti-heart-broken
+                          %span.badge.badge-gray.rounded-x= esti.get_downvotes.size
+              / End Bordered Funny Boxes
           %center
             = link_to "강의평가 작성하기", new_lecture_info_lecture_estimate_path(@lecture_info), class: "btn-u btn-u-yellow"
       / End Left Inner

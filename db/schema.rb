@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160710094541) do
+ActiveRecord::Schema.define(version: 20160715185840) do
 
   create_table "best_fives", force: :cascade do |t|
     t.string   "category"
@@ -81,18 +81,31 @@ ActiveRecord::Schema.define(version: 20160710094541) do
 
   create_table "lecture_estimates", force: :cascade do |t|
     t.string   "reason"
-    t.integer  "average",         default: 0
-    t.integer  "fun",             default: 0
-    t.integer  "teaching",        default: 0
-    t.integer  "get_grade",       default: 0
-    t.integer  "teamwork_n_asg",  default: 0
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "average",                 default: 0
+    t.integer  "fun",                     default: 0
+    t.integer  "teaching",                default: 0
+    t.integer  "get_grade",               default: 0
+    t.integer  "teamwork_n_asg",          default: 0
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "user_id"
     t.integer  "lecture_info_id"
     t.text     "msg"
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
   end
 
+  add_index "lecture_estimates", ["cached_votes_down"], name: "index_lecture_estimates_on_cached_votes_down"
+  add_index "lecture_estimates", ["cached_votes_score"], name: "index_lecture_estimates_on_cached_votes_score"
+  add_index "lecture_estimates", ["cached_votes_up"], name: "index_lecture_estimates_on_cached_votes_up"
+  add_index "lecture_estimates", ["cached_weighted_average"], name: "index_lecture_estimates_on_cached_weighted_average"
+  add_index "lecture_estimates", ["cached_weighted_score"], name: "index_lecture_estimates_on_cached_weighted_score"
+  add_index "lecture_estimates", ["cached_weighted_total"], name: "index_lecture_estimates_on_cached_weighted_total"
   add_index "lecture_estimates", ["lecture_info_id"], name: "index_lecture_estimates_on_lecture_info_id"
   add_index "lecture_estimates", ["user_id"], name: "index_lecture_estimates_on_user_id"
 
@@ -114,6 +127,7 @@ ActiveRecord::Schema.define(version: 20160710094541) do
     t.integer  "average",           default: 0
     t.string   "div_color"
     t.integer  "best_five_id"
+    t.string   "review"
   end
 
   add_index "lecture_infos", ["best_five_id"], name: "index_lecture_infos_on_best_five_id"
