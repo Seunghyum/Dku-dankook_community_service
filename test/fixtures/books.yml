@@ -1,17 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  limit_num: 1
-  counting: 1
   name: MyString
-  cname: MyString
-  grade: MyString
-  major_id: 
+  bgiver: MyString
+  price: 1
 
 two:
-  limit_num: 1
-  counting: 1
   name: MyString
-  cname: MyString
-  grade: MyString
-  major_id: 
+  bgiver: MyString
+  price: 1

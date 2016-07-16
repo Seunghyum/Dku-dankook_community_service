@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :books
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # 수강신청 리허설
   scope module: :test_lecture_registers do
@@ -48,7 +49,7 @@ get 'lockers/nottime' => "lockers#nottime", as: "nottime_lockers"
 # 전화번호부
   resources :school_phone_searchings
 
-  get 'home/index'
+  get 'home/index' => "home#index"
 
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords'}
 
