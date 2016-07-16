@@ -5,8 +5,8 @@ class BooksController < ApplicationController
   # authorize_resource :class => false
   # skip_authorize_resource :only => :searching
 
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
-  before_action :set_book_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:edit, :update, :destroy]
+  before_action :set_book_list, only: [:show]
 
   def index
     @book_lists = BookList.search(params[:name])
