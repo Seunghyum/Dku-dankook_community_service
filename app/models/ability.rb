@@ -2,16 +2,24 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    can :read, :all
   #롤을 만들 경우 여기에서 User.new를 통해 role: 외부인 으로 설정하면 외부 session을 롤이 외부인인 유저로 인식한다. 이걸으로 조정하면 된다.
     user ||= User.new(role: '외부인') # guest user (not logged in)
     if user.role == '슈퍼관리자'
-      can :access, :rails_admin   # grant access to rails_admin
-      can :dashboard              # grant access to the dashboard
+      can :access, :rails_admin
+      can :dashboard
       can :manage, :all
-    elsif user.role == '일반대표' && user.role == '학생'
-      can [:create, :read], [Post, Comment, LectureEstimate, Locker]
-      can [:read], [Meeting]
-
+    elsif user.role == "인액터스"
+      can [:manage], Book
+      can [:create], [Post, Comment, LectureEstimate, Locker]
+      can [:update, :destroy], Post do |post|
+        post.user_id == user.id
+      end
+      can [:update, :destroy], Comment do |comment|
+        comment.user_id == user.id
+      end
+    elsif user.role == '일반대표' || user.role == '학생'
+      can [:create], [Post, Comment, LectureEstimate, Locker]
       can [:update, :destroy], Post do |post|
         post.user_id == user.id
       end
@@ -21,12 +29,10 @@ class Ability
       can [:update, :destroy], LectureEstimate do |esimate|
         esimate.user_id == user.id
       end
-      can [:first_check, :lockerselect], LectureEstimate do |esimate|
-        esimate.user_id == user.id
+      can [:first_check, :lockerselect], Locker do |locker|
+        locker.user_id == user.id
       end
-
-    elsif user.role == '외부인'
-      can :read, [Post, Meeting, LectureEstimate]
+    else
       can :home, [Locker]
     end
     # Define abilities for the passed in user here. For example:

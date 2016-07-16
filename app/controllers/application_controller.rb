@@ -14,8 +14,8 @@ class ApplicationController < ActionController::Base
   check_authorization :if => :admin_subdomain?, :only => [:update, :create, :destroy, :edit, :new]   # check_authorization :only => [:update, :destroy, :edit, :new]
   #권한 없이 접근 시 에러미시지
   rescue_from CanCan::AccessDenied do |exception|
-     redirect_to root_url, :alert => exception.message
-  end
+      redirect_to main_app.root_path, :alert => exception.message
+    end
 
   private
 
