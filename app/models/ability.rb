@@ -10,7 +10,7 @@ class Ability
       can :dashboard
       can :manage, :all
     elsif user.role == "인액터스"
-      can [:manage], Book
+      can [:manage], [Book, BookList]
       can [:create], [Post, Comment, LectureEstimate, Locker]
       can [:update, :destroy], Post do |post|
         post.user_id == user.id

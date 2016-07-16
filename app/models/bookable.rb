@@ -1,4 +1,4 @@
 class Bookable < ActiveRecord::Base
-  belongs_to :book
+  belongs_to :student_book
   belongs_to :user
 end

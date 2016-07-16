@@ -1,11 +1,11 @@
 class SchoolPhoneSearching < ActiveRecord::Base
   def search_school_phone
     if campus == "죽전"
-    		schools = SchoolJook.all
+  		schools = SchoolJook.all
 		elsif campus == "천안"
-    		schools = SchoolChun.all
+  		schools = SchoolChun.all
 		else
-    		jook = SchoolJook.all
+  		jook = SchoolJook.all
 			schools = jook.where(["belong LIKE :belong OR name Like :belong", belong: "%#{belong}%", belong: "%#{belong}%"])
 			chun = SchoolChun.all
 			schools = schools + chun.where(["belong LIKE :belong OR name Like :belong", belong: "%#{belong}%", belong: "%#{belong}%"])

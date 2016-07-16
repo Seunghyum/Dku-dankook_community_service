@@ -230,3 +230,10 @@ RehearsalLecture.create(name: "경영학원론", ldate: "수 11,12,13,14", lnum:
 RehearsalLecture.create(name: "마케팅", ldate: "수 11,12,13,14", lnum: "32400", limit_num: 55, teacher: "강동주", score: 3, divide: 2)
 RehearsalLecture.create(name: "빅데이터", ldate: "금 11,12,13,14", lnum: "42340", limit_num: 33, teacher: "잡스", score: 3, divide: 1)
 RehearsalLecture.create(name: "아이오닉", ldate: "화 11,12,13,14", lnum: "642232", limit_num: 20, teacher: "마크 주커버그", score: 2, divide: 2)
+
+BookList.create(name: "어린왕자", num_of_book: 3)
+BookList.create(name: "이방인", num_of_book: 4)
+BookList.create(name: "안나 카레니나", num_of_book: 5)
+Book.create(name:'어린왕자', price: 13000, bgiver: "문승현", book_list_id: 1)
+Book.create(name:'어린왕자', price: 10000, bgiver: "고영일", book_list_id: 1)
+Book.create(name:'어린왕자', price: 5000, bgiver: "김순후", book_list_id: 1)

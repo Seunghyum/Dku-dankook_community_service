@@ -1,25 +1,42 @@
-%h1 Listing books
+.search-block.parallaxBg{:style => "background-position: 50% 16px;"}
+  .container
+    .col-md-6.col-md-offset-3
+      %h1
+        인액터스
+        %span.color-green 중고책
+        검색
+      = form_tag books_path, method: "get" do
+        .row
+          .col-md-12.col-xs-12
+            .input-group.border-input
+              = text_field_tag :name, "", class: "form-control",  placeholder: "책이름"
+              %span.input-group-btn
+                = button_tag(type: 'submit', class: "btn-u btn-u-lg") do
+                  %i.fa.fa-search
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Bgiver
-      %th Price
-      %th
-      %th
-      %th
+.container
+  - if @book_lists.empty?
+    %h4.text-danger.text-center 검색한 책이 없습니다.
+  - else
+    .row
+      .col-md-12
+        .panel.panel-blue.margin-bottom-40
+          .panel-heading
+            %h3.panel-title
+              %i.fa.fa-phone
+              총 #{@book_lists.length}개의 결과가 나왔습니다
+          .panel-body
+            %table.table.table-striped.table-hover
+              %thead
+                %tr
+                  %th 명칭
+                  %th 남은 갯수
+                  %th
+              %tbody
+                - @book_lists.each do |book_list|
+                  %tr
+                    %td= link_to book_list.name, book_path(book_list)
+                    %td= book_list.num_of_book
+                    %td= link_to "신청하기"
 
-  %tbody
-    - @books.each do |book|
-      %tr
-        %td= book.name
-        %td= book.bgiver
-        %td= book.price
-        %td= link_to 'Show', book
-        %td= link_to 'Edit', edit_book_path(book)
-        %td= link_to 'Destroy', book, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Book', new_book_path
+= link_to 'New Book', new_book_path if can? :create, @book_list

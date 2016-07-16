@@ -1,15 +1,22 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @book.name
-%p
-  %b Bgiver:
-  = @book.bgiver
-%p
-  %b Price:
-  = @book.price
-
-= link_to 'Edit', edit_book_path(@book)
-\|
-= link_to 'Back', books_path
+.container
+  .row
+    .col-md-12
+      .panel.panel-blue.margin-bottom-40
+        .panel-body
+          %table.table.table-striped.table-hover
+            %thead
+              %tr
+                %th 책이름
+                %th 가격
+                %th 기부자
+                %th
+            %tbody
+              - @books.each do |book|
+                %tr
+                  %td= book.name
+                  %td= book.price
+                  %td= book.bgiver
+                  %td
+                    = link_to "삭제", book_path(book), method: "delete"
+                    = link_to "수정", book_path(book), method: "put"
+= link_to 'New Book', new_book_path if can? :create, @book_list

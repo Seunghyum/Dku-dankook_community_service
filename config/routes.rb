@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  #중고책
   resources :books
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # 수강신청 리허설
   scope module: :test_lecture_registers do
