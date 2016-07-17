@@ -1,67 +1,51 @@
+%br
 .row
-  .col-sm-offset-4.col-sm-4
-    .text-center
-      - flash.each do |key, value|
-        %div{:class => "alert alert-#{key}"}= value
-    %h4.blue-1
-      %strong
-        %i.fa.fa-caret-right
-        현재 정보
-    %table#locker.table
-      %tbody
-        %tr
-          %td 성명
-          %td= current_user.name
-        %tr
-          %td 소속
-          %td= current_user.major.name
-        %tr
-          %td 보유 사물함
-          - if current_user.lcounting.nil?
-            %td.red 불가
-          - elsif current_user.major.locker.present?
-            %td.red= current_user.lnum
-          - else
-            %td 미정
+  .col-sm-offset-4.col-sm-4.col-xs-10.col-xs-offset-1
+    %ul.pager
+      %li.previous
+        = link_to "홈으로 가기", home_lockers_path, class: "rounded", method: "get"
+      %li.next
+        = link_to "우리 학과 현황", manage_lockers_path, class: "rounded"
+    .panel.panel-green
+      .panel-heading
+        %h3.panel-title
+          %strong
+            %i.fa.fa-tasks
+            현재 정보
+      %table#locker.table
+        %tbody
+          %tr
+            %td 성명
+            %td= current_user.name
+          %tr
+            %td 소속
+            %td= current_user.major.name
+          %tr
+            %td 보유 사물함
+            - if current_user.lcounting.nil?
+              %td.red 불가
+            - elsif current_user.lnum
+              %td.red= current_user.lnum
+            - else
+              %td 미정
+
     .row.text-center
-      .col-sm-4
+      .col-sm-12
+        - flash.each do |key, value|
+          .alert.fade.in.alert-dismissable{:class => "alert-#{key}"}
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+            %strong= value
         - if current_user.lcounting.nil? && current_user.major.locker.limit_num > current_user.major.locker.counting
           .form-group
-            %h5.silver 아직 1차 접수하지 않았습니다.
-          .form-group
             = link_to first_check_lockers_path, method: "post" do
-              = button_tag "1차 접수하기", class: "locker-button"
+              = button_tag "1차 접수하기", class: "btn-u"
         - elsif !current_user.lcounting.nil? && current_user.lnum == 0
           .form-group
-            %h5.silver
-              사물함 권한을 가졌습니다.
-              %br/
-              사물함을 골라주세요.
-          .form-group
             = link_to  selecting_page_lockers_path, class: "form-group" do
-              = button_tag "사물함 고르기", class: "locker-button"
+              = button_tag "사물함 고르기", class: "btn-u btn-u-green"
         - elsif current_user.lcounting > @our_locker.limit_num
-          .form-group
-            %h5.silver
-              1차 선발에서 떨어졌습니다.
-              %br/
-              사물함 제한 인원
-              \#{@our_locker.limit_num}명 중
-              \#{current_user.lcounting}번째로 접수했습니다.
+
         - else
           .form-group
-            %h5.silver
-              사물함 권한을 가졌습니다
-              %br/
-              반납하고 다른 사물함을 찾을 수 있습니다.
-          .form-group
             = link_to destroy_lockers_path, method: 'post' do
-              = button_tag "반납 & 다시 고르기", class: "locker-button"
-      .col-sm-4
-        .form-group
-          = link_to home_lockers_path method: "get" do
-            = button_tag "홈으로 가기", class: "locker-button"
-      .col-sm-4
-        .form-group
-          = link_to manage_lockers_path do
-            = button_tag "우리 학과 현황", class: "locker-button"
+              = button_tag "반납 & 다시 고르기", class: "btn-u btn-u-yellow"

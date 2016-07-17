@@ -6,7 +6,7 @@ class LectureEstimate < ActiveRecord::Base
 
   # 강의 평가 점수 합계 평균
   after_create :lecture_best_ranking, if: :is_liberal
-  after_save :score_average, :total_average, :best_review
+  after_save :score_average, :total_average
 
   private
     def score_average
@@ -27,22 +27,17 @@ class LectureEstimate < ActiveRecord::Base
     end
 
     def is_liberal
-      #develop 환경이라서 뒤의 로직이 필요하다.
+      #develop 환경이라서 뒤의 로직이 필요하다. 교양과목만 순위가 의미가 있다.. 그래서 교양과목만 진행
       self.lecture_info.l_type == "교양" && LectureInfo.where(l_type: "교양").length > 5
     end
 
     def lecture_best_ranking
-      type = self.lecture_info.l_type
-      best_category = BestFive.find_by(category: type)
-      best_5 = LectureInfo.where(l_type: type).limit(7)
-      if best_5.length > 2
-        best_5.each do |best|
-          best.update_column(:best_five_id, best_category.id)
-        end
+    best_category = BestFive.find_by(category: "교양")
+    best_5 = LectureInfo.where(l_type: "교양").take(7)
+    if best_5.length > 2
+      best_5.each do |best|
+        best.update_column(:best_five_id, best_category.id)
       end
     end
-
-    def best_review
-
-    end
+  end
 end

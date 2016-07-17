@@ -1,0 +1,4 @@
+- @book_lists.each do |book_list|
+  %tr
+    %td= link_to book_list.name, book_list_path(book_list)
+    %td= book_list.num_of_book

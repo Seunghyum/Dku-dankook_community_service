@@ -1,0 +1,3 @@
+//kaminari 페이지네이션
+$('#book_lists').html('#{escape_javascript render(partial: 'book_lists/list')}');
+$('#paginator').html('#{escape_javascript(paginate(@book_lists, remote: true).to_s)}');

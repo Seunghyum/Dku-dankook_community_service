@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   #중고책
-  resources :books
+  resources :book_lists do
+    resources :books, only: [:edit, :update, :destroy]
+  end
+  resources :books, only: [:new, :create]
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # 수강신청 리허설

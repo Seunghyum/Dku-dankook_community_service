@@ -110,16 +110,15 @@
           .tag-box-v1.panel-heading.overflow-h
             %h2.panel-title.heading-sm.pull-left
               %i.fa.fa-briefcase>
-              \&#xC2E4;&#xC2DC;&#xAC04; Hot &#xAC15;&#xC758;
+              실시간 Hot 강의
             = link_to "바로가기", lecture_infos_path, class: "btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right"
-          = succeed "," do
-            .panel-body.no-padding
-              .profile-event
-                #vertical_banner
-                  %ul
-                    - @best_liberal.each_with_index do |best, index|
-                      %li
-                        = "#{index + 1}. #{best.name}"
+          .panel-body.no-padding
+            .profile-event
+              #vertical_banner
+                %ul
+                  - @best_liberal.each_with_index do |best, index|
+                    %li
+                      = "#{index + 1}. #{best.name}"
       / End Profile Event
       .profile-body
         .panel.panel-profile

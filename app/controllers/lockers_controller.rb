@@ -16,6 +16,9 @@ class LockersController < ApplicationController
 
 #자신의 로커 상태 표시 page + 첫번째 번호표 뽑기 view page
   def index
+    if current_user.lcounting > @our_locker.limit_num
+      flash[:danger] = "1차 선발에서 떨어졌습니다.   사물함 제한 인원 #{@our_locker.limit_num}명 중 번째로 #{current_user.lcounting}접수했습니다."
+    end
   end
 
   def nottime

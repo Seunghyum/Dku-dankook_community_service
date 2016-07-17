@@ -1,7 +1,22 @@
-%h1 Editing book
-
-= render 'form'
-
-= link_to 'Show', @book
-\|
-= link_to 'Back', books_path
+.row
+  .col-sm-offset-4.col-sm-4
+    = bootstrap_form_for :book, url: book_list_book_path(@book_list, @book), method: "put", html: {class: "sky-form", id: "sky-form4"} do |f|
+      %header 책 정보 수정
+      %fieldset
+        %section
+          %label.input
+            %i.icon-append.fa.fa-user
+            = f.text_field :name, placeholder: "책 제목", hide_label: true
+            %b.tooltip.tooltip-bottom-right Needed to enter the website
+        %section
+          %label.input
+            %i.icon-append.fa.fa-envelope
+            = f.text_field :bgiver, placeholder: "판매자", hide_label: true
+            %b.tooltip.tooltip-bottom-right Needed to verify your account
+        %section
+          %label.input
+            %i.icon-append.fa.fa-envelope
+            = f.number_field :price, placeholder: "가격", hide_label: true
+            %b.tooltip.tooltip-bottom-right Needed to verify your account
+      %footer.text-center
+        = f.submit '저장', class: "btn-u"

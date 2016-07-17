@@ -1,0 +1,25 @@
+.container
+  .row
+    .col-md-12
+      .margin-bottom-40
+        .panel-body
+          %table.table.table-striped.table-hover.text-center
+            %center
+              = link_to '새 책 등록하기', new_book_path, class: "btn-u" if can? :create, @books.first
+            %thead
+              %tr
+                %th.text-center.text-center 책이름
+                %th.text-center{"data-field" => "width-30"}  가격
+                %th.text-center{"data-field" => "width-80"}  기부자
+                - if can? :create, @books.first
+                  %th{"data-field" => "width-130"}
+            %tbody
+              - @books.each do |book|
+                %tr
+                  %td= book.name
+                  %td= book.price
+                  %td= book.bgiver
+                  - if can? :destroy, book
+                    %td
+                      = link_to "삭제", book_list_book_path(@book_list, book), method: "delete", data: {confirm: "정말로 삭제하시겠습니까?"}, class: "btn-u btn-u-sm btn-u-red"
+                      = link_to "수정", edit_book_list_book_path(@book_list, book), class: "btn-u btn-u-sm btn-u-yellow"

@@ -33,6 +33,7 @@ class Ability
         locker.user_id == user.id
       end
     else
+      # can :show, [Book, BookList]
       can :home, [Locker]
     end
     # Define abilities for the passed in user here. For example:

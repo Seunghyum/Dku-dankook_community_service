@@ -13,9 +13,9 @@
 //= require jquery2
 //= require jquery_ujs
 //= require jquery-ui
-//= require jquery.vticker.min.js
 //= require tether
 //= require bootstrap-sprockets
+// require jquery.vticker.min.js
 //= require jquery-bar-rating
 //= require summernote
 //= require summernote/locales/ko-KR

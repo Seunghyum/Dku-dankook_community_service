@@ -11,26 +11,19 @@ class Book < ActiveRecord::Base
     summury_name = self.name.gsub(/\s+/, "")
     list = BookList.find_by(name: summury_name)
     if list.nil?
-      BookList.create(name: self.name, num_of_book: 1)
+      new_book_list = BookList.create(name: self.name, num_of_book: 1)
+      self.update_column(:book_list_id, new_book_list.id)
     else
       self.update_column(:book_list_id, list.id)
-      self.book_list.increment(:num_of_book, 1).save
+      self.book_list.increment!(:num_of_book, 1)
     end
   end
 
   def destroy_book_list
     list = self.book_list
-    list.decrement(:num_of_book, 1).save
+    list.decrement!(:num_of_book, 1)
     if list.num_of_book == 0
       list.delete
-    end
-  end
-
-  def self.search(search)
-    if search
-      where(["name LIKE :search", search: "%#{search}%"])
-    else
-      all
     end
   end
 end
