@@ -21,13 +21,8 @@ gem 'summernote-rails'
 gem 'kaminari'
 ##tag
 gem 'acts-as-taggable-on'
-##tag
-gem 'tag-it-rails'
-##radar chart
-gem 'chart-js-rails'
 ##Passing Data to JavaScript
 gem 'gon'
-gem "haml-rails"
 
 #auth
 gem 'devise'
@@ -36,7 +31,12 @@ gem 'omniauth-kakao'
 gem 'cancancan'
 gem 'rails_admin'
 
-
+#files
+gem 'carrierwave'
+gem "mini_magick"
+gem 'to_xls-rails'
+gem 'fog'
+gem 'fog-aws'
 # UI
 gem 'sass-rails', '~> 5.0'
 ## Use Uglifier as compressor for JavaScript assets
@@ -52,6 +52,15 @@ gem 'bootstrap_form'
 gem 'rails-assets-jquery-bar-rating', source: 'https://rails-assets.org'
 gem 'bootstrap'
 gem 'rails-assets-tether', '~> 1.1', '>= 1.1.1'
+##tag
+gem 'tag-it-rails'
+##radar chart
+gem 'chart-js-rails'
+#haml
+gem "haml-rails"
+#editor
+gem 'redactor-rails'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

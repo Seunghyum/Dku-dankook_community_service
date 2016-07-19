@@ -26,11 +26,8 @@
               %center
                 %h3.title= @post.title
                 %h6.title-uppercase= timeago_tag @post.created_at
-              / 이미지 나오는 곳
-              .margin-bottom-5
-                = image_tag "cafe.jpg", class: "img-responsive full-width"
               / 태그출력
-              .margin-bottom-5
+              .margin-bottom-5.text-center
                 - @post.tag_list.each do |x|
                   %span{:class => "label rounded label-#{@samples.sample} margin-right-5"}
                     %i.fa.fa-tags

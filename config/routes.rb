@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RedactorRails::Engine => '/redactor_rails'
   #중고책
   resources :book_lists do
     resources :books, only: [:edit, :update, :destroy]

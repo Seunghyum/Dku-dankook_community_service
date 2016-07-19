@@ -36,7 +36,7 @@
               %li
                 = link_to "사물함 신청", home_lockers_path
               %li
-                = link_to "전화번호 검색", new_school_phone_searching_path
+                = link_to "단국대 기관 전화번호 검색", new_school_phone_searching_path
               %li.no-border
                 = link_to "단대 일정", meetings_path
           %li
@@ -44,9 +44,9 @@
           %li
             = link_to "인액터스 중고책 검색", book_lists_path
           / Shortcodes
-          -# %li.dropdown.mega-menu-fullwidth
+          %li.dropdown.mega-menu-fullwidth
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0);"}
-              Shortcodes
+              단국대 웹서비스
             %ul.dropdown-menu
               %li
                 .mega-menu-content.disable-icons
@@ -55,72 +55,17 @@
                       .col-md-3.equal-height-in
                         %ul.list-unstyled.equal-height-list
                           %li
-                            %h3 Typography &amp; Components
-                          / Typography
-                          %li
-                            %a{:href => "shortcode_typo_general.html"}
-                              %i.fa.fa-sort-alpha-asc
-                              General Typography
-                          %li
-                            %a{:href => "shortcode_typo_headings.html"}
-                              %i.fa.fa-magic
-                              Headings Options
-                          %li
-                            %a{:href => "shortcode_typo_dividers.html"}
-                              %i.fa.fa-ellipsis-h
-                              Dividers
-                          %li
-                            %a{:href => "shortcode_typo_blockquote.html"}
-                              %i.fa.fa-quote-left
-                              Blockquote Blocks
-                          %li
-                            %a{:href => "shortcode_typo_boxshadows.html"}
-                              %i.fa.fa-asterisk
-                              Box Shadows
-                          %li
-                            %a{:href => "shortcode_typo_testimonials.html"}
-                              %i.fa.fa-comments
-                              Testimonials
-                          %li
-                            %a{:href => "shortcode_typo_tagline_boxes.html"}
-                              %i.fa.fa-tasks
-                              Tagline Boxes
-                          %li
-                            %a{:href => "shortcode_typo_grid.html"}
-                              %i.fa.fa-align-justify
-                              Grid Layouts
-                          / End Typography
-                          / Components
-                          %li
-                            %a{:href => "shortcode_compo_messages.html"}
-                              %i.fa.fa-comment
-                              Alerts &amp; Messages
-                          %li
-                            %a{:href => "shortcode_compo_labels.html"}
-                              %i.fa.fa-tags
-                              Labels &amp; Badges
-                          %li
-                            %a{:href => "shortcode_compo_media.html"}
-                              %i.fa.fa-volume-down
-                              Audio/Videos &amp; Images
-                          %li
-                            %a{:href => "shortcode_compo_pagination.html"}
-                              %i.fa.fa-arrows-h
-                              Paginations
-                          / End Components
-                      .col-md-3.equal-height-in
-                        %ul.list-unstyled.equal-height-list
-                          %li
-                            %h3 Buttons &amp; Icons
+                            %h3 강의
                           / Buttons
                           %li
-                            %a{:href => "shortcode_btn_general.html"}
+                            = link_to lecture_infos_path do
                               %i.fa.fa-flask
-                              General Buttons
+                              강의 평가
                           %li
-                            %a{:href => "shortcode_btn_brands.html"}
-                              %i.fa.fa-html5
-                              Brand &amp; Social Buttons
+                            -# %a{:href => "shortcode_typo_general.html"}
+                            = link_to sign_in_test_users_path do
+                              %i.fa.fa-sort-alpha-asc
+                              수강신청 리허설
                           %li
                             %a{:href => "shortcode_btn_effects.html"}
                               %i.fa.fa-bolt
@@ -151,16 +96,80 @@
                       .col-md-3.equal-height-in
                         %ul.list-unstyled.equal-height-list
                           %li
-                            %h3 Common elements
+                            %h3 온라인 신청
+                          %li
+                            -# %a{:href => "shortcode_typo_headings.html"}
+                            = link_to home_lockers_path do
+                              %i.fa.fa-magic
+                              사물함 신청
+                          %li
+                            %a{:href => "shortcode_typo_dividers.html"}
+                              %i.fa.fa-ellipsis-h
+                              학과별 중고책 신청
+                          %hr
+                          %li
+                            %h3 검색
+                          %li
+                            = link_to new_school_phone_searching_path do
+                              %i.fa.fa-quote-left
+                              단국대 기관 전화번호 검색
+                          %li
+                            = link_to book_lists_path do
+                              %i.fa.fa-asterisk
+                              인액터스 중고책 검색
+                          -# %li
+                          -#   %a{:href => "shortcode_typo_blockquote.html"}
+                          -#     %i.fa.fa-quote-left
+                          -#     단국대 전화번호 검색
+                          -# %li
+                          -#   %a{:href => "shortcode_typo_boxshadows.html"}
+                          -#     %i.fa.fa-asterisk
+                          -#     Box Shadows
+                          -# %li
+                          -#   %a{:href => "shortcode_typo_testimonials.html"}
+                          -#     %i.fa.fa-comments
+                          -#     Testimonials
+                          -# %li
+                          -#   %a{:href => "shortcode_typo_tagline_boxes.html"}
+                          -#     %i.fa.fa-tasks
+                          -#     Tagline Boxes
+                          -# %li
+                          -#   %a{:href => "shortcode_typo_grid.html"}
+                          -#     %i.fa.fa-align-justify
+                          -#     Grid Layouts
+                          -# / End Typography
+                          -# / Components
+                          -# %li
+                          -#   %a{:href => "shortcode_compo_messages.html"}
+                          -#     %i.fa.fa-comment
+                          -#     Alerts &amp; Messages
+                          -# %li
+                          -#   %a{:href => "shortcode_compo_labels.html"}
+                          -#     %i.fa.fa-tags
+                          -#     Labels &amp; Badges
+                          -# %li
+                          -#   %a{:href => "shortcode_compo_media.html"}
+                          -#     %i.fa.fa-volume-down
+                          -#     Audio/Videos &amp; Images
+                          -# %li
+                          -#   %a{:href => "shortcode_compo_pagination.html"}
+                          -#     %i.fa.fa-arrows-h
+                          -#     Paginations
+                          / End Components
+
+                      .col-md-3.equal-height-in
+                        %ul.list-unstyled.equal-height-list
+                          %li
+                            %h3 중앙 동아리
                           / Common Elements
                           %li
                             %a{:href => "shortcode_thumbnails.html"}
                               %i.fa.fa-image
-                              Thumbnails
+                              멋쟁이사자처럼 (1년후)
                           %li
                             %a{:href => "shortcode_accordion_and_tabs.html"}
                               %i.fa.fa-list-ol
-                              Accordion &amp; Tabs
+                              인액터스
                           %li
                             %a{:href => "shortcode_timeline1.html"}
                               %i.fa.fa-dot-circle-o
@@ -197,7 +206,7 @@
                       .col-md-3.equal-height-in
                         %ul.list-unstyled.equal-height-list
                           %li
-                            %h3 Forms &amp; Infographics
+                            %h3 동아리
                           / Forms
                           %li
                             %a{:href => "shortcode_form_general.html"}

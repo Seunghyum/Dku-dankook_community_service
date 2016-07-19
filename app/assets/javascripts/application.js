@@ -17,8 +17,6 @@
 //= require bootstrap-sprockets
 // require jquery.vticker.min.js
 //= require jquery-bar-rating
-//= require summernote
-//= require summernote/locales/ko-KR
 //= require rails-timeago
 //= require locales/jquery.timeago.ko.js
 //= require tag-it
@@ -26,4 +24,11 @@
 //= require comment_edit
 //= require_tree ./js
 //= require_tree ./plugins
+//= require redactor1
+//= require redactor/fontcolor
+//= require redactor/fontsize
+//= require redactor/fontfamily
+//= require redactor/textdirection
+//= require config1
+//= require redactor/langs/ko
 //= require custom

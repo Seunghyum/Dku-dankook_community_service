@@ -29,7 +29,7 @@
               %i.fa.fa-edit
           / 삭제버튼
           - if can? :destroy, comment
-            = link_to comment, method: :delete, data: { confirm: 'Are you sure?' } do
+            = link_to board_post_comment_path(@board, @post, comment), method: "delete", data: { confirm: '정말 삭제하시겠습니까?' } do
               %button.btn-u.btn-brd.btn-brd-hover.btn-u-red.btn-u-sm.rounded-4x{:rel => "tooltip", :title => "삭제하기"}
                 %i.fa.fa-trash-o
           / 수정 폼
@@ -37,8 +37,8 @@
           - if can? :update, comment
             .media.media-post{:id => "edit-#{comment.id}", :style => "display: none;"}
               .media-body
-                = form_for [comment] do |f|
-                  = f.text_area :content, :rows => 4, class: "summernote",:data => { provider: "summernote"}, placeholder: "예의 있게 써주세요"
+                = form_for [@board, @post, comment] do |f|
+                  = f.text_area :content, :rows => 4, class: "redactor", placeholder: "예의 있게 써주세요"
                   %br/
                   .text-center
                     = f.submit "수정하기",class: "btn-u btn-brd-hover btn-u-yellow"
