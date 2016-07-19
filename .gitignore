@@ -4,7 +4,7 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-./config/initializers/fog.rb
+config/initializers/fog.rb
 
 # Ignore bundler config.
 /.bundle
@@ -17,3 +17,8 @@
 /log/*
 !/log/.keep
 /tmp
+
+/app/views/layouts/.DS_Store
+public/uploads/
+.DS_Store
+public/.DS_Store
