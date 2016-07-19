@@ -4,7 +4,7 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-/config/initializers/aws.rb
+/config/initializers/fog.rb
 
 # Ignore bundler config.
 /.bundle
