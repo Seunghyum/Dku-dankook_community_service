@@ -1,0 +1,18 @@
+wb = xlsx_package.workbook
+style_shout = wb.styles.add_style sz: 16, b: true, alignment: { horizontal: :center }
+
+wb.add_worksheet(name: "인액터스-#{Time.now.strftime("%m-%d %I%p")}.xlsx") do |sheet|
+  sheet.add_row ["인액터스-#{Time.now.strftime("%m-%d %I%p")}.xlsx"]
+  sheet.add_row ["책 리스트"]
+  sheet.add_row ["#", "책이름", "총 갯수(판매된 것 포함)", "판매된 책"]
+  @book_lists_all.each do |book_list|
+    sheet.add_row [book_list.id, book_list.name, book_list.num_of_book, book_list.num_of_purchase]
+  end
+
+  sheet.add_row ["개별 책"]
+  sheet.add_row ["#", "책이름", "가격", "판매자", "판매여부", "등록", "판매시간 or 정보수정시간"]
+  @books.each do |book|
+    sheet.add_row [book.id, book.name, book.price, book.bgiver, book.purchase, book.created_at, book.updated_at]
+  end
+  sheet["A1"].style = style_shout
+end

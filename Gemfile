@@ -23,6 +23,10 @@ gem 'kaminari'
 gem 'acts-as-taggable-on'
 ##Passing Data to JavaScript
 gem 'gon'
+##xls
+gem 'rubyzip'
+gem 'axlsx'
+gem 'axlsx_rails'
 
 #auth
 gem 'devise'

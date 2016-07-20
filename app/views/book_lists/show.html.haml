@@ -8,18 +8,32 @@
               = link_to '새 책 등록하기', new_book_path, class: "btn-u" if can? :create, @books.first
             %thead
               %tr
+                %th.text-center{"data-field" => "width-20"}  #
                 %th.text-center.text-center 책이름
                 %th.text-center{"data-field" => "width-30"}  가격
                 %th.text-center{"data-field" => "width-80"}  기부자
+                %th.text-center{"data-field" => "width-80"}  판매여부
                 - if can? :create, @books.first
-                  %th{"data-field" => "width-130"}
+                  %th.text-center{"data-field" => "width-80"}  재고수정
+                  %th.text-center{"data-field" => "width-130"} 수정
             %tbody
-              - @books.each do |book|
+              - @books.each_with_index do |book, index|
                 %tr
+                  %td= index + 1
                   %td= book.name
                   %td= book.price
                   %td= book.bgiver
+                  %td
+                    -if book.purchase
+                      판매 완료
+                    -else
+                      판매 중
                   - if can? :destroy, book
+                    %td
+                      -if book.purchase == false
+                        = link_to "판매 완료", purchase_book_list_book_path(@book_list, book), class: "btn-u btn-u-sm btn-u-green"
+                      -else
+                        = link_to "판매 취소", reject_purchase_book_list_book_path(@book_list, book), class: "btn-u btn-u-sm btn-u-red"
                     %td
                       = link_to "삭제", book_list_book_path(@book_list, book), method: "delete", data: {confirm: "정말로 삭제하시겠습니까?"}, class: "btn-u btn-u-sm btn-u-red"
                       = link_to "수정", edit_book_list_book_path(@book_list, book), class: "btn-u btn-u-sm btn-u-yellow"

@@ -1,4 +1,5 @@
-- @book_lists.each do |book_list|
+- @book_lists.each_with_index do |book_list, index|
   %tr
+    %td= index + 1
     %td= link_to book_list.name, book_list_path(book_list)
-    %td= book_list.num_of_book
+    %td= "#{book_list.books.count - book_list.num_of_purchase} / #{book_list.books.count}"

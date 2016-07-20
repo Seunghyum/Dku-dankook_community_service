@@ -2,7 +2,7 @@ class Book < ActiveRecord::Base
   belongs_to :book_list
 
   before_update :destroy_book_list
-  after_update :create_book_list
+  after_update :create_book_list, :update_purchase
 
   after_create :create_book_list
   before_destroy :destroy_book_list
@@ -25,5 +25,10 @@ class Book < ActiveRecord::Base
     if list.num_of_book == 0
       list.delete
     end
+  end
+
+  def update_purchase
+    counting = self.book_list.books.where(purchase: true).count
+    self.book_list.update_column(:num_of_purchase, counting)
   end
 end

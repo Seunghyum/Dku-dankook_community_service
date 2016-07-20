@@ -16,8 +16,9 @@
 
 .container
   %center
-    = link_to '새 책 등록하기', new_book_path, class: "btn-u margin-bottom-10" if can? :create, @book_lists.first
-
+    - if can? :create, @book_lists.first
+      = link_to '새 책 등록하기', new_book_path, class: "btn-u margin-bottom-10"
+      = link_to '책 리스트 다운로드', book_lists_path(format: "xlsx"), class: "btn-u btn-u-yellow margin-bottom-10" if can? :create, @book_lists.first
   - if @book_lists.empty?
     %h4.text-danger.text-center 검색한 책이 없습니다.
   - else
@@ -32,8 +33,9 @@
             %table.table.table-striped.table-hover.text-center
               %thead
                 %tr
+                  %th.text-center{"data-field" => "width-20"} #
                   %th.text-center 명칭
-                  %th.text-center{"data-field" => "width-80"} 남은 갯수
+                  %th.text-center{"data-field" => "width-130"} 남은 책 / 총 갯수
               %tbody#book_lists
                 =render 'book_lists/list'
             #paginator.text-center

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160720020216) do
+ActiveRecord::Schema.define(version: 20160720110722) do
 
   create_table "best_fives", force: :cascade do |t|
     t.string   "category"
@@ -29,8 +29,9 @@ ActiveRecord::Schema.define(version: 20160720020216) do
   create_table "book_lists", force: :cascade do |t|
     t.string   "name"
     t.integer  "num_of_book"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "num_of_purchase", default: 0
   end
 
   create_table "bookables", force: :cascade do |t|
@@ -49,9 +50,10 @@ ActiveRecord::Schema.define(version: 20160720020216) do
     t.string   "name"
     t.string   "bgiver"
     t.integer  "price"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "book_list_id"
+    t.boolean  "purchase",     default: false
   end
 
   add_index "books", ["book_list_id"], name: "index_books_on_book_list_id"

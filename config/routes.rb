@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   mount RedactorRails::Engine => '/redactor_rails'
   #중고책
   resources :book_lists do
-    resources :books, only: [:edit, :update, :destroy]
+    resources :books, only: [:edit, :update, :destroy] do
+      member do
+        get 'purchase' => "books#purchase", as: "purchase"
+        get 'reject_purchase' => "books#reject_purchase", as: "reject_purchase"
+      end
+    end
   end
   resources :books, only: [:new, :create]
 

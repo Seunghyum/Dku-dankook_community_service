@@ -9,6 +9,15 @@ class BookListsController < ApplicationController
 
   def index
     @book_lists = BookList.search(params[:name]).page(params[:page]).per(20)
+    @book_lists_all = BookList.all
+    @books = Book.all
+    respond_to do |format|
+      format.html
+      format.js
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename="인액터스-' + Time.now.strftime("%m-%d %I%p") + '.xlsx"'
+      }
+    end
   end
 
   def show

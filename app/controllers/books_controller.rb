@@ -5,13 +5,23 @@ class BooksController < ApplicationController
   # authorize_resource :class => false
   # skip_authorize_resource :only => :searching
 
-  before_action :set_book, only: [:edit, :update, :destroy]
-  before_action :set_book_list, only: [:edit, :update, :destroy]
+  before_action :set_book, only: [:edit, :update, :destroy, :purchase, :reject_purchase]
+  before_action :set_book_list, only: [:edit, :update, :destroy, :purchase, :reject_purchase]
   def new
     @book = Book.new
   end
 
   def edit
+  end
+
+  def purchase
+    @book.update(purchase: true)
+    redirect_to book_list_path(@book_list)
+  end
+
+  def reject_purchase
+    @book.update(purchase: false)
+    redirect_to book_list_path(@book_list)
   end
 
   def create
@@ -29,7 +39,7 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params)
-        format.html { redirect_to book_list_path(@book_list), notice: 'Book was successfully updated.' }
+        format.html { redirect_to book_lists_path, notice: 'Book was successfully updated.' }
       else
         format.html { render :edit }
       end
