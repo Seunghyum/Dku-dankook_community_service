@@ -16,8 +16,14 @@ class LockersController < ApplicationController
 
 #자신의 로커 상태 표시 page + 첫번째 번호표 뽑기 view page
   def index
-    if current_user.lcounting > @our_locker.limit_num
-      flash[:danger] = "1차 선발에서 떨어졌습니다.   사물함 제한 인원 #{@our_locker.limit_num}명 중 번째로 #{current_user.lcounting}접수했습니다."
+    if !current_user.lcounting.nil? && @our_locker.counting <= @our_locker.limit_num
+      flash[:success] = "사물함을 얻을 권한이 있습니다. 반납하고 다시 선택하셔도 됩니다."
+    elsif current_user.lcounting.nil? && @our_locker.counting >= @our_locker.limit_num
+      flash[:danger] = "1차 선발에서 떨어졌습니다."
+    elsif @our_locker.counting >= @our_locker.limit_num
+      flash[:danger] = "1차 선발에서 떨어졌습니다.  사물함 제한 인원 #{@our_locker.limit_num}명 중 #{current_user.lcounting}번째로 1차 접수했습니다."
+    elsif current_user.lcounting.nil?
+      flash[:warning] = "1차 접수를 안했습니다. 1차 접수 버튼을 눌러주세요."
     end
   end
 

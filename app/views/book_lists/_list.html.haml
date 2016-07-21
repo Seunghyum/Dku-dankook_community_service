@@ -1,5 +1,9 @@
 - @book_lists.each_with_index do |book_list, index|
   %tr
     %td= index + 1
-    %td= link_to book_list.name, book_list_path(book_list)
+    %td
+      - if cannot? :create, book_list
+        =  book_list.name
+      - else
+        = link_to book_list.name, book_list_path(book_list)
     %td= "#{book_list.books.count - book_list.num_of_purchase} / #{book_list.books.count}"

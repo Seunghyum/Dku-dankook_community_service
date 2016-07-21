@@ -21,8 +21,14 @@
             %td 소속
             %td= current_user.major.name
           %tr
+            %td 신청 번호
+            %td= current_user.lcounting
+          %tr
+            %td 사물함 갯수
+            %td= current_user.major.locker.limit_num
+          %tr
             %td 보유 사물함
-            - if current_user.lcounting.nil?
+            - if current_user.lcounting.nil? && current_user.major.locker.limit_num < current_user.major.locker.counting
               %td.red 불가
             - elsif current_user.lnum
               %td.red= current_user.lnum
@@ -43,7 +49,7 @@
           .form-group
             = link_to  selecting_page_lockers_path, class: "form-group" do
               = button_tag "사물함 고르기", class: "btn-u btn-u-green"
-        - elsif current_user.lcounting > @our_locker.limit_num
+        - elsif current_user.lcounting.nil? || current_user.lcounting > @our_locker.limit_num
 
         - else
           .form-group
