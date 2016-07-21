@@ -2,23 +2,23 @@ class LectureInfosController < ApplicationController
   before_action :set_lecture_info, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:category] == "강의명" || params[:category].nil? || params[:filter].nil?
-      @lecture_infos = LectureInfo.search(params[:search])
-    else
-      @lecture_infos = LectureInfo.search(params[:search]).where(l_type: params[:filter])
-    end
-
-    if params[:category] == "교수 이름" && params[:filter].nil?
-      @lecture_infos = LectureInfo.professor_search(params[:professor])
-    else
-      @lecture_infos = LectureInfo.professor_search(params[:professor]).where(l_type: params[:filter])
-    end
-
-    if params[:category].nil? && params[:filter] == "전체" || params[:filter].nil?
+    if params[:category].nil?
       @lecture_infos = LectureInfo.all
+    elsif params[:category] == "강의명"
+      @lecture_infos = LectureInfo.search(params[:search])
+    elsif params[:category] == "교수명"
+    # binding.pry
+      @lecture_infos = Professor.search(params[:search])
+      # binding.pry
     end
 
-    @lecture_info_pages = @lecture_infos.page(params[:page]).per(7)
+    unless params[:filter].nil?
+      @lecture_infos = @lecture_infos.where(l_type: params[:filter])
+    end
+
+    unless @lecture_infos.nil?
+      @lecture_info_pages = @lecture_infos.page(params[:page]).per(7)
+    end
     @best_liberal = BestFive.find_by(category: "교양").lecture_infos
   end
 

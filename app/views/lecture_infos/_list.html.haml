@@ -1,26 +1,27 @@
-- @lecture_info_pages.each do |info|
-  = link_to lecture_info_lecture_estimates_path(info) do
-    %div{:class => "funny-boxes funny-boxes-top-#{info.div_color} bg-color-white"}
-      %button{:class => "btn-u btn-u-xs rounded btn-u-#{info.div_color} pull-right", :type => "button"}= info.l_type
-      %h2
-        = info.name
-        \- #{info.professor.name} 교수님
-      %ul.list-inline.comment-list-v2.pull-left.block-grid-v1-add-inf
-        %li
-          %i.fa.fa-eye
-          = info.all_view
-        %li
-          %i.fa.fa-comments
-          = info.lecture_estimates.count
-      %ul.list-inline.funny-boxes-rating.pull-right
-        - if info.average
-          - 1.upto(info.average/20) do |x|
-            %li
-              %i.color-green.fa.fa-star
-          - 1.upto(5 - info.average/20) do |y|
-            %li
-              %i.color-green.fa.fa-star-o
-      %br/
-      %br/
-      %div
-        %p 평소 수업이 널널하고 출석에 신경을 안쓰심 앞 타임 시험이랑 뒷타임 시험이랑 문제가 똑같음 막걸리와 파전을 좋아하심
+- unless @lecture_info_pages.nil?
+  - @lecture_info_pages.each do |info|
+    = link_to lecture_info_lecture_estimates_path(info) do
+      %div{:class => "funny-boxes funny-boxes-top-#{info.div_color} bg-color-white"}
+        %button{:class => "btn-u btn-u-xs rounded btn-u-#{info.div_color} pull-right", :type => "button"}= info.l_type
+        %h2
+          = info.name
+          \- #{info.professor.name} 교수님
+        %ul.list-inline.comment-list-v2.pull-left.block-grid-v1-add-inf
+          %li
+            %i.fa.fa-eye
+            = info.all_view
+          %li
+            %i.fa.fa-comments
+            = info.lecture_estimates.count
+        %ul.list-inline.funny-boxes-rating.pull-right
+          - if info.average
+            - 1.upto(info.average/20) do |x|
+              %li
+                %i.color-green.fa.fa-star
+            - 1.upto(5 - info.average/20) do |y|
+              %li
+                %i.color-green.fa.fa-star-o
+        %br/
+        %br/
+        %div
+          %p 평소 수업이 널널하고 출석에 신경을 안쓰심 앞 타임 시험이랑 뒷타임 시험이랑 문제가 똑같음 막걸리와 파전을 좋아하심

@@ -14,11 +14,6 @@ class LectureInfo < ActiveRecord::Base
         all
       end
     end
-
-    def self.professor_search(professor)
-      where(["name LIKE :professor", professor: "%#{professor}%"])
-    end
-
   private
     def color_pick
       if self.l_type == "학부기초"

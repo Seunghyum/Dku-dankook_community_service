@@ -76,6 +76,12 @@ class LockersController < ApplicationController
 
   def manage
     @user_major_locker = current_user.major.users.order("lnum DESC")
+    respond_to do |format|
+      format.html
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename="사물함-' + current_user.major.name + '.xlsx"'
+      }
+    end
   end
 
   private

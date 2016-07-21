@@ -25,16 +25,17 @@
                         %i.fa.fa-search
                 .row
                 .row
-                  = link_to lecture_infos_path(filter: "전체") do
+                  = link_to lecture_infos_path(filter: "전체"), class: "filter" do
                     %button.btn-u.btn-u-sm.rounded.btn-u-yellow.pull-right{:type => "button", style: "margin-right: 10px;"} 전체
-                  = link_to lecture_infos_path(filter: "교양") do
+                  = link_to lecture_infos_path(filter: "교양"), class: "filter" do
                     %button.btn-u.btn-u-sm.rounded.btn-u-green.pull-right{:type => "button", style: "margin-right: 10px;"} 교양
-                  = link_to lecture_infos_path(filter: "전공필수") do
+                  = link_to lecture_infos_path(filter: "전공필수"), class: "filter" do
                     %button.btn-u.btn-u-sm.rounded.btn-u-red.pull-right{:type => "button", style: "margin-right: 10px;"} 전공필수
-                  = link_to lecture_infos_path(filter: "학부기초") do
+                  = link_to lecture_infos_path(filter: "학부기초"), class: "filter" do
                     %button.btn-u.btn-u-sm.rounded.btn-u-orange.pull-right{:type => "button", style: "margin-right: 10px;"} 학부기초
-                  = link_to lecture_infos_path(filter: "전공선택") do
+                  = link_to lecture_infos_path(filter: "전공선택"), class: "filter" do
                     %button.btn-u.btn-u-sm.rounded.btn-u-blue.pull-right{:type => "button", style: "margin-right: 10px;"} 전공선택
+                
                 %hr/
                 .row.job-content
                   .col-sm-4.md-margin-bottom-40
@@ -102,10 +103,10 @@
             / /.container-fluid
         #lecture_info_pages
           = render 'lecture_infos/list'
-
-        %center
-          #paginator
-            = paginate @lecture_info_pages, :param_name => 'page', remote: true
+        -unless @lecture_info_pages.nil?
+          %center
+            #paginator
+              = paginate @lecture_info_pages, :param_name => 'page', remote: true
 
       .col-md-3
         .panel.panel-red

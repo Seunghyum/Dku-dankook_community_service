@@ -1,0 +1,11 @@
+wb = xlsx_package.workbook
+style_shout = wb.styles.add_style sz: 16, b: true, alignment: { horizontal: :center }
+
+wb.add_worksheet(name: "사물함.xlsx") do |sheet|
+  sheet.add_row ["#{current_user.major.name}사물함-#{Time.now.strftime("%m-%d %I.%p")}.xlsx"]
+  sheet.add_row ["사물함 번호", "이름"]
+  @user_major_locker.each do |user|
+    sheet.add_row [user.lnum, user.name]
+  end
+  sheet["A1"].style = style_shout
+end
