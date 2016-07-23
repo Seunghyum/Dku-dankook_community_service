@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount RedactorRails::Engine => '/redactor_rails'
   #중고책
   resources :book_lists do
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
   end
   resources :books, only: [:new, :create]
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # 수강신청 리허설
   scope module: :test_lecture_registers do
     get "home" => "test_lectures#home", as:"test_home"

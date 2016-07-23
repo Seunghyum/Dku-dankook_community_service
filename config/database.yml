@@ -23,3 +23,23 @@ test:
 production:
   <<: *default
   database: db/production.sqlite3
+
+
+# staging:
+# adapter: mysql2
+# database: new_dku_staging
+# username: root
+# password: whatthestaging
+# encoding: utf8
+# host: localhost
+# timeout: 5000
+#
+# production:
+# adapter: mysql2
+# database: new_dku
+# username: seunghyun
+# password: seughyunproduction
+# encoding: utf8mb4
+# host: ufofactory-rds.cdx1pjvjekaj.ap-northeast-2.rds.amazonaws.com
+# port: 3306
+# timeout: 5000

@@ -55,6 +55,8 @@ gem 'bootstrap_form'
 ##rating
 gem 'rails-assets-jquery-bar-rating', source: 'https://rails-assets.org'
 gem 'bootstrap'
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
 gem 'rails-assets-tether', '~> 1.1', '>= 1.1.1'
 ##tag
 gem 'tag-it-rails'

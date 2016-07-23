@@ -6,12 +6,12 @@ class SchoolPhoneSearching < ActiveRecord::Base
   		schools = SchoolChun.all
 		else
   		jook = SchoolJook.all
-			schools = jook.where(["belong LIKE :belong OR name Like :belong", belong: "%#{belong}%", belong: "%#{belong}%"])
+			schools = jook.where(["belong LIKE :belong OR name Like :belong", belong: "%#{belong}%"])
 			chun = SchoolChun.all
-			schools = schools + chun.where(["belong LIKE :belong OR name Like :belong", belong: "%#{belong}%", belong: "%#{belong}%"])
+			schools = schools + chun.where(["belong LIKE :belong OR name Like :belong", belong: "%#{belong}%"])
 			return schools
 		end
-		schools = schools.where(["belong LIKE :belong OR name Like :belong", belong: "%#{belong}%", belong: "%#{belong}%"]) if belong.present?
+		schools = schools.where(["belong LIKE :belong OR name Like :belong", belong: "%#{belong}%"]) if belong.present?
 		# schools = schools.where(["name LIKE ?","%#{name}%"]) if name.present?
 
     return schools

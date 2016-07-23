@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160720110722) do
+ActiveRecord::Schema.define(version: 20160723135047) do
 
   create_table "best_fives", force: :cascade do |t|
     t.string   "category"
@@ -163,16 +163,11 @@ ActiveRecord::Schema.define(version: 20160720110722) do
 
   create_table "majors", force: :cascade do |t|
     t.string   "name"
-    t.integer  "user_id"
-    t.integer  "locker_id"
     t.datetime "locker_time"
     t.datetime "book_time"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
-  add_index "majors", ["locker_id"], name: "index_majors_on_locker_id"
-  add_index "majors", ["user_id"], name: "index_majors_on_user_id"
 
   create_table "meetings", force: :cascade do |t|
     t.string   "name"

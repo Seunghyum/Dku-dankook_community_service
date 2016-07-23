@@ -8,14 +8,13 @@ class ApplicationController < ActionController::Base
   # add strong param to devise
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # 개발 모드일 때 config 리로드
+  before_filter :reload_rails_admin, if: :rails_admin_path?
+
   #권한 설정
   skip_authorization_check :if => :devise_controller?
 
   check_authorization :if => :admin_subdomain?, :only => [:update, :create, :destroy, :edit, :new]   # check_authorization :only => [:update, :destroy, :edit, :new]
-  #권한 없이 접근 시 에러미시지
-  rescue_from CanCan::AccessDenied do |exception|
-      redirect_to main_app.root_path, :alert => exception.message
-    end
 
   private
 
@@ -23,6 +22,22 @@ class ApplicationController < ActionController::Base
       request.subdomain == "admin"
     end
 
+    def reload_rails_admin
+      #  models = %W(all_models)
+      # models = ActiveRecord::Base.send :subclasses
+
+      models = ActiveRecord::Base.descendants
+      models.each do |m|
+       RailsAdmin::Config.reset_model(m)
+      end
+      RailsAdmin::Config::Actions.reset
+
+      load("#{Rails.root}/config/initializers/rails_admin.rb")
+    end
+
+    def rails_admin_path?
+     controller_path =~ /rails_admin/ && Rails.env.development?
+    end
   protected
 
     def configure_permitted_parameters

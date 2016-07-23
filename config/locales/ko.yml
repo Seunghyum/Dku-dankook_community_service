@@ -138,6 +138,7 @@ ko:
       too_short: 은(는) 적어도 %{count}자를 넘어야 합니다
       wrong_length: 은(는) %{count}자여야 합니다
       wrong_extention: 은 잘못된 파일 형식입니다.
+      exception: 권한이 없습니다.
     template:
       body: '다음 항목에 문제가 발견되었습니다:'
       header:
@@ -208,23 +209,24 @@ ko:
       short: "%y/%m/%d %H:%M"
     pm: 오후
   activerecord:
-    model:
-      best_five: "Best 5"
-      board: "주제"
-      book: "책"
+    models:
+      best_five: "강의 평가 Best 5"
+      board: "게시판 주제"
+      book: "인액터스 책"
+      book_list: "인액터스 책 목록"
       post: "게시판"
       comment: "덧글"
       lecture_info: "수업 정보"
       lecture_estimate: "강의 평가"
       professor: "교수님 정보"
-      locker_particular: "예외사항"
+      locker_particular: "사물함 예외사항"
       locker: "사물함"
       major: "전공"
       meeting: "일정"
       school_chun: "단국대 천안"
       school_jook: "단국대 죽전"
       user: "유저"
-
+      school_phone_searching: "단국대 기관 번호 검색"
     attributes:
       best_five:
         category: "주제"
@@ -232,12 +234,14 @@ ko:
         name: "주제 이름"
         description: "게시판 설명"
       book:
-        limit_num: "제한 갯수"
-        counting: "이미 가져간 책"
         name: "책 제목"
-        cname: "수업"
-        grade: "학년"
-        major_id: "학과"
+        purchase: "구매 여부"
+        bgiver: "판매자"
+        price: "판매 여부"
+      book_list:
+        name: "책 제목"
+        num_of_book: "총 갯수"
+        num_of_purchase: "구매 갯수"
       comment:
         content: "내용"
         user_id: "작성자"

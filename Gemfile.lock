@@ -61,6 +61,8 @@ GEM
     bootstrap (4.0.0.alpha3)
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
+    bootstrap3-datetimepicker-rails (4.17.37)
+      momentjs-rails (>= 2.8.1)
     bootstrap_form (2.3.0)
     builder (3.2.2)
     byebug (9.0.5)
@@ -282,6 +284,8 @@ GEM
     mini_magick (4.5.1)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
+    momentjs-rails (2.11.1)
+      railties (>= 3.1)
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -451,6 +455,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap
+  bootstrap3-datetimepicker-rails
   bootstrap_form
   byebug
   cancancan
@@ -468,6 +473,7 @@ DEPENDENCIES
   kaminari
   meta_request
   mini_magick
+  momentjs-rails
   nokogiri
   omniauth-kakao
   pry-rails

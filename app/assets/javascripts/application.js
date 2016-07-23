@@ -15,7 +15,8 @@
 //= require jquery-ui
 //= require tether
 //= require bootstrap-sprockets
-// require jquery.vticker.min.js
+//= require moment
+//= require bootstrap-datetimepicker
 //= require jquery-bar-rating
 //= require rails-timeago
 //= require locales/jquery.timeago.ko.js

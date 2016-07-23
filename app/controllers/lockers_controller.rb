@@ -75,7 +75,7 @@ class LockersController < ApplicationController
   end
 
   def manage
-    @user_major_locker = current_user.major.users.order("lnum DESC")
+    @user_major_locker = current_user.major.users.where.not(lnum: 0).order("lnum ASC")
     respond_to do |format|
       format.html
       format.xlsx {
