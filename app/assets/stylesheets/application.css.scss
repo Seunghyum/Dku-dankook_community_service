@@ -13,6 +13,7 @@
  *= require jquery.tagit.css
  *= require_tree ./bootstrap
  *= require rails_bootstrap_forms
+ *= require jquery-ui-timepicker-addon
  *= require font-awesome
  *= require simple_calendar
  *= require_tree ./plugins
@@ -32,4 +33,10 @@
 #display-inline {
   float: none;
   display: inline;
+}
+
+.redactor-text {
+  img {
+    width: 100%;
+  }
 }

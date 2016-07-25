@@ -237,7 +237,7 @@ ko:
         name: "책 제목"
         purchase: "구매 여부"
         bgiver: "판매자"
-        price: "판매 여부"
+        price: "가격"
       book_list:
         name: "책 제목"
         num_of_book: "총 갯수"
@@ -316,6 +316,8 @@ ko:
         profile: "프로필 이미지"
         role: "권한"
         username: "별명"
+        password: "비밀번호"
+        password_confirmation: "비밀번호 확인"
         gender: "성별"
         lnum: "사물함 번호"
         name: "실명"

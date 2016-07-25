@@ -8,10 +8,13 @@
         작성일 : #{timeago_tag @meeting.created_at}
       %p
         이벤트 기간 : #{@event_time}
-      = link_to 'Edit', edit_meeting_path(@meeting), class: 'btn-u btn-u-orange btn-u-xs' if can? :update, @meetings
-    / Left Inner
-    .left-inner
+      = link_to 'Edit', edit_meeting_path(@meeting), class: 'btn-u btn-u-yellow btn-u-xs' if can? :update, @meetings
+      = link_to 'delete', meeting_path(@meeting), method: "delete", class: 'btn-u btn-u-orange btn-u-xs' if can? :update, @meetings
+      %br
+      %br
+      .text-center
+        =image_tag @meeting.photo
+    .left-inner.redactor-text
       = @meeting.content.html_safe
       .text-center
         = link_to '다른 일정 살펴보기', meetings_path, class: 'btn-u btn-u-aqua btn-u-sm'
-    / End Left Inner

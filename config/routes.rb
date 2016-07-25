@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  ActiveAdmin.routes(self)
   mount RedactorRails::Engine => '/redactor_rails'
   #중고책
   resources :book_lists do
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   end
 
 #달력
-  resources :meetings
+resources :meetings
 
 #사물함
 post '/lockers/lockerselect' => 'lockers#lockerselect', as: "lockerselect_lockers"
@@ -63,6 +63,13 @@ get 'lockers/nottime' => "lockers#nottime", as: "nottime_lockers"
   get 'home/index' => "home#index"
 
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords'}
+
+  devise_scope :user do
+   get "/users/sign_in", to: "devise/sessions#new"
+   unauthenticated :user do
+     root to: 'home#index', as: :unauthenticated_root
+   end
+ end
 
 
   resources :boards do

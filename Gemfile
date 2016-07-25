@@ -5,7 +5,6 @@ gem 'rails', '4.2.5'
 #db
 gem 'sqlite3'
 
-
 #tool
 ##calender gem
 gem "simple_calendar"
@@ -33,7 +32,7 @@ gem 'devise'
 gem 'omniauth-kakao'
 ##권한설정
 gem 'cancancan'
-gem 'rails_admin'
+gem 'activeadmin', '~> 1.0.0.pre4'
 
 #files
 gem 'carrierwave'
@@ -47,6 +46,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
+gem "jquery-ui-rails"
+gem 'jquery-timepicker-addon-rails'
 ##icon cdn
 gem "font-awesome-rails"
 ##nav

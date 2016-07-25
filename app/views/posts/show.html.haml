@@ -19,7 +19,7 @@
                     %i.fa.fa-edit
               - if can? :destroy, @post
                 / 삭제버튼
-                = link_to board_post_path(@post.board, @post), method: :delete, data: { confirm: 'Are you sure?' } do
+                = link_to board_post_path(@post.board, @post), method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' } do
                   %button.btn-u.btn-brd.btn-brd-hover.rounded-4x.btn-u-red{:rel => "tooltip", :title => "삭제하기"}
                     %i.fa.fa-trash-o
             .col-sm-9.col-md-10
@@ -33,7 +33,9 @@
                     %i.fa.fa-tags
                     = x
               / 글 출력
-              %p= @post.content.html_safe
+              %br
+              .redactor-text
+                = @post.content.html_safe
               / 좋아요 / 싫어요
               %ul.list-inline.badge-lists.badge-box-v1.margin-bottom-30.text-center
                 %li
@@ -51,68 +53,68 @@
           = render "posts/comments/comment"
         = render "posts/comments/form"
         / End Blog Comments
-        / Sidebar: More Articles Box
-        .outside-more-articles.outside-more-articles--right{"data-scrolltop" => "400"}
-          %h2.title-v4 More Articles
-          .blog-thumb.blog-thumb-circle.margin-bottom-15
-            .blog-thumb-hover
-              %img.rounded-x{:alt => "", :src => "assets/img/blog/img1.jpg"}/
-              %a.hover-grad{:href => "blog_single.html"}
-                %i.fa.fa-link
-            .blog-thumb-desc
-              %h3
-                %a{:href => "blog_single.html"} Misused words and how to use them correctly
-              %ul.blog-thumb-info
-                %li Mar 6, 2015
-                %li
-                  %a{:href => "#"}
-                    %i.fa.fa-comments
-                    0
-          .blog-thumb.blog-thumb-circle.margin-bottom-15
-            .blog-thumb-hover
-              %img.rounded-x{:alt => "", :src => "assets/img/blog/img22.jpg"}/
-              %a.hover-grad{:href => "blog_single.html"}
-                %i.fa.fa-link
-            .blog-thumb-desc
-              %h3
-                %a{:href => "blog_single.html"} 8 health benefits and drawbacks of coffee
-              %ul.blog-thumb-info
-                %li Mar 6, 2015
-                %li
-                  %a{:href => "#"}
-                    %i.fa.fa-comments>
-                    0
-          .blog-thumb.blog-thumb-circle.margin-bottom-15
-            .blog-thumb-hover
-              %img.rounded-x{:alt => "", :src => "assets/img/blog/img2.jpg"}/
-              %a.hover-grad{:href => "blog_single.html"}
-                %i.fa.fa-link
-            .blog-thumb-desc
-              %h3
-                %a{:href => "blog_single.html"} What are the top five books you must read?
-              %ul.blog-thumb-info
-                %li Mar 6, 2015
-                %li
-                  %a{:href => "#"}
-                    %i.fa.fa-comments
-                    0
-          .blog-thumb.blog-thumb-circle
-            .blog-thumb-hover
-              %img.rounded-x{:alt => "", :src => "assets/img/blog/img21.jpg"}/
-              %a.hover-grad{:href => "blog_single.html"}
-                %i.fa.fa-link
-            .blog-thumb-desc
-              %h3
-                %a{:href => "blog_single.html"} Stylish things to do, see and buy this week
-              %ul.blog-thumb-info
-                %li Mar 6, 2015
-                %li
-                  %a{:href => "#"}
-                    %i.fa.fa-comments
-                    0
-          %a.outside-more-articles__close{:href => "javascript:void(0);"}
-            %span.icon-close{"aria-hidden" => "true"}
-        / End More Articles Box
+        -# / Sidebar: More Articles Box
+        -# .outside-more-articles.outside-more-articles--right{"data-scrolltop" => "400"}
+        -#   %h2.title-v4 More Articles
+        -#   .blog-thumb.blog-thumb-circle.margin-bottom-15
+        -#     .blog-thumb-hover
+        -#       %img.rounded-x{:alt => "", :src => "assets/img/blog/img1.jpg"}/
+        -#       %a.hover-grad{:href => "blog_single.html"}
+        -#         %i.fa.fa-link
+        -#     .blog-thumb-desc
+        -#       %h3
+        -#         %a{:href => "blog_single.html"} Misused words and how to use them correctly
+        -#       %ul.blog-thumb-info
+        -#         %li Mar 6, 2015
+        -#         %li
+        -#           %a{:href => "#"}
+        -#             %i.fa.fa-comments
+        -#             0
+        -#   .blog-thumb.blog-thumb-circle.margin-bottom-15
+        -#     .blog-thumb-hover
+        -#       %img.rounded-x{:alt => "", :src => "assets/img/blog/img22.jpg"}/
+        -#       %a.hover-grad{:href => "blog_single.html"}
+        -#         %i.fa.fa-link
+        -#     .blog-thumb-desc
+        -#       %h3
+        -#         %a{:href => "blog_single.html"} 8 health benefits and drawbacks of coffee
+        -#       %ul.blog-thumb-info
+        -#         %li Mar 6, 2015
+        -#         %li
+        -#           %a{:href => "#"}
+        -#             %i.fa.fa-comments>
+        -#             0
+        -#   .blog-thumb.blog-thumb-circle.margin-bottom-15
+        -#     .blog-thumb-hover
+        -#       %img.rounded-x{:alt => "", :src => "assets/img/blog/img2.jpg"}/
+        -#       %a.hover-grad{:href => "blog_single.html"}
+        -#         %i.fa.fa-link
+        -#     .blog-thumb-desc
+        -#       %h3
+        -#         %a{:href => "blog_single.html"} What are the top five books you must read?
+        -#       %ul.blog-thumb-info
+        -#         %li Mar 6, 2015
+        -#         %li
+        -#           %a{:href => "#"}
+        -#             %i.fa.fa-comments
+        -#             0
+        -#   .blog-thumb.blog-thumb-circle
+        -#     .blog-thumb-hover
+        -#       %img.rounded-x{:alt => "", :src => "assets/img/blog/img21.jpg"}/
+        -#       %a.hover-grad{:href => "blog_single.html"}
+        -#         %i.fa.fa-link
+        -#     .blog-thumb-desc
+        -#       %h3
+        -#         %a{:href => "blog_single.html"} Stylish things to do, see and buy this week
+        -#       %ul.blog-thumb-info
+        -#         %li Mar 6, 2015
+        -#         %li
+        -#           %a{:href => "#"}
+        -#             %i.fa.fa-comments
+        -#             0
+        -#   %a.outside-more-articles__close{:href => "javascript:void(0);"}
+        -#     %span.icon-close{"aria-hidden" => "true"}
+        -# / End More Articles Box
         / <div class="row news-v2 margin-bottom-50">
         / <div class="col-sm-4 sm-margin-bottom-30">
         / <div class="news-v2-badge">

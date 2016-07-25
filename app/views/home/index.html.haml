@@ -202,20 +202,16 @@
             - if @listing_a
               - @listing_a.each do |x|
                 %li
-                  %span.label.rounded.label-
-                  = @samples.sample
-                  margin-right-5'&gt;
-                  %i.fa.fa-tags
-                  = x.name
+                  %span.label.rounded.margin-right-5{ class: "label-#{@samples.sample}"}
+                    %i.fa.fa-tags
+                    = x.name
           %ul.list-unstyled.col-xs-6
-            - if @listing_a
+            - if @listing_b
               - @listing_b.each do |x|
                 %li
-                  %span.label.rounded.label-
-                  = @samples.sample
-                  margin-right-5'&gt;
-                  %i.fa.fa-tags
-                  = x.name
+                  %span.label.rounded.margin-right-5{ class: "label-#{@samples.sample}"}
+                    %i.fa.fa-tags
+                    = x.name
       / End Quick Links
       / Latest News
       .margin-bottom-40

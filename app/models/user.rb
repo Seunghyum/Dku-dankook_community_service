@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
  	attr_accessor :login
+
+  mount_uploader :profile, ProfileUploader
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
@@ -30,6 +33,11 @@ class User < ActiveRecord::Base
     if User.where(email: username).exists?
       errors.add(:username, :invalid)
     end
+  end
+
+  # active_admin
+  def role?(r)
+    role.include? "슈퍼관리자"
   end
 
   #username으로 로그인할 수있게 만들기

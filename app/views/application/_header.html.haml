@@ -44,8 +44,12 @@
           %li
             = link_to "인액터스 중고책 검색", book_lists_path
           / Shortcodes
+
           %li.dropdown.mega-menu-fullwidth
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0);"}
+            %a.dropdown-toggle{"data-toggle" => "dropdown1", :href => "javascript:void(0);"}
+              강의평가
+          %li.dropdown.mega-menu-fullwidth
+            %a.dropdown-toggle{"data-toggle" => "dropdown1", :href => "javascript:void(0);"}
               단국대 웹서비스
             %ul.dropdown-menu
               %li
@@ -103,7 +107,7 @@
                               %i.fa.fa-magic
                               사물함 신청
                           %li
-                            %a{:href => "shortcode_typo_dividers.html"}
+                            %a{:href => "#"}
                               %i.fa.fa-ellipsis-h
                               학과별 중고책 신청
                           %hr
@@ -248,7 +252,7 @@
                               Charts &amp; Countdowns
         %ul.nav.navbar-nav.navbar-border-bottom.navbar-right
           - if user_signed_in?
-            %li.no-border= link_to current_user.name, edit_user_registration_path
+            %li.no-border= link_to current_user.username, edit_user_registration_path
             %li.no-border= link_to "로그아웃", destroy_user_session_path, method: "delete"
           - else
             %li.no-border= link_to "로그인", new_user_session_path if !user_signed_in?

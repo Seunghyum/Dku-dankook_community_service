@@ -8,9 +8,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+
+    uploader = ProfileUploader.new
+    uploader.store!(params[:profile])
+  end
 
   # GET /resource/edit
   # def edit
