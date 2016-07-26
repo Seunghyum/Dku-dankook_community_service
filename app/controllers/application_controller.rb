@@ -13,6 +13,14 @@ class ApplicationController < ActionController::Base
 
   # check_authorization :if => :admin_subdomain?, :only => [:update, :create, :destroy, :edit, :new]   # check_authorization :only => [:update, :destroy, :edit, :new]
 
+
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_to do |format|
+      format.json { head :forbidden }
+      format.html { redirect_to main_app.root_url,  :alert =>  exception.message }
+    end
+  end
+
   private
     def authenticate_active_admin_user!
        authenticate_user!

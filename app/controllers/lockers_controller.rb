@@ -1,6 +1,7 @@
 class LockersController < ApplicationController
   #auth
-  # load_and_authorize_resource
+  load_and_authorize_resource
+  before_action :authenticate_user!, :except => [:home]
 
   before_action :set_locker, only: [:index, :lockerselect, :destroy, :first_check, :selecting_page, :check_lcounting_for_reject]
   before_action :set_time, only: [:lockerselect, :first_check, :nottime ]
@@ -28,6 +29,9 @@ class LockersController < ApplicationController
   end
 
   def nottime
+  end
+
+  def home
   end
 
   def reject
