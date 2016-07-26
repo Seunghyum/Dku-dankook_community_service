@@ -4,6 +4,14 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+
+    -# %meta{:content => "http://", :property => "og:url"}
+    %meta{:content => "website", :property => "og:type"}
+    %meta{ content: asset_url("rehearsal.jpg"), property: "og:image" }
+    %meta{:id => "mttitle", :content => "수강신청 리허설", :property => "og:title"}
+    %meta{:id => "mtdesc", :content => "Dku(디쿠)", :property => "og:description"}
+    %meta{:id => "kakao_image", :content => asset_url("rehearsal.jpg")}
+
     %title Workspace
     = include_gon
     = stylesheet_link_tag    'application', media: 'all'

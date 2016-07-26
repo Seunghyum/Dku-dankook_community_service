@@ -513,6 +513,16 @@
           %br/
           %br/
           %br/
+          -# sns공유
+          .sns-box
+            %p{ style: "display: inline; display: inline; font-size: 18px; font-weight: bolder;"}
+              공유하기
+            %a.kakao-link-btn.btn-ka.btn-sns{:href => "javascript:;", data: {kakao: "rehearsal", style: "text-decoration: none;"}}
+              = image_tag "icon-ka.png", style: "width: 36px; margin: 5px;"
+            %a.fa.fa-twitter.share-base.share-twitter.btn-tw{:onclick => "window.open('https://twitter.com/intent/tweet?text={{ content.name }} {{ content.absolute_url|urlencode }}', 'newwindow', 'width=300, height=250')"}
+            %a.fa.fa-facebook.share-base.share-facebook.fshare.btn-fb{:onclick => "window.open('https://www.facebook.com/sharer/sharer.php?u={{ content.absolute_url|urlencode }}', 'newwindow', 'width=300, height=250')"}
+          %br/
+          %br/
           #tabs.tabs.ui-tabs.ui-widget.ui-widget-content.ui-corner-all
             .tab_header_box
               %ul.tab_header.f_l.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all{:role => "tablist"}
@@ -521,6 +531,7 @@
                   %a#ui-id-1.ui-tabs-anchor{:href => "javascript:void;", :role => "presentation", :tabindex => "-1"} 수강계획도우미
                 %li.ui-state-default.ui-corner-top{"aria-controls" => "tab-2", "aria-labelledby" => "ui-id-2", "aria-selected" => "false", :role => "tab", :style => "margin-right: 0px;", :tabindex => "-1"}
                   %a#ui-id-2.current.ui-tabs-anchor{:href => "javascript:void;", :role => "presentation", :tabindex => "-1"} 교과목번호-분반
+
           %br/
           #target
           %form#utilAgrForm{:action => "http://sugang.dankook.ac.kr/logon.do", :method => "post", :name => "utilAgrForm"}
