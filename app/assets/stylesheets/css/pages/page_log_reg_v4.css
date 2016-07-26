@@ -16,8 +16,9 @@ body {
 
 /* Form block */
 .form-block {
-	padding: 30px 159px;
-	background: #fff;
+	padding-top: 100px;
+	/*padding: 30px 159px;*/
+	/*background: #fff;*/
 }
 .form-block img {
 	margin-bottom: 100px;
@@ -34,7 +35,7 @@ body {
 	border-left: none;
 	padding-left: 10px;
 	padding-right: 10px;
-	height: 50px;
+	height: 38px;
 	border-color: rgba(214,214,214,.5);
 	border-left: none;
 	color: #969595;
@@ -151,7 +152,7 @@ body {
 @media (min-width: 992px) {
 	.login-block,
 	.reg-block {
-		min-width: 400px;
+		/*min-width: 400px;*/
 	}
 	.login-block .social-login:before,
 	.login-block .social-login:after {
@@ -172,8 +173,9 @@ body {
 
 @media (max-width: 1138px) {
 	.form-block {
-		padding-right: 85px;
-		padding-left: 85px;
+    padding-top: 100px;
+		padding-right: 40px;
+		padding-left: 40px;
 	}
 	.login-block .social-login,
 	.login-block .bottom {
