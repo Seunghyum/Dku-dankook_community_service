@@ -5,690 +5,690 @@
   transition: all 0.3s ease-in-out;
 }
 
-.btn-amazon {
-  background-color: transparent;
+.btn-amazon-inversed {
+  background-color: #f29e37;
   border-color: #f29e37;
-  color: #f29e37; }
-  .btn-amazon:hover {
-    background-color: #f29e37;
-    color: white; }
+  color: white; }
+  .btn-amazon-inversed:hover {
+    background-color: transparent;
+    color: #f29e37; }
 
-.btn-delicious {
-  background-color: transparent;
+.btn-delicious-inversed {
+  background-color: #3271cb;
   border-color: #3271cb;
-  color: #3271cb; }
-  .btn-delicious:hover {
-    background-color: #3271cb;
-    color: white; }
+  color: white; }
+  .btn-delicious-inversed:hover {
+    background-color: transparent;
+    color: #3271cb; }
 
-.btn-digg {
-  background-color: transparent;
+.btn-digg-inversed {
+  background-color: #164673;
   border-color: #164673;
-  color: #164673; }
-  .btn-digg:hover {
-    background-color: #164673;
-    color: white; }
+  color: white; }
+  .btn-digg-inversed:hover {
+    background-color: transparent;
+    color: #164673; }
 
-.btn-disqus {
-  background-color: transparent;
+.btn-disqus-inversed {
+  background-color: #2e9fff;
   border-color: #2e9fff;
-  color: #2e9fff; }
-  .btn-disqus:hover {
-    background-color: #2e9fff;
-    color: white; }
+  color: white; }
+  .btn-disqus-inversed:hover {
+    background-color: transparent;
+    color: #2e9fff; }
 
-.btn-eventbrite {
-  background-color: transparent;
+.btn-eventbrite-inversed {
+  background-color: #ff5616;
   border-color: #ff5616;
-  color: #ff5616; }
-  .btn-eventbrite:hover {
-    background-color: #ff5616;
-    color: white; }
+  color: white; }
+  .btn-eventbrite-inversed:hover {
+    background-color: transparent;
+    color: #ff5616; }
 
-.btn-eventful {
-  background-color: transparent;
+.btn-eventful-inversed {
+  background-color: #376095;
   border-color: #376095;
-  color: #376095; }
-  .btn-eventful:hover {
-    background-color: #376095;
-    color: white; }
+  color: white; }
+  .btn-eventful-inversed:hover {
+    background-color: transparent;
+    color: #376095; }
 
-.btn-intensedebate {
-  background-color: transparent;
+.btn-intensedebate-inversed {
+  background-color: #0099e1;
   border-color: #0099e1;
-  color: #0099e1; }
-  .btn-intensedebate:hover {
-    background-color: #0099e1;
-    color: white; }
+  color: white; }
+  .btn-intensedebate-inversed:hover {
+    background-color: transparent;
+    color: #0099e1; }
 
-.btn-lanyrd {
-  background-color: transparent;
+.btn-lanyrd-inversed {
+  background-color: #2e6ac2;
   border-color: #2e6ac2;
-  color: #2e6ac2; }
-  .btn-lanyrd:hover {
-    background-color: #2e6ac2;
-    color: white; }
+  color: white; }
+  .btn-lanyrd-inversed:hover {
+    background-color: transparent;
+    color: #2e6ac2; }
 
-.btn-pinboard {
-  background-color: transparent;
+.btn-pinboard-inversed {
+  background-color: #0000ff;
   border-color: #0000ff;
-  color: #0000ff; }
-  .btn-pinboard:hover {
-    background-color: #0000ff;
-    color: white; }
+  color: white; }
+  .btn-pinboard-inversed:hover {
+    background-color: transparent;
+    color: #0000ff; }
 
-.btn-songkick {
-  background-color: transparent;
+.btn-songkick-inversed {
+  background-color: #ff0050;
   border-color: #ff0050;
-  color: #ff0050; }
-  .btn-songkick:hover {
-    background-color: #ff0050;
-    color: white; }
+  color: white; }
+  .btn-songkick-inversed:hover {
+    background-color: transparent;
+    color: #ff0050; }
 
-.btn-stumbleupon {
-  background-color: transparent;
+.btn-stumbleupon-inversed {
+  background-color: #eb4924;
   border-color: #eb4924;
-  color: #eb4924; }
-  .btn-stumbleupon:hover {
-    background-color: #eb4924;
-    color: white; }
+  color: white; }
+  .btn-stumbleupon-inversed:hover {
+    background-color: transparent;
+    color: #eb4924; }
 
-.btn-gmail {
-  background-color: transparent;
+.btn-gmail-inversed {
+  background-color: #db4038;
   border-color: #db4038;
-  color: #db4038; }
-  .btn-gmail:hover {
-    background-color: #db4038;
-    color: white; }
+  color: white; }
+  .btn-gmail-inversed:hover {
+    background-color: transparent;
+    color: #db4038; }
 
-.btn-google {
-  background-color: transparent;
+.btn-google-inversed {
+  background-color: #4e6cf7;
   border-color: #4e6cf7;
-  color: #4e6cf7; }
-  .btn-google:hover {
-    background-color: #4e6cf7;
-    color: white; }
+  color: white; }
+  .btn-google-inversed:hover {
+    background-color: transparent;
+    color: #4e6cf7; }
 
-.btn-evernote {
-  background-color: transparent;
+.btn-evernote-inversed {
+  background-color: #6bb130;
   border-color: #6bb130;
-  color: #6bb130; }
-  .btn-evernote:hover {
-    background-color: #6bb130;
-    color: white; }
+  color: white; }
+  .btn-evernote-inversed:hover {
+    background-color: transparent;
+    color: #6bb130; }
 
-.btn-grooveshark {
-  background-color: transparent;
+.btn-grooveshark-inversed {
+  background-color: #e97a2f;
   border-color: #e97a2f;
-  color: #e97a2f; }
-  .btn-grooveshark:hover {
-    background-color: #e97a2f;
-    color: white; }
+  color: white; }
+  .btn-grooveshark-inversed:hover {
+    background-color: transparent;
+    color: #e97a2f; }
 
-.btn-instapaper {
-  background-color: transparent;
+.btn-instapaper-inversed {
+  background-color: #222222;
   border-color: #222222;
-  color: #222222; }
-  .btn-instapaper:hover {
-    background-color: #222222;
-    color: white; }
+  color: white; }
+  .btn-instapaper-inversed:hover {
+    background-color: transparent;
+    color: #222222; }
 
-.btn-itunes {
-  background-color: transparent;
+.btn-itunes-inversed {
+  background-color: #525152;
   border-color: #525152;
-  color: #525152; }
-  .btn-itunes:hover {
-    background-color: #525152;
-    color: white; }
+  color: white; }
+  .btn-itunes-inversed:hover {
+    background-color: transparent;
+    color: #525152; }
 
-.btn-opentable {
-  background-color: transparent;
+.btn-opentable-inversed {
+  background-color: #990000;
   border-color: #990000;
-  color: #990000; }
-  .btn-opentable:hover {
-    background-color: #990000;
-    color: white; }
+  color: white; }
+  .btn-opentable-inversed:hover {
+    background-color: transparent;
+    color: #990000; }
 
-.btn-logmein {
-  background-color: transparent;
+.btn-logmein-inversed {
+  background-color: #000000;
   border-color: #000000;
-  color: #000000; }
-  .btn-logmein:hover {
-    background-color: #000000;
-    color: white; }
+  color: white; }
+  .btn-logmein-inversed:hover {
+    background-color: transparent;
+    color: #000000; }
 
-.btn-ninetyninedesigns {
-  background-color: transparent;
+.btn-ninetyninedesigns-inversed {
+  background-color: #072243;
   border-color: #072243;
-  color: #072243; }
-  .btn-ninetyninedesigns:hover {
-    background-color: #072243;
-    color: white; }
+  color: white; }
+  .btn-ninetyninedesigns-inversed:hover {
+    background-color: transparent;
+    color: #072243; }
 
-.btn-paypal {
-  background-color: transparent;
+.btn-paypal-inversed {
+  background-color: #32689a;
   border-color: #32689a;
-  color: #32689a; }
-  .btn-paypal:hover {
-    background-color: #32689a;
-    color: white; }
+  color: white; }
+  .btn-paypal-inversed:hover {
+    background-color: transparent;
+    color: #32689a; }
 
-.btn-pocket {
-  background-color: transparent;
+.btn-pocket-inversed {
+  background-color: #de5a5f;
   border-color: #de5a5f;
-  color: #de5a5f; }
-  .btn-pocket:hover {
-    background-color: #de5a5f;
-    color: white; }
+  color: white; }
+  .btn-pocket-inversed:hover {
+    background-color: transparent;
+    color: #de5a5f; }
 
-.btn-scribd {
-  background-color: transparent;
+.btn-scribd-inversed {
+  background-color: #231c1a;
   border-color: #231c1a;
-  color: #231c1a; }
-  .btn-scribd:hover {
-    background-color: #231c1a;
-    color: white; }
+  color: white; }
+  .btn-scribd-inversed:hover {
+    background-color: transparent;
+    color: #231c1a; }
 
-.btn-spotify {
-  background-color: transparent;
+.btn-spotify-inversed {
+  background-color: #60af00;
   border-color: #60af00;
-  color: #60af00; }
-  .btn-spotify:hover {
-    background-color: #60af00;
-    color: white; }
+  color: white; }
+  .btn-spotify-inversed:hover {
+    background-color: transparent;
+    color: #60af00; }
 
-.btn-statusnet {
-  background-color: transparent;
+.btn-statusnet-inversed {
+  background-color: #829d25;
   border-color: #829d25;
-  color: #829d25; }
-  .btn-statusnet:hover {
-    background-color: #829d25;
-    color: white; }
+  color: white; }
+  .btn-statusnet-inversed:hover {
+    background-color: transparent;
+    color: #829d25; }
 
-.btn-stripe {
-  background-color: transparent;
+.btn-stripe-inversed {
+  background-color: #2f7ed6;
   border-color: #2f7ed6;
-  color: #2f7ed6; }
-  .btn-stripe:hover {
-    background-color: #2f7ed6;
-    color: white; }
+  color: white; }
+  .btn-stripe-inversed:hover {
+    background-color: transparent;
+    color: #2f7ed6; }
 
-.btn-yahoo {
-  background-color: transparent;
+.btn-yahoo-inversed {
+  background-color: #a200c2;
   border-color: #a200c2;
-  color: #a200c2; }
-  .btn-yahoo:hover {
-    background-color: #a200c2;
-    color: white; }
+  color: white; }
+  .btn-yahoo-inversed:hover {
+    background-color: transparent;
+    color: #a200c2; }
 
-.btn-yelp {
-  background-color: transparent;
+.btn-yelp-inversed {
+  background-color: #e60010;
   border-color: #e60010;
-  color: #e60010; }
-  .btn-yelp:hover {
-    background-color: #e60010;
-    color: white; }
+  color: white; }
+  .btn-yelp-inversed:hover {
+    background-color: transparent;
+    color: #e60010; }
 
-.btn-wikipedia {
-  background-color: transparent;
+.btn-wikipedia-inversed {
+  background-color: #111111;
   border-color: #111111;
-  color: #111111; }
-  .btn-wikipedia:hover {
-    background-color: #111111;
-    color: white; }
+  color: white; }
+  .btn-wikipedia-inversed:hover {
+    background-color: transparent;
+    color: #111111; }
 
-.btn-wordpress {
-  background-color: transparent;
+.btn-wordpress-inversed {
+  background-color: #464646;
   border-color: #464646;
-  color: #464646; }
-  .btn-wordpress:hover {
-    background-color: #464646;
-    color: white; }
+  color: white; }
+  .btn-wordpress-inversed:hover {
+    background-color: transparent;
+    color: #464646; }
 
-.btn-ycombinator {
-  background-color: transparent;
+.btn-ycombinator-inversed {
+  background-color: #ff6600;
   border-color: #ff6600;
-  color: #ff6600; }
-  .btn-ycombinator:hover {
-    background-color: #ff6600;
-    color: white; }
+  color: white; }
+  .btn-ycombinator-inversed:hover {
+    background-color: transparent;
+    color: #ff6600; }
 
-.btn-bitcoin {
-  background-color: transparent;
+.btn-bitcoin-inversed {
+  background-color: #eb9737;
   border-color: #eb9737;
-  color: #eb9737; }
-  .btn-bitcoin:hover {
-    background-color: #eb9737;
-    color: white; }
+  color: white; }
+  .btn-bitcoin-inversed:hover {
+    background-color: transparent;
+    color: #eb9737; }
 
-.btn-cloudapp {
-  background-color: transparent;
+.btn-cloudapp-inversed {
+  background-color: #312c2a;
   border-color: #312c2a;
-  color: #312c2a; }
-  .btn-cloudapp:hover {
-    background-color: #312c2a;
-    color: white; }
+  color: white; }
+  .btn-cloudapp-inversed:hover {
+    background-color: transparent;
+    color: #312c2a; }
 
-.btn-creativecommons {
-  background-color: transparent;
+.btn-creativecommons-inversed {
+  background-color: #000000;
   border-color: #000000;
-  color: #000000; }
-  .btn-creativecommons:hover {
-    background-color: #000000;
-    color: white; }
+  color: white; }
+  .btn-creativecommons-inversed:hover {
+    background-color: transparent;
+    color: #000000; }
 
-.btn-dropbox {
-  background-color: transparent;
+.btn-dropbox-inversed {
+  background-color: #007ee5;
   border-color: #007ee5;
-  color: #007ee5; }
-  .btn-dropbox:hover {
-    background-color: #007ee5;
-    color: white; }
+  color: white; }
+  .btn-dropbox-inversed:hover {
+    background-color: transparent;
+    color: #007ee5; }
 
-.btn-html5 {
-  background-color: transparent;
+.btn-html5-inversed {
+  background-color: #ff3617;
   border-color: #ff3617;
-  color: #ff3617; }
-  .btn-html5:hover {
-    background-color: #ff3617;
-    color: white; }
+  color: white; }
+  .btn-html5-inversed:hover {
+    background-color: transparent;
+    color: #ff3617; }
 
-.btn-ie {
-  background-color: transparent;
+.btn-ie-inversed {
+  background-color: #00a1d9;
   border-color: #00a1d9;
-  color: #00a1d9; }
-  .btn-ie:hover {
-    background-color: #00a1d9;
-    color: white; }
+  color: white; }
+  .btn-ie-inversed:hover {
+    background-color: transparent;
+    color: #00a1d9; }
 
-.btn-podcast {
-  background-color: transparent;
+.btn-podcast-inversed {
+  background-color: #9365ce;
   border-color: #9365ce;
-  color: #9365ce; }
-  .btn-podcast:hover {
-    background-color: #9365ce;
-    color: white; }
+  color: white; }
+  .btn-podcast-inversed:hover {
+    background-color: transparent;
+    color: #9365ce; }
 
-.btn-rss {
-  background-color: transparent;
-  border-color: yellow;
-  color: black; }
-  .btn-rss:hover {
-    background-color: yellow;
-    color: black; }
+.btn-rss-inversed {
+  background-color: #ff7f25;
+  border-color: #ff7f25;
+  color: white; }
+  .btn-rss-inversed:hover {
+    background-color: transparent;
+    color: #ff7f25; }
 
-.btn-skype {
-  background-color: transparent;
+.btn-skype-inversed {
+  background-color: #00a2ed;
   border-color: #00a2ed;
-  color: #00a2ed; }
-  .btn-skype:hover {
-    background-color: #00a2ed;
-    color: white; }
+  color: white; }
+  .btn-skype-inversed:hover {
+    background-color: transparent;
+    color: #00a2ed; }
 
-.btn-steam {
-  background-color: transparent;
+.btn-steam-inversed {
+  background-color: #000000;
   border-color: #000000;
-  color: #000000; }
-  .btn-steam:hover {
-    background-color: #000000;
-    color: white; }
+  color: white; }
+  .btn-steam-inversed:hover {
+    background-color: transparent;
+    color: #000000; }
 
-.btn-windows {
-  background-color: transparent;
+.btn-windows-inversed {
+  background-color: #48bbef;
   border-color: #48bbef;
-  color: #48bbef; }
-  .btn-windows:hover {
-    background-color: #48bbef;
-    color: white; }
+  color: white; }
+  .btn-windows-inversed:hover {
+    background-color: transparent;
+    color: #48bbef; }
 
-.btn-android {
-  background-color: transparent;
+.btn-android-inversed {
+  background-color: #a4c639;
   border-color: #a4c639;
-  color: #a4c639; }
-  .btn-android:hover {
-    background-color: #a4c639;
-    color: white; }
+  color: white; }
+  .btn-android-inversed:hover {
+    background-color: transparent;
+    color: #a4c639; }
 
-.btn-appstore {
-  background-color: transparent;
+.btn-appstore-inversed {
+  background-color: #000000;
   border-color: #000000;
-  color: #000000; }
-  .btn-appstore:hover {
-    background-color: #000000;
-    color: white; }
+  color: white; }
+  .btn-appstore-inversed:hover {
+    background-color: transparent;
+    color: #000000; }
 
-.btn-googleplay {
-  background-color: transparent;
+.btn-googleplay-inversed {
+  background-color: #b9c13e;
   border-color: #b9c13e;
-  color: #b9c13e; }
-  .btn-googleplay:hover {
-    background-color: #b9c13e;
-    color: white; }
+  color: white; }
+  .btn-googleplay-inversed:hover {
+    background-color: transparent;
+    color: #b9c13e; }
 
-.btn-macstore {
-  background-color: transparent;
+.btn-macstore-inversed {
+  background-color: #007dcb;
   border-color: #007dcb;
-  color: #007dcb; }
-  .btn-macstore:hover {
-    background-color: #007dcb;
-    color: white; }
+  color: white; }
+  .btn-macstore-inversed:hover {
+    background-color: transparent;
+    color: #007dcb; }
 
-.btn-appnet {
-  background-color: transparent;
+.btn-appnet-inversed {
+  background-color: #3178bd;
   border-color: #3178bd;
-  color: #3178bd; }
-  .btn-appnet:hover {
-    background-color: #3178bd;
-    color: white; }
+  color: white; }
+  .btn-appnet-inversed:hover {
+    background-color: transparent;
+    color: #3178bd; }
 
-.btn-blogger {
-  background-color: transparent;
+.btn-blogger-inversed {
+  background-color: #ee5a22;
   border-color: #ee5a22;
-  color: #ee5a22; }
-  .btn-blogger:hover {
-    background-color: #ee5a22;
-    color: white; }
+  color: white; }
+  .btn-blogger-inversed:hover {
+    background-color: transparent;
+    color: #ee5a22; }
 
-.btn-bitbucket {
-  background-color: transparent;
+.btn-bitbucket-inversed {
+  background-color: #205081;
   border-color: #205081;
-  color: #205081; }
-  .btn-bitbucket:hover {
-    background-color: #205081;
-    color: white; }
+  color: white; }
+  .btn-bitbucket-inversed:hover {
+    background-color: transparent;
+    color: #205081; }
 
-.btn-dribbble {
-  background-color: transparent;
+.btn-dribbble-inversed {
+  background-color: #ea4c89;
   border-color: #ea4c89;
-  color: #ea4c89; }
-  .btn-dribbble:hover {
-    background-color: #ea4c89;
-    color: white; }
+  color: white; }
+  .btn-dribbble-inversed:hover {
+    background-color: transparent;
+    color: #ea4c89; }
 
-.btn-facebook {
-  background-color: transparent;
+.btn-facebook-inversed {
+  background-color: #4863ae;
   border-color: #4863ae;
-  color: #4863ae; }
-  .btn-facebook:hover {
-    background-color: #4863ae;
-    color: white; }
+  color: white; }
+  .btn-facebook-inversed:hover {
+    background-color: transparent;
+    color: #4863ae; }
 
-.btn-flattr {
-  background-color: transparent;
+.btn-flattr-inversed {
+  background-color: #8aba42;
   border-color: #8aba42;
-  color: #8aba42; }
-  .btn-flattr:hover {
-    background-color: #8aba42;
-    color: white; }
+  color: white; }
+  .btn-flattr-inversed:hover {
+    background-color: transparent;
+    color: #8aba42; }
 
-.btn-flickr {
-  background-color: transparent;
+.btn-flickr-inversed {
+  background-color: #ff0084;
   border-color: #ff0084;
-  color: #ff0084; }
-  .btn-flickr:hover {
-    background-color: #ff0084;
-    color: white; }
+  color: white; }
+  .btn-flickr-inversed:hover {
+    background-color: transparent;
+    color: #ff0084; }
 
-.btn-foursquare {
-  background-color: transparent;
+.btn-foursquare-inversed {
+  background-color: #0072b1;
   border-color: #0072b1;
-  color: #0072b1; }
-  .btn-foursquare:hover {
-    background-color: #0072b1;
-    color: white; }
+  color: white; }
+  .btn-foursquare-inversed:hover {
+    background-color: transparent;
+    color: #0072b1; }
 
-.btn-github {
-  background-color: transparent;
+.btn-github-inversed {
+  background-color: #171515;
   border-color: #171515;
-  color: #171515; }
-  .btn-github:hover {
-    background-color: #171515;
-    color: white; }
+  color: white; }
+  .btn-github-inversed:hover {
+    background-color: transparent;
+    color: #171515; }
 
-.btn-googleplus {
-  background-color: transparent;
+.btn-googleplus-inversed {
+  background-color: #dd4a38;
   border-color: #dd4a38;
-  color: #dd4a38; }
-  .btn-googleplus:hover {
-    background-color: #dd4a38;
-    color: white; }
+  color: white; }
+  .btn-googleplus-inversed:hover {
+    background-color: transparent;
+    color: #dd4a38; }
 
-.btn-gowalla {
-  background-color: transparent;
+.btn-gowalla-inversed {
+  background-color: #ff720a;
   border-color: #ff720a;
-  color: #ff720a; }
-  .btn-gowalla:hover {
-    background-color: #ff720a;
-    color: white; }
+  color: white; }
+  .btn-gowalla-inversed:hover {
+    background-color: transparent;
+    color: #ff720a; }
 
-.btn-instagram {
-  background-color: transparent;
+.btn-instagram-inversed {
+  background-color: #3f729b;
   border-color: #3f729b;
-  color: #3f729b; }
-  .btn-instagram:hover {
-    background-color: #3f729b;
-    color: white; }
+  color: white; }
+  .btn-instagram-inversed:hover {
+    background-color: transparent;
+    color: #3f729b; }
 
-.btn-klout {
-  background-color: transparent;
+.btn-klout-inversed {
+  background-color: #e34a25;
   border-color: #e34a25;
-  color: #e34a25; }
-  .btn-klout:hover {
-    background-color: #e34a25;
-    color: white; }
+  color: white; }
+  .btn-klout-inversed:hover {
+    background-color: transparent;
+    color: #e34a25; }
 
-.btn-lastfm {
-  background-color: transparent;
+.btn-lastfm-inversed {
+  background-color: #dc1a23;
   border-color: #dc1a23;
-  color: #dc1a23; }
-  .btn-lastfm:hover {
-    background-color: #dc1a23;
-    color: white; }
+  color: white; }
+  .btn-lastfm-inversed:hover {
+    background-color: transparent;
+    color: #dc1a23; }
 
-.btn-linkedin {
-  background-color: transparent;
+.btn-linkedin-inversed {
+  background-color: #0083a8;
   border-color: #0083a8;
-  color: #0083a8; }
-  .btn-linkedin:hover {
-    background-color: #0083a8;
-    color: white; }
+  color: white; }
+  .btn-linkedin-inversed:hover {
+    background-color: transparent;
+    color: #0083a8; }
 
-.btn-meetup {
-  background-color: transparent;
+.btn-meetup-inversed {
+  background-color: #ff0026;
   border-color: #ff0026;
-  color: #ff0026; }
-  .btn-meetup:hover {
-    background-color: #ff0026;
-    color: white; }
+  color: white; }
+  .btn-meetup-inversed:hover {
+    background-color: transparent;
+    color: #ff0026; }
 
-.btn-myspace {
-  background-color: transparent;
+.btn-myspace-inversed {
+  background-color: #000000;
   border-color: #000000;
-  color: #000000; }
-  .btn-myspace:hover {
-    background-color: #000000;
-    color: white; }
+  color: white; }
+  .btn-myspace-inversed:hover {
+    background-color: transparent;
+    color: #000000; }
 
-.btn-pinterest {
-  background-color: transparent;
+.btn-pinterest-inversed {
+  background-color: #c91618;
   border-color: #c91618;
-  color: #c91618; }
-  .btn-pinterest:hover {
-    background-color: #c91618;
-    color: white; }
+  color: white; }
+  .btn-pinterest-inversed:hover {
+    background-color: transparent;
+    color: #c91618; }
 
-.btn-quora {
-  background-color: transparent;
+.btn-quora-inversed {
+  background-color: #a82400;
   border-color: #a82400;
-  color: #a82400; }
-  .btn-quora:hover {
-    background-color: #a82400;
-    color: white; }
+  color: white; }
+  .btn-quora-inversed:hover {
+    background-color: transparent;
+    color: #a82400; }
 
-.btn-reddit {
-  background-color: transparent;
+.btn-reddit-inversed {
+  background-color: #ff5700;
   border-color: #ff5700;
-  color: #ff5700; }
-  .btn-reddit:hover {
-    background-color: #ff5700;
-    color: white; }
+  color: white; }
+  .btn-reddit-inversed:hover {
+    background-color: transparent;
+    color: #ff5700; }
 
-.btn-plurk {
-  background-color: transparent;
+.btn-plurk-inversed {
+  background-color: #cf682f;
   border-color: #cf682f;
-  color: #cf682f; }
-  .btn-plurk:hover {
-    background-color: #cf682f;
-    color: white; }
+  color: white; }
+  .btn-plurk-inversed:hover {
+    background-color: transparent;
+    color: #cf682f; }
 
-.btn-smashing {
-  background-color: transparent;
+.btn-smashing-inversed {
+  background-color: #ff4f27;
   border-color: #ff4f27;
-  color: #ff4f27; }
-  .btn-smashing:hover {
-    background-color: #ff4f27;
-    color: white; }
+  color: white; }
+  .btn-smashing-inversed:hover {
+    background-color: transparent;
+    color: #ff4f27; }
 
-.btn-soundcloud {
-  background-color: transparent;
+.btn-soundcloud-inversed {
+  background-color: #ff4500;
   border-color: #ff4500;
-  color: #ff4500; }
-  .btn-soundcloud:hover {
-    background-color: #ff4500;
-    color: white; }
+  color: white; }
+  .btn-soundcloud-inversed:hover {
+    background-color: transparent;
+    color: #ff4500; }
 
-.btn-stackoverflow {
-  background-color: transparent;
+.btn-stackoverflow-inversed {
+  background-color: #f18436;
   border-color: #f18436;
-  color: #f18436; }
-  .btn-stackoverflow:hover {
-    background-color: #f18436;
-    color: white; }
+  color: white; }
+  .btn-stackoverflow-inversed:hover {
+    background-color: transparent;
+    color: #f18436; }
 
-.btn-tumblr {
-  background-color: transparent;
+.btn-tumblr-inversed {
+  background-color: #374a61;
   border-color: #374a61;
-  color: #374a61; }
-  .btn-tumblr:hover {
-    background-color: #374a61;
-    color: white; }
+  color: white; }
+  .btn-tumblr-inversed:hover {
+    background-color: transparent;
+    color: #374a61; }
 
-.btn-twitter {
-  background-color: transparent;
+.btn-twitter-inversed {
+  background-color: #46c0fb;
   border-color: #46c0fb;
-  color: #46c0fb; }
-  .btn-twitter:hover {
-    background-color: #46c0fb;
-    color: white; }
+  color: white; }
+  .btn-twitter-inversed:hover {
+    background-color: transparent;
+    color: #46c0fb; }
 
-.btn-viadeo {
-  background-color: transparent;
+.btn-viadeo-inversed {
+  background-color: #e7732e;
   border-color: #e7732e;
-  color: #e7732e; }
-  .btn-viadeo:hover {
-    background-color: #e7732e;
-    color: white; }
+  color: white; }
+  .btn-viadeo-inversed:hover {
+    background-color: transparent;
+    color: #e7732e; }
 
-.btn-vimeo {
-  background-color: transparent;
+.btn-vimeo-inversed {
+  background-color: #00a2cd;
   border-color: #00a2cd;
-  color: #00a2cd; }
-  .btn-vimeo:hover {
-    background-color: #00a2cd;
-    color: white; }
+  color: white; }
+  .btn-vimeo-inversed:hover {
+    background-color: transparent;
+    color: #00a2cd; }
 
-.btn-vk {
-  background-color: transparent;
+.btn-vk-inversed {
+  background-color: #45688e;
   border-color: #45688e;
-  color: #45688e; }
-  .btn-vk:hover {
-    background-color: #45688e;
-    color: white; }
+  color: white; }
+  .btn-vk-inversed:hover {
+    background-color: transparent;
+    color: #45688e; }
 
-.btn-weibo {
-  background-color: transparent;
+.btn-weibo-inversed {
+  background-color: #d7584d;
   border-color: #d7584d;
-  color: #d7584d; }
-  .btn-weibo:hover {
-    background-color: #d7584d;
-    color: white; }
+  color: white; }
+  .btn-weibo-inversed:hover {
+    background-color: transparent;
+    color: #d7584d; }
 
-.btn-xing {
-  background-color: transparent;
+.btn-xing-inversed {
+  background-color: #0a5d5e;
   border-color: #0a5d5e;
-  color: #0a5d5e; }
-  .btn-xing:hover {
-    background-color: #0a5d5e;
-    color: white; }
+  color: white; }
+  .btn-xing-inversed:hover {
+    background-color: transparent;
+    color: #0a5d5e; }
 
-.btn-youtube {
-  background-color: transparent;
+.btn-youtube-inversed {
+  background-color: #ff0000;
   border-color: #ff0000;
-  color: #ff0000; }
-  .btn-youtube:hover {
-    background-color: #ff0000;
-    color: white; }
+  color: white; }
+  .btn-youtube-inversed:hover {
+    background-color: transparent;
+    color: #ff0000; }
 
-.btn-csgo {
-  background-color: transparent;
+.btn-csgo-inversed {
+  background-color: #b67300;
   border-color: #b67300;
-  color: #b67300; }
-  .btn-csgo:hover {
-    background-color: #b67300;
-    color: white; }
+  color: white; }
+  .btn-csgo-inversed:hover {
+    background-color: transparent;
+    color: #b67300; }
 
-.btn-dota2 {
-  background-color: transparent;
+.btn-dota2-inversed {
+  background-color: #c33d2b;
   border-color: #c33d2b;
-  color: #c33d2b; }
-  .btn-dota2:hover {
-    background-color: #c33d2b;
-    color: white; }
+  color: white; }
+  .btn-dota2-inversed:hover {
+    background-color: transparent;
+    color: #c33d2b; }
 
-.btn-gm {
-  background-color: transparent;
+.btn-gm-inversed {
+  background-color: #1194f0;
   border-color: #1194f0;
-  color: #1194f0; }
-  .btn-gm:hover {
-    background-color: #1194f0;
-    color: white; }
+  color: white; }
+  .btn-gm-inversed:hover {
+    background-color: transparent;
+    color: #1194f0; }
 
-.btn-lol {
-  background-color: transparent;
+.btn-lol-inversed {
+  background-color: #d79922;
   border-color: #d79922;
-  color: #d79922; }
-  .btn-lol:hover {
-    background-color: #d79922;
-    color: white; }
+  color: white; }
+  .btn-lol-inversed:hover {
+    background-color: transparent;
+    color: #d79922; }
 
-.btn-minecraft {
-  background-color: transparent;
+.btn-minecraft-inversed {
+  background-color: #94c864;
   border-color: #94c864;
-  color: #94c864; }
-  .btn-minecraft:hover {
-    background-color: #94c864;
-    color: white; }
+  color: white; }
+  .btn-minecraft-inversed:hover {
+    background-color: transparent;
+    color: #94c864; }
 
-.btn-tf2 {
-  background-color: transparent;
+.btn-tf2-inversed {
+  background-color: #b35215;
   border-color: #b35215;
-  color: #b35215; }
-  .btn-tf2:hover {
-    background-color: #b35215;
-    color: white; }
+  color: white; }
+  .btn-tf2-inversed:hover {
+    background-color: transparent;
+    color: #b35215; }
 
-.btn-quake {
-  background-color: transparent;
+.btn-quake-inversed {
+  background-color: #cd1800;
   border-color: #cd1800;
-  color: #cd1800; }
-  .btn-quake:hover {
-    background-color: #cd1800;
-    color: white; }
+  color: white; }
+  .btn-quake-inversed:hover {
+    background-color: transparent;
+    color: #cd1800; }
 
-.btn-wot {
-  background-color: transparent;
+.btn-wot-inversed {
+  background-color: #ff4005;
   border-color: #ff4005;
-  color: #ff4005; }
-  .btn-wot:hover {
-    background-color: #ff4005;
-    color: white; }
+  color: white; }
+  .btn-wot-inversed:hover {
+    background-color: transparent;
+    color: #ff4005; }

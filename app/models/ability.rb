@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     can :read, :all
   #롤을 만들 경우 여기에서 User.new를 통해 role: 외부인 으로 설정하면 외부 session을 롤이 외부인인 유저로 인식한다. 이걸으로 조정하면 된다.
-    user ||= User.new(role: '외부인') # guest user (not logged in)
+    user ||= User.new(role: '노가입') # guest user (not logged in)
     if user.role == '슈퍼관리자'
       can :access, :rails_admin
       can :dashboard
@@ -31,6 +31,17 @@ class Ability
       end
       can [:first_check, :lockerselect], Locker do |locker|
         locker.user_id == user.id
+      end
+    elsif user.role == '외부인'
+      can [:create], [Post, Comment, LectureEstimate, Locker]
+      can [:update, :destroy], Post do |post|
+        post.user_id == user.id
+      end
+      can [:update, :destroy], Comment do |comment|
+        comment.user_id == user.id
+      end
+      can [:update, :destroy], LectureEstimate do |esimate|
+        esimate.user_id == user.id
       end
     else
       # can :show, [Book, BookList]

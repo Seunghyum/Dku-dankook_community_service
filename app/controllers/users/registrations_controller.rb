@@ -23,9 +23,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+    uploader = ProfileUploader.new
+    uploader.store!(params[:profile])
+
+  end
 
   # DELETE /resource
   # def destroy

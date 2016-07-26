@@ -10,7 +10,7 @@
           .news-v3-in.clearfix.row
             .col-sm-3.shadow-wrapper.col-md-2.text-center
               .box-shadow.shadow-effect-2.rounded-2x.col-xs-8.col-sm-12
-                = image_tag current_user.photo ? current_user.photo : "placeholder.jpg", class: "img-responsive rounded-2x img-bordered"
+                = image_tag current_user.profile.nil? ? current_user.profile : "placeholder.jpg", class: "img-responsive rounded-2x img-bordered"
               %h3= @post.user.username
               - if can? :update, @post
                 / 수정버튼
