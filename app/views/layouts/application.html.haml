@@ -12,16 +12,19 @@
     %meta{:id => "mtdesc", :content => "Dku(디쿠)", :property => "og:description"}
     %meta{:id => "kakao_image", :content => asset_url("rehearsal.jpg")}
 
-    %title Workspace
+    %title 디쿠
     = include_gon
     = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag    'fakeloader'
     = javascript_include_tag 'application'
+    = javascript_include_tag(controller_name == "home" ? "loading/fakeloader" : "loading/pace")
     = javascript_include_tag 'chart' if controller_name == "lecture_estimates" && action_name == "index"
     = javascript_include_tag 'jquery.vticker.min' if controller_name == "lecture_infos" && action_name == "index"
     = javascript_include_tag 'jquery.vticker.min' if controller_name == "home"
     = timeago_script_tag
     = csrf_meta_tags
   %body
+    #fakeLoader
     .wrapper
       = render "header"
       = yield
