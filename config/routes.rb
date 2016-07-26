@@ -62,7 +62,8 @@ get 'lockers/nottime' => "lockers#nottime", as: "nottime_lockers"
 
   get 'home/index' => "home#index"
 
-  devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords'}
+  devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'users/registrations',
+                                    passwords: 'users/passwords', :omniauth_callbacks => "users/omniauth_callbacks"}
 
   devise_scope :user do
    get "/users/sign_in", to: "devise/sessions#new"

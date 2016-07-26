@@ -252,7 +252,7 @@
                               Charts &amp; Countdowns
         %ul.nav.navbar-nav.navbar-border-bottom.navbar-right
           - if user_signed_in?
-            %li.no-border= link_to current_user.username, edit_user_registration_path
+            %li.no-border= link_to (current_user.username.nil? ? current_user.name : current_user.username ), edit_user_registration_path
             %li.no-border= link_to "로그아웃", destroy_user_session_path, method: "delete"
           - else
             %li.no-border= link_to "로그인", new_user_session_path if !user_signed_in?

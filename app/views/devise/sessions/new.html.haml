@@ -74,6 +74,11 @@
           .social-login.text-center
             %ul.list-inline.margin-bottom-20
               %li
+                = link_to "페이스북 로그인", user_omniauth_authorize_path(:facebook)
+                %button.btn.rounded.btn-block.btn-lg.btn-facebook-inversed.margin-bottom-20
+                  %i.fa.fa-facebook
+                  Sign in with Facebook
+
                 %button.btn.rounded.btn-lg.btn-rss
                   %strong Kakao Talk
                   Sign in 

@@ -7,7 +7,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'dfa8bb66e01be37c29b2ffacf5adcd952257c6f8ad3f0ccdf42dd1a55d6d0589648de94776f86c721e7ce0484c941ea1e18500e325b7a421853ace27fd15d765'
-
+config.omniauth :facebook, "1286444708049122", "fbc0f6934b0ab8bb46b0cdd502f7a14b"
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
@@ -42,7 +42,7 @@ Devise.setup do |config|
   # if you set :request_keys to [:subdomain], :subdomain will be used on authentication.
   # The same considerations mentioned for authentication_keys also apply to request_keys.
   # config.request_keys = []
-  
+
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.

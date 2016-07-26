@@ -5,7 +5,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
       t.string :profile
-      t.string :role, default: '일반학생'
+      t.string :role, default: '외부인'
       t.string :username
       t.string :gender
 

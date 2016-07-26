@@ -30,6 +30,7 @@ gem 'axlsx_rails'
 #auth
 gem 'devise'
 gem 'omniauth-kakao'
+gem 'omniauth-facebook'
 ##권한설정
 gem 'cancancan'
 gem 'activeadmin', '~> 1.0.0.pre4'
