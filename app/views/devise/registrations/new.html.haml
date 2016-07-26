@@ -26,18 +26,16 @@
           .demo-card
             %h3.title.text-center 회원가입
             %br/
-            = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {:class => "register-form"}) do |f|
+            = bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {:class => "register-form"}) do |f|
               = devise_error_messages!
-              = f.email_field :email, autofocus: true, class: "form-control",  placeholder: "학교 웹메일"
-              = f.text_field :username, class: "form-control",  placeholder: "닉네임"
-              = f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "비밀번호(6개 이상)"
-              = f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "비밀번호 재입력"
+              = f.email_field :email, autofocus: true, class: "form-control",  placeholder: "메일(학교 웹메일 X)", hide_label: true
+              = f.text_field :username, class: "form-control",  placeholder: "닉네임", hide_label: true
+              = f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "비밀번호(6개 이상)", hide_label: true
+              = f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "비밀번호 재입력", hide_label: true
               .text-center
-                = f.label :gender, "여자"
-                = f.radio_button(:gender, "여자")
-                  
-                \#{f.label :gender, "남자"}
-                \#{f.radio_button(:gender, "남자")}
+                = f.radio_button :gender, "female", label: "여성", inline: true
+                = f.radio_button :gender, "man", label: "남성", inline: true
+              %br
               = f.submit "회원가입",class: "btn btn-fill btn-block"
             .login
               %p

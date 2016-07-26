@@ -13,6 +13,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     uploader = ProfileUploader.new
     uploader.store!(params[:profile])
+    resource.update_column(:role, "외부인")
+
   end
 
   # GET /resource/edit
