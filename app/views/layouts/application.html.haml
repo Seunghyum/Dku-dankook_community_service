@@ -16,11 +16,14 @@
     = include_gon
     = stylesheet_link_tag    'application', media: 'all'
     = stylesheet_link_tag    'fakeloader'
+    = stylesheet_link_tag    'owl.carousel' if controller_name == "home"
+    = stylesheet_link_tag    'owl.theme' if controller_name == "home"
     = javascript_include_tag 'application'
     = javascript_include_tag(controller_name == "home" ? "loading/fakeloader" : "loading/pace")
     = javascript_include_tag 'chart' if controller_name == "lecture_estimates" && action_name == "index"
     = javascript_include_tag 'jquery.vticker.min' if controller_name == "lecture_infos" && action_name == "index"
     = javascript_include_tag 'jquery.vticker.min' if controller_name == "home"
+    = javascript_include_tag 'owl.carousel' if controller_name == "home"
     = timeago_script_tag
     = csrf_meta_tags
   %body

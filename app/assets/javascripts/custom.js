@@ -23,4 +23,5 @@ $(document).ready(function(){
 
     App.init();
     App.initScrollBar();
+    // StyleSwitcher.initStyleSwitcher();
 });

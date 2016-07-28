@@ -41,6 +41,7 @@ gem "mini_magick"
 gem 'to_xls-rails'
 gem 'fog'
 gem 'fog-aws'
+
 # UI
 gem 'sass-rails', '~> 5.0'
 ## Use Uglifier as compressor for JavaScript assets
@@ -68,6 +69,7 @@ gem 'chart-js-rails'
 gem "haml-rails"
 #editor
 gem 'redactor-rails'
+gem 'owlcarousel-rails'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

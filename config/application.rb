@@ -25,6 +25,8 @@ module Workspace
     config.active_record.raise_in_transactional_callbacks = true
 
     config.time_zone = 'Seoul'
+    config.active_record.default_timezone = :local
+    
     config.beginning_of_week = :sunday
   end
 end
