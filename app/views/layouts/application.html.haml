@@ -23,12 +23,13 @@
     = javascript_include_tag 'chart' if controller_name == "lecture_estimates" && action_name == "index"
     = javascript_include_tag 'jquery.vticker.min' if controller_name == "lecture_infos" && action_name == "index"
     = javascript_include_tag 'jquery.vticker.min' if controller_name == "home"
-    = javascript_include_tag 'owl.carousel' if controller_name == "home"
+    = javascript_include_tag 'owl_carousel' if controller_name == "home"
     = timeago_script_tag
     = csrf_meta_tags
   %body
     #fakeLoader
     .wrapper
       = render "header"
+      = render partial: "application/shared/flash_message", flash: flash
       = yield
       = render "footer"

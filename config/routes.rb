@@ -61,6 +61,7 @@ get 'lockers/nottime' => "lockers#nottime", as: "nottime_lockers"
   resources :school_phone_searchings
 
   get 'home/index' => "home#index"
+  get 'home/certify' => "home#certify"
 
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'users/registrations',
                                     passwords: 'users/passwords', :omniauth_callbacks => "users/omniauth_callbacks"}

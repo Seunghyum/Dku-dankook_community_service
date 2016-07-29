@@ -1,0 +1,8 @@
+-# sns공유
+.sns-box
+  %p{ style: "display: inline; display: inline; font-size: 18px; font-weight: bolder;"}
+    공유하기
+  %a.kakao-link-btn.btn-ka.btn-sns{:href => "javascript:;", data: {kakao: "rehearsal", style: "text-decoration: none;"}}
+    = image_tag "icon-ka.png", style: "width: 36px; margin: 5px;"
+  %a.fa.fa-twitter.share-base.share-twitter.btn-tw{:onclick => "window.open('https://twitter.com/intent/tweet?text={{ content.name }} {{ content.absolute_url|urlencode }}', 'newwindow', 'width=300, height=250')"}
+  %a.fa.fa-facebook.share-base.share-facebook.fshare.btn-fb{:onclick => "window.open('https://www.facebook.com/sharer/sharer.php?u={{ content.absolute_url|urlencode }}', 'newwindow', 'width=300, height=250')"}

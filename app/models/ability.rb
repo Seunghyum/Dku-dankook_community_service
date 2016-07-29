@@ -19,31 +19,35 @@ class Ability
         comment.user_id == user.id
       end
     elsif user.role == '일반대표' || user.role == '학생'
-      can [:create, :read], [Post, Comment, LectureEstimate, Locker]
-      can [:update, :destroy], Post do |post|
-        post.user_id == user.id
-      end
-      can [:update, :destroy], Comment do |comment|
-        comment.user_id == user.id
-      end
-      can [:update, :destroy], LectureEstimate do |esimate|
-        esimate.user_id == user.id
-      end
-      can [:first_check, :lockerselect], Locker do |locker|
-        locker.user_id == user.id
+      if user.use_pause == false
+        can [:create, :read], [Post, Comment, LectureEstimate, Locker]
+        can [:update, :destroy], Post do |post|
+          post.user_id == user.id
+        end
+        can [:update, :destroy], Comment do |comment|
+          comment.user_id == user.id
+        end
+        can [:update, :destroy], LectureEstimate do |esimate|
+          esimate.user_id == user.id
+        end
+        can [:first_check, :lockerselect], Locker do |locker|
+          locker.user_id == user.id
+        end
       end
     elsif user.role == '외부인'
-      cannot [:index, :show], Locker
-      can :home, Locker
-      can [:create, :read], [Post, Comment, LectureEstimate]
-      can [:update, :destroy], Post do |post|
-        post.user_id == user.id
-      end
-      can [:update, :destroy], Comment do |comment|
-        comment.user_id == user.id
-      end
-      can [:update, :destroy], LectureEstimate do |esimate|
-        esimate.user_id == user.id
+      if user.use_pause == false
+        cannot [:index, :show], Locker
+        can :home, Locker
+        can [:create, :read], [Post, Comment, LectureEstimate]
+        can [:update, :destroy], Post do |post|
+          post.user_id == user.id
+        end
+        can [:update, :destroy], Comment do |comment|
+          comment.user_id == user.id
+        end
+        can [:update, :destroy], LectureEstimate do |esimate|
+          esimate.user_id == user.id
+        end
       end
     else
       # can :show, [Book, BookList]

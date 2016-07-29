@@ -20,4 +20,8 @@ class HomeController < ApplicationController
       format.html
     end
   end
+
+  def certify
+
+  end
 end
