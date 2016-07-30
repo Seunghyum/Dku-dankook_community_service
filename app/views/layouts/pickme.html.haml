@@ -17,6 +17,7 @@
     = javascript_include_tag 'pickme'
     = csrf_meta_tags
   %body
+    = yield
     #skipnavigation
       %a{:href => "#container", :title => "본문 내용 바로가기"} 본문 내용 바로가기
     #wrap

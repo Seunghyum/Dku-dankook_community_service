@@ -1,2 +1,14 @@
 %h1 Pickme#index
 %p Find me in app/views/pickme/index.html.haml
+
+- @professors[1..5].each do |p|
+  = p.name
+  %br/
+  - if p.get_upvotes.size == 0
+    = link_to like_professor_path(p), method: :put do
+      %br 좋아요
+      = p.get_upvotes.size
+  - elsif p.get_upvotes.size == 1
+    = link_to dislike_professor_path(p), method: :put do
+      %br 좋아요
+      = p.get_upvotes.size
