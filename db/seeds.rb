@@ -164,7 +164,8 @@ Locker.create(limit_num: 3, major_id: 2)
          belong: @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid:nth-child(#{b}) > .span8 > .name").inner_text,
 
         #  intro: @html.at_xpath(".portlet-body//div//.professor.row-fluid:nth-child(#{a})//.span6.row-fluid:nth-child(#{b})//.span8//p.name//span.more//a[normalize-space(.)=img]")['href']
-         intro_url: doc.join(",")
+         intro_url: doc.join(","),
+         profile: @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid:nth-child(#{b}) > .span4.photo > .img_wrap > img").attr("src").inner_text.to_s
        )
      end
 
@@ -176,7 +177,8 @@ Locker.create(limit_num: 3, major_id: 2)
        belong: @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid > .span8 > .name").inner_text,
 
       #  intro: @html.at_xpath(".portlet-body//div//.professor.row-fluid:nth-child(#{a})//.span6.row-fluid:nth-child(#{b})//.span8//p.name//span.more//a[normalize-space(.)=img]")['href']
-       intro_url: doc.join(",")
+       intro_url: doc.join(","),
+       profile: @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid:nth-child(#{b}) > .span4.photo > .img_wrap > img").attr("src").inner_text.to_s
      )
     end
   end
