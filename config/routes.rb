@@ -93,6 +93,15 @@ get 'lockers/nottime' => "lockers#nottime", as: "nottime_lockers"
       end
     end
   end
+
+  #교수 투표
+  resources :professors do
+    member do
+      put "like", to: "pickme#upvote"
+      put "dislike", to: "pickme#downvote"
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
