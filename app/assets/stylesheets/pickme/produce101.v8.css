@@ -2,7 +2,9 @@
 
 /* 메인 - 서브 공통*/
 #skipnavigation {position:absolute;top:-9999px;left:-9999px;}
+
 html, body {background:#fcfcfc url('http://static.global.mnet.com/data/od/images/produce101/bg_body.gif') repeat-x 0 0; }
+
 .gnb_wrap {background:none;}
 
 #wrap {position:relative;width:100%;min-width:980px;margin:0 auto;background:url('http://static.global.mnet.com/data/od/images/produce101/bg_header.png') no-repeat center 0;}
@@ -48,7 +50,11 @@ html, body {background:#fcfcfc url('http://static.global.mnet.com/data/od/images
 .navi li {position:relative;float:left;padding:0 15px;background:url('http://static.global.mnet.com/data/od/images/produce101/header_line.gif') no-repeat right 0;overflow:visible;}
 .navi li:last-child {background:none;}
 .navi li.last {background:none;}
-.navi li a {position:relative;display:block;float:left;height:41px;text-indent:-9999px;background:url('http://static.global.mnet.com/data/od/images/produce101/bg_navi.png') no-repeat 0 0;}
+.navi li a {position:relative;display:block;float:left;height:41px;
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+}
 
 .navi li.mn_01 a {background-position:0 0;width:62px;}
 .navi li.mn_01 a:hover {background-position:0 -40px;}
