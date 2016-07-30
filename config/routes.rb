@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'pickme/index'
+
+  get 'pickme/index' => "pickme#index", as: "pickme"
+  #admin
   ActiveAdmin.routes(self)
   mount RedactorRails::Engine => '/redactor_rails'
   #중고책
