@@ -69,7 +69,7 @@ html, body {background:#fcfcfc url('http://static.global.mnet.com/data/od/images
 .navi li.mn_02 dl dd.smn_01 a:hover, .navi li.mn_02 dl dd.smn_01 a.selected{background-position:0 -121px;width:81px;}
 .navi li.mn_02 dl dd.smn_02 a:hover, .navi li.mn_02 dl dd.smn_02 a.selected{background-position:-121px -122px;width:81px;}
 
-.navi li.mn_03 a {background-position:-218px 0;width:79px;}
+.navi li.mn_03 a {background-position:-218px 0;width:100px;}
 .navi li.mn_03 a:hover {background-position:-218px -40px;}
 .navi li.mn_03 a.on {background-position:-218px -40px;width:79px;}
 .navi li.mn_03 dl{left:40px;width:90px;}
@@ -112,7 +112,7 @@ html, body {background:#fcfcfc url('http://static.global.mnet.com/data/od/images
 .navi li dl.selected {display:block;}
 .navi li dl dt {position:absolute;top:0;left:-24px;display:block;width:24px;height:40px;background:url('http://static.global.mnet.com/data/od/images/produce101/gnb_left.png') no-repeat 0 0}
 .navi li dl dd {display:block;float:left;}
-.navi li dl dd a {float:left;height:13px;color:#d17c64;font-weight:bold;line-height:40px;padding:0 10px;background:url('http://static.global.mnet.com/data/od/images/produce101/bg_navi.png') no-repeat;text-indent:-9999px;margin:14px 0 0 0;}
+.navi li dl dd a {float:left;height:13px;color:#d17c64;font-weight:bold;line-height:40px;padding:0 10px;2}
 
 /*tranieeList*/
 .tranieeList {position:relative;width:980px;clear:both;}

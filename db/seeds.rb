@@ -78,68 +78,68 @@ Locker.create(limit_num: 3, major_id: 2)
 #교수정보 가져오기
 @professor = Array.new
 @professor = [
-  # #문과대학
-  #  "http://www.dankook.ac.kr/web/kor/-152",
-  #  "http://www.dankook.ac.kr/web/kor/-153",
-  #  "http://www.dankook.ac.kr/web/kor/-154",
-  #  "http://www.dankook.ac.kr/web/kor/-155",
-  #  "http://www.dankook.ac.kr/web/kor/-156",
-  # #법과대
-  # "http://www.dankook.ac.kr/web/kor/-158",
-  # #사회과학대학
-  # "http://www.dankook.ac.kr/web/kor/-160",
-  # "http://www.dankook.ac.kr/web/kor/-161",
-  # "http://www.dankook.ac.kr/web/kor/-235",
-  # "http://www.dankook.ac.kr/web/kor/-317",
-  # "http://www.dankook.ac.kr/web/kor/-167",
-  # "http://www.dankook.ac.kr/web/kor/-168",
-  # #상경대
-  # "http://www.dankook.ac.kr/web/kor/-171",
-  # "http://www.dankook.ac.kr/web/kor/-172",
-  # "http://www.dankook.ac.kr/web/kor/-318",
-  # "http://www.dankook.ac.kr/web/kor/-175",
-  # "http://www.dankook.ac.kr/web/kor/-52",
-  # #자연대학(구학문)
-  # "http://www.dankook.ac.kr/web/kor/-231",
-  # "http://www.dankook.ac.kr/web/kor/-232",
-  # "http://www.dankook.ac.kr/web/kor/-234",
-  # "http://www.dankook.ac.kr/web/kor/-233",
-  # #건축대학
-  # "http://www.dankook.ac.kr/web/kor/-177",
-  # "http://www.dankook.ac.kr/web/kor/-178",
-  # #공과대학
-  # "http://www.dankook.ac.kr/web/kor/-319",
-  # "http://www.dankook.ac.kr/web/kor/-181",
-  # "http://www.dankook.ac.kr/web/kor/-182",
-  # "http://www.dankook.ac.kr/web/kor/-183",
-  # "http://www.dankook.ac.kr/web/kor/-184",
-  # "http://www.dankook.ac.kr/web/kor/-185",
-  # "http://www.dankook.ac.kr/web/kor/-186",
-  # "http://www.dankook.ac.kr/web/kor/-187",
-  # "http://www.dankook.ac.kr/web/kor/-188",
-  # "http://www.dankook.ac.kr/web/kor/-189",
-  # #사범대
-  # "http://www.dankook.ac.kr/web/kor/-191",
-  # "http://www.dankook.ac.kr/web/kor/-192",
-  # "http://www.dankook.ac.kr/web/kor/-193",
-  # "http://www.dankook.ac.kr/web/kor/-194",
-  # "http://www.dankook.ac.kr/web/kor/-195",
-  # "http://www.dankook.ac.kr/web/kor/-196",
-  # #예술대학
-  # "http://www.dankook.ac.kr/web/kor/-197",
-  # "http://www.dankook.ac.kr/web/kor/-198",
-  # "http://www.dankook.ac.kr/web/kor/-320",
-  # "http://www.dankook.ac.kr/web/kor/-202",
-  # "http://www.dankook.ac.kr/web/kor/-203",
-  # #음악대학
-  # "http://www.dankook.ac.kr/web/kor/-205",
-  # "http://www.dankook.ac.kr/web/kor/-207",
-  # "http://www.dankook.ac.kr/web/kor/-208",
-  # "http://www.dankook.ac.kr/web/kor/-209",
-  # #국제대학
-  # "http://www.dankook.ac.kr/web/kor/-211",
-  # "http://www.dankook.ac.kr/web/kor/-212",
-  # #교양대
+  #문과대학
+   "http://www.dankook.ac.kr/web/kor/-152",
+   "http://www.dankook.ac.kr/web/kor/-153",
+   "http://www.dankook.ac.kr/web/kor/-154",
+   "http://www.dankook.ac.kr/web/kor/-155",
+   "http://www.dankook.ac.kr/web/kor/-156",
+  #법과대
+  "http://www.dankook.ac.kr/web/kor/-158",
+  #사회과학대학
+  "http://www.dankook.ac.kr/web/kor/-160",
+  "http://www.dankook.ac.kr/web/kor/-161",
+  "http://www.dankook.ac.kr/web/kor/-235",
+  "http://www.dankook.ac.kr/web/kor/-317",
+  "http://www.dankook.ac.kr/web/kor/-167",
+  "http://www.dankook.ac.kr/web/kor/-168",
+  #상경대
+  "http://www.dankook.ac.kr/web/kor/-171",
+  "http://www.dankook.ac.kr/web/kor/-172",
+  "http://www.dankook.ac.kr/web/kor/-318",
+  "http://www.dankook.ac.kr/web/kor/-175",
+  "http://www.dankook.ac.kr/web/kor/-52",
+  #자연대학(구학문)
+  "http://www.dankook.ac.kr/web/kor/-231",
+  "http://www.dankook.ac.kr/web/kor/-232",
+  "http://www.dankook.ac.kr/web/kor/-234",
+  "http://www.dankook.ac.kr/web/kor/-233",
+  #건축대학
+  "http://www.dankook.ac.kr/web/kor/-177",
+  "http://www.dankook.ac.kr/web/kor/-178",
+  #공과대학
+  "http://www.dankook.ac.kr/web/kor/-319",
+  "http://www.dankook.ac.kr/web/kor/-181",
+  "http://www.dankook.ac.kr/web/kor/-182",
+  "http://www.dankook.ac.kr/web/kor/-183",
+  "http://www.dankook.ac.kr/web/kor/-184",
+  "http://www.dankook.ac.kr/web/kor/-185",
+  "http://www.dankook.ac.kr/web/kor/-186",
+  "http://www.dankook.ac.kr/web/kor/-187",
+  "http://www.dankook.ac.kr/web/kor/-188",
+  "http://www.dankook.ac.kr/web/kor/-189",
+  #사범대
+  "http://www.dankook.ac.kr/web/kor/-191",
+  "http://www.dankook.ac.kr/web/kor/-192",
+  "http://www.dankook.ac.kr/web/kor/-193",
+  "http://www.dankook.ac.kr/web/kor/-194",
+  "http://www.dankook.ac.kr/web/kor/-195",
+  "http://www.dankook.ac.kr/web/kor/-196",
+  #예술대학
+  "http://www.dankook.ac.kr/web/kor/-197",
+  "http://www.dankook.ac.kr/web/kor/-198",
+  "http://www.dankook.ac.kr/web/kor/-320",
+  "http://www.dankook.ac.kr/web/kor/-202",
+  "http://www.dankook.ac.kr/web/kor/-203",
+  #음악대학
+  "http://www.dankook.ac.kr/web/kor/-205",
+  "http://www.dankook.ac.kr/web/kor/-207",
+  "http://www.dankook.ac.kr/web/kor/-208",
+  "http://www.dankook.ac.kr/web/kor/-209",
+  #국제대학
+  "http://www.dankook.ac.kr/web/kor/-211",
+  "http://www.dankook.ac.kr/web/kor/-212",
+  #교양대
   "http://www.dankook.ac.kr/web/kor/-150"
 ]
 
@@ -178,7 +178,7 @@ Locker.create(limit_num: 3, major_id: 2)
 
       #  intro: @html.at_xpath(".portlet-body//div//.professor.row-fluid:nth-child(#{a})//.span6.row-fluid:nth-child(#{b})//.span8//p.name//span.more//a[normalize-space(.)=img]")['href']
        intro_url: doc.join(","),
-       profile: @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid:nth-child(#{b}) > .span4.photo > .img_wrap > img").attr("src").inner_text.to_s
+       profile: @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid:nth-child(1) > .span4.photo > .img_wrap > img").attr("src").inner_text.to_s
      )
     end
   end
@@ -186,11 +186,11 @@ end
 
 BestFive.create(category: "교양")
 
-Professor.create(name: "1김수영", belong: "1국제경영", intro_url: "#")
-Professor.create(name: "2김수영", belong: "2국제경영", intro_url: "#")
-Professor.create(name: "3김수영", belong: "3국제경영", intro_url: "#")
-Professor.create(name: "4김수영", belong: "4국제경영", intro_url: "#")
-Professor.create(name: "5김수영", belong: "5국제경영", intro_url: "#")
+# Professor.create(name: "1김수영", belong: "1국제경영", intro_url: "#")
+# Professor.create(name: "2김수영", belong: "2국제경영", intro_url: "#")
+# Professor.create(name: "3김수영", belong: "3국제경영", intro_url: "#")
+# Professor.create(name: "4김수영", belong: "4국제경영", intro_url: "#")
+# Professor.create(name: "5김수영", belong: "5국제경영", intro_url: "#")
 LectureInfo.create(name: "1경영학", l_type: "전공필수", time: 10, semester: 2, professor_id: 1, all_view: 10)
 LectureInfo.create(name: "2전공선태그스", l_type: "전공선택", time: 10, semester: 2, professor_id: 2, all_view: 9)
 LectureInfo.create(name: "3학북기쵸", l_type: "학부기초", time: 10, semester: 2, professor_id: 3, all_view: 8)

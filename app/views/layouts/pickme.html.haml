@@ -30,18 +30,9 @@
             %dl
               %dt.blind 엠넷 메뉴
               %dd
-                %a{:href => "http://www.mnet.com/chart/top100"} 차트
-              %dd
-                %a{:href => "http://www.mnet.com/newrelease/track/Kpop/all"} 뮤직
-              %dd
-                %a{:href => "http://tv.mnet.interest.me/web/tv/tvhome.m"} TV
-              %dd
-                %a{:href => "http://www.mnet.com/special/today/all/0000"} 매거진
-              %dd
-                %a{:href => "http://www.mnet.com/live"} 공연
-              %dd.last
-                %a{:href => "http://www.mnet.com/my/ticketlist.asp"} 마이페이지
-            %button.login{:onclick => "login();", :title => "로그인", :type => "button"} 로그인
+                =link_to "홈으로", root_path
+            = link_to users_sign_in_path do
+              %button.login{:title => "로그인", :type => "button"} 로그인
           / //국문 gnb
       #header
         .inner_wrap
@@ -51,32 +42,15 @@
             %li.depth1.mn_02.hd-first
               %a{:href => "#"}
                 %em>
-                사이트 소개
-              .subMenu
-                %dl
-                  %dt
-                  %dd.smn_01
-                    %a{:href => "/produce101/program.dbp"} 프로그램 소개
-                  %dd.smn_02
-                    %a{:href => "/produce101/training.dbp"} 101트레이닝팀
+                서비스 정보
             %li.depth1.mn_03
               %a{:href => "/produce101/profile.dbp"}
                 %em>
-                101 교수님
+                101 Professor
             %li.mn_04.depth1
               %a{:href => "#"}
                 %em>
                 인기순위
-              -# .subMenu
-              -#   %dl
-              -#     %dt
-              -#     %dd.smn_01
-              -#       %a{:href => "/produce101/rank.dbp"} 1차 평가 순위
-              -#     %dd.smn_02
-              -#       %a{:href => "/produce101/rank2.dbp"} 2차 평가 순위
-              -#     %dd.smn_03
-              -#       %a{:href => "/produce101/rank3.dbp"} 3차 평가 순위
-
           .snsBtn
             %a.btn_f{:href => "https://www.facebook.com/produce101", :target => "_blank"} facebook
             %a.btn_t{:href => "https://www.twitter.com/mnetkr", :target => "_blank"} twitter
@@ -98,142 +72,19 @@
           / //투표 소개 및 설명
           .searchBox
             .sorting
-              %a{"data-order" => "name", :href => "#"} 가나다 순
-              %a.selected{"data-order" => "agencyNm", :href => "#"} 기획사 순
+              = link_to "교양", pickme_path(filter: "교양"), class: (params[:filter] == "교양" ? "selected" : "")
+              = link_to "내 전공", pickme_path(filter: "내 전공"), class: (params[:filter] == "내 전공" ? "selected" : "")
               /
                 div class="ckEtc">
                 <label for="etc"><input type="checkbox" id="etc" name="etc">방출자 제외</label>
                 </div
             .search
-              %input{:onkeydown => "onKeyDown();", :placeholder => "연습생 검색", :title => "연습생 검색", :type => "text"}/
-              %a{:href => "#"} 검색
+              = form_tag({url: pickme_path}, {method: "get"}) do
+                = text_field_tag :name, "", :placeholder => "연습생 검색"
+                = submit_tag ""
+          %br
+          %br
           .tranieeList
-            :javascript
-              $(document).ready(function(){
-
-              	/*	// 선택 처리
-              		$('.mask_vote').click(function(){
-
-              		    //goProfile($(this).data("id"));
-              		    //return;
-
-              			if(poll_info=='' || poll_info=='null'){
-              				alert("현재 투표기간이 아닙니다.");
-              				return false;
-              			}
-
-              			if( voteComplete ){
-              				alert("오늘 이미 투표를 완료하셨습니다. 내일 다시 참여해주세요.");
-              				return false;
-              			}else if( !isLogin ){
-              				if(confirm("로그인을 하셔야 투표 참여가 가능합니다.")){
-              					login();
-              				}else{
-              					return false;
-              				}
-              			}else if( $(this).parent().parent().parent().hasClass("dimd") ){
-              				alert("방출자는 선택이 불가합니다. 다른연습생을 선택해주세요.");
-              				return false;
-              			}else{
-              				var li = $(this).parents('li');
-              				if( $(li).hasClass('dimd') ){
-              					return;
-              				}
-              				li.toggleClass('selected');
-              				if( $(li).hasClass("selected") ){
-              					if( !(setVote($(this).data("id"), $(this).data("url"), $(this).data("name") )) ){
-              						li.toggleClass('selected');
-              					}
-              				}else{
-              					delVote($(this).data("id"));
-              				}
-              			}
-              		});
-
-              		var listLength = $(".tranieeList ul li").length;
-              		if(listLength > 14){$(".listnb.nb_01").show();}
-              		if(listLength > 28){$(".listnb.nb_02").show();}
-              		if(listLength > 42){$(".listnb.nb_03").show();}
-              		if(listLength > 56){$(".listnb.nb_04").show();}
-              		if(listLength > 70){$(".listnb.nb_05").show();}
-              		if(listLength > 84){$(".listnb.nb_06").show();}
-              		if(listLength > 98){$(".listnb.nb_07").show();}
-
-                      $(window).scroll(function() {
-              			scrollAction();
-              			scrollActionAd();
-              			if($(window).scrollTop() > 50) {
-              				$(".top").fadeIn(150);
-              			}else{
-              				$(".top").fadeOut(150);
-              			}
-              		});
-
-
-              		var _rnb = $('#qmset');
-              		var _topBtn = $(".top");
-
-              		var headerHeight = $('#header').outerHeight()+115;
-              		var defaultTop = 62;
-              		var lastChkNum = $(document).height() - (_rnb.height() + $('#footerGlabal_2016').outerHeight() );
-              		var whNum = $(window).height();
-
-
-              		function scrollAction(){
-              			if(_rnb.length == 0 ) return false;
-              			var num = $(window).scrollTop();
-
-              			if(num > headerHeight && num < lastChkNum){
-              				//_rnb.css('top', num - (headerHeight - defaultTop));
-              				_rnb.css('top', 0);
-              				_rnb.addClass("fixed");
-              			}else if(num <= headerHeight ){
-              				_rnb.css('top', defaultTop);
-              				_rnb.removeClass("fixed");
-              			}else{
-              				_rnb.css('top', lastChkNum - (headerHeight - defaultTop));
-              				_rnb.removeClass("fixed");
-              			}
-              		}
-              		$(".top").fadeOut(0);
-              		$(".top").css("position", "absolute");
-
-
-              		//lnb 배너
-                  	var _lnbAd = $('.ADmainLeft');
-                  	var headerHeightAd = $('#header').outerHeight()+115;
-                  	var defaultTopAd = 62;
-                  	var lastChkNumAd = $(document).height() - (_lnbAd.outerHeight() + $('#footerGlabal_2016').outerHeight() );
-
-                  	function scrollActionAd()
-                  	{
-
-                  		if(_lnbAd.length == 0 ) return false;
-                  		var numAd = $(window).scrollTop();
-
-                  		if(numAd > headerHeightAd && numAd < lastChkNumAd){
-                  			//_lnbAd.css('top', numAd - (headerHeightAd - defaultTopAd));
-                  			_lnbAd.css('top', 0);
-                  			_lnbAd.addClass("fixed");
-                  		}else if(numAd <= headerHeightAd ){
-                  			_lnbAd.css('top', defaultTopAd);
-                  			_lnbAd.removeClass("fixed");
-                  		}else{
-                  			_lnbAd.css('top', lastChkNumAd - (headerHeightAd - defaultTopAd));
-                  			_lnbAd.removeClass("fixed");
-                  		}
-                  	}
-
-                  	scrollAction();
-                  	scrollActionAd();
-
-                  	$(window).resize(function(){
-                  		whNum = $(window).height();
-                  		scrollAction();
-                  		scrollActionAd();
-                  	})
-
-              	});*/
             .listnb.nb_01{:style => ""} 14
             .listnb.nb_02{:style => ""} 28
             .listnb.nb_03{:style => ""} 42
@@ -241,830 +92,859 @@
             .listnb.nb_05{:style => ""} 70
             .listnb.nb_06{:style => ""} 84
             .listnb.nb_07{:style => ""} 98
-            %ul.nobd
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "90", "data-name" => "강미나", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/2837897d-557c-4de8-aaa0-0a4fd17f4e46-3-1-젤리피쉬-강미나.png"}
-                    %img{:alt => "강미나", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/2837897d-557c-4de8-aaa0-0a4fd17f4e46-3-1-젤리피쉬-강미나.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(90); return false;"} 강미나
-                %p.agency Jellyfish
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "88", "data-name" => "김세정", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4a1a44a4-68f2-4762-bc0e-7e40da45b3fa-3-3-젤리피쉬-김세정.png"}
-                    %img{:alt => "김세정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4a1a44a4-68f2-4762-bc0e-7e40da45b3fa-3-3-젤리피쉬-김세정.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(88); return false;"} 김세정
-                %p.agency Jellyfish
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "40", "data-name" => "전소미 ", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a5eee741-ef09-4d36-a927-34c428fed280-1.JYP-전소미.png"}
-                    %img{:alt => "전소미 ", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a5eee741-ef09-4d36-a927-34c428fed280-1.JYP-전소미.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(40); return false;"} 전소미
-                %p.agency JYP
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "103", "data-name" => "김청하", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dca36004-aff4-407e-b506-e16072c544e4-3-15-M&H-김청하.png"}
-                    %img{:alt => "김청하", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dca36004-aff4-407e-b506-e16072c544e4-3-15-M&H-김청하.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(103); return false;"} 김청하
-                %p.agency M&amp;H
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "185", "data-name" => "정채연", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/6dc4335b-8e92-4724-b9a9-976b31149649-6-3-MBK-정채연.png"}
-                    %img{:alt => "정채연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/6dc4335b-8e92-4724-b9a9-976b31149649-6-3-MBK-정채연.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(185); return false;"} 정채연
-                %p.agency MBK
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "138", "data-name" => "임나영", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/9c9927c0-88bb-4656-877b-4a54048c2736-4-5-플레디스-임나영.png"}
-                    %img{:alt => "임나영", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/9c9927c0-88bb-4656-877b-4a54048c2736-4-5-플레디스-임나영.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(138); return false;"} 임나영
-                %p.agency PLEDIS
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "136", "data-name" => "주결경", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a2e22e6b-e9ee-41a1-89d7-a36cf2b52f27-4-7-플레디스-주결경.png"}
-                    %img{:alt => "주결경", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a2e22e6b-e9ee-41a1-89d7-a36cf2b52f27-4-7-플레디스-주결경.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(136); return false;"} 주결경
-                %p.agency PLEDIS
-            %ul
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "72", "data-name" => "김소혜", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/671f6d5d-4d74-4084-9813-5fad71a570bb-2-12.레드라인-김소혜.png"}
-                    %img{:alt => "김소혜", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/671f6d5d-4d74-4084-9813-5fad71a570bb-2-12.레드라인-김소혜.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(72); return false;"} 김소혜
-                %p.agency REDLINE
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "63", "data-name" => "유연정", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4447746f-07af-4b01-af8e-004ee68df08a-2-5.스타쉽-유연정.png"}
-                    %img{:alt => "유연정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4447746f-07af-4b01-af8e-004ee68df08a-2-5.스타쉽-유연정.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(63); return false;"} 유연정
-                %p.agency 스타쉽
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "45", "data-name" => "김도연", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/8d9c111c-3eff-4eaa-b5ae-1680eb88686d-2.판타지오-김도연.png"}
-                    %img{:alt => "김도연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/8d9c111c-3eff-4eaa-b5ae-1680eb88686d-2.판타지오-김도연.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(45); return false;"} 김도연
-                %p.agency 판타지오
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "42", "data-name" => "최유정", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/b25bc0dc-290d-4214-bb15-9148a1b39c7e-5.판타지오-최유정.png"}
-                    %img{:alt => "최유정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/b25bc0dc-290d-4214-bb15-9148a1b39c7e-5.판타지오-최유정.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(42); return false;"} 최유정
-                %p.agency 판타지오
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "74", "data-name" => "윤서형", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5cbf421e-e4da-4987-8364-d40fc4bd6d72-2-14.앤어거스트-윤서형.png"}
-                    %img{:alt => "윤서형", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5cbf421e-e4da-4987-8364-d40fc4bd6d72-2-14.앤어거스트-윤서형.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(74); return false;"} 윤서형
-                %p.agency &amp;August
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "225", "data-name" => "김하윤", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/ec22c99c-05be-40c1-a9a4-1ba9a74b6c3a-7-8-101-DOORS-김하윤.png"}
-                    %img{:alt => "김하윤", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/ec22c99c-05be-40c1-a9a4-1ba9a74b6c3a-7-8-101-DOORS-김하윤.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(225); return false;"} 김하윤
-                %p.agency 101 DOORS
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "173", "data-name" => "박가을", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1ceca161-72dc-41e1-8cdb-cf22b9a9276b-5-11-Astory-박가을.png"}
-                    %img{:alt => "박가을", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1ceca161-72dc-41e1-8cdb-cf22b9a9276b-5-11-Astory-박가을.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(173); return false;"} 박가을
-                %p.agency Astory
-            %ul
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "172", "data-name" => "임경하", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/fed7b9b8-6ece-4eda-aa08-53020f147bd1-5-12-Astory-임경하.png"}
-                    %img{:alt => "임경하", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/fed7b9b8-6ece-4eda-aa08-53020f147bd1-5-12-Astory-임경하.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(172); return false;"} 임경하
-                %p.agency Astory
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "50", "data-name" => "임효선", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/010919de-6c3c-4932-8149-8ed6e2c0a496-11.초록별-임효선.png"}
-                    %img{:alt => "임효선", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/010919de-6c3c-4932-8149-8ed6e2c0a496-11.초록별-임효선.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(50); return false;"} 임효선
-                %p.agency CMG초록별
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "164", "data-name" => "권은빈", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/565abe81-6a7e-4504-9749-09193c80f988-5-1-CUBE-권은빈.png"}
-                    %img{:alt => "권은빈", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/565abe81-6a7e-4504-9749-09193c80f988-5-1-CUBE-권은빈.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(164); return false;"} 권은빈
-                %p.agency CUBE
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "163", "data-name" => "이윤서", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4937687d-b12f-4254-bbe8-33d3c803180b-5-2-CUBE-이윤서.png"}
-                    %img{:alt => "이윤서", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4937687d-b12f-4254-bbe8-33d3c803180b-5-2-CUBE-이윤서.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(163); return false;"} 이윤서
-                %p.agency CUBE
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "162", "data-name" => "전소연", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/042287ff-8497-4e43-a9e2-089dc95d0d50-5-3-CUBE-전소연.png"}
-                    %img{:alt => "전소연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/042287ff-8497-4e43-a9e2-089dc95d0d50-5-3-CUBE-전소연.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(162); return false;"} 전소연
-                %p.agency CUBE
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "62", "data-name" => "윤채경", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/6f7873fa-a89f-4559-b025-300a306fc44e-2-1.DSP-윤채경.png"}
-                    %img{:alt => "윤채경", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/6f7873fa-a89f-4559-b025-300a306fc44e-2-1.DSP-윤채경.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(62); return false;"} 윤채경
-                %p.agency DSP
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "61", "data-name" => "조시윤", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/64890397-14c6-41de-9531-d2c7ce723edb-2-2.DSP-조시윤.png"}
-                    %img{:alt => "조시윤", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/64890397-14c6-41de-9531-d2c7ce723edb-2-2.DSP-조시윤.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(61); return false;"} 조시윤
-                %p.agency DSP
-            %ul
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "226", "data-name" => "윤유담", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/297fafa1-c0f5-43a4-854f-291080535587-7-9-FM-윤유담.png"}
-                    %img{:alt => "윤유담", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/297fafa1-c0f5-43a4-854f-291080535587-7-9-FM-윤유담.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(226); return false;"} 윤유담
-                %p.agency FM
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "150", "data-name" => "김시현", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7a261e4a-bc2f-4e5f-9be4-af71dc3c0ee2-4-8-해피페이스-김시현.png"}
-                    %img{:alt => "김시현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7a261e4a-bc2f-4e5f-9be4-af71dc3c0ee2-4-8-해피페이스-김시현.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(150); return false;"} 김시현
-                %p.agency Happyface
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "149", "data-name" => "김우정", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/0f3acbda-2e58-4fda-aa10-9c3a04d9801e-4-9-해피페이스-김우정.png"}
-                    %img{:alt => "김우정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/0f3acbda-2e58-4fda-aa10-9c3a04d9801e-4-9-해피페이스-김우정.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(149); return false;"} 김우정
-                %p.agency Happyface
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "148", "data-name" => "김자연", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/81399af7-a945-4df2-b7ad-b351c3acdb35-4-10-해피페이스-김자연.png"}
-                    %img{:alt => "김자연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/81399af7-a945-4df2-b7ad-b351c3acdb35-4-10-해피페이스-김자연.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(148); return false;"} 김자연
-                %p.agency Happyface
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "147", "data-name" => "김지성", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/39d0f5f7-421a-47f4-90a6-33692e4645f9-4-11-해피페이스-김지성.png"}
-                    %img{:alt => "김지성", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/39d0f5f7-421a-47f4-90a6-33692e4645f9-4-11-해피페이스-김지성.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(147); return false;"} 김지성
-                %p.agency Happyface
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "146", "data-name" => "김홍은", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dc0034ec-d9d7-45d1-b087-d6d7d1aa1973-4-12-해피페이스-김홍은.png"}
-                    %img{:alt => "김홍은", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dc0034ec-d9d7-45d1-b087-d6d7d1aa1973-4-12-해피페이스-김홍은.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(146); return false;"} 김홍은
-                %p.agency Happyface
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "145", "data-name" => "이수현", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/c9804b51-68ad-40c8-a773-edcaa4394b75-4-13-해피페이스-이수현.png"}
-                    %img{:alt => "이수현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/c9804b51-68ad-40c8-a773-edcaa4394b75-4-13-해피페이스-이수현.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(145); return false;"} 이수현
-                %p.agency Happyface
-            %ul
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "144", "data-name" => "황수연", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/c15a79df-d6d9-4b87-b4a3-b499474e7e71-4-14-해피페이스-황수연.png"}
-                    %img{:alt => "황수연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/c15a79df-d6d9-4b87-b4a3-b499474e7e71-4-14-해피페이스-황수연.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(144); return false;"} 황수연
-                %p.agency Happyface
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "143", "data-name" => "황아영", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f73d1386-5096-4979-aa30-94ab0794d85b-4-15-해피페이스-황아영.png"}
-                    %img{:alt => "황아영", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f73d1386-5096-4979-aa30-94ab0794d85b-4-15-해피페이스-황아영.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(143); return false;"} 황아영
-                %p.agency Happyface
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "89", "data-name" => "김나영", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7e9126c7-e363-4049-bff9-5a37dba130c0-3-2-젤리피쉬-김나영.png"}
-                    %img{:alt => "김나영", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7e9126c7-e363-4049-bff9-5a37dba130c0-3-2-젤리피쉬-김나영.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(89); return false;"} 김나영
-                %p.agency Jellyfish
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "71", "data-name" => "김민지", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dc5f847d-c102-4080-8997-6de8da5b4016-2-8.케이코닉-김민지.png"}
-                    %img{:alt => "김민지", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dc5f847d-c102-4080-8997-6de8da5b4016-2-8.케이코닉-김민지.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(71); return false;"} 김민지
-                %p.agency Kconic
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "70", "data-name" => "김형은", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4cc85901-be8f-4f67-856f-fa4d278c3c7e-2-9.케이코닉-김형은.png"}
-                    %img{:alt => "김형은", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4cc85901-be8f-4f67-856f-fa4d278c3c7e-2-9.케이코닉-김형은.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(70); return false;"} 김형은
-                %p.agency Kconic
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "69", "data-name" => "박세희", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/25f2c15d-7f6b-4929-95a2-b8c773aaeeac-2-10.케이코닉-박세희.png"}
-                    %img{:alt => "박세희", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/25f2c15d-7f6b-4929-95a2-b8c773aaeeac-2-10.케이코닉-박세희.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(69); return false;"} 박세희
-                %p.agency Kconic
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "68", "data-name" => "이진희", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/3c80e066-f2fe-4f46-bba8-1035244619f0-2-11.케이코닉-이진희.png"}
-                    %img{:alt => "이진희", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/3c80e066-f2fe-4f46-bba8-1035244619f0-2-11.케이코닉-이진희.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(68); return false;"} 이진희
-                %p.agency Kconic
-            %ul
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "165", "data-name" => "박소연", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/208c0fb4-c5e1-459f-a93f-aab2fa9fa5ee-5-4-LOEN-박소연.png"}
-                    %img{:alt => "박소연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/208c0fb4-c5e1-459f-a93f-aab2fa9fa5ee-5-4-LOEN-박소연.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(165); return false;"} 박소연
-                %p.agency LOEN
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "196", "data-name" => "김보선", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/78d746ce-deb9-4e03-a685-b938468d78c4-6-10-LOUDers-김보선.png"}
-                    %img{:alt => "김보선", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/78d746ce-deb9-4e03-a685-b938468d78c4-6-10-LOUDers-김보선.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(196); return false;"} 김보선
-                %p.agency LOUDers
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "195", "data-name" => "이서정", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1c9593bb-4862-4f49-9f80-9a91684e7487-6-11-LOUDers-이서정.png"}
-                    %img{:alt => "이서정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1c9593bb-4862-4f49-9f80-9a91684e7487-6-11-LOUDers-이서정.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(195); return false;"} 이서정
-                %p.agency LOUDers
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "194", "data-name" => "황세영", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f81e6fc4-4975-49e7-80a5-d9a61e552d4c-6-12-LOUDers-황세영.png"}
-                    %img{:alt => "황세영", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f81e6fc4-4975-49e7-80a5-d9a61e552d4c-6-12-LOUDers-황세영.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(194); return false;"} 황세영
-                %p.agency LOUDers
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "102", "data-name" => "오서정", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/de355c9a-43f6-4597-915d-346c82094bef-3-16-M&H-오서정.png"}
-                    %img{:alt => "오서정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/de355c9a-43f6-4597-915d-346c82094bef-3-16-M&H-오서정.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(102); return false;"} 오서정
-                %p.agency M&amp;H
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "223", "data-name" => "편강윤", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/fdb1149a-3f62-4edb-853e-9840f4d4b15c-7-6-M2-project-편강윤.png"}
-                    %img{:alt => "편강윤", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/fdb1149a-3f62-4edb-853e-9840f4d4b15c-7-6-M2-project-편강윤.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(223); return false;"} 편강윤
-                %p.agency M2 project
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "101", "data-name" => "니와 시오리", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/30f0a507-1bb4-4628-ba2b-43985ec932b7-3-13-마제스티-니와시오리.png"}
-                    %img{:alt => "니와 시오리", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/30f0a507-1bb4-4628-ba2b-43985ec932b7-3-13-마제스티-니와시오리.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(101); return false;"} 니와 시오리
-                %p.agency MAJESTY
-            %ul
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "100", "data-name" => "안예슬", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/8836a51c-cf1e-44d8-9d8c-031e95edeb5a-3-14-마제스티-안예슬.png"}
-                    %img{:alt => "안예슬", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/8836a51c-cf1e-44d8-9d8c-031e95edeb5a-3-14-마제스티-안예슬.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(100); return false;"} 안예슬
-                %p.agency MAJESTY
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "187", "data-name" => "기희현", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/aec55eed-589f-49a8-8ab1-fa76e9cefa89-6-1-MBK-기희현.png"}
-                    %img{:alt => "기희현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/aec55eed-589f-49a8-8ab1-fa76e9cefa89-6-1-MBK-기희현.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(187); return false;"} 기희현
-                %p.agency MBK
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "186", "data-name" => "김다니", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/60e83767-1d80-4d81-a3ea-6e3994230407-6-2-MBK-김다니.png"}
-                    %img{:alt => "김다니", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/60e83767-1d80-4d81-a3ea-6e3994230407-6-2-MBK-김다니.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(186); return false;"} 김다니
-                %p.agency MBK
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "99", "data-name" => "김연경", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/b5c6e84f-8e75-416c-bb47-944302f15f5b-3-7-마이다스-김연경.png"}
-                    %img{:alt => "김연경", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/b5c6e84f-8e75-416c-bb47-944302f15f5b-3-7-마이다스-김연경.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(99); return false;"} 김연경
-                %p.agency MIDAS
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "98", "data-name" => "신혜현", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f160e923-4ac3-4cdb-8edf-c89d0275a615-3-8-마이다스-신혜현.png"}
-                    %img{:alt => "신혜현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f160e923-4ac3-4cdb-8edf-c89d0275a615-3-8-마이다스-신혜현.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(98); return false;"} 신혜현
-                %p.agency MIDAS
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "97", "data-name" => "이채린", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/2bba1cbe-ee70-4df3-a8c4-3e0a7a431a2a-3-9-마이다스-이채린.png"}
-                    %img{:alt => "이채린", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/2bba1cbe-ee70-4df3-a8c4-3e0a7a431a2a-3-9-마이다스-이채린.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(97); return false;"} 이채린
-                %p.agency MIDAS
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "96", "data-name" => "최유빈", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5006bc10-75a3-4351-a8bb-9c6bf9340a77-3-10-마이다스-최유빈.png"}
-                    %img{:alt => "최유빈", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5006bc10-75a3-4351-a8bb-9c6bf9340a77-3-10-마이다스-최유빈.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(96); return false;"} 최유빈
-                %p.agency MIDAS
-            %ul
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "95", "data-name" => "캐서린 리", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/bb71b15c-68b4-4716-9670-b4e2207699af-3-11-마이다스-캐서린리.png"}
-                    %img{:alt => "캐서린 리", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/bb71b15c-68b4-4716-9670-b4e2207699af-3-11-마이다스-캐서린리.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(95); return false;"} 캐서린 리
-                %p.agency MIDAS
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "94", "data-name" => "한지연", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7f7b3257-3bf7-4fb6-8f3c-16dcb0d9949a-3-12-마이다스-한지연.png"}
-                    %img{:alt => "한지연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7f7b3257-3bf7-4fb6-8f3c-16dcb0d9949a-3-12-마이다스-한지연.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(94); return false;"} 한지연
-                %p.agency MIDAS
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "55", "data-name" => "김미소", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/31dcc31c-3d5a-4c73-b881-a0634b57b0df-12.MJ-김미소.png"}
-                    %img{:alt => "김미소", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/31dcc31c-3d5a-4c73-b881-a0634b57b0df-12.MJ-김미소.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(55); return false;"} 김미소
-                %p.agency MJ
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "54", "data-name" => "유수아", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a9ba3cde-1bb0-4a3d-9fde-f86aaaff83ef-13.MJ-유수아.png"}
-                    %img{:alt => "유수아", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a9ba3cde-1bb0-4a3d-9fde-f86aaaff83ef-13.MJ-유수아.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(54); return false;"} 유수아
-                %p.agency MJ
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "53", "data-name" => "허샘", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/2692ffb7-88cd-4e89-8c7b-60fe33435f75-14.MJ-허샘.png"}
-                    %img{:alt => "허샘", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/2692ffb7-88cd-4e89-8c7b-60fe33435f75-14.MJ-허샘.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(53); return false;"} 허샘
-                %p.agency MJ
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "218", "data-name" => "김주나", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/224f398e-5140-4cf0-a50b-b2be5f29aaf0-7-1-music-K--김주나.png"}
-                    %img{:alt => "김주나", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/224f398e-5140-4cf0-a50b-b2be5f29aaf0-7-1-music-K--김주나.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(218); return false;"} 김주나
-                %p.agency music K
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "73", "data-name" => "이세흔", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/00388096-7d1c-4814-b2b7-baddfb0b7ba1-2-13.넥스트레벨-이세흔.png"}
-                    %img{:alt => "이세흔", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/00388096-7d1c-4814-b2b7-baddfb0b7ba1-2-13.넥스트레벨-이세흔.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(73); return false;"} 이세흔
-                %p.agency NEXTLEVEL
-            %ul
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "220", "data-name" => "황리유", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/eec9441b-38be-4f35-bad3-2d5d2eaf8120-7-3-nh-emg-황리유.png"}
-                    %img{:alt => "황리유", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/eec9441b-38be-4f35-bad3-2d5d2eaf8120-7-3-nh-emg-황리유.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(220); return false;"} 황리유
-                %p.agency nh emg
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "142", "data-name" => "강경원", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7c960bd7-2c6b-471d-8a61-7e167ab6329a-4-1-플레디스-강경원.png"}
-                    %img{:alt => "강경원", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7c960bd7-2c6b-471d-8a61-7e167ab6329a-4-1-플레디스-강경원.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(142); return false;"} 강경원
-                %p.agency PLEDIS
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "141", "data-name" => "강예빈", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/96b8a1d0-6aaa-4bff-9544-561af602ce2a-4-2-플레디스-강예빈.png"}
-                    %img{:alt => "강예빈", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/96b8a1d0-6aaa-4bff-9544-561af602ce2a-4-2-플레디스-강예빈.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(141); return false;"} 강예빈
-                %p.agency PLEDIS
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "140", "data-name" => "김민경", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a59921db-b3a6-4c54-ae3d-1f2993d13b37-4-3-플레디스-김민경.png"}
-                    %img{:alt => "김민경", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a59921db-b3a6-4c54-ae3d-1f2993d13b37-4-3-플레디스-김민경.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(140); return false;"} 김민경
-                %p.agency PLEDIS
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "139", "data-name" => "박시연", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1ad17c2b-c24b-429d-a049-f825becbbdba-4-4-플레디스-박시연.png"}
-                    %img{:alt => "박시연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1ad17c2b-c24b-429d-a049-f825becbbdba-4-4-플레디스-박시연.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(139); return false;"} 박시연
-                %p.agency PLEDIS
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "137", "data-name" => "정은우", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/b89785ab-34e8-4eff-bfa7-d2f781fe4a21-4-6-플레디스-정은우.png"}
-                    %img{:alt => "정은우", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/b89785ab-34e8-4eff-bfa7-d2f781fe4a21-4-6-플레디스-정은우.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(137); return false;"} 정은우
-                %p.agency PLEDIS
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "48", "data-name" => "서혜린", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/41375cc6-7fd0-4c7a-a970-fa2d9a565732-7.SS-서혜린.png"}
-                    %img{:alt => "서혜린", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/41375cc6-7fd0-4c7a-a970-fa2d9a565732-7.SS-서혜린.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(48); return false;"} 서혜린
-                %p.agency SS
-            %ul
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "47", "data-name" => "이수현", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1e4c5b2e-040c-4ee9-9c88-7f90b1096a47-8.SS-이수현.png"}
-                    %img{:alt => "이수현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1e4c5b2e-040c-4ee9-9c88-7f90b1096a47-8.SS-이수현.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(47); return false;"} 이수현
-                %p.agency SS
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "46", "data-name" => "이해인", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dc037873-44ef-44e5-8238-f98c628d23ea-9.SS-이해인.png"}
-                    %img{:alt => "이해인", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dc037873-44ef-44e5-8238-f98c628d23ea-9.SS-이해인.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(46); return false;"} 이해인
-                %p.agency SS
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "93", "data-name" => "강시현", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/ea3f1e87-ab83-426f-b66c-ae640e679061-3-4-스타제국-강시현.png"}
-                    %img{:alt => "강시현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/ea3f1e87-ab83-426f-b66c-ae640e679061-3-4-스타제국-강시현.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(93); return false;"} 강시현
-                %p.agency Star Empire
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "92", "data-name" => "김윤지", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/10a51324-a87c-49ea-a096-9b5938b95b35-3-5-스타제국-김윤지.png"}
-                    %img{:alt => "김윤지", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/10a51324-a87c-49ea-a096-9b5938b95b35-3-5-스타제국-김윤지.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(92); return false;"} 김윤지
-                %p.agency Star Empire
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "91", "data-name" => "한혜리", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a7332974-e225-4fa1-a587-f2eda30139fb-3-6-스타제국-한혜리.png"}
-                    %img{:alt => "한혜리", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a7332974-e225-4fa1-a587-f2eda30139fb-3-6-스타제국-한혜리.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(91); return false;"} 한혜리
-                %p.agency Star Empire
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "66", "data-name" => "임정민", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/323f922f-43c1-46b9-9ed5-47b47f87c3e1-2-6.야마앤핫칙스-임정민.png"}
-                    %img{:alt => "임정민", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/323f922f-43c1-46b9-9ed5-47b47f87c3e1-2-6.야마앤핫칙스-임정민.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(66); return false;"} 임정민
-                %p.agency YAMA&amp;HOTCHICKS
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "171", "data-name" => "강시원", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f64d9b15-f83e-42e3-b728-b374fef9a424-5-6-개인-연습생-강시원.png"}
-                    %img{:alt => "강시원", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f64d9b15-f83e-42e3-b728-b374fef9a424-5-6-개인-연습생-강시원.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(171); return false;"} 강시원
-                %p.agency 개인 연습생
-            %ul
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "170", "data-name" => "김민정", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5590e077-a97e-462c-bb90-dad6df11f64c-5-7-개인-연습생-김민정.png"}
-                    %img{:alt => "김민정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5590e077-a97e-462c-bb90-dad6df11f64c-5-7-개인-연습생-김민정.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(170); return false;"} 김민정
-                %p.agency 개인 연습생
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "169", "data-name" => "김서경", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/874fd9ff-31e6-46ac-99d2-a003d9b4f51b-5-8-개인-연습생-김서경.png"}
-                    %img{:alt => "김서경", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/874fd9ff-31e6-46ac-99d2-a003d9b4f51b-5-8-개인-연습생-김서경.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(169); return false;"} 김서경
-                %p.agency 개인 연습생
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "168", "data-name" => "김시현", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/c70f54bc-ce88-422d-b84a-0132205102f2-5-9-개인-연습생-김시현.png"}
-                    %img{:alt => "김시현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/c70f54bc-ce88-422d-b84a-0132205102f2-5-9-개인-연습생-김시현.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(168); return false;"} 김시현
-                %p.agency 개인 연습생
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "167", "data-name" => "성혜민", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/546823c3-1089-493e-a168-17ff917f55a0-5-10-개인-연습생-성혜민.png"}
-                    %img{:alt => "성혜민", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/546823c3-1089-493e-a168-17ff917f55a0-5-10-개인-연습생-성혜민.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(167); return false;"} 성혜민
-                %p.agency 개인 연습생
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "199", "data-name" => "문현주", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4239e64a-108d-4d90-b6f5-169536ad80d2-6-14-넥스타-문현주.png"}
-                    %img{:alt => "문현주", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4239e64a-108d-4d90-b6f5-169536ad80d2-6-14-넥스타-문현주.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(199); return false;"} 문현주
-                %p.agency 넥스타
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "198", "data-name" => "최은빈", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/e0fd80e4-4c2e-4b65-8229-c028c0906be3-6-15-넥스타-최은빈.png"}
-                    %img{:alt => "최은빈", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/e0fd80e4-4c2e-4b65-8229-c028c0906be3-6-15-넥스타-최은빈.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(198); return false;"} 최은빈
-                %p.agency 넥스타
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "188", "data-name" => "허찬미", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/572fa137-1418-48d1-ac79-259721040e9a-6-4-더블킥-컴퍼니-허찬미.png"}
-                    %img{:alt => "허찬미", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/572fa137-1418-48d1-ac79-259721040e9a-6-4-더블킥-컴퍼니-허찬미.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(188); return false;"} 허찬미
-                %p.agency 더블킥 컴퍼니
-            %ul
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "175", "data-name" => "남수진", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/03190a39-fe78-403f-afe3-9981ac7c4ba0-5-13-매직프레쉬-컴퍼니-남수진.png"}
-                    %img{:alt => "남수진", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/03190a39-fe78-403f-afe3-9981ac7c4ba0-5-13-매직프레쉬-컴퍼니-남수진.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(175); return false;"} 남수진
-                %p.agency 매직프레쉬 컴퍼니
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "174", "data-name" => "박민지", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/48734b09-de9a-4ae1-b8b0-a6c44df7e183-5-14-매직프레쉬-컴퍼니-박민지.png"}
-                    %img{:alt => "박민지", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/48734b09-de9a-4ae1-b8b0-a6c44df7e183-5-14-매직프레쉬-컴퍼니-박민지.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(174); return false;"} 박민지
-                %p.agency 매직프레쉬 컴퍼니
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "197", "data-name" => "김소희", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4fcb3cf8-3358-43ff-a6c0-0e9bd4d697ff-6-13-뮤직웍스-김소희.png"}
-                    %img{:alt => "김소희", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4fcb3cf8-3358-43ff-a6c0-0e9bd4d697ff-6-13-뮤직웍스-김소희.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(197); return false;"} 김소희
-                %p.agency 뮤직웍스
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "166", "data-name" => "김수현", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/98bc65d0-5950-42f2-b342-1d3b10f9ec4a-5-5-미스틱-김수현.png"}
-                    %img{:alt => "김수현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/98bc65d0-5950-42f2-b342-1d3b10f9ec4a-5-5-미스틱-김수현.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(166); return false;"} 김수현
-                %p.agency 미스틱
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "193", "data-name" => "김도희", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5d004cdc-3456-4450-b69b-b722f5b4597f-6-5-블레싱-김도희.png"}
-                    %img{:alt => "김도희", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5d004cdc-3456-4450-b69b-b722f5b4597f-6-5-블레싱-김도희.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(193); return false;"} 김도희
-                %p.agency 블레싱
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "192", "data-name" => "김솔이", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/737049c9-3753-4236-b22c-e6c790b8583a-6-6-블레싱-김솔이.png"}
-                    %img{:alt => "김솔이", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/737049c9-3753-4236-b22c-e6c790b8583a-6-6-블레싱-김솔이.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(192); return false;"} 김솔이
-                %p.agency 블레싱
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "191", "data-name" => "방준희", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/09d12de6-6482-4077-afc2-64a592c26bb7-6-7-블레싱-방준희.png"}
-                    %img{:alt => "방준희", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/09d12de6-6482-4077-afc2-64a592c26bb7-6-7-블레싱-방준희.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(191); return false;"} 방준희
-                %p.agency 블레싱
-            %ul
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "190", "data-name" => "안유미", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/40ca79d7-640c-4e2b-8e3f-cd0963a7c527-6-8-블레싱-안유미.png"}
-                    %img{:alt => "안유미", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/40ca79d7-640c-4e2b-8e3f-cd0963a7c527-6-8-블레싱-안유미.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(190); return false;"} 안유미
-                %p.agency 블레싱
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "189", "data-name" => "오한아름", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/81cb14fc-9b2e-4853-ba3d-5085738cf9ad-6-9-블레싱-오한아름.png"}
-                    %img{:alt => "오한아름", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/81cb14fc-9b2e-4853-ba3d-5085738cf9ad-6-9-블레싱-오한아름.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(189); return false;"} 오한아름
-                %p.agency 블레싱
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "219", "data-name" => "황인선", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/925ffefd-a26f-4b50-8314-40227b3900f8-7-2-쇼웍스-황인선.png"}
-                    %img{:alt => "황인선", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/925ffefd-a26f-4b50-8314-40227b3900f8-7-2-쇼웍스-황인선.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(219); return false;"} 황인선
-                %p.agency 쇼웍스
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "65", "data-name" => "김태하", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/d2c43d90-20c4-4537-8571-a0ba67a916cd-2-3.스타쉽-김태하.png"}
-                    %img{:alt => "김태하", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/d2c43d90-20c4-4537-8571-a0ba67a916cd-2-3.스타쉽-김태하.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(65); return false;"} 김태하
-                %p.agency 스타쉽
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "64", "data-name" => "심채은", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/0272dccd-1819-4650-965e-d97748b69cf7-2-4.스타쉽-심채은.png"}
-                    %img{:alt => "심채은", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/0272dccd-1819-4650-965e-d97748b69cf7-2-4.스타쉽-심채은.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(64); return false;"} 심채은
-                %p.agency 스타쉽
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "222", "data-name" => "함예지", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/8d8cecfd-ea5b-4a8e-af18-86131f677e1f-7-5-스타플레닛-함예지.png"}
-                    %img{:alt => "함예지", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/8d8cecfd-ea5b-4a8e-af18-86131f677e1f-7-5-스타플레닛-함예지.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(222); return false;"} 함예지
-                %p.agency 스타플레닛
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "224", "data-name" => "김다정", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4a3e376c-9abe-4caf-9006-03e451b4ac90-7-7-안녕뮤직-김다정.png"}
-                    %img{:alt => "김다정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4a3e376c-9abe-4caf-9006-03e451b4ac90-7-7-안녕뮤직-김다정.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(224); return false;"} 김다정
-                %p.agency 안녕뮤직
-            %ul
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "176", "data-name" => "김설아", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/395c9535-5687-4567-9b5b-2f2145b421a2-5-15-이큐브-미디어-김설아.png"}
-                    %img{:alt => "김설아", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/395c9535-5687-4567-9b5b-2f2145b421a2-5-15-이큐브-미디어-김설아.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(176); return false;"} 김설아
-                %p.agency 이큐브 미디어
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "201", "data-name" => "강시라", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a52e4ebc-6c60-43ed-b162-3f2c9a5c19fe-6-17-청춘뮤직-강시라.png"}
-                    %img{:alt => "강시라", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a52e4ebc-6c60-43ed-b162-3f2c9a5c19fe-6-17-청춘뮤직-강시라.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(201); return false;"} 강시라
-                %p.agency 청춘뮤직
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "202", "data-name" => "응 씨 카이", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/16d98a07-e0a5-4cdb-84cc-87f0ebe25f6a-6-18-초록뱀주나-응사카이.png"}
-                    %img{:alt => "응 씨 카이", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/16d98a07-e0a5-4cdb-84cc-87f0ebe25f6a-6-18-초록뱀주나-응사카이.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(202); return false;"} 응 씨 카이
-                %p.agency 초록뱀주나
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "67", "data-name" => "박하이", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a3219a6d-fddf-4d66-ad6f-eef534ed3fb2-2-7.케니스타-박하이.png"}
-                    %img{:alt => "박하이", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a3219a6d-fddf-4d66-ad6f-eef534ed3fb2-2-7.케니스타-박하이.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(67); return false;"} 박하이
-                %p.agency 케니스타
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "200", "data-name" => "마은진", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/200fdc40-3d1f-498f-8bc1-aa31af403a09-6-16-클리어-컴퍼니-마은진.png"}
-                    %img{:alt => "마은진", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/200fdc40-3d1f-498f-8bc1-aa31af403a09-6-16-클리어-컴퍼니-마은진.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(200); return false;"} 마은진
-                %p.agency 클리어 컴퍼니
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "221", "data-name" => "박해영", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/78ca0f15-0600-47c6-8d93-979241e7cfe0-7-4-투에이블-컴퍼니-박해영.png"}
-                    %img{:alt => "박해영", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/78ca0f15-0600-47c6-8d93-979241e7cfe0-7-4-투에이블-컴퍼니-박해영.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(221); return false;"} 박해영
-                %p.agency 투에이블 컴퍼니
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "49", "data-name" => "아리요시 리사", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/58a8835a-53b0-48ff-989f-b37322138e3b-10.티핑-아리요시리사(수정).png"}
-                    %img{:alt => "아리요시 리사", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/58a8835a-53b0-48ff-989f-b37322138e3b-10.티핑-아리요시리사(수정).png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(49); return false;"} 아리요시 리사
-                %p.agency 티핑
-            %ul
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "44", "data-name" => "이수민", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/6e0ff92a-ea78-46c0-9ca0-dc9ebcdb8392-3.판타지오-이수민.png"}
-                    %img{:alt => "이수민", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/6e0ff92a-ea78-46c0-9ca0-dc9ebcdb8392-3.판타지오-이수민.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(44); return false;"} 이수민
-                %p.agency 판타지오
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "43", "data-name" => "정해림", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dd925ac5-a477-4e00-9b4b-3b87b47986cd-4.판타지오-정해림.png"}
-                    %img{:alt => "정해림", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dd925ac5-a477-4e00-9b4b-3b87b47986cd-4.판타지오-정해림.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(43); return false;"} 정해림
-                %p.agency 판타지오
-              %li
-                .thumb
-                  %a{:href => "#", :onclick => "return false;"}
-                    %span.mask_vote{"data-id" => "41", "data-name" => "추예진", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/156d0843-545d-4887-ae99-503f8c0f5c81-6.판타지오-추예진.png"}
-                    %img{:alt => "추예진", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/156d0843-545d-4887-ae99-503f8c0f5c81-6.판타지오-추예진.png"}/
-                %p.name
-                  %a{:href => "#", :onclick => "goProfile(41); return false;"} 추예진
-                %p.agency 판타지오
-          / 투표하기 버튼
+            -# %ul.nobd
+            -# -if 
+            -# - if @professors.length > 8
+              -@professors.each_slice(7) do |professors_7|
+                %ul
+                  - professors_7.each do |pro|
+                    %li
+                      .thumb
+                        %a{:href => "#", :onclick => "return false;"}
+                          %span.mask_vote
+                          %div{style: "background-image: url(#{pro.profile});background-position: center; background-size: contain;  background-repeat: no-repeat; width: 131px; height: 131px;"}
+                          -# %img{:alt => pro.name, :src => (image_url pro.profile)}/
+                      %p.name
+                        %a{:href => "#", :onclick => "goProfile(90); return false;"}
+                          = pro.name
+                      %p.agency= pro.belong
+            - else
+              %ul
+                - @professors.each do |pro|
+                  %li
+                    .thumb
+                      %a{:href => "#", :onclick => "return false;"}
+                        %span.mask_vote
+                        %div{style: "background-image: url(#{pro.profile});background-position: center; background-size: contain;  background-repeat: no-repeat; width: 131px; height: 131px;"}
+                        -# %img{:alt => pro.name, :src => (image_url pro.profile)}/
+                    %p.name
+                      %a{:href => "#", :onclick => "goProfile(90); return false;"}
+                        = pro.name
+                    %p.agency= pro.belong
+
+              -# %li
+              -#   .thumb
+              -#     %a{:href => "#", :onclick => "return false;"}
+              -#       %span.mask_vote{"data-id" => "90", "data-name" => "강미나", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/2837897d-557c-4de8-aaa0-0a4fd17f4e46-3-1-젤리피쉬-강미나.png"}
+              -#       %img{:alt => "강미나", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/2837897d-557c-4de8-aaa0-0a4fd17f4e46-3-1-젤리피쉬-강미나.png"}/
+              -#   %p.name
+              -#     %a{:href => "#", :onclick => "goProfile(90); return false;"} 강미나
+              -#   %p.agency Jellyfish
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "88", "data-name" => "김세정", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4a1a44a4-68f2-4762-bc0e-7e40da45b3fa-3-3-젤리피쉬-김세정.png"}
+          -#           %img{:alt => "김세정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4a1a44a4-68f2-4762-bc0e-7e40da45b3fa-3-3-젤리피쉬-김세정.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(88); return false;"} 김세정
+          -#       %p.agency Jellyfish
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "40", "data-name" => "전소미 ", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a5eee741-ef09-4d36-a927-34c428fed280-1.JYP-전소미.png"}
+          -#           %img{:alt => "전소미 ", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a5eee741-ef09-4d36-a927-34c428fed280-1.JYP-전소미.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(40); return false;"} 전소미
+          -#       %p.agency JYP
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "103", "data-name" => "김청하", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dca36004-aff4-407e-b506-e16072c544e4-3-15-M&H-김청하.png"}
+          -#           %img{:alt => "김청하", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dca36004-aff4-407e-b506-e16072c544e4-3-15-M&H-김청하.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(103); return false;"} 김청하
+          -#       %p.agency M&amp;H
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "185", "data-name" => "정채연", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/6dc4335b-8e92-4724-b9a9-976b31149649-6-3-MBK-정채연.png"}
+          -#           %img{:alt => "정채연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/6dc4335b-8e92-4724-b9a9-976b31149649-6-3-MBK-정채연.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(185); return false;"} 정채연
+          -#       %p.agency MBK
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "138", "data-name" => "임나영", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/9c9927c0-88bb-4656-877b-4a54048c2736-4-5-플레디스-임나영.png"}
+          -#           %img{:alt => "임나영", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/9c9927c0-88bb-4656-877b-4a54048c2736-4-5-플레디스-임나영.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(138); return false;"} 임나영
+          -#       %p.agency PLEDIS
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "136", "data-name" => "주결경", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a2e22e6b-e9ee-41a1-89d7-a36cf2b52f27-4-7-플레디스-주결경.png"}
+          -#           %img{:alt => "주결경", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a2e22e6b-e9ee-41a1-89d7-a36cf2b52f27-4-7-플레디스-주결경.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(136); return false;"} 주결경
+          -#       %p.agency PLEDIS
+          -#   %ul
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "72", "data-name" => "김소혜", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/671f6d5d-4d74-4084-9813-5fad71a570bb-2-12.레드라인-김소혜.png"}
+          -#           %img{:alt => "김소혜", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/671f6d5d-4d74-4084-9813-5fad71a570bb-2-12.레드라인-김소혜.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(72); return false;"} 김소혜
+          -#       %p.agency REDLINE
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "63", "data-name" => "유연정", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4447746f-07af-4b01-af8e-004ee68df08a-2-5.스타쉽-유연정.png"}
+          -#           %img{:alt => "유연정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4447746f-07af-4b01-af8e-004ee68df08a-2-5.스타쉽-유연정.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(63); return false;"} 유연정
+          -#       %p.agency 스타쉽
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "45", "data-name" => "김도연", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/8d9c111c-3eff-4eaa-b5ae-1680eb88686d-2.판타지오-김도연.png"}
+          -#           %img{:alt => "김도연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/8d9c111c-3eff-4eaa-b5ae-1680eb88686d-2.판타지오-김도연.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(45); return false;"} 김도연
+          -#       %p.agency 판타지오
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "42", "data-name" => "최유정", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/b25bc0dc-290d-4214-bb15-9148a1b39c7e-5.판타지오-최유정.png"}
+          -#           %img{:alt => "최유정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/b25bc0dc-290d-4214-bb15-9148a1b39c7e-5.판타지오-최유정.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(42); return false;"} 최유정
+          -#       %p.agency 판타지오
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "74", "data-name" => "윤서형", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5cbf421e-e4da-4987-8364-d40fc4bd6d72-2-14.앤어거스트-윤서형.png"}
+          -#           %img{:alt => "윤서형", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5cbf421e-e4da-4987-8364-d40fc4bd6d72-2-14.앤어거스트-윤서형.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(74); return false;"} 윤서형
+          -#       %p.agency &amp;August
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "225", "data-name" => "김하윤", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/ec22c99c-05be-40c1-a9a4-1ba9a74b6c3a-7-8-101-DOORS-김하윤.png"}
+          -#           %img{:alt => "김하윤", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/ec22c99c-05be-40c1-a9a4-1ba9a74b6c3a-7-8-101-DOORS-김하윤.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(225); return false;"} 김하윤
+          -#       %p.agency 101 DOORS
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "173", "data-name" => "박가을", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1ceca161-72dc-41e1-8cdb-cf22b9a9276b-5-11-Astory-박가을.png"}
+          -#           %img{:alt => "박가을", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1ceca161-72dc-41e1-8cdb-cf22b9a9276b-5-11-Astory-박가을.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(173); return false;"} 박가을
+          -#       %p.agency Astory
+          -#   %ul
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "172", "data-name" => "임경하", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/fed7b9b8-6ece-4eda-aa08-53020f147bd1-5-12-Astory-임경하.png"}
+          -#           %img{:alt => "임경하", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/fed7b9b8-6ece-4eda-aa08-53020f147bd1-5-12-Astory-임경하.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(172); return false;"} 임경하
+          -#       %p.agency Astory
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "50", "data-name" => "임효선", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/010919de-6c3c-4932-8149-8ed6e2c0a496-11.초록별-임효선.png"}
+          -#           %img{:alt => "임효선", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/010919de-6c3c-4932-8149-8ed6e2c0a496-11.초록별-임효선.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(50); return false;"} 임효선
+          -#       %p.agency CMG초록별
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "164", "data-name" => "권은빈", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/565abe81-6a7e-4504-9749-09193c80f988-5-1-CUBE-권은빈.png"}
+          -#           %img{:alt => "권은빈", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/565abe81-6a7e-4504-9749-09193c80f988-5-1-CUBE-권은빈.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(164); return false;"} 권은빈
+          -#       %p.agency CUBE
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "163", "data-name" => "이윤서", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4937687d-b12f-4254-bbe8-33d3c803180b-5-2-CUBE-이윤서.png"}
+          -#           %img{:alt => "이윤서", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4937687d-b12f-4254-bbe8-33d3c803180b-5-2-CUBE-이윤서.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(163); return false;"} 이윤서
+          -#       %p.agency CUBE
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "162", "data-name" => "전소연", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/042287ff-8497-4e43-a9e2-089dc95d0d50-5-3-CUBE-전소연.png"}
+          -#           %img{:alt => "전소연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/042287ff-8497-4e43-a9e2-089dc95d0d50-5-3-CUBE-전소연.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(162); return false;"} 전소연
+          -#       %p.agency CUBE
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "62", "data-name" => "윤채경", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/6f7873fa-a89f-4559-b025-300a306fc44e-2-1.DSP-윤채경.png"}
+          -#           %img{:alt => "윤채경", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/6f7873fa-a89f-4559-b025-300a306fc44e-2-1.DSP-윤채경.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(62); return false;"} 윤채경
+          -#       %p.agency DSP
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "61", "data-name" => "조시윤", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/64890397-14c6-41de-9531-d2c7ce723edb-2-2.DSP-조시윤.png"}
+          -#           %img{:alt => "조시윤", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/64890397-14c6-41de-9531-d2c7ce723edb-2-2.DSP-조시윤.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(61); return false;"} 조시윤
+          -#       %p.agency DSP
+          -#   %ul
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "226", "data-name" => "윤유담", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/297fafa1-c0f5-43a4-854f-291080535587-7-9-FM-윤유담.png"}
+          -#           %img{:alt => "윤유담", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/297fafa1-c0f5-43a4-854f-291080535587-7-9-FM-윤유담.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(226); return false;"} 윤유담
+          -#       %p.agency FM
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "150", "data-name" => "김시현", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7a261e4a-bc2f-4e5f-9be4-af71dc3c0ee2-4-8-해피페이스-김시현.png"}
+          -#           %img{:alt => "김시현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7a261e4a-bc2f-4e5f-9be4-af71dc3c0ee2-4-8-해피페이스-김시현.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(150); return false;"} 김시현
+          -#       %p.agency Happyface
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "149", "data-name" => "김우정", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/0f3acbda-2e58-4fda-aa10-9c3a04d9801e-4-9-해피페이스-김우정.png"}
+          -#           %img{:alt => "김우정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/0f3acbda-2e58-4fda-aa10-9c3a04d9801e-4-9-해피페이스-김우정.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(149); return false;"} 김우정
+          -#       %p.agency Happyface
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "148", "data-name" => "김자연", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/81399af7-a945-4df2-b7ad-b351c3acdb35-4-10-해피페이스-김자연.png"}
+          -#           %img{:alt => "김자연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/81399af7-a945-4df2-b7ad-b351c3acdb35-4-10-해피페이스-김자연.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(148); return false;"} 김자연
+          -#       %p.agency Happyface
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "147", "data-name" => "김지성", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/39d0f5f7-421a-47f4-90a6-33692e4645f9-4-11-해피페이스-김지성.png"}
+          -#           %img{:alt => "김지성", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/39d0f5f7-421a-47f4-90a6-33692e4645f9-4-11-해피페이스-김지성.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(147); return false;"} 김지성
+          -#       %p.agency Happyface
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "146", "data-name" => "김홍은", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dc0034ec-d9d7-45d1-b087-d6d7d1aa1973-4-12-해피페이스-김홍은.png"}
+          -#           %img{:alt => "김홍은", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dc0034ec-d9d7-45d1-b087-d6d7d1aa1973-4-12-해피페이스-김홍은.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(146); return false;"} 김홍은
+          -#       %p.agency Happyface
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "145", "data-name" => "이수현", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/c9804b51-68ad-40c8-a773-edcaa4394b75-4-13-해피페이스-이수현.png"}
+          -#           %img{:alt => "이수현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/c9804b51-68ad-40c8-a773-edcaa4394b75-4-13-해피페이스-이수현.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(145); return false;"} 이수현
+          -#       %p.agency Happyface
+          -#   %ul
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "144", "data-name" => "황수연", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/c15a79df-d6d9-4b87-b4a3-b499474e7e71-4-14-해피페이스-황수연.png"}
+          -#           %img{:alt => "황수연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/c15a79df-d6d9-4b87-b4a3-b499474e7e71-4-14-해피페이스-황수연.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(144); return false;"} 황수연
+          -#       %p.agency Happyface
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "143", "data-name" => "황아영", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f73d1386-5096-4979-aa30-94ab0794d85b-4-15-해피페이스-황아영.png"}
+          -#           %img{:alt => "황아영", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f73d1386-5096-4979-aa30-94ab0794d85b-4-15-해피페이스-황아영.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(143); return false;"} 황아영
+          -#       %p.agency Happyface
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "89", "data-name" => "김나영", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7e9126c7-e363-4049-bff9-5a37dba130c0-3-2-젤리피쉬-김나영.png"}
+          -#           %img{:alt => "김나영", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7e9126c7-e363-4049-bff9-5a37dba130c0-3-2-젤리피쉬-김나영.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(89); return false;"} 김나영
+          -#       %p.agency Jellyfish
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "71", "data-name" => "김민지", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dc5f847d-c102-4080-8997-6de8da5b4016-2-8.케이코닉-김민지.png"}
+          -#           %img{:alt => "김민지", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dc5f847d-c102-4080-8997-6de8da5b4016-2-8.케이코닉-김민지.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(71); return false;"} 김민지
+          -#       %p.agency Kconic
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "70", "data-name" => "김형은", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4cc85901-be8f-4f67-856f-fa4d278c3c7e-2-9.케이코닉-김형은.png"}
+          -#           %img{:alt => "김형은", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4cc85901-be8f-4f67-856f-fa4d278c3c7e-2-9.케이코닉-김형은.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(70); return false;"} 김형은
+          -#       %p.agency Kconic
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "69", "data-name" => "박세희", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/25f2c15d-7f6b-4929-95a2-b8c773aaeeac-2-10.케이코닉-박세희.png"}
+          -#           %img{:alt => "박세희", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/25f2c15d-7f6b-4929-95a2-b8c773aaeeac-2-10.케이코닉-박세희.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(69); return false;"} 박세희
+          -#       %p.agency Kconic
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "68", "data-name" => "이진희", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/3c80e066-f2fe-4f46-bba8-1035244619f0-2-11.케이코닉-이진희.png"}
+          -#           %img{:alt => "이진희", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/3c80e066-f2fe-4f46-bba8-1035244619f0-2-11.케이코닉-이진희.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(68); return false;"} 이진희
+          -#       %p.agency Kconic
+          -#   %ul
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "165", "data-name" => "박소연", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/208c0fb4-c5e1-459f-a93f-aab2fa9fa5ee-5-4-LOEN-박소연.png"}
+          -#           %img{:alt => "박소연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/208c0fb4-c5e1-459f-a93f-aab2fa9fa5ee-5-4-LOEN-박소연.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(165); return false;"} 박소연
+          -#       %p.agency LOEN
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "196", "data-name" => "김보선", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/78d746ce-deb9-4e03-a685-b938468d78c4-6-10-LOUDers-김보선.png"}
+          -#           %img{:alt => "김보선", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/78d746ce-deb9-4e03-a685-b938468d78c4-6-10-LOUDers-김보선.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(196); return false;"} 김보선
+          -#       %p.agency LOUDers
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "195", "data-name" => "이서정", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1c9593bb-4862-4f49-9f80-9a91684e7487-6-11-LOUDers-이서정.png"}
+          -#           %img{:alt => "이서정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1c9593bb-4862-4f49-9f80-9a91684e7487-6-11-LOUDers-이서정.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(195); return false;"} 이서정
+          -#       %p.agency LOUDers
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "194", "data-name" => "황세영", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f81e6fc4-4975-49e7-80a5-d9a61e552d4c-6-12-LOUDers-황세영.png"}
+          -#           %img{:alt => "황세영", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f81e6fc4-4975-49e7-80a5-d9a61e552d4c-6-12-LOUDers-황세영.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(194); return false;"} 황세영
+          -#       %p.agency LOUDers
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "102", "data-name" => "오서정", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/de355c9a-43f6-4597-915d-346c82094bef-3-16-M&H-오서정.png"}
+          -#           %img{:alt => "오서정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/de355c9a-43f6-4597-915d-346c82094bef-3-16-M&H-오서정.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(102); return false;"} 오서정
+          -#       %p.agency M&amp;H
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "223", "data-name" => "편강윤", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/fdb1149a-3f62-4edb-853e-9840f4d4b15c-7-6-M2-project-편강윤.png"}
+          -#           %img{:alt => "편강윤", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/fdb1149a-3f62-4edb-853e-9840f4d4b15c-7-6-M2-project-편강윤.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(223); return false;"} 편강윤
+          -#       %p.agency M2 project
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "101", "data-name" => "니와 시오리", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/30f0a507-1bb4-4628-ba2b-43985ec932b7-3-13-마제스티-니와시오리.png"}
+          -#           %img{:alt => "니와 시오리", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/30f0a507-1bb4-4628-ba2b-43985ec932b7-3-13-마제스티-니와시오리.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(101); return false;"} 니와 시오리
+          -#       %p.agency MAJESTY
+          -#   %ul
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "100", "data-name" => "안예슬", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/8836a51c-cf1e-44d8-9d8c-031e95edeb5a-3-14-마제스티-안예슬.png"}
+          -#           %img{:alt => "안예슬", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/8836a51c-cf1e-44d8-9d8c-031e95edeb5a-3-14-마제스티-안예슬.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(100); return false;"} 안예슬
+          -#       %p.agency MAJESTY
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "187", "data-name" => "기희현", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/aec55eed-589f-49a8-8ab1-fa76e9cefa89-6-1-MBK-기희현.png"}
+          -#           %img{:alt => "기희현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/aec55eed-589f-49a8-8ab1-fa76e9cefa89-6-1-MBK-기희현.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(187); return false;"} 기희현
+          -#       %p.agency MBK
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "186", "data-name" => "김다니", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/60e83767-1d80-4d81-a3ea-6e3994230407-6-2-MBK-김다니.png"}
+          -#           %img{:alt => "김다니", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/60e83767-1d80-4d81-a3ea-6e3994230407-6-2-MBK-김다니.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(186); return false;"} 김다니
+          -#       %p.agency MBK
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "99", "data-name" => "김연경", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/b5c6e84f-8e75-416c-bb47-944302f15f5b-3-7-마이다스-김연경.png"}
+          -#           %img{:alt => "김연경", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/b5c6e84f-8e75-416c-bb47-944302f15f5b-3-7-마이다스-김연경.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(99); return false;"} 김연경
+          -#       %p.agency MIDAS
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "98", "data-name" => "신혜현", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f160e923-4ac3-4cdb-8edf-c89d0275a615-3-8-마이다스-신혜현.png"}
+          -#           %img{:alt => "신혜현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f160e923-4ac3-4cdb-8edf-c89d0275a615-3-8-마이다스-신혜현.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(98); return false;"} 신혜현
+          -#       %p.agency MIDAS
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "97", "data-name" => "이채린", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/2bba1cbe-ee70-4df3-a8c4-3e0a7a431a2a-3-9-마이다스-이채린.png"}
+          -#           %img{:alt => "이채린", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/2bba1cbe-ee70-4df3-a8c4-3e0a7a431a2a-3-9-마이다스-이채린.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(97); return false;"} 이채린
+          -#       %p.agency MIDAS
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "96", "data-name" => "최유빈", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5006bc10-75a3-4351-a8bb-9c6bf9340a77-3-10-마이다스-최유빈.png"}
+          -#           %img{:alt => "최유빈", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5006bc10-75a3-4351-a8bb-9c6bf9340a77-3-10-마이다스-최유빈.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(96); return false;"} 최유빈
+          -#       %p.agency MIDAS
+          -#   %ul
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "95", "data-name" => "캐서린 리", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/bb71b15c-68b4-4716-9670-b4e2207699af-3-11-마이다스-캐서린리.png"}
+          -#           %img{:alt => "캐서린 리", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/bb71b15c-68b4-4716-9670-b4e2207699af-3-11-마이다스-캐서린리.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(95); return false;"} 캐서린 리
+          -#       %p.agency MIDAS
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "94", "data-name" => "한지연", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7f7b3257-3bf7-4fb6-8f3c-16dcb0d9949a-3-12-마이다스-한지연.png"}
+          -#           %img{:alt => "한지연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7f7b3257-3bf7-4fb6-8f3c-16dcb0d9949a-3-12-마이다스-한지연.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(94); return false;"} 한지연
+          -#       %p.agency MIDAS
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "55", "data-name" => "김미소", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/31dcc31c-3d5a-4c73-b881-a0634b57b0df-12.MJ-김미소.png"}
+          -#           %img{:alt => "김미소", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/31dcc31c-3d5a-4c73-b881-a0634b57b0df-12.MJ-김미소.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(55); return false;"} 김미소
+          -#       %p.agency MJ
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "54", "data-name" => "유수아", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a9ba3cde-1bb0-4a3d-9fde-f86aaaff83ef-13.MJ-유수아.png"}
+          -#           %img{:alt => "유수아", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a9ba3cde-1bb0-4a3d-9fde-f86aaaff83ef-13.MJ-유수아.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(54); return false;"} 유수아
+          -#       %p.agency MJ
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "53", "data-name" => "허샘", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/2692ffb7-88cd-4e89-8c7b-60fe33435f75-14.MJ-허샘.png"}
+          -#           %img{:alt => "허샘", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/2692ffb7-88cd-4e89-8c7b-60fe33435f75-14.MJ-허샘.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(53); return false;"} 허샘
+          -#       %p.agency MJ
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "218", "data-name" => "김주나", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/224f398e-5140-4cf0-a50b-b2be5f29aaf0-7-1-music-K--김주나.png"}
+          -#           %img{:alt => "김주나", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/224f398e-5140-4cf0-a50b-b2be5f29aaf0-7-1-music-K--김주나.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(218); return false;"} 김주나
+          -#       %p.agency music K
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "73", "data-name" => "이세흔", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/00388096-7d1c-4814-b2b7-baddfb0b7ba1-2-13.넥스트레벨-이세흔.png"}
+          -#           %img{:alt => "이세흔", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/00388096-7d1c-4814-b2b7-baddfb0b7ba1-2-13.넥스트레벨-이세흔.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(73); return false;"} 이세흔
+          -#       %p.agency NEXTLEVEL
+          -#   %ul
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "220", "data-name" => "황리유", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/eec9441b-38be-4f35-bad3-2d5d2eaf8120-7-3-nh-emg-황리유.png"}
+          -#           %img{:alt => "황리유", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/eec9441b-38be-4f35-bad3-2d5d2eaf8120-7-3-nh-emg-황리유.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(220); return false;"} 황리유
+          -#       %p.agency nh emg
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "142", "data-name" => "강경원", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7c960bd7-2c6b-471d-8a61-7e167ab6329a-4-1-플레디스-강경원.png"}
+          -#           %img{:alt => "강경원", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7c960bd7-2c6b-471d-8a61-7e167ab6329a-4-1-플레디스-강경원.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(142); return false;"} 강경원
+          -#       %p.agency PLEDIS
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "141", "data-name" => "강예빈", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/96b8a1d0-6aaa-4bff-9544-561af602ce2a-4-2-플레디스-강예빈.png"}
+          -#           %img{:alt => "강예빈", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/96b8a1d0-6aaa-4bff-9544-561af602ce2a-4-2-플레디스-강예빈.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(141); return false;"} 강예빈
+          -#       %p.agency PLEDIS
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "140", "data-name" => "김민경", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a59921db-b3a6-4c54-ae3d-1f2993d13b37-4-3-플레디스-김민경.png"}
+          -#           %img{:alt => "김민경", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a59921db-b3a6-4c54-ae3d-1f2993d13b37-4-3-플레디스-김민경.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(140); return false;"} 김민경
+          -#       %p.agency PLEDIS
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "139", "data-name" => "박시연", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1ad17c2b-c24b-429d-a049-f825becbbdba-4-4-플레디스-박시연.png"}
+          -#           %img{:alt => "박시연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1ad17c2b-c24b-429d-a049-f825becbbdba-4-4-플레디스-박시연.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(139); return false;"} 박시연
+          -#       %p.agency PLEDIS
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "137", "data-name" => "정은우", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/b89785ab-34e8-4eff-bfa7-d2f781fe4a21-4-6-플레디스-정은우.png"}
+          -#           %img{:alt => "정은우", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/b89785ab-34e8-4eff-bfa7-d2f781fe4a21-4-6-플레디스-정은우.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(137); return false;"} 정은우
+          -#       %p.agency PLEDIS
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "48", "data-name" => "서혜린", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/41375cc6-7fd0-4c7a-a970-fa2d9a565732-7.SS-서혜린.png"}
+          -#           %img{:alt => "서혜린", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/41375cc6-7fd0-4c7a-a970-fa2d9a565732-7.SS-서혜린.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(48); return false;"} 서혜린
+          -#       %p.agency SS
+          -#   %ul
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "47", "data-name" => "이수현", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1e4c5b2e-040c-4ee9-9c88-7f90b1096a47-8.SS-이수현.png"}
+          -#           %img{:alt => "이수현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1e4c5b2e-040c-4ee9-9c88-7f90b1096a47-8.SS-이수현.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(47); return false;"} 이수현
+          -#       %p.agency SS
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "46", "data-name" => "이해인", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dc037873-44ef-44e5-8238-f98c628d23ea-9.SS-이해인.png"}
+          -#           %img{:alt => "이해인", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dc037873-44ef-44e5-8238-f98c628d23ea-9.SS-이해인.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(46); return false;"} 이해인
+          -#       %p.agency SS
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "93", "data-name" => "강시현", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/ea3f1e87-ab83-426f-b66c-ae640e679061-3-4-스타제국-강시현.png"}
+          -#           %img{:alt => "강시현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/ea3f1e87-ab83-426f-b66c-ae640e679061-3-4-스타제국-강시현.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(93); return false;"} 강시현
+          -#       %p.agency Star Empire
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "92", "data-name" => "김윤지", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/10a51324-a87c-49ea-a096-9b5938b95b35-3-5-스타제국-김윤지.png"}
+          -#           %img{:alt => "김윤지", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/10a51324-a87c-49ea-a096-9b5938b95b35-3-5-스타제국-김윤지.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(92); return false;"} 김윤지
+          -#       %p.agency Star Empire
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "91", "data-name" => "한혜리", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a7332974-e225-4fa1-a587-f2eda30139fb-3-6-스타제국-한혜리.png"}
+          -#           %img{:alt => "한혜리", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a7332974-e225-4fa1-a587-f2eda30139fb-3-6-스타제국-한혜리.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(91); return false;"} 한혜리
+          -#       %p.agency Star Empire
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "66", "data-name" => "임정민", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/323f922f-43c1-46b9-9ed5-47b47f87c3e1-2-6.야마앤핫칙스-임정민.png"}
+          -#           %img{:alt => "임정민", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/323f922f-43c1-46b9-9ed5-47b47f87c3e1-2-6.야마앤핫칙스-임정민.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(66); return false;"} 임정민
+          -#       %p.agency YAMA&amp;HOTCHICKS
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "171", "data-name" => "강시원", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f64d9b15-f83e-42e3-b728-b374fef9a424-5-6-개인-연습생-강시원.png"}
+          -#           %img{:alt => "강시원", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f64d9b15-f83e-42e3-b728-b374fef9a424-5-6-개인-연습생-강시원.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(171); return false;"} 강시원
+          -#       %p.agency 개인 연습생
+          -#   %ul
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "170", "data-name" => "김민정", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5590e077-a97e-462c-bb90-dad6df11f64c-5-7-개인-연습생-김민정.png"}
+          -#           %img{:alt => "김민정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5590e077-a97e-462c-bb90-dad6df11f64c-5-7-개인-연습생-김민정.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(170); return false;"} 김민정
+          -#       %p.agency 개인 연습생
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "169", "data-name" => "김서경", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/874fd9ff-31e6-46ac-99d2-a003d9b4f51b-5-8-개인-연습생-김서경.png"}
+          -#           %img{:alt => "김서경", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/874fd9ff-31e6-46ac-99d2-a003d9b4f51b-5-8-개인-연습생-김서경.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(169); return false;"} 김서경
+          -#       %p.agency 개인 연습생
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "168", "data-name" => "김시현", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/c70f54bc-ce88-422d-b84a-0132205102f2-5-9-개인-연습생-김시현.png"}
+          -#           %img{:alt => "김시현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/c70f54bc-ce88-422d-b84a-0132205102f2-5-9-개인-연습생-김시현.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(168); return false;"} 김시현
+          -#       %p.agency 개인 연습생
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "167", "data-name" => "성혜민", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/546823c3-1089-493e-a168-17ff917f55a0-5-10-개인-연습생-성혜민.png"}
+          -#           %img{:alt => "성혜민", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/546823c3-1089-493e-a168-17ff917f55a0-5-10-개인-연습생-성혜민.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(167); return false;"} 성혜민
+          -#       %p.agency 개인 연습생
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "199", "data-name" => "문현주", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4239e64a-108d-4d90-b6f5-169536ad80d2-6-14-넥스타-문현주.png"}
+          -#           %img{:alt => "문현주", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4239e64a-108d-4d90-b6f5-169536ad80d2-6-14-넥스타-문현주.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(199); return false;"} 문현주
+          -#       %p.agency 넥스타
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "198", "data-name" => "최은빈", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/e0fd80e4-4c2e-4b65-8229-c028c0906be3-6-15-넥스타-최은빈.png"}
+          -#           %img{:alt => "최은빈", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/e0fd80e4-4c2e-4b65-8229-c028c0906be3-6-15-넥스타-최은빈.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(198); return false;"} 최은빈
+          -#       %p.agency 넥스타
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "188", "data-name" => "허찬미", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/572fa137-1418-48d1-ac79-259721040e9a-6-4-더블킥-컴퍼니-허찬미.png"}
+          -#           %img{:alt => "허찬미", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/572fa137-1418-48d1-ac79-259721040e9a-6-4-더블킥-컴퍼니-허찬미.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(188); return false;"} 허찬미
+          -#       %p.agency 더블킥 컴퍼니
+          -#   %ul
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "175", "data-name" => "남수진", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/03190a39-fe78-403f-afe3-9981ac7c4ba0-5-13-매직프레쉬-컴퍼니-남수진.png"}
+          -#           %img{:alt => "남수진", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/03190a39-fe78-403f-afe3-9981ac7c4ba0-5-13-매직프레쉬-컴퍼니-남수진.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(175); return false;"} 남수진
+          -#       %p.agency 매직프레쉬 컴퍼니
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "174", "data-name" => "박민지", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/48734b09-de9a-4ae1-b8b0-a6c44df7e183-5-14-매직프레쉬-컴퍼니-박민지.png"}
+          -#           %img{:alt => "박민지", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/48734b09-de9a-4ae1-b8b0-a6c44df7e183-5-14-매직프레쉬-컴퍼니-박민지.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(174); return false;"} 박민지
+          -#       %p.agency 매직프레쉬 컴퍼니
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "197", "data-name" => "김소희", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4fcb3cf8-3358-43ff-a6c0-0e9bd4d697ff-6-13-뮤직웍스-김소희.png"}
+          -#           %img{:alt => "김소희", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4fcb3cf8-3358-43ff-a6c0-0e9bd4d697ff-6-13-뮤직웍스-김소희.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(197); return false;"} 김소희
+          -#       %p.agency 뮤직웍스
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "166", "data-name" => "김수현", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/98bc65d0-5950-42f2-b342-1d3b10f9ec4a-5-5-미스틱-김수현.png"}
+          -#           %img{:alt => "김수현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/98bc65d0-5950-42f2-b342-1d3b10f9ec4a-5-5-미스틱-김수현.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(166); return false;"} 김수현
+          -#       %p.agency 미스틱
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "193", "data-name" => "김도희", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5d004cdc-3456-4450-b69b-b722f5b4597f-6-5-블레싱-김도희.png"}
+          -#           %img{:alt => "김도희", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5d004cdc-3456-4450-b69b-b722f5b4597f-6-5-블레싱-김도희.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(193); return false;"} 김도희
+          -#       %p.agency 블레싱
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "192", "data-name" => "김솔이", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/737049c9-3753-4236-b22c-e6c790b8583a-6-6-블레싱-김솔이.png"}
+          -#           %img{:alt => "김솔이", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/737049c9-3753-4236-b22c-e6c790b8583a-6-6-블레싱-김솔이.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(192); return false;"} 김솔이
+          -#       %p.agency 블레싱
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "191", "data-name" => "방준희", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/09d12de6-6482-4077-afc2-64a592c26bb7-6-7-블레싱-방준희.png"}
+          -#           %img{:alt => "방준희", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/09d12de6-6482-4077-afc2-64a592c26bb7-6-7-블레싱-방준희.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(191); return false;"} 방준희
+          -#       %p.agency 블레싱
+          -#   %ul
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "190", "data-name" => "안유미", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/40ca79d7-640c-4e2b-8e3f-cd0963a7c527-6-8-블레싱-안유미.png"}
+          -#           %img{:alt => "안유미", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/40ca79d7-640c-4e2b-8e3f-cd0963a7c527-6-8-블레싱-안유미.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(190); return false;"} 안유미
+          -#       %p.agency 블레싱
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "189", "data-name" => "오한아름", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/81cb14fc-9b2e-4853-ba3d-5085738cf9ad-6-9-블레싱-오한아름.png"}
+          -#           %img{:alt => "오한아름", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/81cb14fc-9b2e-4853-ba3d-5085738cf9ad-6-9-블레싱-오한아름.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(189); return false;"} 오한아름
+          -#       %p.agency 블레싱
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "219", "data-name" => "황인선", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/925ffefd-a26f-4b50-8314-40227b3900f8-7-2-쇼웍스-황인선.png"}
+          -#           %img{:alt => "황인선", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/925ffefd-a26f-4b50-8314-40227b3900f8-7-2-쇼웍스-황인선.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(219); return false;"} 황인선
+          -#       %p.agency 쇼웍스
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "65", "data-name" => "김태하", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/d2c43d90-20c4-4537-8571-a0ba67a916cd-2-3.스타쉽-김태하.png"}
+          -#           %img{:alt => "김태하", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/d2c43d90-20c4-4537-8571-a0ba67a916cd-2-3.스타쉽-김태하.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(65); return false;"} 김태하
+          -#       %p.agency 스타쉽
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "64", "data-name" => "심채은", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/0272dccd-1819-4650-965e-d97748b69cf7-2-4.스타쉽-심채은.png"}
+          -#           %img{:alt => "심채은", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/0272dccd-1819-4650-965e-d97748b69cf7-2-4.스타쉽-심채은.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(64); return false;"} 심채은
+          -#       %p.agency 스타쉽
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "222", "data-name" => "함예지", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/8d8cecfd-ea5b-4a8e-af18-86131f677e1f-7-5-스타플레닛-함예지.png"}
+          -#           %img{:alt => "함예지", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/8d8cecfd-ea5b-4a8e-af18-86131f677e1f-7-5-스타플레닛-함예지.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(222); return false;"} 함예지
+          -#       %p.agency 스타플레닛
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "224", "data-name" => "김다정", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4a3e376c-9abe-4caf-9006-03e451b4ac90-7-7-안녕뮤직-김다정.png"}
+          -#           %img{:alt => "김다정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4a3e376c-9abe-4caf-9006-03e451b4ac90-7-7-안녕뮤직-김다정.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(224); return false;"} 김다정
+          -#       %p.agency 안녕뮤직
+          -#   %ul
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "176", "data-name" => "김설아", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/395c9535-5687-4567-9b5b-2f2145b421a2-5-15-이큐브-미디어-김설아.png"}
+          -#           %img{:alt => "김설아", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/395c9535-5687-4567-9b5b-2f2145b421a2-5-15-이큐브-미디어-김설아.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(176); return false;"} 김설아
+          -#       %p.agency 이큐브 미디어
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "201", "data-name" => "강시라", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a52e4ebc-6c60-43ed-b162-3f2c9a5c19fe-6-17-청춘뮤직-강시라.png"}
+          -#           %img{:alt => "강시라", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a52e4ebc-6c60-43ed-b162-3f2c9a5c19fe-6-17-청춘뮤직-강시라.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(201); return false;"} 강시라
+          -#       %p.agency 청춘뮤직
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "202", "data-name" => "응 씨 카이", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/16d98a07-e0a5-4cdb-84cc-87f0ebe25f6a-6-18-초록뱀주나-응사카이.png"}
+          -#           %img{:alt => "응 씨 카이", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/16d98a07-e0a5-4cdb-84cc-87f0ebe25f6a-6-18-초록뱀주나-응사카이.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(202); return false;"} 응 씨 카이
+          -#       %p.agency 초록뱀주나
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "67", "data-name" => "박하이", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a3219a6d-fddf-4d66-ad6f-eef534ed3fb2-2-7.케니스타-박하이.png"}
+          -#           %img{:alt => "박하이", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a3219a6d-fddf-4d66-ad6f-eef534ed3fb2-2-7.케니스타-박하이.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(67); return false;"} 박하이
+          -#       %p.agency 케니스타
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "200", "data-name" => "마은진", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/200fdc40-3d1f-498f-8bc1-aa31af403a09-6-16-클리어-컴퍼니-마은진.png"}
+          -#           %img{:alt => "마은진", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/200fdc40-3d1f-498f-8bc1-aa31af403a09-6-16-클리어-컴퍼니-마은진.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(200); return false;"} 마은진
+          -#       %p.agency 클리어 컴퍼니
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "221", "data-name" => "박해영", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/78ca0f15-0600-47c6-8d93-979241e7cfe0-7-4-투에이블-컴퍼니-박해영.png"}
+          -#           %img{:alt => "박해영", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/78ca0f15-0600-47c6-8d93-979241e7cfe0-7-4-투에이블-컴퍼니-박해영.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(221); return false;"} 박해영
+          -#       %p.agency 투에이블 컴퍼니
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "49", "data-name" => "아리요시 리사", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/58a8835a-53b0-48ff-989f-b37322138e3b-10.티핑-아리요시리사(수정).png"}
+          -#           %img{:alt => "아리요시 리사", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/58a8835a-53b0-48ff-989f-b37322138e3b-10.티핑-아리요시리사(수정).png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(49); return false;"} 아리요시 리사
+          -#       %p.agency 티핑
+          -#   %ul
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "44", "data-name" => "이수민", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/6e0ff92a-ea78-46c0-9ca0-dc9ebcdb8392-3.판타지오-이수민.png"}
+          -#           %img{:alt => "이수민", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/6e0ff92a-ea78-46c0-9ca0-dc9ebcdb8392-3.판타지오-이수민.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(44); return false;"} 이수민
+          -#       %p.agency 판타지오
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "43", "data-name" => "정해림", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dd925ac5-a477-4e00-9b4b-3b87b47986cd-4.판타지오-정해림.png"}
+          -#           %img{:alt => "정해림", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dd925ac5-a477-4e00-9b4b-3b87b47986cd-4.판타지오-정해림.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(43); return false;"} 정해림
+          -#       %p.agency 판타지오
+          -#     %li
+          -#       .thumb
+          -#         %a{:href => "#", :onclick => "return false;"}
+          -#           %span.mask_vote{"data-id" => "41", "data-name" => "추예진", "data-url" => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/156d0843-545d-4887-ae99-503f8c0f5c81-6.판타지오-추예진.png"}
+          -#           %img{:alt => "추예진", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/156d0843-545d-4887-ae99-503f8c0f5c81-6.판타지오-추예진.png"}/
+          -#       %p.name
+          -#         %a{:href => "#", :onclick => "goProfile(41); return false;"} 추예진
+          -#       %p.agency 판타지오
+          -# / 투표하기 버튼
           / <a href="#" class="voteBtn voteButton">투표하기</a>
           / //투표하기 버튼
 
@@ -1119,7 +999,7 @@
         .logoWrap
           %a{:href => "http://www.cjenm.com/"}
             %span.logo CJ E&amp;M
-        .footerCont
+        -# .footerCont
           %ul.footerNavi
             %li
               %a{:href => "http://www.cjenm.com/company/about.aspx", :target => "footer"} 회사소개

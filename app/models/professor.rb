@@ -8,4 +8,12 @@ class Professor < ActiveRecord::Base
       all
     end
   end
+
+  def self.search_professor(search)
+    if search
+      find_by(["name LIKE :search", search: "%#{search}%"])
+    else
+      all
+    end
+  end
 end

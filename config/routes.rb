@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'pickme/index'
 
-  get 'pickme/index' => "pickme#index", as: "pickme"
+  get 'pickme/show' => "pickme#show", as: "pickme"
+  get 'pickme/index' => "pickme#index", as: "pickmes"
   #admin
   ActiveAdmin.routes(self)
   mount RedactorRails::Engine => '/redactor_rails'
