@@ -5,6 +5,9 @@ gem 'rails', '4.2.5'
 #db
 gem 'sqlite3'
 
+#deploy
+gem 'puma'
+
 #tool
 ##calender gem
 gem "simple_calendar"
