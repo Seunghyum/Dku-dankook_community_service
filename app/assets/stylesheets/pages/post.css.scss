@@ -6,8 +6,9 @@
 }
 [data-field = "like" ] {
   min-width: 80px;
-  button#like { padding: 0px;}
 }
+button#like { padding: 0px;}
+
 [data-field = "hits" ] {
     min-width: 25px;
 }
