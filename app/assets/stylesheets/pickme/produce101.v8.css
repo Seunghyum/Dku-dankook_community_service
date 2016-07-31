@@ -112,7 +112,7 @@ html, body {background:#fcfcfc url('http://static.global.mnet.com/data/od/images
 .navi li dl.selected {display:block;}
 .navi li dl dt {position:absolute;top:0;left:-24px;display:block;width:24px;height:40px;background:url('http://static.global.mnet.com/data/od/images/produce101/gnb_left.png') no-repeat 0 0}
 .navi li dl dd {display:block;float:left;}
-.navi li dl dd a {float:left;height:13px;color:#d17c64;font-weight:bold;line-height:40px;padding:0 10px;2}
+.navi li dl dd a {float:left;height:13px;color:#d17c64;font-weight:bold;line-height:40px;padding:0 10px;}
 
 /*tranieeList*/
 .tranieeList {position:relative;width:980px;clear:both;}
