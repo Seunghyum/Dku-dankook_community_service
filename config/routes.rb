@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'pickme/show' => "pickme#show", as: "pickme"
-  get 'pickme/index' => "pickme#index", as: "pickmes"
   #admin
   ActiveAdmin.routes(self)
   mount RedactorRails::Engine => '/redactor_rails'
@@ -95,12 +92,10 @@ get 'lockers/nottime' => "lockers#nottime", as: "nottime_lockers"
   end
 
   #교수 투표
-  resources :professors do
-    member do
-      put "like", to: "pickme#upvote"
-      put "dislike", to: "pickme#downvote"
-    end
-  end
+  get 'pickme/show' => "pickme#show", as: "pickme"
+  get 'pickme/index' => "pickme#index", as: "pickmes"
+  get "pickme/:id/like", to: "pickme#upvote", as: "like_pickmes"
+  get "pickme/:id/dislike", to: "pickme#downvote", as: "dislike_pickmes"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -40,6 +40,9 @@ ActiveAdmin.register User do
           f.input :role, as: :radio, collection: {
             외부인: "외부인", 슈퍼관리자: "슈퍼관리자", 학생: "학생", 일반대표: "일반대표", 인액터스: "인액터스"
           }
+          f.input :use_pause, as: :radio, collection: {
+            인증: true, 미인증: false
+          }
       end
       f.actions
   end

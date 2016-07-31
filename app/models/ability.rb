@@ -19,14 +19,14 @@ class Ability
         comment.user_id == user.id
       end
     elsif user.role == '일반대표' || user.role == '학생'
+      can [:create, :read, :upvote, :downvote], [Post, Comment, LectureEstimate, Locker]
+      can [:update, :destroy], Post do |post|
+        post.user_id == user.id
+      end
+      can [:update, :destroy], Comment do |comment|
+        comment.user_id == user.id
+      end
       if user.use_pause == false
-        can [:create, :read], [Post, Comment, LectureEstimate, Locker]
-        can [:update, :destroy], Post do |post|
-          post.user_id == user.id
-        end
-        can [:update, :destroy], Comment do |comment|
-          comment.user_id == user.id
-        end
         can [:update, :destroy], LectureEstimate do |esimate|
           esimate.user_id == user.id
         end
@@ -38,16 +38,16 @@ class Ability
       if user.use_pause == false
         cannot [:index, :show], Locker
         can :home, Locker
-        can [:create, :read], [Post, Comment, LectureEstimate]
-        can [:update, :destroy], Post do |post|
-          post.user_id == user.id
-        end
-        can [:update, :destroy], Comment do |comment|
-          comment.user_id == user.id
-        end
-        can [:update, :destroy], LectureEstimate do |esimate|
-          esimate.user_id == user.id
-        end
+      end
+      can [:create, :read, :upvote, :downvote], [Post, Comment, LectureEstimate]
+      can [:update, :destroy], Post do |post|
+        post.user_id == user.id
+      end
+      can [:update, :destroy], Comment do |comment|
+        comment.user_id == user.id
+      end
+      can [:update, :destroy], LectureEstimate do |esimate|
+        esimate.user_id == user.id
       end
     else
       # can :show, [Book, BookList]

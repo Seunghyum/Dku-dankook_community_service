@@ -324,6 +324,7 @@ ko:
         name: "실명"
         lcounting: "사물함 1차접수 번호표"
         major_id: "전공"
+        use_pause: "인증 여부"
     errors:
       messages:
         record_invalid: 데이터 검증에 실패하였습니다. %{errors}
