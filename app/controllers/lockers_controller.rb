@@ -4,8 +4,10 @@ class LockersController < ApplicationController
   before_action :authenticate_user!, :except => [:home]
 
   before_action :set_locker, only: [:index, :lockerselect, :destroy, :first_check, :selecting_page, :check_lcounting_for_reject]
+#학생이나 일반대표가 아닐 경우 사물함 얻을 권한 박탈
+  before_action :reject_unless_student, only: [:index, :lockerselect, :destroy, :first_check, :selecting_page, :check_lcounting_for_reject]
+
   before_action :set_time, only: [:lockerselect, :first_check, :nottime ]
-  # before_action :authenticate_user!, :except => "nottime"
 #1차 접수 전 제한인원안에 들지 못한 유저의 사물함 선택 방어
   before_action :check_lcounting_for_reject, only: [:selecting_page, :lockerselect]
 #1차 접수 없이 url타고 들어온 유저 방어
@@ -14,7 +16,6 @@ class LockersController < ApplicationController
   after_action :check_lcounting_for_reject, only: [:first_check]
 #1차 접수 후 selecting_page로 이동
   after_action :check_lcounting_for_selecting, only: [:first_check]
-
 #자신의 로커 상태 표시 page + 첫번째 번호표 뽑기 view page
   def index
     if !current_user.lcounting.nil? && @our_locker.counting <= @our_locker.limit_num
@@ -120,6 +121,12 @@ class LockersController < ApplicationController
       if current_user.lcounting > @our_locker.limit_num
         flash[:success] = "1차 접수 - 총 제한 인원 #{@our_locker.limit_num}명 중 #{current_user.lcounting}번째 입니다."
         redirect_to action: "selecting_page"
+      end
+    end
+
+    def reject_unless_student
+      unless current_user.role == "학생" || current_user.role == "일반대표"
+        redirect_to action: "reject"
       end
     end
 

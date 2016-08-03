@@ -153,7 +153,6 @@ html, body {background:#fcfcfc url('http://static.global.mnet.com/data/od/images
 .tranieeList .listnb.nb_05 {top:2314px;}
 .tranieeList .listnb.nb_06 {top:2780px;}
 .tranieeList .listnb.nb_07 {top:3246px;}
-
 /*광고영역들*/
 .ADmainLeft{position:absolute;width:120px;height:600px;top:0px;right:-152px;}
 .ADmainLeft.fixed{position:fixed;top:0px;right:50%;margin-right:-642px;}

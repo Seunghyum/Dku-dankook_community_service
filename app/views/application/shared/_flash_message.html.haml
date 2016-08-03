@@ -1,8 +1,8 @@
 - flash.each do |type, message|
-  %div{:class => "alert #{bootstrap_class_for(type)} fade in text-center", style: "position: fixed; z-index: 100; right: 9rem; top: 9rem;", id: "flash"}
+  %div{:class => "alert #{bootstrap_class_for(type)} fade in text-center", id: "flash"}
     %button.close{"data-dismiss" => "alert"} ×
     = message
 :javascript
   $(document).ready(function(){
-    $("#flash").delay(3000).slideUp(500);
+    $("#flash").delay(2200).slideUp(500);
   });

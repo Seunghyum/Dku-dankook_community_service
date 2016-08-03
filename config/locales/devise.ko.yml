@@ -12,7 +12,7 @@ ko:
   devise:
     failure:
       already_authenticated: '이미 로그인하셨습니다.'
-      unauthenticated: ''
+      unauthenticated: '로그인이 필요합니다'
       unconfirmed: '계정 확인 하셔야 이용하실 수 있습니다.'
       locked: '계정이 잠겼습니다.'
       invalid: '이메일이나 패스워드가 다릅니다.'

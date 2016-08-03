@@ -4,6 +4,4 @@ class Locker < ActiveRecord::Base
   # has_many :majors, through: :locker_particulars
   before_save :check_role
 
-  def check_role
-  end
 end

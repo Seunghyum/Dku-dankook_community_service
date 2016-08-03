@@ -7,7 +7,7 @@ ko:
 
   unauthorized:
     manage:
-      all: "접근할 권한이 없습니다."
+      all: "접근 권한이 없습니다."
       # all: " %{action} %{subject}에 접근할 권한이 없습니다."
       user: "접근 권한이 없습니다."
     update:
