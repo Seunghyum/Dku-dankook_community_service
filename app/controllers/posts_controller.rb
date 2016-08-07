@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
   def index
     # @posts = @board.posts.all.page(params[:page]).per(20)
-    @posts = @board.posts.search(params[:search]).page(params[:page]).per(20)
+    @posts = @board.posts.order.order("created_at DESC").search(params[:search]).page(params[:page]).per(20)
     respond_to do |format|
       format.js
       format.html
@@ -37,11 +37,11 @@ class PostsController < ApplicationController
           params_page = last_post_id / pagination_per - (post_id - num_of_last_pages) / (pagination_per)
         end
 
-        @posts = @last_post.page(params_page).per(pagination_per)
+        @posts = @last_post.order("created_at DESC").page(params_page).per(pagination_per)
     	}
       format.js {
         # 페이지네이션 클릭 시
-        @posts = @board.posts.all.page(params[:page]).per(20)
+        @posts = @board.posts.order("created_at DESC").page(params[:page]).per(20)
       }
     end
   end

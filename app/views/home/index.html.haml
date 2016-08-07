@@ -7,11 +7,12 @@
         %strong= flash[:alert]
     / Begin Content
     .col-md-8
-
       #owl-example.owl-carousel
         %div{style: "height: 250px; background-image: url(#{ image_url 'unify/2.jpg'}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
         %div{style: "height: 250px; background-image: url(#{ image_url 'unify/3.jpg'}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
         %div{style: "height: 250px; background-image: url(#{ image_url 'unify/4.jpg'}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
+
+      = render 'simple_calendar/calendar'
 
       .magazine-news
         .row
@@ -36,13 +37,7 @@
       / End Magazine News
       .margin-bottom-35
         %hr.hr-md/
-        / Calendar News
-        .row
-          .col-md-12
-            = render 'simple_calendar/calendar'
-        / End Calendar News
         .margin-bottom-35
-          %hr.hr-md/
           / Magazine News
           .magazine-news
             .row
@@ -91,6 +86,7 @@
             / End Magazine News
           / End Content
           / Begin Sidebar
+
     .col-md-4
       / Profile Event
       .profile-body.md-margin-bottom-20
@@ -104,83 +100,33 @@
             .profile-event
               #vertical_banner
                 %ul
-                  - @best_liberal.each_with_index do |best, index|
-                    %li
-                      = "#{index + 1}. #{best.name}"
+                  -if @best_liberal.present?
+                    - @best_liberal.each_with_index do |best, index|
+                      %li
+                        = "#{index + 1}. #{best.name}"
       / End Profile Event
       .profile-body
         .panel.panel-profile
           .tag-box-v1.panel-heading.overflow-h
             %h2.panel-title.heading-sm.pull-left
               %i.fa.fa-comments-o
-              \&#xD1A0;&#xB860;
-            %a.btn-u.btn-brd.btn-brd-hover.btn-u-dark.btn-u-xs.pull-right{:href => "page_profile_comments.html"} View All
+              자유게시판
+            = link_to "바로가기", board_posts_path(1), class: "btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right"
+            -# %a.btn-u.btn-brd.btn-brd-hover.btn-u-dark.btn-u-xs.pull-right{:href => "page_profile_comments.html"} View All
           #scrollbar4.panel-body.no-padding.mCustomScrollbar{"data-mcs-theme" => "minimal-dark"}
-            .comment
-              .overflow-h
-                %strong
-                  Taylor Lee
-                  %small.pull-right 25m
-                %p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                %ul.list-inline.comment-list
-                  %li
-                    %i.fa.fa-heart
-                    %a{:href => "#"} 23
-                  %li
-                    %i.fa.fa-comments
-                    %a{:href => "#"} 5
-            .comment
-              .overflow-h
-                %strong
-                  Miranda Clarsson
-                  %small.pull-right 44m
-                %p Donec cursus, orci non posuere luctus, risus massa luctus nisi, sit amet cursus leo massa id arcu. Nunc tincidunt magna sit amet sapien congue.
-                %ul.list-inline.comment-list
-                  %li
-                    %i.fa.fa-heart
-                    %a{:href => "#"} 23
-                  %li
-                    %i.fa.fa-comments
-                    %a{:href => "#"} 5
-            .comment
-              .overflow-h
-                %strong
-                  Natasha Kolnikova
-                  %small.pull-right 7h
-                %p Suspendisse est est, sollicitudin eget auctor et, pharetra eu sapien. Mauris mollis libero ac auctor iaculis.
-                %ul.list-inline.comment-list
-                  %li
-                    %i.fa.fa-heart
-                    %a{:href => "#"} 23
-                  %li
-                    %i.fa.fa-comments
-                    %a{:href => "#"} 5
-            .comment
-              .overflow-h
-                %strong
-                  Mikel Andrews
-                  %small.pull-right 15h
-                %p Nam ut dolor cursus nibh aliquet bibendum in eget risus.
-                %ul.list-inline.comment-list
-                  %li
-                    %i.fa.fa-heart
-                    %a{:href => "#"} 20
-                  %li
-                    %i.fa.fa-comments
-                    %a{:href => "#"} 5
-            .comment
-              .overflow-h
-                %strong
-                  Edward Rooster
-                  %small.pull-right 1d
-                %p Nam ut dolor cursus nibh aliquet bibendum in eget risus. Mauris mollis libero ac auctor iaculis.
-                %ul.list-inline.comment-list
-                  %li
-                    %i.fa.fa-heart
-                    %a{:href => "#"} 23
-                  %li
-                    %i.fa.fa-comments
-                    %a{:href => "#"} 5
+            - if @best_posts.present?
+              - @best_posts.each_with_index do |best, index|
+                .comment
+                  .overflow-h
+                    %strong= "#{index + 1}. #{(best.user.username.nil? ? best.user.name : best.user.username)}"
+                    %p= truncate(best.title)
+                    %ul.list-inline.comment-list
+                      %li
+                        %i.fa.fa-heart
+                        %a{:href => "#"}= best.cached_votes_up
+                      %li
+                        %i.fa.fa-comments
+                        %a{:href => "#"}= best.comments.length
       / Quick Links
       .magazine-sb-categories.margin-bottom-20
         .headline
@@ -203,29 +149,21 @@
       / End Quick Links
       / Latest News
       .margin-bottom-40
-        .magazine-mini-news
-          %h3
-            %a{:href => "#"} Blanditiis Praesentium Volupeto
-          .post-author
-            %strong By Adam Bvio
-            %span / September 19, 2013
-          %p At vero eos et accusamus et iusto odiodig nissimos ducimus usce condimentum eleifend enim a feugiat.
-        %hr.hr-md
-          .magazine-mini-news
-            %h3
-              %a{:href => "#"} Blanditiis Praesentium Volupeto
-            .post-author
-              %strong By Kate Baur
-              %span / September 19, 2013
-            %p At vero eos et accusamus et iusto odiodig nissimos ducimus usce condimentum eleifend enim a feugiat.
-          %hr.hr-md
+        - if @best_posts.present?
+          - @best_posts.each_with_index do |best, index|
             .magazine-mini-news
               %h3
-                %a{:href => "#"} Blanditiis Praesentium Volupeto
+                = link_to truncate(best.title), board_post_path(best.board, best)
+                &nbsp;&nbsp;
+                %span
+                  %i.fa.fa-heart.color-red
+                = best.cached_votes_up
               .post-author
-                %strong By Admin
-                %span / September 19, 2013
-              %p At vero eos et accusamus et iusto odiodig nissimos ducimus usce condimentum eleifend enim a feugiat.
+                %span.badge.rounded-2x{class: "badge-#{@samples.sample}"}= index + 1
+                = " #{(best.user.username.nil? ? best.user.name : best.user.username)}"
+                %span= timeago_tag best.created_at
+              %p= truncate(best.content, length: 30)
+            %hr.hr-md
           / End Latest News
         / End Sidebar
     / /container

@@ -204,7 +204,7 @@ a.voteBtn_end {background:url('http://static.global.mnet.com/data/od/images/prod
 #qmset .myVote a.voteButton_end {width:120px;height:57px;background:url('http://static.global.mnet.com/data/od/images/produce101/bgbtnMyVote_end_new.jpg') 0 0 no-repeat;text-indent:-1000em;display:block;margin-bottom:20px;}
 
 /*서브 공통*/
-#content {position:relative;display:block;float:left;width:710px;padding:0;margin:0 15px 0 0;border:1px solid #dcdcdc;border-top:1px solid #ddd;border-bottom:1px solid #dcdcdc;background:#fff;min-height:1067px;}
+#content {margin: auto;position:relative;display:block;width:710px;padding:0;border:1px solid #dcdcdc;border-top:1px solid #ddd;border-bottom:1px solid #dcdcdc;background:#fff;min-height:1067px;}
 #content div.contentHeader{position:relative;display:block;width:100%;height:69px;border-bottom:4px solid #F5F5F5;margin-bottom:30px;}
 #content div.contentHeader h2{position:relative;display:block;width:100%;height:69px;text-indent:-1000em;}
 #content div.contentHeader p.breadcrumb{position:absolute;bottom:11px;right:30px;font-size:11px;color:#727272;}
@@ -488,7 +488,7 @@ div.sceneLayer span.prev{background:url('http://static.global.mnet.com/data/od/i
 #gnb {min-width:auto !important;}
 
 /*서브 - 투표 순위*/
-#content div.contentHeader h2.rank01{background:url('http://static.global.mnet.com/data/od/images/produce101/bg_h2_rank01.jpg') 0 0 no-repeat;}
+#content div.contentHeader h2.rank01{background:rgb(252, 252, 252);}
 #content div.contentHeader h2.rank02{background:url('http://static.global.mnet.com/data/od/images/produce101/bg_h2_rank02.jpg') 0 0 no-repeat;}
 #content div.contentHeader h2.rank03{background:url('http://static.global.mnet.com/data/od/images/produce101/bg_h2_rank03.jpg') 0 0 no-repeat;}
 p.rankIntro{color:#C39285;margin-left:30px;}
@@ -500,6 +500,7 @@ ol.rank1to11 li{position:relative;display:block;float:left;width:106px;}
 ol.rank1to11 li div.thumb {position:relative;display:block;height:106px;}
 ol.rank1to11 li div.thumb a {display:block}
 ol.rank1to11 li div.thumb .mask {display:block;position:absolute;top:0;left:0;width:106px;height:106px;background:url('http://static.global.mnet.com/data/od/images/produce101/rankMask106.png') no-repeat 0 0;background-size:100%;}
+ol.rank1to11 li div.thumb div {display:block;position:absolute;top:0;left:0;width:106px;height:106px;background:url('http://static.global.mnet.com/data/od/images/produce101/rankMask106.png') no-repeat 0 0;background-size:100%;}
 ol.rank1to11 li div.thumb:hover .mask {display:block;position:absolute;top:0;left:0;background:url('http://static.global.mnet.com/data/od/images/produce101/rankMask106_hover.png') no-repeat 0 0;background-size:100%;z-index:10;}
 ol.rank1to11 li div.thumb img {display:block;width:106px;height:106px;}
 ol.rank1to11 li div.thumb .go_profil {display:none;}
@@ -512,6 +513,7 @@ ol.rank1to11 li p.voteCount {display:block;width:87px;height:21px;line-height:21
 ol.rank1to11 li.rank01{float:none;width:149px;margin:0 auto 11px auto;}
 ol.rank1to11 li.rank01 div.thumb {height:149px;}
 ol.rank1to11 li.rank01 div.thumb .mask {display:block;position:absolute;width:149px;height:149px;top:0;left:0;background:url('http://static.global.mnet.com/data/od/images/produce101/rankMask149.png') no-repeat 0 0;background-size:100%;}
+ol.rank1to11 li.rank01 div.thumb div {display:block;position:absolute;width:149px;height:149px;top:0;left:0;background:url('http://static.global.mnet.com/data/od/images/produce101/rankMask149.png') no-repeat 0 0;background-size:100%;}
 ol.rank1to11 li.rank01 div.thumb:hover .mask {display:block;position:absolute;width:149px;height:149px;top:0;left:0;background:url('http://static.global.mnet.com/data/od/images/produce101/rankMask149_hover.png') no-repeat 0 0;background-size:100%;z-index:10;}
 ol.rank1to11 li.rank01 div.thumb img {width:149px;height:149px;}
 ol.rank1to11 li.rank01 div.thumb:hover .go_profil {margin-left:58px;}

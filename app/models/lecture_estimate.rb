@@ -4,8 +4,16 @@ class LectureEstimate < ActiveRecord::Base
 
   acts_as_votable
 
+  default_scope {order('cached_votes_score DESC')}
+
   # 강의 평가 점수 합계 평균
-  after_create :lecture_best_ranking, if: :is_liberal
+  after_update :lecture_best_ranking, if: :is_liberal
+
+  after_update do
+    if is_liberal && cached_votes_score_changed?
+      lecture_best_ranking
+    end
+  end
   after_save :score_average, :total_average
 
   private
@@ -28,16 +36,20 @@ class LectureEstimate < ActiveRecord::Base
 
     def is_liberal
       #develop 환경이라서 뒤의 로직이 필요하다. 교양과목만 순위가 의미가 있다.. 그래서 교양과목만 진행
-      self.lecture_info.l_type == "교양" && LectureInfo.where(l_type: "교양").length > 5
+      self.lecture_info.l_type == "교양" && LectureInfo.where(l_type: "교양").length > 10
     end
 
     def lecture_best_ranking
-    best_category = BestFive.find_by(category: "교양")
-    best_5 = LectureInfo.where(l_type: "교양").take(7)
-    if best_5.length > 2
-      best_5.each do |best|
+      best_category = BestFive.find_by(category: "교양")
+      #default ordering이 좋아요 순이라 변경할 필요 없음
+      best_10 = LectureInfo.where(l_type: "교양").take(10)
+      if best_category.lecture_infos.present?
+        best_category.lecture_infos.each do |info|
+          info.update_column(:best_five_id, nil)
+        end
+      end
+      best_10.each do |best|
         best.update_column(:best_five_id, best_category.id)
       end
     end
-  end
 end

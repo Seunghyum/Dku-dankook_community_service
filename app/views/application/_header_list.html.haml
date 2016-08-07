@@ -1,0 +1,110 @@
+%ul.dropdown-menu
+  %li
+    .mega-menu-content.disable-icons
+      .container
+        .row.equal-height
+          .col-md-3.equal-height-in
+            %ul.list-unstyled.equal-height-list
+              %li
+                %h3 강의
+              / Buttons
+              %li
+                = link_to lecture_infos_path do
+                  %i.fa.fa-flask
+                  강의 평가
+              %li
+                = link_to sign_in_test_users_path do
+                  %i.fa.fa-sort-alpha-asc
+                  수강신청 리허설
+                  %span.label.rounded.label-orange New
+              %li
+                = link_to pickmes_path do
+                  %i.fa.fa-bolt
+                  Professor 101(인기 투표)
+                  %span.label.rounded.label-red Hot
+          .col-md-3.equal-height-in
+            %ul.list-unstyled.equal-height-list
+              %li
+                %h3 온라인 신청
+              %li
+                = link_to home_lockers_path do
+                  %i.fa.fa-magic
+                  학과별 사물함 신청
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-ellipsis-h
+                  학과별 중고책 신청
+              %hr
+              %li
+                %h3 커뮤니티
+              %li
+                = link_to board_posts_path(1) do
+                  %i.fa.fa-quote-left
+                  자유게시판
+
+          .col-md-3.equal-height-in
+            %ul.list-unstyled.equal-height-list
+              %li
+                %h3 중앙 동아리
+              / Common Elements
+              %li
+                %a{:href => "shortcode_thumbnails.html"}
+                  %i.fa.fa-image
+                  멋쟁이사자처럼 (1년후)
+              %li
+                %a{:href => "shortcode_accordion_and_tabs.html"}
+                  %i.fa.fa-list-ol
+                  인액터스
+          .col-md-3.equal-height-in
+            %ul.list-unstyled.equal-height-list
+              %li
+                %h3 검색
+              %li
+                = link_to new_school_phone_searching_path do
+                  %i.fa.fa-quote-left
+                  단국대 기관 전화번호 검색
+              %li
+                = link_to book_lists_path do
+                  %i.fa.fa-asterisk
+                  인액터스 중고책 검색
+                  %span.label.rounded.label-info Cool
+              -# %li
+              -#   %h3 동아리
+              -# / Forms
+              -#   %a{:href => "shortcode_form_general.html"}
+              -#     %i.fa.fa-bars
+              -#     Common Bootstrap Forms
+              -# %li
+              -#   %a{:href => "shortcode_form_general1.html"}
+              -#     %i.fa.fa-bars
+              -#     General Unify Forms
+              -# %li
+              -#   %a{:href => "shortcode_form_advanced.html"}
+              -#     %i.fa.fa-bars
+              -#     Advanced Forms
+              -# %li
+              -#   %a{:href => "shortcode_form_layouts.html"}
+              -#     %i.fa.fa-bars
+              -#     Form Layouts
+              -# %li
+              -#   %a{:href => "shortcode_form_layouts_advanced.html"}
+              -#     %i.fa.fa-bars
+              -#     Advanced Layout Forms
+              -# %li
+              -#   %a{:href => "shortcode_form_states.html"}
+              -#     %i.fa.fa-bars
+              -#     Form States
+              -# %li
+              -#   %a{:href => "shortcode_form_sliders.html"}
+              -#     %i.fa.fa-bars
+              -#     Form Sliders
+              -# %li
+              -#   %a{:href => "shortcode_form_modals.html"}
+              -#     %i.fa.fa-bars
+              -#     Modals
+              -# / End Forms
+              -# / Infographics
+              -# %li
+              -#   %a{:href => "shortcode_compo_charts.html"}
+              -#     %i.fa.fa-pie-chart
+              -#     Charts &amp; Countdowns

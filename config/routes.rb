@@ -94,6 +94,8 @@ get 'lockers/nottime' => "lockers#nottime", as: "nottime_lockers"
   #교수 투표
   get 'pickme/show' => "pickme#show", as: "pickme"
   get 'pickme/index' => "pickme#index", as: "pickmes"
+  get 'pickme/ranking' => "pickme#ranking", as: "pickme_rankings"
+  get 'pickme/intro' => "pickme#intro", as: "pickme_intro"
   get "pickme/:id/like", to: "pickme#upvote", as: "like_pickmes"
   get "pickme/:id/dislike", to: "pickme#downvote", as: "dislike_pickmes"
 

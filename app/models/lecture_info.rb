@@ -22,7 +22,7 @@ class LectureInfo < ActiveRecord::Base
         self.update_column(:div_color, 'red')
       elsif self.l_type == "전공선택"
         self.update_column(:div_color, 'blue')
-      elsif self.l_type == "교양"
+      else
         self.update_column(:div_color, 'green')
       end
     end

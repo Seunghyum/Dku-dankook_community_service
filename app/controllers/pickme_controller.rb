@@ -10,6 +10,20 @@ class PickmeController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
+  def ranking
+    @professors = Professor.order("cached_votes_score DESC")
+    @professors_11 = @professors.take(11)
+
+  end
+
+  def intro
+
+  end
+
   def upvote
     if current_user.find_up_voted_items.size < 3
       @prof.upvote_by current_user

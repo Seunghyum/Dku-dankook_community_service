@@ -24,7 +24,7 @@
         .inner_wrap
           / 국문 gnb
           #gnb.gnb_kor
-            %a.mnet{:href => "http://www.mnet.com", :title => "Mnet"} Mnet
+            %a.mnet{:title => "디쿠"}
             %dl
               %dt.blind 엠넷 메뉴
               %dd
@@ -38,15 +38,15 @@
             = link_to "PROFESSOR 101", pickme_path, style: "background:url(#{image_url "professor-logo.png"}) no-repeat left bottom; background-size: contain;"
           %ul.navi
             %li.depth1.mn_02.hd-first
-              %a{:href => "#"}
+              = link_to pickme_intro_path do
                 %em>
                 서비스 정보
             %li.depth1.mn_03
-              %a{:href => "/produce101/profile.dbp"}
+              = link_to pickmes_path do
                 %em>
                 101 Professor
             %li.mn_04.depth1
-              %a{:href => "#"}
+              = link_to pickme_rankings_path do
                 %em>
                 인기순위
           .snsBtn

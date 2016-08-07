@@ -1,0 +1,964 @@
+#container
+  .inner_wrap
+    / 콘텐츠 왼쪽 부분 시작
+    #content
+      / 콘텐츠 타이틀 및 메뉴 단계 표시 영역 시작
+      .contentHeader
+        %h3{ style: "position: absolute;z-index: 100;padding: 25px;font-size: 20px;"} 현재 순위
+        %h2.rank01 현재 순위
+        / h2 클래스명으로 메뉴 이미지배경 결정
+        %p.breadcrumb
+          인기순위
+          %span
+          %strong 현재 순위
+      / 콘텐츠 타이틀 및 메뉴 단계 표시 영역 끝
+      / 콘텐츠 본문 영역 시작
+      / 1위~11위 랭킹 리스트
+      %p.rankIntro
+        %span ◆
+        현재순위는
+        = succeed "\u{c785}\u{b2c8}\u{b2e4}." do
+          %span.pink 온라인투표를 합산하여 매겨진 순위
+      / 1위~11위 랭킹 리스트
+      %ol.rank1to11
+        - @professors_11.each_with_index do |prof, index|
+          %li{class: ( index + 1 < 10 ? "rank0#{index + 1}" : "rank#{index + 1}")}
+            .thumb
+              %span.tag= index + 1
+              %a{:href => "/produce101/page/p101.page.profile.dbp?id=88"}
+                %div{ style: "background-position: center; background-size: contain;  background-repeat: no-repeat; background-image: url(#{prof.profile});"}
+                  %span.mask
+                -# background-image: url(#{pro.profile});
+                -# %img{:alt => "#{prof.name}", }/
+                -# = image_tag prof.profile, alt: prof.name
+            %p.name
+              %a{:href => "/produce101/page/p101.page.profile.dbp?id=88"}= prof.name
+            %p.agency= prof.belong
+            %p.voteCount= prof.get_upvotes.size
+      / //1위~11위 랭킹 리스트
+      // 12위~30위 랭킹 리스트
+      %p.away11.rank12to30
+        %span 12위~30위
+      %ol.away11.rank12to30{:olno => "1"}
+        %li
+          .thumb
+            %span.tag 12
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=63"}
+              %span.mask
+              %img{:alt => "유연정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4447746f-07af-4b01-af8e-004ee68df08a-2-5.스타쉽-유연정.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=63"} 유연정
+          %p.agency 스타쉽
+          %p.voteCount 214691
+        %li
+          .thumb
+            %span.tag 13
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=45"}
+              %span.mask
+              %img{:alt => "김도연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/8d9c111c-3eff-4eaa-b5ae-1680eb88686d-2.판타지오-김도연.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=45"} 김도연
+          %p.agency 판타지오
+          %p.voteCount 203007
+        %li
+          .thumb
+            %span.tag 14
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=103"}
+              %span.mask
+              %img{:alt => "김청하", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dca36004-aff4-407e-b506-e16072c544e4-3-15-M&H-김청하.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=103"} 김청하
+          %p.agency M&amp;H
+          %p.voteCount 193820
+        %li
+          .thumb
+            %span.tag 15
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=188"}
+              %span.mask
+              %img{:alt => "허찬미", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/572fa137-1418-48d1-ac79-259721040e9a-6-4-더블킥-컴퍼니-허찬미.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=188"} 허찬미
+          %p.agency 더블킥 컴퍼니
+          %p.voteCount 184926
+        %li
+          .thumb
+            %span.tag 16
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=164"}
+              %span.mask
+              %img{:alt => "권은빈", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/565abe81-6a7e-4504-9749-09193c80f988-5-1-CUBE-권은빈.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=164"} 권은빈
+          %p.agency CUBE
+          %p.voteCount 179721
+        %li
+          .thumb
+            %span.tag 17
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=202"}
+              %span.mask
+              %img{:alt => "응 씨 카이", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/16d98a07-e0a5-4cdb-84cc-87f0ebe25f6a-6-18-초록뱀주나-응사카이.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=202"} 응 씨 카이
+          %p.agency 초록뱀주나
+          %p.voteCount 176067
+        %li
+          .thumb
+            %span.tag 18
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=137"}
+              %span.mask
+              %img{:alt => "정은우", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/b89785ab-34e8-4eff-bfa7-d2f781fe4a21-4-6-플레디스-정은우.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=137"} 정은우
+          %p.agency PLEDIS
+          %p.voteCount 175904
+        %li
+          .thumb
+            %span.tag 19
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=218"}
+              %span.mask
+              %img{:alt => "김주나", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/224f398e-5140-4cf0-a50b-b2be5f29aaf0-7-1-music-K--김주나.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=218"} 김주나
+          %p.agency music K
+          %p.voteCount 161825
+        %li
+          .thumb
+            %span.tag 20
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=165"}
+              %span.mask
+              %img{:alt => "박소연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/208c0fb4-c5e1-459f-a93f-aab2fa9fa5ee-5-4-LOEN-박소연.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=165"} 박소연
+          %p.agency LOEN
+          %p.voteCount 156148
+        %li
+          .thumb
+            %span.tag 21
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=62"}
+              %span.mask
+              %img{:alt => "윤채경", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/6f7873fa-a89f-4559-b025-300a306fc44e-2-1.DSP-윤채경.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=62"} 윤채경
+          %p.agency DSP
+          %p.voteCount 149977
+        %li
+          .thumb
+            %span.tag 22
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=91"}
+              %span.mask
+              %img{:alt => "한혜리", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a7332974-e225-4fa1-a587-f2eda30139fb-3-6-스타제국-한혜리.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=91"} 한혜리
+          %p.agency Star Empire
+          %p.voteCount 125095
+        %li
+          .thumb
+            %span.tag 23
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=197"}
+              %span.mask
+              %img{:alt => "김소희", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4fcb3cf8-3358-43ff-a6c0-0e9bd4d697ff-6-13-뮤직웍스-김소희.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=197"} 김소희
+          %p.agency 뮤직웍스
+          %p.voteCount 109501
+        %li
+          .thumb
+            %span.tag 24
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=138"}
+              %span.mask
+              %img{:alt => "임나영", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/9c9927c0-88bb-4656-877b-4a54048c2736-4-5-플레디스-임나영.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=138"} 임나영
+          %p.agency PLEDIS
+          %p.voteCount 107785
+        %li
+          .thumb
+            %span.tag 25
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=100"}
+              %span.mask
+              %img{:alt => "안예슬", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/8836a51c-cf1e-44d8-9d8c-031e95edeb5a-3-14-마제스티-안예슬.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=100"} 안예슬
+          %p.agency MAJESTY
+          %p.voteCount 106322
+        %li
+          .thumb
+            %span.tag 26
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=139"}
+              %span.mask
+              %img{:alt => "박시연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1ad17c2b-c24b-429d-a049-f825becbbdba-4-4-플레디스-박시연.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=139"} 박시연
+          %p.agency PLEDIS
+          %p.voteCount 105963
+        %li
+          .thumb
+            %span.tag 27
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=61"}
+              %span.mask
+              %img{:alt => "조시윤", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/64890397-14c6-41de-9531-d2c7ce723edb-2-2.DSP-조시윤.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=61"} 조시윤
+          %p.agency DSP
+          %p.voteCount 102110
+        %li
+          .thumb
+            %span.tag 28
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=141"}
+              %span.mask
+              %img{:alt => "강예빈", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/96b8a1d0-6aaa-4bff-9544-561af602ce2a-4-2-플레디스-강예빈.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=141"} 강예빈
+          %p.agency PLEDIS
+          %p.voteCount 88277
+        %li
+          .thumb
+            %span.tag 29
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=74"}
+              %span.mask
+              %img{:alt => "윤서형", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5cbf421e-e4da-4987-8364-d40fc4bd6d72-2-14.앤어거스트-윤서형.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=74"} 윤서형
+          %p.agency &amp;August
+          %p.voteCount 73558
+        %li.last
+          .thumb
+            %span.tag 30
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=169"}
+              %span.mask
+              %img{:alt => "김서경", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/874fd9ff-31e6-46ac-99d2-a003d9b4f51b-5-8-개인-연습생-김서경.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=169"} 김서경
+          %p.agency 개인 연습생
+          %p.voteCount 72474
+      / //12위~30위 랭킹 리스트
+      / 31위~50위 랭킹 리스트
+      %p.away11.rank31to50
+        %span 31위~50위
+      %ol.away11.rank31to50{:olno => "2"}
+        %li
+          .thumb
+            %span.tag 31
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=142"}
+              %span.mask
+              %img{:alt => "강경원", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7c960bd7-2c6b-471d-8a61-7e167ab6329a-4-1-플레디스-강경원.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=142"} 강경원
+          %p.agency PLEDIS
+          %p.voteCount 71200
+        %li
+          .thumb
+            %span.tag 32
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=47"}
+              %span.mask
+              %img{:alt => "이수현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1e4c5b2e-040c-4ee9-9c88-7f90b1096a47-8.SS-이수현.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=47"} 이수현
+          %p.agency SS
+          %p.voteCount 65610
+        %li
+          .thumb
+            %span.tag 33
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=65"}
+              %span.mask
+              %img{:alt => "김태하", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/d2c43d90-20c4-4537-8571-a0ba67a916cd-2-3.스타쉽-김태하.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=65"} 김태하
+          %p.agency 스타쉽
+          %p.voteCount 64149
+        %li
+          .thumb
+            %span.tag 34
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=71"}
+              %span.mask
+              %img{:alt => "김민지", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dc5f847d-c102-4080-8997-6de8da5b4016-2-8.케이코닉-김민지.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=71"} 김민지
+          %p.agency Kconic
+          %p.voteCount 63132
+        %li
+          .thumb
+            %span.tag 35
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=168"}
+              %span.mask
+              %img{:alt => "김시현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/c70f54bc-ce88-422d-b84a-0132205102f2-5-9-개인-연습생-김시현.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=168"} 김시현
+          %p.agency 개인 연습생
+          %p.voteCount 60090
+        %li
+          .thumb
+            %span.tag 36
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=219"}
+              %span.mask
+              %img{:alt => "황인선", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/925ffefd-a26f-4b50-8314-40227b3900f8-7-2-쇼웍스-황인선.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=219"} 황인선
+          %p.agency 쇼웍스
+          %p.voteCount 59736
+        %li
+          .thumb
+            %span.tag 37
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=70"}
+              %span.mask
+              %img{:alt => "김형은", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4cc85901-be8f-4f67-856f-fa4d278c3c7e-2-9.케이코닉-김형은.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=70"} 김형은
+          %p.agency Kconic
+          %p.voteCount 59191
+        %li
+          .thumb
+            %span.tag 38
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=163"}
+              %span.mask
+              %img{:alt => "이윤서", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4937687d-b12f-4254-bbe8-33d3c803180b-5-2-CUBE-이윤서.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=163"} 이윤서
+          %p.agency CUBE
+          %p.voteCount 56821
+        %li
+          .thumb
+            %span.tag 39
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=171"}
+              %span.mask
+              %img{:alt => "강시원", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f64d9b15-f83e-42e3-b728-b374fef9a424-5-6-개인-연습생-강시원.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=171"} 강시원
+          %p.agency 개인 연습생
+          %p.voteCount 56224
+        %li
+          .thumb
+            %span.tag 40
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=46"}
+              %span.mask
+              %img{:alt => "이해인", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dc037873-44ef-44e5-8238-f98c628d23ea-9.SS-이해인.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=46"} 이해인
+          %p.agency SS
+          %p.voteCount 52494
+        %li
+          .thumb
+            %span.tag 41
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=102"}
+              %span.mask
+              %img{:alt => "오서정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/de355c9a-43f6-4597-915d-346c82094bef-3-16-M&H-오서정.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=102"} 오서정
+          %p.agency M&amp;H
+          %p.voteCount 51381
+        %li
+          .thumb
+            %span.tag 42
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=140"}
+              %span.mask
+              %img{:alt => "김민경", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a59921db-b3a6-4c54-ae3d-1f2993d13b37-4-3-플레디스-김민경.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=140"} 김민경
+          %p.agency PLEDIS
+          %p.voteCount 50652
+        %li
+          .thumb
+            %span.tag 43
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=221"}
+              %span.mask
+              %img{:alt => "박해영", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/78ca0f15-0600-47c6-8d93-979241e7cfe0-7-4-투에이블-컴퍼니-박해영.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=221"} 박해영
+          %p.agency 투에이블 컴퍼니
+          %p.voteCount 47662
+        %li
+          .thumb
+            %span.tag 44
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=43"}
+              %span.mask
+              %img{:alt => "정해림", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dd925ac5-a477-4e00-9b4b-3b87b47986cd-4.판타지오-정해림.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=43"} 정해림
+          %p.agency 판타지오
+          %p.voteCount 43960
+        %li
+          .thumb
+            %span.tag 45
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=44"}
+              %span.mask
+              %img{:alt => "이수민", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/6e0ff92a-ea78-46c0-9ca0-dc9ebcdb8392-3.판타지오-이수민.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=44"} 이수민
+          %p.agency 판타지오
+          %p.voteCount 43932
+        %li
+          .thumb
+            %span.tag 46
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=173"}
+              %span.mask
+              %img{:alt => "박가을", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1ceca161-72dc-41e1-8cdb-cf22b9a9276b-5-11-Astory-박가을.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=173"} 박가을
+          %p.agency Astory
+          %p.voteCount 41873
+        %li
+          .thumb
+            %span.tag 47
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=68"}
+              %span.mask
+              %img{:alt => "이진희", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/3c80e066-f2fe-4f46-bba8-1035244619f0-2-11.케이코닉-이진희.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=68"} 이진희
+          %p.agency Kconic
+          %p.voteCount 41286
+        %li
+          .thumb
+            %span.tag 48
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=49"}
+              %span.mask
+              %img{:alt => "아리요시 리사", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/58a8835a-53b0-48ff-989f-b37322138e3b-10.티핑-아리요시리사(수정).png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=49"} 아리요시 리사
+          %p.agency 티핑
+          %p.voteCount 41244
+        %li.last
+          .thumb
+            %span.tag 49
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=69"}
+              %span.mask
+              %img{:alt => "박세희", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/25f2c15d-7f6b-4929-95a2-b8c773aaeeac-2-10.케이코닉-박세희.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=69"} 박세희
+          %p.agency Kconic
+          %p.voteCount 41203
+        %li.last
+          .thumb
+            %span.tag 50
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=41"}
+              %span.mask
+              %img{:alt => "추예진", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/156d0843-545d-4887-ae99-503f8c0f5c81-6.판타지오-추예진.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=41"} 추예진
+          %p.agency 판타지오
+          %p.voteCount 41048
+      / //31위~50위 랭킹 리스트
+      / 51위~70위 랭킹 리스트
+      %p.away11.rank51to70
+        %span 51위~70위
+      %ol.away11.rank51to70{:olno => "3"}
+        %li
+          .thumb
+            %span.tag 51
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=170"}
+              %span.mask
+              %img{:alt => "김민정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5590e077-a97e-462c-bb90-dad6df11f64c-5-7-개인-연습생-김민정.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=170"} 김민정
+          %p.agency 개인 연습생
+          %p.voteCount 39033
+        %li
+          .thumb
+            %span.tag 52
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=99"}
+              %span.mask
+              %img{:alt => "김연경", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/b5c6e84f-8e75-416c-bb47-944302f15f5b-3-7-마이다스-김연경.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=99"} 김연경
+          %p.agency MIDAS
+          %p.voteCount 38506
+        %li
+          .thumb
+            %span.tag 53
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=66"}
+              %span.mask
+              %img{:alt => "임정민", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/323f922f-43c1-46b9-9ed5-47b47f87c3e1-2-6.야마앤핫칙스-임정민.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=66"} 임정민
+          %p.agency YAMA&amp;HOTCHICKS
+          %p.voteCount 36760
+        %li
+          .thumb
+            %span.tag 54
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=67"}
+              %span.mask
+              %img{:alt => "박하이", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a3219a6d-fddf-4d66-ad6f-eef534ed3fb2-2-7.케니스타-박하이.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=67"} 박하이
+          %p.agency 케니스타
+          %p.voteCount 34459
+        %li
+          .thumb
+            %span.tag 55
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=167"}
+              %span.mask
+              %img{:alt => "성혜민", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/546823c3-1089-493e-a168-17ff917f55a0-5-10-개인-연습생-성혜민.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=167"} 성혜민
+          %p.agency 개인 연습생
+          %p.voteCount 33641
+        %li
+          .thumb
+            %span.tag 56
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=144"}
+              %span.mask
+              %img{:alt => "황수연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/c15a79df-d6d9-4b87-b4a3-b499474e7e71-4-14-해피페이스-황수연.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=144"} 황수연
+          %p.agency Happyface
+          %p.voteCount 30858
+        %li
+          .thumb
+            %span.tag 57
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=54"}
+              %span.mask
+              %img{:alt => "유수아", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a9ba3cde-1bb0-4a3d-9fde-f86aaaff83ef-13.MJ-유수아.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=54"} 유수아
+          %p.agency MJ
+          %p.voteCount 30609
+        %li
+          .thumb
+            %span.tag 58
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=64"}
+              %span.mask
+              %img{:alt => "심채은", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/0272dccd-1819-4650-965e-d97748b69cf7-2-4.스타쉽-심채은.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=64"} 심채은
+          %p.agency 스타쉽
+          %p.voteCount 30347
+        %li
+          .thumb
+            %span.tag 59
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=201"}
+              %span.mask
+              %img{:alt => "강시라", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/a52e4ebc-6c60-43ed-b162-3f2c9a5c19fe-6-17-청춘뮤직-강시라.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=201"} 강시라
+          %p.agency 청춘뮤직
+          %p.voteCount 29703
+        %li
+          .thumb
+            %span.tag 60
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=93"}
+              %span.mask
+              %img{:alt => "강시현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/ea3f1e87-ab83-426f-b66c-ae640e679061-3-4-스타제국-강시현.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=93"} 강시현
+          %p.agency Star Empire
+          %p.voteCount 29124
+        %li
+          .thumb
+            %span.tag 61
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=143"}
+              %span.mask
+              %img{:alt => "황아영", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f73d1386-5096-4979-aa30-94ab0794d85b-4-15-해피페이스-황아영.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=143"} 황아영
+          %p.agency Happyface
+          %p.voteCount 28223
+        %li
+          .thumb
+            %span.tag 62
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=224"}
+              %span.mask
+              %img{:alt => "김다정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4a3e376c-9abe-4caf-9006-03e451b4ac90-7-7-안녕뮤직-김다정.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=224"} 김다정
+          %p.agency 안녕뮤직
+          %p.voteCount 28000
+        %li
+          .thumb
+            %span.tag 63
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=190"}
+              %span.mask
+              %img{:alt => "안유미", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/40ca79d7-640c-4e2b-8e3f-cd0963a7c527-6-8-블레싱-안유미.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=190"} 안유미
+          %p.agency 블레싱
+          %p.voteCount 27793
+        %li
+          .thumb
+            %span.tag 64
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=150"}
+              %span.mask
+              %img{:alt => "김시현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7a261e4a-bc2f-4e5f-9be4-af71dc3c0ee2-4-8-해피페이스-김시현.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=150"} 김시현
+          %p.agency Happyface
+          %p.voteCount 27656
+        %li
+          .thumb
+            %span.tag 65
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=48"}
+              %span.mask
+              %img{:alt => "서혜린", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/41375cc6-7fd0-4c7a-a970-fa2d9a565732-7.SS-서혜린.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=48"} 서혜린
+          %p.agency SS
+          %p.voteCount 27333
+        %li
+          .thumb
+            %span.tag 66
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=220"}
+              %span.mask
+              %img{:alt => "황리유", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/eec9441b-38be-4f35-bad3-2d5d2eaf8120-7-3-nh-emg-황리유.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=220"} 황리유
+          %p.agency nh emg
+          %p.voteCount 27042
+        %li
+          .thumb
+            %span.tag 67
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=194"}
+              %span.mask
+              %img{:alt => "황세영", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f81e6fc4-4975-49e7-80a5-d9a61e552d4c-6-12-LOUDers-황세영.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=194"} 황세영
+          %p.agency LOUDers
+          %p.voteCount 26981
+        %li
+          .thumb
+            %span.tag 68
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=147"}
+              %span.mask
+              %img{:alt => "김지성", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/39d0f5f7-421a-47f4-90a6-33692e4645f9-4-11-해피페이스-김지성.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=147"} 김지성
+          %p.agency Happyface
+          %p.voteCount 26566
+        %li.last
+          .thumb
+            %span.tag 69
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=166"}
+              %span.mask
+              %img{:alt => "김수현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/98bc65d0-5950-42f2-b342-1d3b10f9ec4a-5-5-미스틱-김수현.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=166"} 김수현
+          %p.agency 미스틱
+          %p.voteCount 26139
+        %li.last
+          .thumb
+            %span.tag 70
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=198"}
+              %span.mask
+              %img{:alt => "최은빈", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/e0fd80e4-4c2e-4b65-8229-c028c0906be3-6-15-넥스타-최은빈.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=198"} 최은빈
+          %p.agency 넥스타
+          %p.voteCount 25659
+      / //51위~70위 랭킹 리스트
+      / 71위~90위 랭킹 리스트
+      %p.away11.rank71to90
+        %span 71위~90위
+      %ol.away11.rank71to90{:olno => "4"}
+        %li
+          .thumb
+            %span.tag 71
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=174"}
+              %span.mask
+              %img{:alt => "박민지", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/48734b09-de9a-4ae1-b8b0-a6c44df7e183-5-14-매직프레쉬-컴퍼니-박민지.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=174"} 박민지
+          %p.agency 매직프레쉬 컴퍼니
+          %p.voteCount 24772
+        %li
+          .thumb
+            %span.tag 72
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=222"}
+              %span.mask
+              %img{:alt => "함예지", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/8d8cecfd-ea5b-4a8e-af18-86131f677e1f-7-5-스타플레닛-함예지.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=222"} 함예지
+          %p.agency 스타플레닛
+          %p.voteCount 24485
+        %li
+          .thumb
+            %span.tag 73
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=55"}
+              %span.mask
+              %img{:alt => "김미소", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/31dcc31c-3d5a-4c73-b881-a0634b57b0df-12.MJ-김미소.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=55"} 김미소
+          %p.agency MJ
+          %p.voteCount 24114
+        %li
+          .thumb
+            %span.tag 74
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=149"}
+              %span.mask
+              %img{:alt => "김우정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/0f3acbda-2e58-4fda-aa10-9c3a04d9801e-4-9-해피페이스-김우정.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=149"} 김우정
+          %p.agency Happyface
+          %p.voteCount 23795
+        %li
+          .thumb
+            %span.tag 75
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=53"}
+              %span.mask
+              %img{:alt => "허샘", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/2692ffb7-88cd-4e89-8c7b-60fe33435f75-14.MJ-허샘.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=53"} 허샘
+          %p.agency MJ
+          %p.voteCount 23722
+        %li
+          .thumb
+            %span.tag 76
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=94"}
+              %span.mask
+              %img{:alt => "한지연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/7f7b3257-3bf7-4fb6-8f3c-16dcb0d9949a-3-12-마이다스-한지연.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=94"} 한지연
+          %p.agency MIDAS
+          %p.voteCount 23566
+        %li
+          .thumb
+            %span.tag 77
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=101"}
+              %span.mask
+              %img{:alt => "니와 시오리", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/30f0a507-1bb4-4628-ba2b-43985ec932b7-3-13-마제스티-니와시오리.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=101"} 니와 시오리
+          %p.agency MAJESTY
+          %p.voteCount 23045
+        %li
+          .thumb
+            %span.tag 78
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=223"}
+              %span.mask
+              %img{:alt => "편강윤", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/fdb1149a-3f62-4edb-853e-9840f4d4b15c-7-6-M2-project-편강윤.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=223"} 편강윤
+          %p.agency M2 project
+          %p.voteCount 21908
+        %li
+          .thumb
+            %span.tag 79
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=145"}
+              %span.mask
+              %img{:alt => "이수현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/c9804b51-68ad-40c8-a773-edcaa4394b75-4-13-해피페이스-이수현.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=145"} 이수현
+          %p.agency Happyface
+          %p.voteCount 21762
+        %li
+          .thumb
+            %span.tag 80
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=146"}
+              %span.mask
+              %img{:alt => "김홍은", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/dc0034ec-d9d7-45d1-b087-d6d7d1aa1973-4-12-해피페이스-김홍은.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=146"} 김홍은
+          %p.agency Happyface
+          %p.voteCount 21598
+        %li
+          .thumb
+            %span.tag 81
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=193"}
+              %span.mask
+              %img{:alt => "김도희", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5d004cdc-3456-4450-b69b-b722f5b4597f-6-5-블레싱-김도희.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=193"} 김도희
+          %p.agency 블레싱
+          %p.voteCount 21485
+        %li
+          .thumb
+            %span.tag 82
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=176"}
+              %span.mask
+              %img{:alt => "김설아", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/395c9535-5687-4567-9b5b-2f2145b421a2-5-15-이큐브-미디어-김설아.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=176"} 김설아
+          %p.agency 이큐브 미디어
+          %p.voteCount 21394
+        %li
+          .thumb
+            %span.tag 83
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=189"}
+              %span.mask
+              %img{:alt => "오한아름", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/81cb14fc-9b2e-4853-ba3d-5085738cf9ad-6-9-블레싱-오한아름.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=189"} 오한아름
+          %p.agency 블레싱
+          %p.voteCount 21245
+        %li
+          .thumb
+            %span.tag 84
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=92"}
+              %span.mask
+              %img{:alt => "김윤지", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/10a51324-a87c-49ea-a096-9b5938b95b35-3-5-스타제국-김윤지.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=92"} 김윤지
+          %p.agency Star Empire
+          %p.voteCount 21206
+        %li
+          .thumb
+            %span.tag 85
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=195"}
+              %span.mask
+              %img{:alt => "이서정", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/1c9593bb-4862-4f49-9f80-9a91684e7487-6-11-LOUDers-이서정.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=195"} 이서정
+          %p.agency LOUDers
+          %p.voteCount 21018
+        %li
+          .thumb
+            %span.tag 86
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=148"}
+              %span.mask
+              %img{:alt => "김자연", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/81399af7-a945-4df2-b7ad-b351c3acdb35-4-10-해피페이스-김자연.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=148"} 김자연
+          %p.agency Happyface
+          %p.voteCount 20932
+        %li
+          .thumb
+            %span.tag 87
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=97"}
+              %span.mask
+              %img{:alt => "이채린", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/2bba1cbe-ee70-4df3-a8c4-3e0a7a431a2a-3-9-마이다스-이채린.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=97"} 이채린
+          %p.agency MIDAS
+          %p.voteCount 20868
+        %li
+          .thumb
+            %span.tag 88
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=96"}
+              %span.mask
+              %img{:alt => "최유빈", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/5006bc10-75a3-4351-a8bb-9c6bf9340a77-3-10-마이다스-최유빈.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=96"} 최유빈
+          %p.agency MIDAS
+          %p.voteCount 20829
+        %li.last
+          .thumb
+            %span.tag 89
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=95"}
+              %span.mask
+              %img{:alt => "캐서린 리", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/bb71b15c-68b4-4716-9670-b4e2207699af-3-11-마이다스-캐서린리.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=95"} 캐서린 리
+          %p.agency MIDAS
+          %p.voteCount 20807
+        %li.last
+          .thumb
+            %span.tag 90
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=98"}
+              %span.mask
+              %img{:alt => "신혜현", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/f160e923-4ac3-4cdb-8edf-c89d0275a615-3-8-마이다스-신혜현.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=98"} 신혜현
+          %p.agency MIDAS
+          %p.voteCount 20752
+      / //71위~90위 랭킹 리스트
+      / 91위~101위 랭킹 리스트
+      %p.away11.rank91to101
+        %span 91위~101위
+      %ol.away11.rank91to101{:olno => "5"}
+        %li
+          .thumb
+            %span.tag 91
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=175"}
+              %span.mask
+              %img{:alt => "남수진", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/03190a39-fe78-403f-afe3-9981ac7c4ba0-5-13-매직프레쉬-컴퍼니-남수진.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=175"} 남수진
+          %p.agency 매직프레쉬 컴퍼니
+          %p.voteCount 20189
+        %li
+          .thumb
+            %span.tag 92
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=192"}
+              %span.mask
+              %img{:alt => "김솔이", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/737049c9-3753-4236-b22c-e6c790b8583a-6-6-블레싱-김솔이.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=192"} 김솔이
+          %p.agency 블레싱
+          %p.voteCount 19899
+        %li
+          .thumb
+            %span.tag 93
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=73"}
+              %span.mask
+              %img{:alt => "이세흔", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/00388096-7d1c-4814-b2b7-baddfb0b7ba1-2-13.넥스트레벨-이세흔.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=73"} 이세흔
+          %p.agency NEXTLEVEL
+          %p.voteCount 18731
+        %li
+          .thumb
+            %span.tag 94
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=191"}
+              %span.mask
+              %img{:alt => "방준희", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/09d12de6-6482-4077-afc2-64a592c26bb7-6-7-블레싱-방준희.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=191"} 방준희
+          %p.agency 블레싱
+          %p.voteCount 18579
+        %li
+          .thumb
+            %span.tag 95
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=226"}
+              %span.mask
+              %img{:alt => "윤유담", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/297fafa1-c0f5-43a4-854f-291080535587-7-9-FM-윤유담.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=226"} 윤유담
+          %p.agency FM
+          %p.voteCount 18206
+        %li
+          .thumb
+            %span.tag 96
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=196"}
+              %span.mask
+              %img{:alt => "김보선", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/78d746ce-deb9-4e03-a685-b938468d78c4-6-10-LOUDers-김보선.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=196"} 김보선
+          %p.agency LOUDers
+          %p.voteCount 18034
+        %li
+          .thumb
+            %span.tag 97
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=199"}
+              %span.mask
+              %img{:alt => "문현주", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/4239e64a-108d-4d90-b6f5-169536ad80d2-6-14-넥스타-문현주.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=199"} 문현주
+          %p.agency 넥스타
+          %p.voteCount 16736
+        %li.out
+          .thumb
+            %span.tag 하차
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=225"}
+              %span.mask
+              %img{:alt => "김하윤", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/ec22c99c-05be-40c1-a9a4-1ba9a74b6c3a-7-8-101-DOORS-김하윤.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=225"} 김하윤
+          %p.agency 101 DOORS
+          %p.voteCount
+        %li.out
+          .thumb
+            %span.tag 하차
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=200"}
+              %span.mask
+              %img{:alt => "마은진", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/200fdc40-3d1f-498f-8bc1-aa31af403a09-6-16-클리어-컴퍼니-마은진.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=200"} 마은진
+          %p.agency 클리어 컴퍼니
+          %p.voteCount
+        %li.out
+          .thumb
+            %span.tag 하차
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=172"}
+              %span.mask
+              %img{:alt => "임경하", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/fed7b9b8-6ece-4eda-aa08-53020f147bd1-5-12-Astory-임경하.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=172"} 임경하
+          %p.agency Astory
+          %p.voteCount
+        %li.out.last
+          .thumb
+            %span.tag 하차
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=50"}
+              %span.mask
+              %img{:alt => "임효선", :src => "http://static.global.mnet.com/data/od/images/globalmnet/program/p101/photo/131x131/010919de-6c3c-4932-8149-8ed6e2c0a496-11.초록별-임효선.png"}/
+          %p.name
+            %a{:href => "/produce101/page/p101.page.profile.dbp?id=50"} 임효선
+          %p.agency CMG초록별
+          %p.voteCount
+      / 콘텐츠 본문 영역 끝
+    / 콘텐츠 왼쪽 부분 끝

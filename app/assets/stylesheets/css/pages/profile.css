@@ -189,6 +189,7 @@
 }
 
 /*Table*/
+/*
 .profile .table {
 	background: #fff;
 }
@@ -198,7 +199,7 @@
 }
 
 .profile .table td {
-	/*vertical-align: middle;*/
+	//vertical-align: middle;
 }
 
 .profile .table h3 {
@@ -206,10 +207,11 @@
 	font-size: 16px;
 	margin-bottom: 5px;
 }
-
+*/
 /*.profile .table a {*/
 /*	color: #555;*/
 /*}*/
+/*
 
 .profile .table-search-v2 td img {
 	width: 70px;
@@ -226,6 +228,7 @@
 .profile .table > tfoot > tr > td {
 	padding: 11px;
 }
+*/
 
 /*Comment*/
 .profile .comment {

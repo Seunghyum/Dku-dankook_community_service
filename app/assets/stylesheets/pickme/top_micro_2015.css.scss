@@ -72,9 +72,16 @@ button:disabled, button.disabled {cursor:default; opacity:.5;filter:alpha(opacit
 /* gnb */
 .gnb_wrap { position:absolute; right:0; top:0; width:100%; padding-top:6px;height:25px; z-index:10; background:none;}
 #gnb {float:right;}
-#gnb .mnet, #gnb button, #gnb .mwave { background:url('http://static.global.mnet.com/data/od/images/globalmnet/common/common_micro_v2015.png') no-repeat right -17px;overflow:hidden; float:left; text-align:left; text-indent:-1000em; }
-#gnb .mnet { margin:4px 5px 0 0; width:35px; height:12px; background-position:0 -60px; }
-#gnb .mnet:hover { background-position:0 -40px; }
+#gnb .mnet, #gnb button, #gnb .mwave { background: image_url("dku/1.png") no-repeat;overflow:hidden; float:left; text-align:left; text-indent:-1000em;
+    background-size: contain;
+    background-position: center center;
+}
+#gnb .mnet {
+    margin: 0px 5px 0 0;
+    width: 37px;
+    height: 18px;
+ }
+// #gnb .mnet:hover { background-position:0 -40px; }
 #gnb .mwave { margin:3px 5px 0 0; width:46px; height:13px; background-position:0 -20px; }
 #gnb .mwave:hover { background-position:0 0; }
 #gnb button.login { width:46px; height:19px; background-position:-100px -40px; }
@@ -94,8 +101,8 @@ button:disabled, button.disabled {cursor:default; opacity:.5;filter:alpha(opacit
 #gnb dd.language {background:none;}
 
 .gnb_wrap.dark { background:none;}
-.dark #gnb .mnet {background-position:0 -60px;}
-.dark #gnb .mnet:hover {background-position:0 -40px;}
+// .dark #gnb .mnet {background-position:0 -60px;}
+// .dark #gnb .mnet:hover {background-position:0 -40px;}
 .dark #gnb .mwave {background-position:0 -20px;}
 .dark #gnb .mwave:hover {background-position:0 0;}
 .dark #gnb button.login {background-position:-100px 0;}
@@ -220,7 +227,7 @@ button:disabled, button.disabled {cursor:default; opacity:.5;filter:alpha(opacit
 #footerGlabal_2016 .notice_wrap .notice_cont .notice_list li a {color:#999999;}
 
 #footerGlabal_2016 .footerWrap .logoWrap {float:left;padding-top:27px;}
-#footerGlabal_2016 .footerWrap .logoWrap .logo {display:block;float:none !important;width:91px;height:46px;margin:0;text-indent:-99999px;background:url('http://static.global.mnet.com/data/od/images/globalmnet/common/footer_logo.png') no-repeat;}
+#footerGlabal_2016 .footerWrap .logoWrap .logo {display:block;float:none !important;width:250px; height:70px;margin:0;text-indent:-99999px;background: image_url("dku/250px_4.png" ) no-repeat;}
 #footerGlabal_2016 .footerWrap .footerCont {float:left;margin-left:55px;padding-top:27px;}
 #footerGlabal_2016 .footerWrap .footerCont .footerNavi {overflow:hidden;width:830px;}
 #footerGlabal_2016 .footerWrap .footerCont .footerNavi li {float:left;padding-top:6px;}

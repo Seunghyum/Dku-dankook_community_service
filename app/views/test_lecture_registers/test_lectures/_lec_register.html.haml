@@ -1,11 +1,11 @@
 - @rehearsal_lectures.each do |rehearsal_lecture|
-  %tr{:id => "click_list#{rehearsal_lecture.id}", :style => "cursor: pointer;"}
-    %td.left_line.ta_c.numbering= rehearsal_lecture.lnum
-    %td.ta_c= rehearsal_lecture.divide
-    %td.ta_l= rehearsal_lecture.name
-    %td.ta_c= rehearsal_lecture.score
-    %td.ta_c= rehearsal_lecture.teacher
-    %td.ta_l= rehearsal_lecture.ldate
-    %td.ta_c= rehearsal_lecture.counting
-    %td.ta_c= rehearsal_lecture.limit_num
+  %tr{:id => "#{rehearsal_lecture.id}", :class => "clickable", data: {id: "click_list#{rehearsal_lecture.id}"}, :style => "cursor: pointer;"}
+    %td.left_line.ta_c.numbering.lnum= rehearsal_lecture.lnum
+    %td.ta_c.divide= rehearsal_lecture.divide
+    %td.ta_l.name= rehearsal_lecture.name
+    %td.ta_c.score= rehearsal_lecture.score
+    %td.ta_c.teacher= rehearsal_lecture.teacher
+    %td.ta_l.ldate= rehearsal_lecture.ldate
+    %td.ta_c.counting= rehearsal_lecture.counting
+    %td.ta_c.limit_num= rehearsal_lecture.limit_num
     %td.ta_c
