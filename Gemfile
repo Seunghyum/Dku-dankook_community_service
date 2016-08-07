@@ -44,6 +44,8 @@ gem "mini_magick"
 gem 'to_xls-rails'
 gem 'fog'
 gem 'fog-aws'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 # UI
 gem 'sass-rails', '~> 5.0'

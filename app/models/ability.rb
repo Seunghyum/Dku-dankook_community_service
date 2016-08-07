@@ -19,6 +19,7 @@ class Ability
         comment.user_id == user.id
       end
     elsif user.role == '일반대표' || user.role == '학생'
+      can :read, BookList
       can [:create, :read, :upvote, :downvote], [Post, Comment, LectureEstimate, Locker]
       can [:update, :destroy], Post do |post|
         post.user_id == user.id
@@ -39,6 +40,7 @@ class Ability
         cannot [:index, :show], Locker
         can :home, Locker
       end
+      can :read, [BookList, Book]
       can [:create, :read, :upvote, :downvote], [Post, Comment, LectureEstimate]
       can [:update, :destroy], Post do |post|
         post.user_id == user.id

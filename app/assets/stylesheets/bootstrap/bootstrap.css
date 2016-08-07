@@ -1595,11 +1595,17 @@ pre code {
   }
 }
 @media (min-width: 992px) {
+  .container.body-container{
+    min-height: 600px;
+  }
   .container {
     width: 970px;
   }
 }
 @media (min-width: 1200px) {
+  .container.body-container{
+    min-height: 600px;
+  }
   .container {
     width: 1170px;
   }

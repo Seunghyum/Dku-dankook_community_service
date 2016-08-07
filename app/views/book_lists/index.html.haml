@@ -1,6 +1,7 @@
-.search-block.parallaxBg{:style => "background-position: 50% 16px;"}
+.search-block.parallaxBg{:style => "background: url(#{image_url 'enactus/enactus_bg.jpeg'}); background-position: center center; background-size: cover;  background-repeat: no-repeat;"}
   .container
     .col-md-6.col-md-offset-3
+      %button.btn-u.btn-u-md.visible-xs.rounded-4x{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button", style: "margin: auto; margin-bottom: 18px;"} 일정 안내
       %div
         = image_tag "enactus/logo.png", style: "height: 50px;display: inline-block;vertical-align: middle; margin-bottom: 30px;"
         %h1{ style: "display: inline-block;vertical-align: middle;"}
@@ -15,26 +16,15 @@
               %span.input-group-btn
                 = button_tag(type: 'submit', class: "btn-u btn-u-lg") do
                   %i.fa.fa-search
-      %button.btn-u.btn-u-md 판매 의뢰인 필독사항
-      .alert.alert-success.alert-dismissible.fade.in{:role => "alert", style: "left: 20px;"}
-        %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
-          %span{"aria-hidden" => "true"} ×
-        %h4
-          %strong 일정 안내
-        판매 의뢰 기간 : 8월 13 ~ 9월 7일
-        %br
-        구매 기간 : 9월 5일 ~ 9월 7일
-        %br
-        장소 : 단국대학교 정문
-        %br
-        방법 : 행사기간중 판매 의뢰 및 구매
-        %br
-        문의 : 박규헌 010-3550-3558
+      = link_to "판매 의뢰인 필독사항", book_lists_path(format: "pdf"), class: "btn-u btn-u-md"
+
 .container
   %center
-    = link_to "http://blog.naver.com/enactus", class: "btn-u btn-u-md btn-u-yellow", target: "_blank" do
+    = link_to "http://blog.naver.com/enactus", class: "btn-u btn-u-md btn-u-yellow rounded-4x", target: "_blank" do
       인액터스 11기 회원모집
       %i.fa.fa-external-link
+    %br
+    %br
     - if can? :create, @book_lists.first
       = link_to '새 책 등록하기', new_book_path, class: "btn-u margin-bottom-10"
       = link_to '책 리스트 다운로드', book_lists_path(format: "xlsx"), class: "btn-u btn-u-yellow margin-bottom-10" if can? :create, @book_lists.first
@@ -42,7 +32,22 @@
     %h4.text-danger.text-center 검색한 책이 없습니다.
   - else
     .row
-      .col-md-offset-2.col-md-8
+      .col-md-2
+        .alert.alert-success.alert-dismissible.hidden-xs.fade.in{:role => "alert", style: "left: 20px; top: inherit;"}
+          %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+            %span{"aria-hidden" => "true"} ×
+          %h4
+            %strong 일정 안내
+          판매 의뢰 기간 : 8월 13 ~ 9월 7일
+          %br
+          구매 기간 : 9월 5일 ~ 9월 7일
+          %br
+          장소 : 단국대학교 정문
+          %br
+          방법 : 행사기간중 판매 의뢰 및 구매
+          %br
+          문의 : 박규헌 010-3550-3558
+      .col-md-8
         .panel.panel-blue.margin-bottom-40
           .panel-heading
             %h3.panel-title.text-center
@@ -59,3 +64,27 @@
                 =render 'book_lists/list'
             #paginator.text-center
               = paginate @book_lists, :param_name => 'page', remote: true
+/ Modal
+#myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h4#myModalLabel.modal-title
+          %strong 일정 안내
+      .modal-body
+        판매 의뢰 기간 : 8월 13 ~ 9월 7일
+        %br
+        구매 기간 : 9월 5일 ~ 9월 7일
+        %br
+        장소 : 단국대학교 정문
+        %br
+        방법 : 행사기간중 판매 의뢰 및 구매
+        %br
+        문의 : 박규헌 010-3550-3558
+        %br
+        %br
+        .modal-footer
+          .text-right
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

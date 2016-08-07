@@ -166,7 +166,7 @@ html, body {background:#fcfcfc url('http://static.global.mnet.com/data/od/images
 .top a {display:block;}*/
 
 /* 메인 - 투표하기 */
-.voteIntro{position:relative;display:block;border-top:2px solid #F4C4B6;border-bottom:2px solid #F4C4B6;background:url('http://static.global.mnet.com/data/od/images/produce101/bg_voteIntro.png') 0 0 no-repeat;height:80px;}
+.voteIntro{position:relative;display:block;border-top:2px solid #F4C4B6;border-bottom:2px solid #F4C4B6;background: image_url("pickme/pickme_banner.jpg") 0 0 no-repeat;height:80px;}
 .voteIntro ul{position:relative;display:block;margin-left:452px;color:#BF7D6B;padding-top:11px;}
 .voteIntro ul li{line-height:20px;background:url('http://static.global.mnet.com/data/od/images/produce101/bu_dot.gif') 0 8px no-repeat;padding-left:11px;}
 .voteIntro ul li span{font-weight:bold;}
@@ -860,7 +860,7 @@ p.away11.rank51to61{background:url('http://static.global.mnet.com/data/od/images
 p.rank12to35 span{background:url('http://static.global.mnet.com/data/od/images/produce101/txt_ranking2.png') 0 0 no-repeat;}
 
 /*2016-04-08 메인 최종 버젼화*/
-.voteIntro{position:relative;display:block;border-top:2px solid #F4C4B6;border-bottom:2px solid #F4C4B6;background:url('http://static.global.mnet.com/data/od/images/produce101/bg_voteIntro2.jpg') 0 0 no-repeat;height:410px;}
+.voteIntro{position:relative;display:block;border-top:2px solid #F4C4B6;border-bottom:2px solid #F4C4B6;background: image_url("pickme/pickme_banner.jpg") 0 0 no-repeat;height:410px;}
 .voteIntro ul{display:none;}
 #qmset .myVote{display:none}
 a.voteBtn{display:none;}
