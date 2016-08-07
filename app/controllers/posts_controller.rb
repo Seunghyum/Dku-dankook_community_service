@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
   def index
     # @posts = @board.posts.all.page(params[:page]).per(20)
-    @posts = @board.posts.order.order("created_at DESC").search(params[:search]).page(params[:page]).per(20)
+    @posts = @board.posts.order("created_at DESC").search(params[:search]).page(params[:page]).per(20)
     respond_to do |format|
       format.js
       format.html

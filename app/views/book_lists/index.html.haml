@@ -1,10 +1,12 @@
 .search-block.parallaxBg{:style => "background-position: 50% 16px;"}
   .container
     .col-md-6.col-md-offset-3
-      %h1
-        인액터스
-        %span.color-green 중고책
-        검색
+      %div
+        = image_tag "enactus/logo.png", style: "height: 50px;display: inline-block;vertical-align: middle; margin-bottom: 30px;"
+        %h1{ style: "display: inline-block;vertical-align: middle;"}
+          인액터스
+          %span{style: "color: yellow;"} 중고책
+          검색
       = form_tag book_lists_path, method: "get" do
         .row
           .col-md-12.col-xs-12
@@ -13,9 +15,26 @@
               %span.input-group-btn
                 = button_tag(type: 'submit', class: "btn-u btn-u-lg") do
                   %i.fa.fa-search
-
+      %button.btn-u.btn-u-md 판매 의뢰인 필독사항
+      .alert.alert-success.alert-dismissible.fade.in{:role => "alert", style: "left: 20px;"}
+        %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h4
+          %strong 일정 안내
+        판매 의뢰 기간 : 8월 13 ~ 9월 7일
+        %br
+        구매 기간 : 9월 5일 ~ 9월 7일
+        %br
+        장소 : 단국대학교 정문
+        %br
+        방법 : 행사기간중 판매 의뢰 및 구매
+        %br
+        문의 : 박규헌 010-3550-3558
 .container
   %center
+    = link_to "http://blog.naver.com/enactus", class: "btn-u btn-u-md btn-u-yellow", target: "_blank" do
+      인액터스 11기 회원모집
+      %i.fa.fa-external-link
     - if can? :create, @book_lists.first
       = link_to '새 책 등록하기', new_book_path, class: "btn-u margin-bottom-10"
       = link_to '책 리스트 다운로드', book_lists_path(format: "xlsx"), class: "btn-u btn-u-yellow margin-bottom-10" if can? :create, @book_lists.first

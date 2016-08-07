@@ -35,11 +35,14 @@
               %a{:href => "/produce101/page/p101.page.profile.dbp?id=88"}= prof.name
             %p.agency= prof.belong
             %p.voteCount= prof.get_upvotes.size
+    %br
+    %br
+    %br
       / //1위~11위 랭킹 리스트
       // 12위~30위 랭킹 리스트
-      %p.away11.rank12to30
+      -# %p.away11.rank12to30
         %span 12위~30위
-      %ol.away11.rank12to30{:olno => "1"}
+      -# %ol.away11.rank12to30{:olno => "1"}
         %li
           .thumb
             %span.tag 12
@@ -232,9 +235,9 @@
           %p.voteCount 72474
       / //12위~30위 랭킹 리스트
       / 31위~50위 랭킹 리스트
-      %p.away11.rank31to50
+      -# %p.away11.rank31to50
         %span 31위~50위
-      %ol.away11.rank31to50{:olno => "2"}
+      -# %ol.away11.rank31to50{:olno => "2"}
         %li
           .thumb
             %span.tag 31
@@ -437,9 +440,9 @@
           %p.voteCount 41048
       / //31위~50위 랭킹 리스트
       / 51위~70위 랭킹 리스트
-      %p.away11.rank51to70
+      -# %p.away11.rank51to70
         %span 51위~70위
-      %ol.away11.rank51to70{:olno => "3"}
+      -# %ol.away11.rank51to70{:olno => "3"}
         %li
           .thumb
             %span.tag 51
@@ -642,9 +645,9 @@
           %p.voteCount 25659
       / //51위~70위 랭킹 리스트
       / 71위~90위 랭킹 리스트
-      %p.away11.rank71to90
+      -# %p.away11.rank71to90
         %span 71위~90위
-      %ol.away11.rank71to90{:olno => "4"}
+      -# %ol.away11.rank71to90{:olno => "4"}
         %li
           .thumb
             %span.tag 71
@@ -847,9 +850,9 @@
           %p.voteCount 20752
       / //71위~90위 랭킹 리스트
       / 91위~101위 랭킹 리스트
-      %p.away11.rank91to101
+      -# %p.away11.rank91to101
         %span 91위~101위
-      %ol.away11.rank91to101{:olno => "5"}
+      -# %ol.away11.rank91to101{:olno => "5"}
         %li
           .thumb
             %span.tag 91

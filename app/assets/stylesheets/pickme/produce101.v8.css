@@ -52,7 +52,7 @@ html, body {background:#fcfcfc url('http://static.global.mnet.com/data/od/images
 .navi li.last {background:none;}
 .navi li a {position:relative;display:block;float:left;height:41px;
     color: white;
-    font-size: 15px;
+    font-size: 19px;
     text-decoration: none;
 }
 
@@ -69,14 +69,14 @@ html, body {background:#fcfcfc url('http://static.global.mnet.com/data/od/images
 .navi li.mn_02 dl dd.smn_01 a:hover, .navi li.mn_02 dl dd.smn_01 a.selected{background-position:0 -121px;width:81px;}
 .navi li.mn_02 dl dd.smn_02 a:hover, .navi li.mn_02 dl dd.smn_02 a.selected{background-position:-121px -122px;width:81px;}
 
-.navi li.mn_03 a {background-position:-218px 0;width:100px;}
+.navi li.mn_03 a {background-position:-218px 0;width:120px;}
 .navi li.mn_03 a:hover {background-position:-218px -40px;}
 .navi li.mn_03 a.on {background-position:-218px -40px;width:79px;}
 .navi li.mn_03 dl{left:40px;width:90px;}
 .navi li.mn_03 dl dd.smn_01 a {background-position:0 -140px;width:81px;}
 .navi li.mn_03 dl dd.smn_01 a:hover, .navi li.mn_03 dl dd.smn_01 a.selected{background-position:0 -160px;width:81px;}
 
-.navi li.mn_04 a {background-position:-326px 0;width:61px;}
+.navi li.mn_04 a {background-position:-326px 0;width:150px;}
 .navi li.mn_04 a:hover {background-position:-326px -40px;}
 .navi li.mn_04 a.on {background-position:-326px -40px;width:61px;}
 .navi li.mn_04 dl{left:-127px;width:310px;padding-left:14px;}

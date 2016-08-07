@@ -1,7 +1,7 @@
 .header
   .container
     / Logo
-    %a.logo{:href => "index.html"}
+    = link_to root_path, class: "logo" do
       = image_tag "dku/logo_name.png", alt: "Dku Logo", style: "height: 3rem;"
 
     / End Logo

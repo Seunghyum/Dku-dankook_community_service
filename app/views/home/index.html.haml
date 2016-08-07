@@ -149,21 +149,24 @@
       / End Quick Links
       / Latest News
       .margin-bottom-40
-        - if @best_posts.present?
-          - @best_posts.each_with_index do |best, index|
-            .magazine-mini-news
-              %h3
-                = link_to truncate(best.title), board_post_path(best.board, best)
-                &nbsp;&nbsp;
-                %span
-                  %i.fa.fa-heart.color-red
-                = best.cached_votes_up
-              .post-author
-                %span.badge.rounded-2x{class: "badge-#{@samples.sample}"}= index + 1
-                = " #{(best.user.username.nil? ? best.user.name : best.user.username)}"
-                %span= timeago_tag best.created_at
-              %p= truncate(best.content, length: 30)
-            %hr.hr-md
+        .headline
+          %h2.heading-sm 자유 게시판 TOP 7
+        .row
+          - if @best_posts.present?
+            - @best_posts.each_with_index do |best, index|
+              .magazine-mini-news
+                %h3
+                  = link_to truncate(best.title), board_post_path(best.board, best)
+                  &nbsp;&nbsp;
+                  %span
+                    %i.fa.fa-heart.color-red
+                  = best.cached_votes_up
+                .post-author
+                  %span.badge.rounded-2x{class: "badge-#{@samples.sample}"}= index + 1
+                  = " #{(best.user.username.nil? ? best.user.name : best.user.username)}"
+                  %span= timeago_tag best.created_at
+                %p= truncate(best.content, length: 30)
+              %hr.hr-md
           / End Latest News
         / End Sidebar
     / /container

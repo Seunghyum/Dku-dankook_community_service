@@ -35,9 +35,9 @@
       #header
         .inner_wrap
           %h1
-            = link_to "PROFESSOR 101", pickme_path, style: "background:url(#{image_url "professor-logo.png"}) no-repeat left bottom; background-size: contain;"
+            = link_to "PROFESSOR 101", pickmes_path, style: "background:url(#{image_url "professor-logo.png"}) no-repeat left bottom; background-size: contain;"
           %ul.navi
-            %li.depth1.mn_02.hd-first
+            -# %li.depth1.mn_02.hd-first
               = link_to pickme_intro_path do
                 %em>
                 서비스 정보
@@ -49,6 +49,7 @@
               = link_to pickme_rankings_path do
                 %em>
                 인기순위
+                %span{style: "position: relative;color: #fff;background: coral;border: 1px solid #eb5846;margin-right: -1px;padding: 4px 10px;"} 히트
           .snsBtn
             %a.btn_f{:href => "https://www.facebook.com/produce101", :target => "_blank"} facebook
             %a.btn_t{:href => "https://www.twitter.com/mnetkr", :target => "_blank"} twitter
