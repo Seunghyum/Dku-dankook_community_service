@@ -5,14 +5,48 @@
         단국대
         %span.color-green 전화번호
         검색
-      = form_for @new_search, html: {role: "search"} do |f|
-        .row
+      .row
+        = form_tag(new_school_phone_searching_path, :method => "get", id: "search-form") do
           .col-md-3.col-xs-4
             .input-group
-              = f.select :campus, options_for_select(@campus), {:prompt => "캠퍼스"}, {class: "btn-u form-control" }
+              = select_tag 'campus', options_for_select(@campus), prompt: "전체", class: "btn-u form-control"
           .col-md-9.col-xs-8
             .input-group.border-input
-              = f.text_field :belong, class: "form-control",  placeholder: "과/학과 OR 명칭/이름"
+              = text_field_tag :search, params[:search], placeholder: "과/학과 OR 명칭/이름", class: 'form-control'
               %span.input-group-btn
-                = button_tag(type: 'submit', class: "btn-u btn-u-lg") do
+                %button.btn-u.btn-u-lg{:name => "button", :type => "submit"}
                   %i.fa.fa-search
+
+              -# %span.input-group-btn
+              -#   = link_to class: 'btn btn-default' do
+              -#     검색하기
+              -#     %i.fa.fa-search
+
+  .container
+    - if @result.empty?
+      %h4.text-danger.text-center 일치하는 결과가 없습니다.
+    - else
+      .row
+        .col-md-12
+          .panel.panel-blue.margin-bottom-40
+            .panel-heading
+              %h3.panel-title.text-center
+                %i.fa.fa-phone
+                총 #{@result.total_count}개의 결과가 있습니다
+            .panel-body
+              %table.table.table-striped.table-hover
+                %thead
+                  %tr
+                    %th 캠퍼스
+                    %th 과/학과
+                    %th 명칭/이름
+                    %th 전화번호
+                %tbody
+                  - @result.each do |c|
+                    %tr
+                      %td= c.campus
+                      %td= c.belong
+                      %td= c.name
+                      %td= c.phone
+
+        = paginate @result, :param_name => 'page', remote: true
