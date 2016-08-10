@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   skip_authorization_check :if => :devise_controller?
 
   # check_authorization :if => :admin_subdomain?, :only => [:update, :create, :destroy, :edit, :new]   # check_authorization :only => [:update, :destroy, :edit, :new]
-
+  
 
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|

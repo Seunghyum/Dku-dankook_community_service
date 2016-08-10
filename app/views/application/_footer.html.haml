@@ -1,13 +1,12 @@
 / === Footer Version 1 ===
 .footer-v1
-  .footer
+  -# .footer
     .container
-      .row
+      -# .row
         / About
         .col-md-3.md-margin-bottom-40
           %a{:href => "index.html"}
-            %p About Unify dolor sit amet, consectetur adipiscing elit. Maecenas eget nisl id libero tincidunt sodales.
-            %p Duis eleifend fermentum ante ut aliquam. Cras mi risus, dignissim sed adipiscing ut, placerat non arcu.
+          -# = image_tag
         / /col-md-3
         / End About
         / Latest
@@ -30,22 +29,19 @@
         / Link List
         .col-md-3.md-margin-bottom-40
           .headline
-            %h2 Useful Links
+            %h2 핫태핫태
           %ul.list-unstyled.link-list
             %li
-              %a{:href => "#"} About us
+              = link_to pickmes_path do
+                Professor 101(인기 투표)
               %i.fa.fa-angle-right
             %li
-              %a{:href => "#"} Portfolio
+              = link_to sign_in_test_users_path do
+                수강신청 리허설
               %i.fa.fa-angle-right
             %li
-              %a{:href => "#"} Latest jobs
-              %i.fa.fa-angle-right
-            %li
-              %a{:href => "#"} Community
-              %i.fa.fa-angle-right
-            %li
-              %a{:href => "#"} Contact us
+              = link_to lecture_infos_path do
+                강의 평가
               %i.fa.fa-angle-right
         / /col-md-3
         / End Link List
@@ -54,16 +50,8 @@
           .headline
             %h2 Contact Us
           %address.md-margin-bottom-40
-            25, Lorem Lis Street, Orange
-            %br/
-            California, US
-            %br/
-            Phone: 800 123 3456
-            %br/
-            Fax: 800 123 3456
-            %br/
             Email:
-            %a{:href => "mailto:info@anybiz.com"} info@anybiz.com
+            %a{:href => "#"} antmgu@gmail.com
         / /col-md-3
         / End Address
   / /footer
@@ -72,34 +60,41 @@
       .row
         .col-md-6
           %p
-            2015 © All Rights Reserved.
-            %a{:href => "#"} Privacy Policy
-            |
-            %a{:href => "#"} Terms of Service
+            2016 © All Rights Reserved.
+
         / Social Links
         .col-md-6
-          %ul.footer-socials.list-inline
+          %p
+            만든 돌아이들.
+            %a{:href => "#"} 문승현
+            |
+            %a{:href => "#"} 김영일
+            |
+            %a{:href => "#"} 김순후
+            |
+            %a{:href => "#"} 유태하
+          -# %ul.footer-socials.list-inline
             %li
               %a.tooltips{"data-original-title" => "Facebook", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#", :title => ""}
                 %i.fa.fa-facebook
-            %li
-              %a.tooltips{"data-original-title" => "Skype", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#", :title => ""}
-                %i.fa.fa-skype
-            %li
-              %a.tooltips{"data-original-title" => "Google Plus", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#", :title => ""}
-                %i.fa.fa-google-plus
-            %li
-              %a.tooltips{"data-original-title" => "Linkedin", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#", :title => ""}
-                %i.fa.fa-linkedin
-            %li
-              %a.tooltips{"data-original-title" => "Pinterest", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#", :title => ""}
-                %i.fa.fa-pinterest
-            %li
-              %a.tooltips{"data-original-title" => "Twitter", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#", :title => ""}
-                %i.fa.fa-twitter
-            %li
-              %a.tooltips{"data-original-title" => "Dribbble", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#", :title => ""}
-                %i.fa.fa-dribbble
+            -# %li
+            -#   %a.tooltips{"data-original-title" => "Skype", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#", :title => ""}
+            -#     %i.fa.fa-skype
+            -# %li
+            -#   %a.tooltips{"data-original-title" => "Google Plus", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#", :title => ""}
+            -#     %i.fa.fa-google-plus
+            -# %li
+            -#   %a.tooltips{"data-original-title" => "Linkedin", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#", :title => ""}
+            -#     %i.fa.fa-linkedin
+            -# %li
+            -#   %a.tooltips{"data-original-title" => "Pinterest", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#", :title => ""}
+            -#     %i.fa.fa-pinterest
+            -# %li
+            -#   %a.tooltips{"data-original-title" => "Twitter", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#", :title => ""}
+            -#     %i.fa.fa-twitter
+            -# %li
+            -#   %a.tooltips{"data-original-title" => "Dribbble", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#", :title => ""}
+            -#     %i.fa.fa-dribbble
         / End Social Links
   / /copyright
 / === End Footer Version 1 ===

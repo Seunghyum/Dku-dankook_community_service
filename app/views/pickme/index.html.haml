@@ -1,8 +1,20 @@
 #container
   .inner_wrap
+    = render partial: "application/shared/flash_message", flash: flash
     / 투표 소개 및 설명
     .voteIntro
       %h2.blind 단국대 교수님들을 응원해 주세요!
+
+    .alert.alert-danger{:role => "info", style: "text-align: center;"}
+      %a.alert-link{:href => "#"}
+        3개의 투표권만을 행사할 수 있습니다.
+        - if current_user.present?
+          %br
+          내가 투표한 교수님 :
+          - if current_user.votes.present?
+            - current_user.votes.where(vote_flag: true).each do |v|
+              %span= v.votable.name
+              &nbsp;
     / //투표 소개 및 설명
     .searchBox
       .sorting
@@ -15,20 +27,6 @@
     %br
     %br
     .tranieeList
-      -# .listnb.nb_01{:style => ""} 14
-      -# .listnb.nb_02{:style => ""} 28
-      -# .listnb.nb_03{:style => ""} 42
-      -# .listnb.nb_04{:style => ""} 56
-      -# .listnb.nb_05{:style => ""} 70
-      -# .listnb.nb_06{:style => ""} 84
-      -# .listnb.nb_07{:style => ""} 98
-      -# .listnb.nb_08{:style => ""} 112
-      -# .listnb.nb_09{:style => ""} 126
-      -# .listnb.nb_10{:style => ""} 140
-      -# .listnb.nb_11{:style => ""} 154
-      -# %ul.nobd
-      -# -if
-      -# - if @professors.length > 8
       - if @search_professor.nil?
         - @professors.each_slice(7) do |professors_7|
           %ul

@@ -17,7 +17,8 @@ ko:
     pagination:
       previous: "«"
       next: "»"
-
+  will_paginate:
+    page_gap: "&hellip;"
   date:
     abbr_day_names:
     - 일

@@ -8,9 +8,12 @@
     / Begin Content
     .col-md-8
       #owl-example.owl-carousel
-        %div{style: "height: 250px; background-image: url(#{ image_url 'unify/2.jpg'}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
-        %div{style: "height: 250px; background-image: url(#{ image_url 'unify/3.jpg'}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
-        %div{style: "height: 250px; background-image: url(#{ image_url 'unify/4.jpg'}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
+        = link_to pickmes_path do
+          %div{style: "height: 250px; background-image: url(#{ image_url 'banner/pickme.png'}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
+        = link_to book_lists_path do
+          %div{style: "height: 250px; background-image: url(#{ image_url 'banner/enactus.png'}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
+        = link_to home_lockers_path do
+          %div{style: "height: 250px; background-image: url(#{ image_url 'banner/locker.png'}); background-position: center 40%; background-repeat: no-repeat; background-size: cover;"}
 
       = render 'simple_calendar/calendar'
 
