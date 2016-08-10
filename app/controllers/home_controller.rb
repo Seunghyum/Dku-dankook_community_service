@@ -20,6 +20,8 @@ class HomeController < ApplicationController
     #   format.js
     #   format.html
     # end
+    @professors_11 = Professor.order("cached_votes_score DESC").take(11)
+
   end
 
   def certify

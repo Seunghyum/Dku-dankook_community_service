@@ -12,7 +12,7 @@
           %br
           내가 투표한 교수님 :
           - if current_user.votes.present?
-            - current_user.votes.where(vote_flag: true).each do |v|
+            - current_user.votes.where(vote_flag: true, votable_type: "Professor").each do |v|
               %span= v.votable.name
               &nbsp;
     / //투표 소개 및 설명

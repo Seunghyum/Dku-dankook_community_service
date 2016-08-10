@@ -91,12 +91,28 @@
           / Begin Sidebar
 
     .col-md-4
+      / 교수 인기 Event
+      .profile-body.md-margin-bottom-20
+        .panel.panel-profile.no-bg
+          .tag-box-v1.panel-heading.overflow-h
+            %h2.panel-title.heading-sm.pull-left
+              %i.fa.fa-briefcase
+              실시간 순위
+            = link_to "바로가기", pickmes_path, class: "btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right"
+          .panel-body.no-padding
+            .profile-event
+              #vertical_banner
+                %ul
+                  -if @professors_11.present?
+                    - @professors_11.each_with_index do |best, index|
+                      %li
+                        = "#{index + 1}. #{best.name}"
       / Profile Event
       .profile-body.md-margin-bottom-20
         .panel.panel-profile.no-bg
           .tag-box-v1.panel-heading.overflow-h
             %h2.panel-title.heading-sm.pull-left
-              %i.fa.fa-briefcase>
+              %i.fa.fa-briefcase
               실시간 Hot 강의
             = link_to "바로가기", lecture_infos_path, class: "btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right"
           .panel-body.no-padding
