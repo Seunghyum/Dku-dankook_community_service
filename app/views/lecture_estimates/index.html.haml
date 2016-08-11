@@ -1,24 +1,22 @@
 .block-description
   .container
-    -# %center
-    -#   = link_to "강의평가 작성하기", new_lecture_info_lecture_estimate_path(@lecture_info), class: "btn-u btn-u-yellow margin-bottom-20"
     .row
       / Right Inner
       .col-md-5.col-md-push-7
         .right-inner
           / radar chart start
-          .alert.alert-warning.fade.in.alert-dismissable
+          -# .alert.alert-warning.fade.in.alert-dismissable
             %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &#xD7;
             %strong &#xC8FC;&#xC758;!
             %i &#xD559;&#xC810;&#xB530;&#xAE30;, &#xACFC;&#xC81C;  &#xC870;&#xBAA8;&#xC784;&#xC758; &#xACBD;&#xC6B0; &#xC810;&#xC218;&#xAC00; &#xB192;&#xC744;&#xC218;&#xB85D; &#xC218;&#xC5C5;&#xB4E3;&#xAE30; &#xD3B8;&#xD569;&#xB2C8;&#xB2E4;.
           %h3.text-center
-            \&#xAC15;&#xC758; &#xD3C9;&#xAC00; &#xD3C9;&#xADE0;
+            \&#xAC15;&#xC758; &#xD3C9;&#xAC00;
             %small
               %a#display-inline{:href => "#"}
                 &nbsp;
                 = @lecture_info.lecture_estimates.count
                 reviews
-          .content-boxes-v2.content-boxes-v2-o
+          .content-boxes-v2.content-boxes-v2-o.text-center
             %h2.heading-sm.overflow-h
               %span
                 \&#xD3C9;&#xC810; :
@@ -31,6 +29,9 @@
                       %i.color-green.fa.fa-star-o
                 = @lecture_info.average
                 \&#xC810;
+
+          %canvas#canvas{:height => "200", :width => "200"}
+
           .row.content-boxes-v2.content-boxes-v2-o
             .col-sm-6
               %h3.heading-sm.overflow-h
@@ -93,10 +94,10 @@
                           %i.color-green.fa.fa-star-o
                     = @lecture_info.av_teamwork_n_asg
                     \&#xC810;
-          %hr
+          -# %hr
             %canvas#canvas{:height => "200", :width => "200"}
             / radar chart end
-            %hr
+            -# %hr
               %h3 &#xC2A4;&#xD0EF; &#xC124;&#xBA85;
               / 스탯 설명 아코디언 start
               #accordion-1.panel-group.acc-v1
@@ -196,7 +197,7 @@
             / Bordered Funny Boxes
             - unless @lecture_estimates.nil?
               - @lecture_estimates.each do |esti|
-                .funny-boxes.bg-color-white{class: "funny-boxes-top-#{@color_pick.sample}"}
+                .funny-boxes.bg-color-white{class: "funny-boxes-top-#{@lecture_info.div_color}"}
                   %p.pull-right
                     = esti.created_at.year
                     \&#xB144; #{esti.created_at.month}&#xC6D4;

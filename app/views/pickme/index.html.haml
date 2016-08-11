@@ -35,7 +35,7 @@
                 .thumb
                   = link_to ( pro.get_upvotes.size == 0 ? like_pickmes_path(pro) : dislike_pickmes_path(pro)),method: :get do
                     %span.mask_vote
-                    %div{style: "background-position: center; background-size: contain;  background-repeat: no-repeat; width: 131px; height: 131px;"}
+                    %div{style: "background-image: url(#{pro.profile});background-position: center; background-size: contain;  background-repeat: no-repeat; width: 131px; height: 131px;"}
                     -# background-image: url(#{pro.profile});
                 %p.name
                   = "#{pro.name}"
@@ -46,7 +46,7 @@
             .thumb
               = link_to ( @search_professor.get_upvotes.size == 0 ? like_pickmes_path(@search_professor) : dislike_pickmes_path(@search_professor)),method: :get do
                 %span.mask_vote
-                %div{style: "background-position: center; background-size: contain;  background-repeat: no-repeat; width: 131px; height: 131px;"}
+                %div{style: "background-image: url(#{@search_professor.profile});background-position: center; background-size: contain;  background-repeat: no-repeat; width: 131px; height: 131px;"}
                 -# background-image: url(#{@search_professor.profile});
             %p.name
               = "#{@search_professor.name} (#{@search_professor.get_upvotes.size})"

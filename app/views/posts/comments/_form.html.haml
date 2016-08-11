@@ -8,6 +8,5 @@
       %fieldset
         .comments-itself
           = f.text_area :content, class: "redactor", placeholder: "예의 있게 써주세요", row: 3
-          .text-center
-            = f.submit "덧글달기", data: { disable_with: "작성 중..."},class: "btn-u"
-/ End Form
+          .text-center.ladda-btn
+            = f.submit "덧글달기", data: { disable_with: "Ing..."}, :style => "z-index: 9999;" ,class: "btn-u ladda-button btn-u-blue", id: "ladda-btn"

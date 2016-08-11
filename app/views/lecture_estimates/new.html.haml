@@ -3,7 +3,6 @@
     .col-md-7.mb-margin-bottom-30
       .headline
         %h2 강의 평가 작성하기
-      %p 우측(데스크탑) 또는 하단(모바일)에 있는 규칙들을 충분히 숙지하시고 작성해주세요.
       %br/
       = bootstrap_form_for [@lecture_info, @lecture_estimate], html: {multipart: true, id: "sky-form3", class: "sky-form sky-changes-3 contact-style", novalidate: "novalidate"} do |f|
         - if @lecture_estimate.errors.any?
@@ -32,7 +31,8 @@
             .br-theme-fontawesome-stars
               = f.select(:teamwork_n_asg, options_for_select([['1', 20], ['2', 40],['3', 60],['4', 80],['5', 100]]),{label: "과제 & 조모임"}, class: "star-rating" )
         .row
-          = f.text_area :msg, class: "redactor", label: "후기"
+          .col-sm-12
+            = f.text_area :msg, class: "redactor", hide_label: true, placeholder: "후기"
         %footer.text-center
           = f.submit "작성하기", class: "btn-u btn-u-lg"
         .message
@@ -41,22 +41,30 @@
     / /col-md-9
     .col-md-5
       .headline
-        %h2 커뮤니티 매너
+        %h2 적을 만한 사항
+      %p 혹시 이거 안적지 않았어요?
+      %ul.list-unstyled.margin-bottom-30
+        %li
+          %i.fa.fa-check.color-green
+          %strong 점수 잘받는 방법..?
+        %li
+          %i.fa.fa-check.color-green
+          %strong 지각해도 되나..?
+        %li
+          %i.fa.fa-check.color-green
+          %strong 수업의 남녀 구성..?
+      .headline
+        %h2 커뮤니티 기본 매너
       %p 아래의 기본적인 예의를 지켜주세요.
       %ul.list-unstyled.margin-bottom-30
         %li
           %i.fa.fa-check.color-green
-          = succeed "\u{b97c}" do
-            %strong 예의
+          %strong 예의를 지켜주세요.
         %li
           %i.fa.fa-check.color-green
-          상대를
-          = succeed "\u{d574}\u{c8fc}\u{c138}\u{c694}." do
-            %strong 존중
+          %strong 상대를 존중해주세요.
         %li
           %i.fa.fa-check.color-green
-          타인을 지칭할 때
-          = succeed "\u{c73c}\u{b85c}" do
-            %strong ***님
+          %strong 타인을 지칭할 때 ***님으로 불러주세요.
     / /col-md-3
   / /row

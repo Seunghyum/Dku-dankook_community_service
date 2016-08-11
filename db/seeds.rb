@@ -11,10 +11,10 @@
 BestFive.create(category: "교양")
 BestFive.create(category: "자유게시판")
 
-User.create(username: "admin_moon", name: "운영자", gender: "남자", email: 'qwe@qwe.com', password: "12341234", password_confirmation: "12341234", role: "슈퍼관리자", major_id: 1)
-User.create(username: "moon", name: "남학생", gender: "남자", email: '123@123.com', password: "12341234", password_confirmation: "12341234", role: "학생", major_id: 1)
-User.create(username: "female", name: "여학생", gender: "여자", email: '23@123.com', password: "12341234", password_confirmation: "12341234", role: "학생", major_id: 1)
-User.create(username: "인액터스", name: "인액터스", gender: "여자", email: '1@1.com', password: "12341234", password_confirmation: "12341234", role: "인액터스", major_id: 1)
+User.create(username: "admin_moon", name: "운영자", gender: "남자", email: 'qwe@qwe.com', password: "12341234", password_confirmation: "12341234", role: "슈퍼관리자", major_id: 1, certification: true)
+User.create(username: "moon", name: "남학생", gender: "남자", email: '123@123.com', password: "12341234", password_confirmation: "12341234", role: "학생", major_id: 1, certification: true)
+User.create(username: "female", name: "여학생", gender: "여자", email: '23@123.com', password: "12341234", password_confirmation: "12341234", role: "학생", major_id: 1, certification: true)
+User.create(username: "인액터스", name: "인액터스", gender: "여자", email: '1@1.com', password: "12341234", password_confirmation: "12341234", role: "인액터스", major_id: 1, certification: true)
 
 Board.create(name: "자유게시판", description: "자유롭게 말하세요")
 1.upto(50) do |x|

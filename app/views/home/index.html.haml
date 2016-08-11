@@ -12,8 +12,10 @@
           %div{style: "height: 250px; background-image: url(#{ image_url 'banner/pickme.png'}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
         = link_to book_lists_path do
           %div{style: "height: 250px; background-image: url(#{ image_url 'banner/enactus.png'}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
+        = link_to sign_in_test_users_path do
+          %div{style: "height: 250px; background-image: url(#{ image_url 'banner/rehearsal.jpeg'}); background-position: center 40%; background-repeat: no-repeat; background-size: cover;"}
         = link_to home_lockers_path do
-          %div{style: "height: 250px; background-image: url(#{ image_url 'banner/locker.png'}); background-position: center 40%; background-repeat: no-repeat; background-size: cover;"}
+          %div{style: "height: 250px; background-image: url(#{ image_url 'banner/locker.jpeg'}); background-position: center 40%; background-repeat: no-repeat; background-size: cover;"}
 
       = render 'simple_calendar/calendar'
 
@@ -24,16 +26,17 @@
               - md2.each do |md|
                 -if md.present?
                   .col-md-6
-                    .magazine-news-img
-                      = link_to meeting_path(md) do
-                        %div{style: "height: 200px;background-image: url(#{ image_url md.photo}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
-                      %span.magazine-badge{class: "label-#{md.type_class}"}= md.display_tag
-                    %h3
-                      %a{:href => "#"}= md.name
-                    .by-author
-                      %strong= md.operator
-                      %span= " / #{all_t_format(md.start_time)} ~ #{all_t_format(md.end_time)}"
-                      %p= md.content.truncate(67).html_safe
+                    .thumbnail.thumbnail-style
+                      .magazine-news-img
+                        = link_to meeting_path(md) do
+                          %div{style: "height: 200px;background-image: url(#{ image_url "enactus/enactus_bg.jpeg"}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
+                        %span.magazine-badge{class: "label-#{md.type_class}"}= md.display_tag
+                      %h3
+                        %a{:href => "#"}= md.name
+                      .by-author
+                        %strong= md.operator
+                        %span= " / #{all_t_format(md.start_time)} ~ #{all_t_format(md.end_time)}"
+                        %p= md.content.truncate(67).html_safe
 
     .col-md-4
       / 교수 인기 Event
@@ -41,8 +44,9 @@
         .panel.panel-profile.no-bg
           .tag-box-v1.panel-heading.overflow-h
             %h2.panel-title.heading-sm.pull-left
-              %i.fa.fa-briefcase
-              실시간 인기 투표 순위
+              %i.fa.fa-hand-peace-o
+
+              실시간 인기 순위
             = link_to "바로가기", pickmes_path, class: "btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right"
           .panel-body.no-padding
             .profile-event
@@ -58,13 +62,12 @@
                         -else
                           %span.badge.rounded-2x.badge-yellow= "#{index + 1}"
                         = "#{best.name}"
-
       / Profile Event
       .profile-body.md-margin-bottom-20
         .panel.panel-profile.no-bg
           .tag-box-v1.panel-heading.overflow-h
             %h2.panel-title.heading-sm.pull-left
-              %i.fa.fa-briefcase
+              %i.fa.fa-university
               실시간 Hot 강의
             = link_to "바로가기", lecture_infos_path, class: "btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right"
           .panel-body.no-padding

@@ -1,12 +1,44 @@
-\//댓글 ajax
-$('#ajax_comment').html('#{escape_javascript render(partial: "posts/comments/comment" )}')
-\.find('.blog-comments:last-child').addClass('wow fadeInRight');
 
-\//summernote 에디터 ajax대응
-$(document).ready(function(){
-$('[data-provider="summernote"]').each(function(){
-$(this).summernote();
+
+//input초기화
+$("#new_comment").val("");
+
+-# //댓글 ajax
+$('#ajax_comment')
+\.html('#{escape_javascript render(partial: "posts/comments/comment" )}')
+\.find('.blog-comments:last-child')
+\.addClass('wow fadeInRight')
+\.bind('ajaxStart', function(){
+-# //로딩중 화면 blur
+$(".ladda-button").attr({
+'data-loading': '',
+'disabled': "",
+"data-style": "contract-overlay",
+"value": "ing.."
 });
 
+}).bind('ajaxStop', function(){
+$(".ladda-button").removeAttr("data-style disabled data-loading").attr("value", "덧글달기");
+});
+
+$(document).ready(function(){
 new WOW().init();
 });
+
+
+
+
+-# $('#ajax_comment').ajaxStart(function() {
+-# $("#new_comment").val("");
+-# $(".ladda-button").attr({
+-# 'data-loading': '',
+-# 'disabled': "",
+-# "data-style": "contract-overlay"
+-# }).bind("load", function(){
+-# $("#ajax_comment").html('#{escape_javascript render(partial: "posts/comments/comment" )}').find('.blog-comments:last-child').addClass('wow fadeInRight');
+-# });
+-#
+-# }).bind('ajaxStop', function(){
+-# $(".ladda-button").removeAttr("data-style disabled data-loading");
+-#
+-# });

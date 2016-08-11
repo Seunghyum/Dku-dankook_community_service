@@ -11,7 +11,7 @@
           %button.btn.btn-icon.btn-xs.btn-warning.btn-fill{:rel => "tooltip", :title => "Edit Profile"}
             %i.fa.fa-edit
         / 삭제버튼
-        = link_to board_post_path(post.board, post), method: :delete, data: { confirm: 'Are you sure?' } do
+        = link_to board_post_path(post.board, post), method: :delete, data: { confirm: '정말 지우시겠습니까?' } do
           %button.btn.btn-icon.btn-xs.btn-danger.btn-fill{:rel => "tooltip", :title => "Edit Profile"}
             %i.fa.fa-times
     %td
