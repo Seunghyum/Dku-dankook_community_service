@@ -290,7 +290,8 @@ ko:
         photo: "이미지"
         display_tag: "달력에 씌여질 태그명"
         event_type: "행사 종류"
-        # type_class: ""
+        type_class: "태그 컬러"
+        operator: "주체자"
       post:
         title: "제목"
         content: "내용"

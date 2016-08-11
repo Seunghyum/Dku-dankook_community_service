@@ -18,77 +18,22 @@
       = render 'simple_calendar/calendar'
 
       .magazine-news
-        .row
-          .col-md-6
-            .magazine-news-img
-              %span.magazine-badge.label-red Travel
-            %h3
-              %a{:href => "#"} Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium
-            .by-author
-              %strong By Jack Villo
-              %span / September 19, 2013
-            %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...
-          .col-md-6
-            .magazine-news-img
-              %span.magazine-badge.label-blue Event
-            %h3
-              %a{:href => "#"} Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium
-            .by-author
-              %strong By Admin
-              %span / September 19, 2013
-            %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...
-      / End Magazine News
-      .margin-bottom-35
-        %hr.hr-md/
-        .margin-bottom-35
-          / Magazine News
-          .magazine-news
+        -if @meeting_divide_2.present?
+          - @meeting_divide_2.each do |md2|
             .row
-              .col-md-6
-                .magazine-news-img
-                  %span.magazine-badge.label-yellow Media
-                %h3
-                  %a{:href => "#"} Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium
-                .by-author
-                  %strong By Jack Villo
-                  %span / September 19, 2013
-                %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...
-              .col-md-6
-                .magazine-news-img
-                  %span.magazine-badge.label-green Relax
-                %h3
-                  %a{:href => "#"} Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium
-                .by-author
-                  %strong By Admin
-                  %span / September 19, 2013
-                %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...
-          / End Magazine News
-          .margin-bottom-35
-            %hr.hr-md/
-            / Magazine News
-            .magazine-news
-              .row
-                .col-md-6
-                  .magazine-news-img
-                    %span.magazine-badge.label-purple Design
-                  %h3
-                    %a{:href => "#"} Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium
-                  .by-author
-                    %strong By Jack Villo
-                    %span / September 19, 2013
-                  %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...
-                .col-md-6
-                  .magazine-news-img
-                    %span.magazine-badge.label-dark-blue Interior
-                  %h3
-                    %a{:href => "#"} Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium
-                  .by-author
-                    %strong By Admin
-                    %span / September 19, 2013
-                  %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...
-            / End Magazine News
-          / End Content
-          / Begin Sidebar
+              - md2.each do |md|
+                -if md.present?
+                  .col-md-6
+                    .magazine-news-img
+                      = link_to meeting_path(md) do
+                        %div{style: "height: 200px;background-image: url(#{ image_url md.photo}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
+                      %span.magazine-badge{class: "label-#{md.type_class}"}= md.display_tag
+                    %h3
+                      %a{:href => "#"}= md.name
+                    .by-author
+                      %strong= md.operator
+                      %span= " / #{all_t_format(md.start_time)} ~ #{all_t_format(md.end_time)}"
+                      %p= md.content.truncate(67).html_safe
 
     .col-md-4
       / 교수 인기 Event
@@ -97,7 +42,7 @@
           .tag-box-v1.panel-heading.overflow-h
             %h2.panel-title.heading-sm.pull-left
               %i.fa.fa-briefcase
-              실시간 순위
+              실시간 인기 투표 순위
             = link_to "바로가기", pickmes_path, class: "btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right"
           .panel-body.no-padding
             .profile-event
@@ -106,7 +51,14 @@
                   -if @professors_11.present?
                     - @professors_11.each_with_index do |best, index|
                       %li
-                        = "#{index + 1}. #{best.name}"
+                        -if index + 1 <= 3
+                          %span.badge.rounded-2x.badge-red= "#{index + 1}"
+                        -elsif index + 1 <= 6
+                          %span.badge.rounded-2x.badge-orange= "#{index + 1}"
+                        -else
+                          %span.badge.rounded-2x.badge-yellow= "#{index + 1}"
+                        = "#{best.name}"
+
       / Profile Event
       .profile-body.md-margin-bottom-20
         .panel.panel-profile.no-bg
@@ -181,12 +133,8 @@
                     %i.fa.fa-heart.color-red
                   = best.cached_votes_up
                 .post-author
-                  %span.badge.rounded-2x{class: "badge-#{@samples.sample}"}= index + 1
-                  = " #{(best.user.username.nil? ? best.user.name : best.user.username)}"
+                  %span.badge.rounded-2x{class: "badge-#{@samples.sample}"}
+                    = "#{index + 1} #{(best.user.username.nil? ? best.user.name : best.user.username)}"
                   %span= timeago_tag best.created_at
-                %p= truncate(best.content, length: 30)
+                  %p= truncate(best.content, length: 30)
               %hr.hr-md
-          / End Latest News
-        / End Sidebar
-    / /container
-    / End Content Part

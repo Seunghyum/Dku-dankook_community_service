@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     @meetings = Meeting.all
-
+    @meeting_divide_2 = @meetings.in_groups_of(2)
     #tag 출력
     @listing_tags = ActsAsTaggableOn::Tag.most_used(20).each_slice(2).to_a
     @listing_a = @listing_tags.first

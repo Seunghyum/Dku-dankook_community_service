@@ -94,6 +94,6 @@ class MeetingsController < ApplicationController
     end
 
     def meeting_params
-      params.require(:meeting).permit(:name, :start_time, :content, :display_tag, :photo, :end_time, :event_type, :type_class)
+      params.require(:meeting).permit(:name, :operator, :start_time, :content, :display_tag, :photo, :end_time, :event_type, :type_class)
     end
 end

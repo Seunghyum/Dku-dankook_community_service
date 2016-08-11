@@ -12,6 +12,8 @@
   .field
     = f.text_field :name
   .field
+    = f.text_field :operator
+  .field
     = f.select :event_type, ['학사', '총학', '동아리', '강연', '기타']
   .field
     = f.datetime_select :start_time
