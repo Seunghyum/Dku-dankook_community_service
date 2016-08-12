@@ -3,34 +3,389 @@
     .filter-black
   .profile-content.section-white
     .container
-      .row.owner
+      -# .row.owner
         .col-md-2.col-md-offset-5.col-sm-4.col-sm-offset-4.col-xs-6.col-xs-offset-3.text-center
           .fileinput.fileinput-new.text-center{"data-provides" => "fileinput"}
             .fileinput-new.thumbnail.img-circle.img-no-padding{:style => "width: 150px; height: 150px; background-image: url(#{image_url current_user.profile}); background-size: contain; background-repeat: no-repeat; background-position: center; background-size: 100% 100%;"}
 
       .row
         .col-md-6.col-md-offset-3
-          = bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "settings-form" }) do |f|
-            = devise_error_messages!
-            %div
-              %span.btn.btn-default.btn-file
-                =f.file_field :profile
+          = bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "sky-form settings-form" }) do |f|
+            %header.text-center 프로필 사진을 골라주세요!
+            %fieldset
+              %section
+                %select.image-picker.show-html
+                  %option{:value => ""}
+                  %option{"data-img-src" => (image_url "profile/ex_profile_1"), :value => (image_url "profile/ex_profile_1")} Cute Kitten 1
+                  %option{"data-img-src" => (image_url "profile/ex_profile_2"), :value => (image_url "profile/ex_profile_2")} Cute Kitten 2
+                  %option{"data-img-src" => (image_url "profile/ex_profile_3"), :value => (image_url "profile/ex_profile_3")} Cute Kitten 3
+                  %option{"data-img-src" => (image_url "profile/ex_profile_4"), :value => (image_url "profile/ex_profile_4")} Cute Kitten 3
+                  %option{"data-img-src" => (image_url "profile/ex_profile_5"), :value => (image_url "profile/ex_profile_5")} Cute Kitten 3
+                  %option{"data-img-src" => (image_url "profile/ex_profile_6"), :value => (image_url "profile/ex_profile_6")} Cute Kitten 3
+                :javascript
+                  $(document).ready(function(){
+                    $("select.image-picker").imagepicker();
+                    $(".image_picker_image").click(function(){
+                      var getValue = $(this).attr("src");
+                      $("#user_profile").val(getValue);
+                    });
+                  });
               %br/
-              %a.btn.btn-simple.btn-danger.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"}
-                %i.fa.fa-times
-                사진 지우기
-            .row
-              .col-md-6.col-sm-6
-                .form-group
-                  = f.text_field :username, autofocus: true, class: "form-control border-input", placeholder: "닉네임"
-            -# .form-group
-              =# f.password_field :current_password, autocomplete: "off", class: "form-control border-input", placeholder: "현재 비밀번호 재확인"
-            .form-group
-              = f.password_field :password, autocomplete: "off", class: "form-control border-input", placeholder: "새로운 비밀번호"
-            .form-group
-              = f.password_field :password_confirmation, autocomplete: "off", class: "form-control border-input", placeholder: "새로운 비밀번호 재확인"
-            .row
-              .col-md-4.col-md-offset-4.col-sm-6.col-sm-offset-3
+              =f.hidden_field :profile
+            %fieldset
+              %section
+                = f.text_field :username, autofocus: true, class: "form-control border-input", placeholder: "닉네임"
+            %fieldset
+              %section
+                = f.password_field :password, autocomplete: "off", class: "form-control border-input", placeholder: "새로운 비밀번호"
+            %fieldset
+              %section
+                = f.password_field :password_confirmation, autocomplete: "off", class: "form-control border-input", placeholder: "새로운 비밀번호 재확인"
+            %fieldset
+              %section.text-center
                 = f.submit "저장하기", class: "btn btn-block btn-info"
             %br
             %br
+        -# %form.sky-form{:action => "#"}
+          %header General Unify Forms
+          %fieldset
+            %section
+              %label.label Text input
+              %label.input
+                %input{:type => "text"}/
+            %section
+              %label.label File input
+              %label.input.input-file{:for => "file"}
+                .button
+                  %input#file{:onchange => "this.parentNode.nextSibling.value = this.value", :type => "file"}>/
+                  Browse
+                %input{:readonly => "readonly", :type => "text"}/
+            %section
+              %label.label Input with autocomlete
+              %label.input
+                %input{:list => "list", :type => "text"}/
+              .note
+                %strong Note:
+                works in Chrome, Firefox, Opera and IE10.
+          %fieldset
+            %section
+              %label.label Select
+              %label.select
+                %select
+                  %option{:value => "0"} Choose name
+                  %option{:value => "1"} Alexandra
+                  %option{:value => "2"} Alice
+                  %option{:value => "3"} Anastasia
+                  %option{:value => "4"} Avelina
+                %i
+            %section
+              %label.label Multiple select
+              %label.select.select-multiple
+                %select{:multiple => "multiple"}
+                  %option{:value => "1"} Alexandra
+                  %option{:value => "2"} Alice
+                  %option{:value => "3"} Anastasia
+                  %option{:value => "4"} Avelina
+                  %option{:value => "5"} Basilia
+                  %option{:value => "6"} Beatrice
+                  %option{:value => "7"} Cassandra
+                  %option{:value => "8"} Clemencia
+                  %option{:value => "9"} Desiderata
+              .note
+                %strong Note:
+                hold down the ctrl/cmd button to select multiple options.
+          %fieldset
+            %section
+              %label.label Textarea
+              %label.textarea
+                %textarea{:rows => "3"}
+              .note
+                %strong Note:
+                height of the textarea depends on the rows attribute.
+            %section
+              %label.label Textarea resizable
+              %label.textarea.textarea-resizable
+                %textarea{:rows => "3"}
+            %section
+              %label.label Textarea expandable
+              %label.textarea.textarea-expandable
+                %textarea{:rows => "3"}
+              .note
+                %strong Note:
+                expands on focus.
+          %fieldset
+            %section
+              %label.label Columned radios
+              .row
+                .col.col-4
+                  %label.radio
+                    %input{:checked => "checked", :name => "radio", :type => "radio"}/
+                    = succeed "Alexandra" do
+                      %i.rounded-x
+                  %label.radio
+                    %input{:name => "radio", :type => "radio"}/
+                    = succeed "Alice" do
+                      %i.rounded-x
+                  %label.radio
+                    %input{:name => "radio", :type => "radio"}/
+                    = succeed "Anastasia" do
+                      %i.rounded-x
+                .col.col-4
+                  %label.radio
+                    %input{:name => "radio", :type => "radio"}/
+                    = succeed "Avelina" do
+                      %i.rounded-x
+                  %label.radio
+                    %input{:name => "radio", :type => "radio"}/
+                    = succeed "Basilia" do
+                      %i.rounded-x
+                  %label.radio
+                    %input{:name => "radio", :type => "radio"}/
+                    = succeed "Beatrice" do
+                      %i.rounded-x
+                .col.col-4
+                  %label.radio
+                    %input{:name => "radio", :type => "radio"}/
+                    = succeed "Cassandra" do
+                      %i.rounded-x
+                  %label.radio
+                    %input{:name => "radio", :type => "radio"}/
+                    = succeed "Clemencia" do
+                      %i.rounded-x
+                  %label.radio
+                    %input{:name => "radio", :type => "radio"}/
+                    = succeed "Desiderata" do
+                      %i.rounded-x
+            %section
+              %label.label Inline radios
+              .inline-group
+                %label.radio
+                  %input{:checked => "checked", :name => "radio-inline", :type => "radio"}/
+                  = succeed "Alexandra" do
+                    %i.rounded-x
+                %label.radio
+                  %input{:name => "radio-inline", :type => "radio"}/
+                  = succeed "Alice" do
+                    %i.rounded-x
+                %label.radio
+                  %input{:name => "radio-inline", :type => "radio"}/
+                  = succeed "Anastasia" do
+                    %i.rounded-x
+                %label.radio
+                  %input{:name => "radio-inline", :type => "radio"}/
+                  = succeed "Avelina" do
+                    %i.rounded-x
+                %label.radio
+                  %input{:name => "radio-inline", :type => "radio"}/
+                  = succeed "Beatrice" do
+                    %i.rounded-x
+          %fieldset
+            %section
+              %label.label Columned checkboxes
+              .row
+                .col.col-4
+                  %label.checkbox
+                    %input{:checked => "checked", :name => "checkbox", :type => "checkbox"}/
+                    = succeed "Alexandra" do
+                      %i
+                  %label.checkbox
+                    %input{:name => "checkbox", :type => "checkbox"}/
+                    = succeed "Alice" do
+                      %i
+                  %label.checkbox
+                    %input{:name => "checkbox", :type => "checkbox"}/
+                    = succeed "Anastasia" do
+                      %i
+                .col.col-4
+                  %label.checkbox
+                    %input{:name => "checkbox", :type => "checkbox"}/
+                    = succeed "Avelina" do
+                      %i
+                  %label.checkbox
+                    %input{:name => "checkbox", :type => "checkbox"}/
+                    = succeed "Basilia" do
+                      %i
+                  %label.checkbox
+                    %input{:name => "checkbox", :type => "checkbox"}/
+                    = succeed "Beatrice" do
+                      %i
+                .col.col-4
+                  %label.checkbox
+                    %input{:name => "checkbox", :type => "checkbox"}/
+                    = succeed "Cassandra" do
+                      %i
+                  %label.checkbox
+                    %input{:name => "checkbox", :type => "checkbox"}/
+                    = succeed "Clemencia" do
+                      %i
+                  %label.checkbox
+                    %input{:name => "checkbox", :type => "checkbox"}/
+                    = succeed "Desiderata" do
+                      %i
+            %section
+              %label.label Inline checkboxes
+              .inline-group
+                %label.checkbox
+                  %input{:checked => "checked", :name => "checkbox-inline", :type => "checkbox"}/
+                  = succeed "Alexandra" do
+                    %i
+                %label.checkbox
+                  %input{:name => "checkbox-inline", :type => "checkbox"}/
+                  = succeed "Alice" do
+                    %i
+                %label.checkbox
+                  %input{:name => "checkbox-inline", :type => "checkbox"}/
+                  = succeed "Anastasia" do
+                    %i
+                %label.checkbox
+                  %input{:name => "checkbox-inline", :type => "checkbox"}/
+                  = succeed "Avelina" do
+                    %i
+                %label.checkbox
+                  %input{:name => "checkbox-inline", :type => "checkbox"}/
+                  = succeed "Beatrice" do
+                    %i
+          %fieldset
+            .row
+              %section.col.col-5
+                %label.label Toggles based on radios
+                %label.toggle
+                  %input{:checked => "checked", :name => "radio-toggle", :type => "radio"}/
+                  = succeed "Alexandra" do
+                    %i.no-rounded
+                %label.toggle
+                  %input{:name => "radio-toggle", :type => "radio"}/
+                  = succeed "Anastasia" do
+                    %i.no-rounded
+                %label.toggle
+                  %input{:name => "radio-toggle", :type => "radio"}/
+                  = succeed "Avelina" do
+                    %i.no-rounded
+              .col.col-2
+              %section.col.col-5
+                %label.label Toggles based on checkboxes
+                %label.toggle
+                  %input{:checked => "checked", :name => "checkbox-toggle", :type => "checkbox"}/
+                  = succeed "Cassandra" do
+                    %i.no-rounded
+                %label.toggle
+                  %input{:name => "checkbox-toggle", :type => "checkbox"}/
+                  = succeed "Clemencia" do
+                    %i.no-rounded
+                %label.toggle
+                  %input{:name => "checkbox-toggle", :type => "checkbox"}/
+                  = succeed "Desiderata" do
+                    %i.no-rounded
+          %fieldset
+            .row
+              %section.col.col-5
+                %label.label Toggles based on radios
+                %label.toggle
+                  %input{:checked => "checked", :name => "radio-toggle-1", :type => "radio"}/
+                  = succeed "JavaScript" do
+                    %i
+                %label.toggle
+                  %input{:name => "radio-toggle-1", :type => "radio"}/
+                  = succeed "CSS3/HTML5" do
+                    %i
+                %label.toggle
+                  %input{:name => "radio-toggle-1", :type => "radio"}/
+                  = succeed "Bootstrap" do
+                    %i
+              .col.col-2
+              %section.col.col-5
+                %label.label Toggles based on checkboxes
+                %label.toggle
+                  %input{:checked => "checked", :name => "checkbox-toggle-1", :type => "checkbox"}/
+                  = succeed "Canada" do
+                    %i
+                %label.toggle
+                  %input{:name => "checkbox-toggle-1", :type => "checkbox"}/
+                  = succeed "USA" do
+                    %i
+                %label.toggle
+                  %input{:name => "checkbox-toggle-1", :type => "checkbox"}/
+                  = succeed "Russia" do
+                    %i
+          %fieldset
+            %section
+              %label.label Ratings with different icons
+              .rating
+                %input#stars-rating-5{:name => "stars-rating", :type => "radio"}/
+                %label{:for => "stars-rating-5"}
+                  %i.fa.fa-star
+                %input#stars-rating-4{:name => "stars-rating", :type => "radio"}/
+                %label{:for => "stars-rating-4"}
+                  %i.fa.fa-star
+                %input#stars-rating-3{:name => "stars-rating", :type => "radio"}/
+                %label{:for => "stars-rating-3"}
+                  %i.fa.fa-star
+                %input#stars-rating-2{:name => "stars-rating", :type => "radio"}/
+                %label{:for => "stars-rating-2"}
+                  %i.fa.fa-star
+                %input#stars-rating-1{:name => "stars-rating", :type => "radio"}/
+                %label{:for => "stars-rating-1"}
+                  %i.fa.fa-star
+                Stars
+              .rating
+                %input#trophies-rating-7{:name => "trophies-rating", :type => "radio"}/
+                %label{:for => "trophies-rating-7"}
+                  %i.fa.fa-trophy
+                %input#trophies-rating-6{:name => "trophies-rating", :type => "radio"}/
+                %label{:for => "trophies-rating-6"}
+                  %i.fa.fa-trophy
+                %input#trophies-rating-5{:name => "trophies-rating", :type => "radio"}/
+                %label{:for => "trophies-rating-5"}
+                  %i.fa.fa-trophy
+                %input#trophies-rating-4{:name => "trophies-rating", :type => "radio"}/
+                %label{:for => "trophies-rating-4"}
+                  %i.fa.fa-trophy
+                %input#trophies-rating-3{:name => "trophies-rating", :type => "radio"}/
+                %label{:for => "trophies-rating-3"}
+                  %i.fa.fa-trophy
+                %input#trophies-rating-2{:name => "trophies-rating", :type => "radio"}/
+                %label{:for => "trophies-rating-2"}
+                  %i.fa.fa-trophy
+                %input#trophies-rating-1{:name => "trophies-rating", :type => "radio"}/
+                %label{:for => "trophies-rating-1"}
+                  %i.fa.fa-trophy
+                Trophies
+              .rating
+                %input#asterisks-rating-10{:name => "asterisks-rating", :type => "radio"}/
+                %label{:for => "asterisks-rating-10"}
+                  %i.fa.fa-asterisk
+                %input#asterisks-rating-9{:name => "asterisks-rating", :type => "radio"}/
+                %label{:for => "asterisks-rating-9"}
+                  %i.fa.fa-asterisk
+                %input#asterisks-rating-8{:name => "asterisks-rating", :type => "radio"}/
+                %label{:for => "asterisks-rating-8"}
+                  %i.fa.fa-asterisk
+                %input#asterisks-rating-7{:name => "asterisks-rating", :type => "radio"}/
+                %label{:for => "asterisks-rating-7"}
+                  %i.fa.fa-asterisk
+                %input#asterisks-rating-6{:name => "asterisks-rating", :type => "radio"}/
+                %label{:for => "asterisks-rating-6"}
+                  %i.fa.fa-asterisk
+                %input#asterisks-rating-5{:name => "asterisks-rating", :type => "radio"}/
+                %label{:for => "asterisks-rating-5"}
+                  %i.fa.fa-asterisk
+                %input#asterisks-rating-4{:name => "asterisks-rating", :type => "radio"}/
+                %label{:for => "asterisks-rating-4"}
+                  %i.fa.fa-asterisk
+                %input#asterisks-rating-3{:name => "asterisks-rating", :type => "radio"}/
+                %label{:for => "asterisks-rating-3"}
+                  %i.fa.fa-asterisk
+                %input#asterisks-rating-2{:name => "asterisks-rating", :type => "radio"}/
+                %label{:for => "asterisks-rating-2"}
+                  %i.fa.fa-asterisk
+                %input#asterisks-rating-1{:name => "asterisks-rating", :type => "radio"}/
+                %label{:for => "asterisks-rating-1"}
+                  %i.fa.fa-asterisk
+                Asterisks
+              .note
+                %strong Note:
+                you can use more than 350 icons for rating
+                %a{:href => "http://fortawesome.github.io/Font-Awesome", :target => "_blank"} http://fortawesome.github.io/Font-Awesome
+          %footer
+            %button.btn-u{:type => "submit"} Submit
+            %button.btn-u.btn-u-default{:onclick => "window.history.back();", :type => "button"} Back

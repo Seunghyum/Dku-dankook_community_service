@@ -52,6 +52,7 @@
                           = link_to lecture_infos_path do
                             %i.fa.fa-flask
                             강의 평가
+                            %span.label.rounded.label-orange New
                         %li
                           = link_to sign_in_test_users_path do
                             %i.fa.fa-sort-alpha-asc
@@ -59,7 +60,7 @@
                             %span.label.rounded.label-orange New
                         %li
                           = link_to pickmes_path do
-                            %i.fa.fa-bolt
+                            %i.fa.fa-hand-peace-o
                             Professor 101(인기 투표)
                             %span.label.rounded.label-red Hot
                     .col-md-3.equal-height-in
@@ -67,13 +68,15 @@
                         %li
                           %h3 온라인 신청
                         %li
-                          = link_to home_lockers_path do
-                            %i.fa.fa-magic
+                          = link_to "#" do
+                            %i.fa.fa-th
                             학과별 사물함 신청
+                            %span.label.rounded.label-purple 공사중
                         %li
                           %a{:href => "#"}
-                            %i.fa.fa-ellipsis-h
+                            %i.fa.fa-book
                             학과별 중고책 신청
+                            %span.label.rounded.label-purple 공사중
                         %hr
                         %li
                           %h3 커뮤니티
@@ -81,6 +84,7 @@
                           = link_to board_posts_path(1) do
                             %i.fa.fa-quote-left
                             자유게시판
+                            %span.label.rounded.label-orange New
 
                     .col-md-3.equal-height-in
                       %ul.list-unstyled.equal-height-list
@@ -89,8 +93,8 @@
                         / Common Elements
                         %li
                           = link_to "http://dankook.likelion.net/" do
-                            %i.fa.fa-image
-                            멋쟁이사자처럼 (1년후)
+                            = image_tag "likelion/lion_head.ico", style: "width: 23px;"
+                            멋쟁이사자처럼 (?)
                         %li
                           %a{:href => "#"}
                             %i.fa.fa-list-ol

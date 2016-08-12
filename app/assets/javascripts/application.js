@@ -26,6 +26,7 @@
 //= require comment_edit
 //= require_tree ./js
 //= require_tree ./plugins
+//= require image-picker
 //= require redactor1
 //= require redactor/fontcolor
 //= require redactor/fontsize

@@ -7,7 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-
 BestFive.create(category: "교양")
 BestFive.create(category: "자유게시판")
 
@@ -60,13 +59,13 @@ Locker.create(limit_num: 3, major_id: 2)
       #  "http://www.dankook.ac.kr/web/kor/-60?p_p_id=Phone_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=2&_Phone_WAR_empInfoportlet_root=%EA%B5%90%ED%95%99%ED%96%89%EC%A0%95%ED%8C%80&_Phone_WAR_empInfoportlet_action=view&_Phone_WAR_empInfoportlet_dept_loct_cd=2",
       #  "http://www.dankook.ac.kr/web/kor/-60?p_p_id=Phone_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=2&_Phone_WAR_empInfoportlet_root=%EA%B8%B0%ED%83%80&_Phone_WAR_empInfoportlet_action=view&_Phone_WAR_empInfoportlet_dept_loct_cd=2"
       ]
-  @domain_both.each do |x|
-    @html = Nokogiri::HTML(Net::HTTP.get(URI(x)))
-       @row = @html.css("tr").length
-       1.upto(@row) do |a|
-           SchoolPhoneSearching.create(campus: @html.css("table//tr:nth-child(#{a})//td:nth-child(1)").inner_text, belong: @html.css("table//tr:nth-child(#{a})//td:nth-child(3)").inner_text, name: @html.css("table//tr:nth-child(#{a})//td:nth-child(4)").inner_text, phone: @html.css("table//tr:nth-child(#{a})//td:nth-child(5)").inner_text )
-       end
-   end
+@domain_both.each do |x|
+  @html = Nokogiri::HTML(Net::HTTP.get(URI(x)))
+    @row = @html.css("tr").length
+    1.upto(@row) do |a|
+      SchoolPhoneSearching.create(campus: @html.css("table//tr:nth-child(#{a})//td:nth-child(1)").inner_text, belong: @html.css("table//tr:nth-child(#{a})//td:nth-child(3)").inner_text, name: @html.css("table//tr:nth-child(#{a})//td:nth-child(4)").inner_text, phone: @html.css("table//tr:nth-child(#{a})//td:nth-child(5)").inner_text )
+    end
+ end
 
 
 #교수정보 가져오기
@@ -241,4 +240,3 @@ RehearsalLecture.create(lnum: "123456", divide: "2", name: "알아, 이 개자�
 RehearsalLecture.create(lnum: "472811", divide: "1", name: "UFC 기초", score: 3, teacher: "고영일", ldate: "[사이버]", limit_num: 20)
 RehearsalLecture.create(lnum: "21193", divide: "3", name: "영웅은 죽지않아요 너만 빼고", score: 3, teacher: "김순후", ldate: "수 5,6,7", limit_num: 150)
 RehearsalLecture.create(lnum: "11220", divide: "1", name: "멋쟁이 사자처럼", score: 3, teacher: "유태하", ldate: "화,금 1,2,3", limit_num: 34)
-RehearsalLecture.create(lnum: "58291", divide: "1", name: "우리 자기, 수업 다 끝났JJㅕ?", score: 3, teacher: "수지", ldate: "수,목 22,23", limit_num: 40)

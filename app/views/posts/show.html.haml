@@ -8,20 +8,20 @@
         = link_to @board.name, board_posts_path(@board), class: "btn-u btn-u-lg"
         .news-v3.bg-color-white.margin-bottom-30
           .news-v3-in.clearfix.row
-            .col-sm-3.shadow-wrapper.col-md-2.text-center
-              .box-shadow.shadow-effect-2.rounded-2x.col-xs-8.col-sm-12
-                = image_tag current_user.profile.nil? ? current_user.profile : "placeholder.jpg", class: "img-responsive rounded-2x img-bordered"
-              %h3= @post.user.username
-              - if can? :update, @post
-                / 수정버튼
-                = link_to edit_board_post_path(@post.board, @post) do
-                  %button.btn-u.btn-brd.btn-brd-hover.rounded-4x.btn-u-orange{:rel => "tooltip", :title => "수정하기"}
-                    %i.fa.fa-edit
-              - if can? :destroy, @post
-                / 삭제버튼
-                = link_to board_post_path(@post.board, @post), method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' } do
-                  %button.btn-u.btn-brd.btn-brd-hover.rounded-4x.btn-u-red{:rel => "tooltip", :title => "삭제하기"}
-                    %i.fa.fa-trash-o
+            .col-sm-3.shadow-wrapper.col-md-2
+              = image_tag current_user.profile.present? ? current_user.profile : "placeholder.jpg", class: "rounded-2x img-responsive rounded-2x center-block"
+              .text-center
+                %h3= @post.user.username
+                - if can? :update, @post
+                  / 수정버튼
+                  = link_to edit_board_post_path(@post.board, @post) do
+                    %button.btn-u.btn-brd.btn-brd-hover.rounded-4x.btn-u-orange{:rel => "tooltip", :title => "수정하기"}
+                      %i.fa.fa-edit
+                - if can? :destroy, @post
+                  / 삭제버튼
+                  = link_to board_post_path(@post.board, @post), method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' } do
+                    %button.btn-u.btn-brd.btn-brd-hover.rounded-4x.btn-u-red{:rel => "tooltip", :title => "삭제하기"}
+                      %i.fa.fa-trash-o
             .col-sm-9.col-md-10
               %center
                 %h3.title= @post.title
@@ -34,7 +34,7 @@
                     = x
               / 글 출력
               %br
-              .redactor-text
+              .redactor-text{style: "padding: 0px 20px;"}
                 = @post.content.html_safe
               / 좋아요 / 싫어요
               %ul.list-inline.badge-lists.badge-box-v1.margin-bottom-30.text-center

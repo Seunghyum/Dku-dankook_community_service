@@ -75,7 +75,7 @@ gem "haml-rails"
 #editor
 gem 'redactor-rails'
 gem 'owlcarousel-rails'
-
+gem 'image-picker-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

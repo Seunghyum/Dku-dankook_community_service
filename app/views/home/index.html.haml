@@ -12,10 +12,10 @@
           %div{style: "height: 250px; background-image: url(#{ image_url 'banner/pickme.png'}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
         = link_to book_lists_path do
           %div{style: "height: 250px; background-image: url(#{ image_url 'banner/enactus.png'}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
-        = link_to sign_in_test_users_path do
-          %div{style: "height: 250px; background-image: url(#{ image_url 'banner/rehearsal.jpeg'}); background-position: center 40%; background-repeat: no-repeat; background-size: cover;"}
         = link_to home_lockers_path do
           %div{style: "height: 250px; background-image: url(#{ image_url 'banner/locker.jpeg'}); background-position: center 40%; background-repeat: no-repeat; background-size: cover;"}
+        = link_to sign_in_test_users_path do
+          %div{style: "height: 250px; background-image: url(#{ image_url 'banner/rehearsal.jpeg'}); background-position: center 40%; background-repeat: no-repeat; background-size: cover;"}
 
       = render 'simple_calendar/calendar'
 
@@ -42,12 +42,11 @@
       / 교수 인기 Event
       .profile-body.md-margin-bottom-20
         .panel.panel-profile.no-bg
-          .tag-box-v1.panel-heading.overflow-h
+          .tag-box-v1.panel-heading.overflow-h{ style: "border-top: solid 2px red;"}
             %h2.panel-title.heading-sm.pull-left
               %i.fa.fa-hand-peace-o
-
               실시간 인기 순위
-            = link_to "바로가기", pickmes_path, class: "btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right"
+            = link_to "참여하기", pickmes_path, class: "btn-u btn-brd-hover btn-u-red rounded-2x btn-u-xs pull-right"
           .panel-body.no-padding
             .profile-event
               #vertical_banner
@@ -61,15 +60,15 @@
                           %span.badge.rounded-2x.badge-orange= "#{index + 1}"
                         -else
                           %span.badge.rounded-2x.badge-yellow= "#{index + 1}"
-                        = "#{best.name}"
+                        = "#{best.name} - #{best.belong}"
       / Profile Event
       .profile-body.md-margin-bottom-20
         .panel.panel-profile.no-bg
-          .tag-box-v1.panel-heading.overflow-h
+          .tag-box-v1.panel-heading.overflow-h{ style: "border-top: solid 2px #e67e22;"}
             %h2.panel-title.heading-sm.pull-left
               %i.fa.fa-university
               실시간 Hot 강의
-            = link_to "바로가기", lecture_infos_path, class: "btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right"
+            = link_to "참여하기", lecture_infos_path, class: "btn-u btn-brd-hover btn-u-orange rounded-2x btn-u-xs pull-right"
           .panel-body.no-padding
             .profile-event
               #vertical_banner
@@ -81,11 +80,11 @@
       / End Profile Event
       .profile-body
         .panel.panel-profile
-          .tag-box-v1.panel-heading.overflow-h
+          .tag-box-v1.panel-heading.overflow-h{ style: "border-top: solid 2px yellow;"}
             %h2.panel-title.heading-sm.pull-left
               %i.fa.fa-comments-o
               자유게시판
-            = link_to "바로가기", board_posts_path(1), class: "btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right"
+            = link_to "참여하기", board_posts_path(1), class: "btn-u btn-brd-hover btn-u-yellow rounded-2x btn-u-xs pull-right"
             -# %a.btn-u.btn-brd.btn-brd-hover.btn-u-dark.btn-u-xs.pull-right{:href => "page_profile_comments.html"} View All
           #scrollbar4.panel-body.no-padding.mCustomScrollbar{"data-mcs-theme" => "minimal-dark"}
             - if @best_posts.present?

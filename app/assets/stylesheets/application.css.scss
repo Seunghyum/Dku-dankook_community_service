@@ -24,6 +24,7 @@
  *= require_tree ./theme-skins
  *= require_tree ./theme-colors
  *= require_tree ./fonts
+ *= require image-picker
  *= require custom
  *= require_self
  */
@@ -40,5 +41,26 @@
 .redactor-text {
   img {
     width: 100%;
+  }
+}
+
+.image_picker_selector{
+  text-align: center !important;
+  li {
+    float: none !important;
+    display: inline-block !important;
+    width: 130px !important;
+    .thumbnail {
+      border-radius: 15px !important;
+      &.selected {
+        background: none !important;
+        border: solid 4px #31b0d5 !important;
+      }
+    }
+  }
+}
+@media screen and (max-width: 450px){
+  .image_picker_selector li{
+    width: 100px !important;
   }
 }

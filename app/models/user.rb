@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
  	attr_accessor :login
 
-  mount_uploader :profile, ProfileUploader
+  # mount_uploader :profile, ProfileUploader
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
