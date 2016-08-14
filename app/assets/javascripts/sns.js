@@ -5,11 +5,10 @@ $(document).ready(function(){
     var output;
     var urlName =  $(location).attr('hostname');
     var page_url = window.location.href;
-    var kakao_image = $('#kakao_image').attr("content");
     var shareImage = $('#share_image').data("img");
-    function kakaoToggle(e){
+    function kakaoToggle(){
       Kakao.Link.sendTalkLink({
-        label: e,
+        label: "단국대 커뮤니티 - (디쿠)",
         image: {
           src: page_url + shareImage,
           width: '100',
@@ -22,16 +21,11 @@ $(document).ready(function(){
       });
     }
 
-    $(".kakao-link-btn").click(function(){
-      var msg = "#" + $(this).data("kakao");
-      var output = $(msg).text();
-
-      kakaoToggle(output);
-      console.log(kakao_image);
-
+    $(".kakao-link-btn").click(function(e){
+      e.preventDefault();
+      kakaoToggle();
     });
-// 1031554063618569
-// 588782887970593
+
     // 페이스북
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -54,7 +48,6 @@ $(document).ready(function(){
           description: output
       });
     });
-  // });
 // 트위터
    $('.btn-tw').on('click', function(e) {
       e.preventDefault();
@@ -63,17 +56,4 @@ $(document).ready(function(){
       var url = "https://twitter.com/intent/tweet?text=" + message + "&url="+ page_url;
       window.open(url);
     });
-// //밴드
-//   $(".btn-band").click(function(e){
-//     e.preventDefault();
-//
-//     var urlName =  $(location).attr('hostname');
-//     var message_id  = $(this).data("id");
-//     var message = $("#"+ message_id).text();
-//     var url =   "http://band.us/plugin/share?body=" + message +  "%0Ahttp%3A%2F%2F"
-//       + urlName + "%2Fhome%2Findex%3Fpage%3D1&route="
-//       + urlName
-//     window.open(url);
-//   });
-
 });
