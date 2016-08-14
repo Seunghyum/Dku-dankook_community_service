@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :lnum, allow_blank: true, scope: [:major_id]
   validate :validate_username
 
-  after_save :check_gender
+  # after_save :check_gender
   #투표자
   acts_as_voter
   #태그자
@@ -60,13 +60,13 @@ class User < ActiveRecord::Base
     end
   end
 
-  def check_gender
-    if self.gender == "여성"
-      self.update_column(:gender, "여성")
-    else
-      self.update_column(:gender, "남성")
-    end
-  end
+  # def check_gender
+  #   if self.gender == "여성"
+  #     self.update_column(:gender, "여성")
+  #   else
+  #     self.update_column(:gender, "남성")
+  #   end
+  # end
 
 # 페이스북 start
   def self.find_for_facebook_oauth(auth)
