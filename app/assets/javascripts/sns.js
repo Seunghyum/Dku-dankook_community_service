@@ -43,7 +43,7 @@ $(document).ready(function(){
           method: 'feed',
           name: '단국대 커뮤니티 - 디쿠',
           link: page_url,
-          picture: shareImage,
+         //  picture: shareImage,
           caption: '디쿠',
           description: output
       });
