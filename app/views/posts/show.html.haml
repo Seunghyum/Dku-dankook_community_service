@@ -9,7 +9,7 @@
         .news-v3.bg-color-white.margin-bottom-30
           .news-v3-in.clearfix.row
             .col-sm-3.shadow-wrapper.col-md-2
-              = image_tag current_user.profile.present? ? current_user.profile : "placeholder.jpg", class: "rounded-2x img-responsive rounded-2x center-block"
+              = image_tag @post.user.profile.present? ? image_url("placeholder.jpg") : @post.user.profile, class: "rounded-2x img-responsive rounded-2x center-block"
               .text-center
                 %h3= @post.user.username
                 - if can? :update, @post
