@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require rails-timeago
+//= require sns
 //= require locales/jquery.timeago.ko.js
 
 $(document).ready(function(){
