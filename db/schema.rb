@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811111128) do
+ActiveRecord::Schema.define(version: 20160814050144) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -63,12 +63,12 @@ ActiveRecord::Schema.define(version: 20160811111128) do
 
   create_table "books", force: :cascade do |t|
     t.string   "name"
-    t.string   "bgiver"
     t.integer  "price"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.integer  "book_list_id"
     t.boolean  "purchase",     default: false
+    t.string   "author"
   end
 
   add_index "books", ["book_list_id"], name: "index_books_on_book_list_id"
@@ -352,7 +352,6 @@ ActiveRecord::Schema.define(version: 20160811111128) do
     t.string   "profile"
     t.string   "role",                   default: "외부인"
     t.string   "username"
-    t.string   "gender"
     t.integer  "lnum"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
