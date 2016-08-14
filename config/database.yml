@@ -11,28 +11,28 @@ development:
 test:
   <<: *default
   database: db/test.sqlite3
-# staging:
-#   <<: *default
-#   database: db/test.sqlite3
-# production:
-# g  <<: *default
-#   database: db/test.sqlite3
-
 staging:
-  adapter: mysql2
-  database: new_dku_develop
-  username: root
-  password: ''
-  encoding: utf8
-  host: localhost
-  timeout: 5000
-
+  <<: *default
+  database: db/test.sqlite3
 production:
-  adapter: mysql2
-  username: Seunghyum
-  database: ebdb
-  password: justdoit12
-  encoding: utf8mb4
-  host: aag23zeaqbk00f.ctjjwc8t09iy.ap-northeast-2.rds.amazonaws.com
-  port: 3306
-  timeout: 5000
+  <<: *default
+  database: db/test.sqlite3
+
+# staging:
+#   adapter: mysql2
+#   database: new_dku_develop
+#   username: root
+#   password: ''
+#   encoding: utf8
+#   host: localhost
+#   timeout: 5000
+#
+# production:
+#   adapter: mysql2
+#   username: Seunghyum
+#   database: ebdb
+#   password: justdoit12
+#   encoding: utf8mb4
+#   host: aag23zeaqbk00f.ctjjwc8t09iy.ap-northeast-2.rds.amazonaws.com
+#   port: 3306
+#   timeout: 5000
