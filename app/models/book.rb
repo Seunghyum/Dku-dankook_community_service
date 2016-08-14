@@ -8,7 +8,7 @@ class Book < ActiveRecord::Base
   before_destroy :destroy_book_list
 
   def create_book_list
-    summury_name = self.name.gsub(/\s+/, "")
+    summury_name = self.name #.gsub(/\p{Space}/,'')
     list = BookList.find_by(name: summury_name)
     if list.nil?
       new_book_list = BookList.create(name: self.name, num_of_book: 1)

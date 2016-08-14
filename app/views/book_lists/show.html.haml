@@ -19,7 +19,7 @@
               - @books.each_with_index do |book, index|
                 %tr
                   %td= index + 1
-                  %td= book.name
+                  %td= "#{book.name} #{book.bindex}"
                   %td= book.price
                   %td
                     -if book.purchase

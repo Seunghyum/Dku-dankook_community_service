@@ -1,6 +1,6 @@
-- @book_lists.each_with_index do |book_list, index|
+- @book_lists.each do |book_list|
   %tr
-    %td= index + 1
+    %td= book_list.id
     %td
       -# - if cannot? :create, book_list
         =  book_list.name

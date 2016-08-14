@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160814050144) do
+ActiveRecord::Schema.define(version: 20160814060540) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20160814050144) do
     t.integer  "book_list_id"
     t.boolean  "purchase",     default: false
     t.string   "author"
+    t.string   "bindex"
   end
 
   add_index "books", ["book_list_id"], name: "index_books_on_book_list_id"
