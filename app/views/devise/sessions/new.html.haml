@@ -15,11 +15,11 @@
         .login-block
           .input-group.margin-bottom-20
             %span.input-group-addon.rounded-left
-              %i.icon-user.color-blue
+              %i.fa.fa-user
             = f.text_field :login, class: "form-control rounded-right", placeholder: "닉네임"
           .input-group.margin-bottom-20
             %span.input-group-addon.rounded-left
-              %i.icon-lock.color-blue
+              %i.fa.fa-key
             = f.password_field :password, class: "form-control rounded-right", placeholder: "비밀번호"
           - if devise_mapping.rememberable?
             .checkbox
@@ -28,7 +28,7 @@
                   %label
                     = f.check_box :remember_me
                     아이디 기억하기
-                %li.pull-right
+                -# %li.pull-right
                   = link_to "비밀번호 찾기", new_user_password_path
           .row.margin-bottom-20
             .col-md-12

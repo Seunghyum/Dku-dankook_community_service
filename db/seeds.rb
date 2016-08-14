@@ -14,11 +14,11 @@
 # BestFive.create(category: "교양")
 # BestFive.create(category: "자유게시판")
 #
-# User.create(username: "운영자1", name: "운영자", email: 'antmgu@gmail.com', password: "(ajttk2016)", password_confirmation: "(ajttk2016)", role: "슈퍼관리자", major_id: 1, certification: true)
-# User.create(username: "운영자2", name: "운영자2", email: 'antmgu@gmail.com', password: "12341234", password_confirmation: "12341234", role: "슈퍼관리자", major_id: 1, certification: true)
-# User.create(username: "운영자3", name: "운영자3", email: 'antmgu@gmail.com', password: "12341234", password_confirmation: "12341234", role: "슈퍼관리자", major_id: 1, certification: true)
-# User.create(username: "운영자4", name: "운영자4", email: 'antmgu@gmail.com', password: "12341234", password_confirmation: "12341234", role: "슈퍼관리자", major_id: 1, certification: true)
-# User.create(username: "Enactus", name: "Enactus", email: '1@1.com', password: "encatus123", password_confirmation: "12341234", role: "인액터스", major_id: 1, certification: true)
+User.create(username: "운영자1", name: "운영자", email: 'antmgu@gmail.com', password: "(ajttk2016)", password_confirmation: "(ajttk2016)", role: "슈퍼관리자", major_id: 1, certification: true)
+User.create(username: "운영자2", name: "운영자2", email: 'antmgu@gmail.com', password: "(ajttk2016)", password_confirmation: "(ajttk2016)", role: "슈퍼관리자", major_id: 1, certification: true)
+User.create(username: "운영자3", name: "운영자3", email: 'antmgu@gmail.com', password: "(ajttk2016)", password_confirmation: "(ajttk2016)", role: "슈퍼관리자", major_id: 1, certification: true)
+User.create(username: "운영자4", name: "운영자4", email: 'antmgu@gmail.com', password: "(ajttk2016)", password_confirmation: "(ajttk2016)", role: "슈퍼관리자", major_id: 1, certification: true)
+User.create(username: "Enactus", name: "Enactus", email: '1@1.com', password: "encatus123", password_confirmation: "encatus123", role: "인액터스", major_id: 1, certification: true)
 # # Board.create(name: "자유게시판", description: "자유롭게 말하세요")
 # # 1.upto(50) do |x|
 # #     Post.create(title: "테스트 타이틀#{x}", content: "내용테스트#{x}", user_id: 1, board_id: 1, hits: x)
@@ -72,122 +72,122 @@
 #  end
 #
 #
-#교수정보 가져오기
-@professor = Array.new
-@professor = [
-  # #문과대학
-   "http://www.dankook.ac.kr/web/kor/-152?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-   "http://www.dankook.ac.kr/web/kor/-153?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-   "http://www.dankook.ac.kr/web/kor/-154?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-   "http://www.dankook.ac.kr/web/kor/-155?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-   "http://www.dankook.ac.kr/web/kor/-156?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  #법과대
-  "http://www.dankook.ac.kr/web/kor/-158?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  #사회과학대학
-  "http://www.dankook.ac.kr/web/kor/-160?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-161?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-162?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-164?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-235?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-317?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-167?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-168?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  #상경대
-  "http://www.dankook.ac.kr/web/kor/-171?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-172?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-173?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-174?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-318?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-175?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-52?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  #자연대학(구학문)
-  "http://www.dankook.ac.kr/web/kor/-231?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-232?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-234?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-233?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  #건축대학
-  "http://www.dankook.ac.kr/web/kor/-177?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-178?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  #공과대학
-  "http://www.dankook.ac.kr/web/kor/-319?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-180?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-181?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-182?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-183?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-184?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-185?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-186?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-187?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-188?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-189?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  #사범대
-  "http://www.dankook.ac.kr/web/kor/-191?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-192?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-193?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-194?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-195?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-196?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  #예술대학
-  "http://www.dankook.ac.kr/web/kor/-197?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-198?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-199?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-200?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-201?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-320?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-202?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-203?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  #음악대학
-  "http://www.dankook.ac.kr/web/kor/-205?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-207?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-208?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-209?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  #국제대학
-  "http://www.dankook.ac.kr/web/kor/-211?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  "http://www.dankook.ac.kr/web/kor/-212?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
-  # 교양대
-  "http://www.dankook.ac.kr/web/kor/-150?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view"
-]
-
-#주석 이해하기위해서는 위의 교수정보사이트의 HTML태그를 보면서 이해해야 함.
-@professor.each do |x|
-  @html = Nokogiri::HTML(Net::HTTP.get(URI(x)))
-
-  #교수들의 정보가 있는 div 태그의 줄
-  @wraper_row = @html.css(".professor").length + @h4_row = @html.css(".portlet-body > div > h4").length
-
-  #줄만큼 반복
-  1.upto(@wraper_row) do |a|
-    #h4태그 일떄(= 교수정보가 없는 태그일 때)
-    if @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid:nth-child(1)").empty?
-
-    #한줄에 2개의 교수정보 div가있을때
-    elsif @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid").length == 2
-     1.upto(2) do |b|
-       doc = @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid:nth-child(#{b}) > .span8 > .name > span.more > a[href]").map { |link| link['href'] }
-       Professor.create(
-         name: @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid:nth-child(#{b}) > .span8 > .name > a").search("a").remove.inner_text,
-         belong: @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid:nth-child(#{b}) > .span8 > .name").inner_text,
-
-        #  intro: @html.at_xpath(".portlet-body//div//.professor.row-fluid:nth-child(#{a})//.span6.row-fluid:nth-child(#{b})//.span8//p.name//span.more//a[normalize-space(.)=img]")['href']
-         intro_url: doc.join(","),
-         profile: @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid:nth-child(#{b}) > .span4.photo > .img_wrap > img").attr("src").inner_text.to_s
-       )
-     end
-
-    #한줄에 1개의 교수정보 div가 있을 때
-    else
-     doc = @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid > .span8 > .name > span.more > a[href]").map { |link| link['href'] }
-     Professor.create(
-       name: @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid > .span8 > .name > a").search("a").remove.inner_text,
-       belong: @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid > .span8 > .name").inner_text,
-
-      #  intro: @html.at_xpath(".portlet-body//div//.professor.row-fluid:nth-child(#{a})//.span6.row-fluid:nth-child(#{b})//.span8//p.name//span.more//a[normalize-space(.)=img]")['href']
-       intro_url: doc.join(","),
-       profile: @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid:nth-child(1) > .span4.photo > .img_wrap > img").attr("src").inner_text.to_s
-     )
-    end
-  end
-end
+# #교수정보 가져오기
+# @professor = Array.new
+# @professor = [
+#   # #문과대학
+#    "http://www.dankook.ac.kr/web/kor/-152?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#    "http://www.dankook.ac.kr/web/kor/-153?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#    "http://www.dankook.ac.kr/web/kor/-154?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#    "http://www.dankook.ac.kr/web/kor/-155?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#    "http://www.dankook.ac.kr/web/kor/-156?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   #법과대
+#   "http://www.dankook.ac.kr/web/kor/-158?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   #사회과학대학
+#   "http://www.dankook.ac.kr/web/kor/-160?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-161?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-162?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-164?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-235?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-317?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-167?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-168?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   #상경대
+#   "http://www.dankook.ac.kr/web/kor/-171?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-172?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-173?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-174?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-318?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-175?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-52?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   #자연대학(구학문)
+#   "http://www.dankook.ac.kr/web/kor/-231?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-232?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-234?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-233?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   #건축대학
+#   "http://www.dankook.ac.kr/web/kor/-177?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-178?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   #공과대학
+#   "http://www.dankook.ac.kr/web/kor/-319?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-180?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-181?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-182?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-183?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-184?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-185?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-186?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-187?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-188?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-189?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   #사범대
+#   "http://www.dankook.ac.kr/web/kor/-191?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-192?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-193?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-194?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-195?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-196?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   #예술대학
+#   "http://www.dankook.ac.kr/web/kor/-197?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-198?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-199?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-200?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-201?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-320?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-202?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-203?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   #음악대학
+#   "http://www.dankook.ac.kr/web/kor/-205?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-207?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-208?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-209?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   #국제대학
+#   "http://www.dankook.ac.kr/web/kor/-211?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   "http://www.dankook.ac.kr/web/kor/-212?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view",
+#   # 교양대
+#   "http://www.dankook.ac.kr/web/kor/-150?p_p_id=DeptInfo_WAR_empInfoportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_DeptInfo_WAR_empInfoportlet_viewNo=1&_DeptInfo_WAR_empInfoportlet_action=view"
+# ]
+#
+# #주석 이해하기위해서는 위의 교수정보사이트의 HTML태그를 보면서 이해해야 함.
+# @professor.each do |x|
+#   @html = Nokogiri::HTML(Net::HTTP.get(URI(x)))
+#
+#   #교수들의 정보가 있는 div 태그의 줄
+#   @wraper_row = @html.css(".professor").length + @h4_row = @html.css(".portlet-body > div > h4").length
+#
+#   #줄만큼 반복
+#   1.upto(@wraper_row) do |a|
+#     #h4태그 일떄(= 교수정보가 없는 태그일 때)
+#     if @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid:nth-child(1)").empty?
+#
+#     #한줄에 2개의 교수정보 div가있을때
+#     elsif @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid").length == 2
+#      1.upto(2) do |b|
+#        doc = @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid:nth-child(#{b}) > .span8 > .name > span.more > a[href]").map { |link| link['href'] }
+#        Professor.create(
+#          name: @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid:nth-child(#{b}) > .span8 > .name > a").search("a").remove.inner_text,
+#          belong: @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid:nth-child(#{b}) > .span8 > .name").inner_text,
+#
+#         #  intro: @html.at_xpath(".portlet-body//div//.professor.row-fluid:nth-child(#{a})//.span6.row-fluid:nth-child(#{b})//.span8//p.name//span.more//a[normalize-space(.)=img]")['href']
+#          intro_url: doc.join(","),
+#          profile: @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid:nth-child(#{b}) > .span4.photo > .img_wrap > img").attr("src").inner_text.to_s
+#        )
+#      end
+#
+#     #한줄에 1개의 교수정보 div가 있을 때
+#     else
+#      doc = @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid > .span8 > .name > span.more > a[href]").map { |link| link['href'] }
+#      Professor.create(
+#        name: @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid > .span8 > .name > a").search("a").remove.inner_text,
+#        belong: @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid > .span8 > .name").inner_text,
+#
+#       #  intro: @html.at_xpath(".portlet-body//div//.professor.row-fluid:nth-child(#{a})//.span6.row-fluid:nth-child(#{b})//.span8//p.name//span.more//a[normalize-space(.)=img]")['href']
+#        intro_url: doc.join(","),
+#        profile: @html.css(".portlet-body > div > .professor.row-fluid:nth-child(#{a}) > .span6.row-fluid:nth-child(1) > .span4.photo > .img_wrap > img").attr("src").inner_text.to_s
+#      )
+#     end
+#   end
+# end
 #
 # # LectureInfo.create(name: "1경영학", l_type: "전공필수", time: 10, semester: 2, professor_id: 1, all_view: 10)
 # # LectureInfo.create(name: "2전공선태그스", l_type: "전공선택", time: 10, semester: 2, professor_id: 2, all_view: 9)
