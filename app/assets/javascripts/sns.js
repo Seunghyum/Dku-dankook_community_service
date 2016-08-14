@@ -5,7 +5,7 @@ $(document).ready(function(){
     var output;
     var urlName =  $(location).attr('hostname');
     var page_url = window.location.href;
-   //  var kakao_image = $('#kakao_image').attr("content");
+    var kakao_image = $('#kakao_image').attr("content");
     var shareImage = $('#share_image').data("img");
     function kakaoToggle(e){
       Kakao.Link.sendTalkLink({
