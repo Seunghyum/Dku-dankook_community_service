@@ -66,9 +66,20 @@
   .certain_banner{
     background-size: contain !important;
   }
+  .redactor-wrapper{
+    max-width: 350px;
+  }
 }
-.title-box-v2 {
-  img {
-    width: 100%;
+@media screen and (min-width: 450px) and (max-width: 780px){
+  .redactor-wrapper{
+    max-width: 550px;
+  }
+}
+.redactor-wrapper{
+  max-width: 700px;
+  .display_image{
+    img{
+      width: 100%;
+    }
   }
 }

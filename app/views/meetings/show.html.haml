@@ -1,5 +1,5 @@
 .job-description
-  .container.content
+  .container.content.redactor-wrapper
     .title-box-v2
       %p#notice= notice
       %span{:class => "label rounded label-#{@meeting.type_class}"}= @meeting.event_type
@@ -12,7 +12,7 @@
       = link_to 'delete', meeting_path(@meeting), method: "delete", class: 'btn-u btn-u-orange btn-u-xs' if can? :update, @meetings
       %br
       %br
-      .text-center
+      .text-center.display_image
         =image_tag @meeting.photo
     .left-inner.redactor-text
       = @meeting.content.html_safe
