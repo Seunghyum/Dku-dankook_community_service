@@ -13,9 +13,12 @@ class HomeController < ApplicationController
           'light-green']
 
     # 강의 순위
-    @best_liberal = BestFive.find_by(category: "교양").lecture_infos
-
-    @best_posts = BestFive.find_by(category: "자유게시판").posts.order("cached_votes_score DESC")
+    if LectureInfo.first.present?
+      @best_liberal = BestFive.find_by(category: "교양").lecture_infos
+    end
+    if Post.first.present?
+      @best_posts = BestFive.find_by(category: "자유게시판").posts.order("cached_votes_score DESC")
+    end
     # respond_to do |format|
     #   format.js
     #   format.html
