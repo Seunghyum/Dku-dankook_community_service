@@ -49,6 +49,10 @@
                           %h3 강의
                         / Buttons
                         %li
+                          %a{ href: "#"}
+                            강의 평가
+                            %span.label.rounded.label-blue 준비중!
+                        -# %li
                           = link_to lecture_infos_path do
                             %i.fa.fa-flask
                             강의 평가
@@ -71,12 +75,12 @@
                           = link_to "#" do
                             %i.fa.fa-th
                             학과별 사물함 신청
-                            %span.label.rounded.label-purple 공사중
+                            %span.label.rounded.label-blue 준비중!
                         %li
                           %a{:href => "#"}
                             %i.fa.fa-book
                             학과별 중고책 신청
-                            %span.label.rounded.label-purple 공사중
+                            %span.label.rounded.label-blue 준비중!
                         %hr
                         %li
                           %h3 커뮤니티
@@ -94,9 +98,11 @@
                         %li
                           = link_to "http://dankook.likelion.net/" do
                             = image_tag "likelion/lion_head.ico", style: "width: 23px;"
+                            %nbsp
                             멋쟁이사자처럼 (?)
                         %li
                           %a{:href => "#"}
+                            &nbsp
                             %i.fa.fa-list-ol
                             인액터스
                     .col-md-3.equal-height-in
