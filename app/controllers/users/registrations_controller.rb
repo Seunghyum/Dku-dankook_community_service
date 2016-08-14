@@ -14,8 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     # uploader = ProfileUploader.new
     # uploader.store!(params[:profile])
-    resource.save
-    resource.update_column(:role, "외부인")
+    # resource.update_column(:role, "외부인")
 
   end
 
