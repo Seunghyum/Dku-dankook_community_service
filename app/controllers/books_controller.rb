@@ -29,7 +29,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to book_lists_path, notice: 'Book was successfully created.' }
+        format.html { redirect_to book_lists_path, notice: '책이 성공적으로 만들어졌습니다.' }
       else
         format.html { render :new }
       end
@@ -39,7 +39,7 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params)
-        format.html { redirect_to book_lists_path, notice: 'Book was successfully updated.' }
+        format.html { redirect_to book_list_path(@book_list), notice: '책이 성공적으로 삭제되었습니다.' }
       else
         format.html { render :edit }
       end
@@ -49,7 +49,7 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     respond_to do |format|
-      format.html { redirect_to book_list_path(@book_list), notice: 'Book was successfully destroyed.' }
+      format.html { redirect_to book_lists_path, notice: '책이 성공적으로 삭제되었습니다.' }
     end
   end
 
@@ -64,6 +64,6 @@ class BooksController < ApplicationController
     end
 
     def book_params
-      params.require(:book).permit(:name, :bgiver, :price)
+      params.require(:book).permit(:name, :price)
     end
 end
