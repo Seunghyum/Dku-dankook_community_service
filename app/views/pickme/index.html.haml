@@ -28,22 +28,26 @@
     %br
     .tranieeList
       - if @search_professor.nil?
-        - @professors.each_slice(7) do |professors_7|
-          %ul
-            - professors_7.each do |pro|
-              %li
-                .thumb
-                  - if current_user.present? and current_user.voted_up_on? pro
-                    = link_to dislike_pickmes_path(pro),method: :get do
-                      %span.mask_vote
-                      %div{style: "background-image: url(#{pro.profile});background-position: center; background-size: contain;  background-repeat: no-repeat; width: 131px; height: 131px;"}
-                  - else
-                    = link_to like_pickmes_path(pro),method: :get do
-                      %span.mask_vote
-                      %div{style: "background-image: url(#{pro.profile});background-position: center; background-size: contain;  background-repeat: no-repeat; width: 131px; height: 131px;"}
-                %p.name
-                  = "#{pro.name}"
-                %p.agency= pro.belong
+        - if @professors.nil?
+          %div{:class => "alert alert-danger fade in text-center", id: "flash", style: "width:230px; margin: 10px auto;"}
+            %div{style: "text-align: center; font-size: 13px;"} 결과 값이 없습니다. 다시 검색해주세요.
+        - else
+          - @professors.each_slice(7) do |professors_7|
+            %ul
+              - professors_7.each do |pro|
+                %li
+                  .thumb
+                    - if current_user.present? and current_user.voted_up_on? pro
+                      = link_to dislike_pickmes_path(pro),method: :get do
+                        %span.mask_vote
+                        %div{style: "background-image: url(#{pro.profile});background-position: center; background-size: contain;  background-repeat: no-repeat; width: 131px; height: 131px;"}
+                    - else
+                      = link_to like_pickmes_path(pro),method: :get do
+                        %span.mask_vote
+                        %div{style: "background-image: url(#{pro.profile});background-position: center; background-size: contain;  background-repeat: no-repeat; width: 131px; height: 131px;"}
+                  %p.name
+                    = "#{pro.name}"
+                  %p.agency= pro.belong
       - else
         %ul
           %li
