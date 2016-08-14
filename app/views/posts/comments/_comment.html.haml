@@ -1,7 +1,7 @@
 - @post.comments.each do |comment|
   .row.blog-comments.margin-bottom-30
     .col-sm-2.sm-margin-bottom-40.text-right_sm-left_xs
-      = image_tag comment.user.profile.nil? ? comment.user.profile : "placeholder.jpg"
+      = image_tag comment.user.profile.nil? ? image_url "placeholder.jpg" : comment.user.profile
     .col-sm-10
       .comments-itself
         %h5
