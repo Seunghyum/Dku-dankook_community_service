@@ -28,7 +28,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     # uploader = ProfileUploader.new
     # uploader.store!(params[:user][:profile])
-    resource.update_column(:profile, params[:user][:profile])
+    if params[:user][:profile]
+      resource.update_column(:profile, params[:user][:profile])
+    end
   end
 
   # DELETE /resource
