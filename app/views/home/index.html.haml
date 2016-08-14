@@ -31,7 +31,7 @@
                     .thumbnail.thumbnail-style
                       .magazine-news-img
                         = link_to meeting_path(md) do
-                          %div{style: "height: 200px;background-image: url(#{ image_url "enactus/enactus_bg.jpeg"}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
+                          %div{style: "height: 200px;background-image: url(#{ image_url md.photo}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
                         %span.magazine-badge{class: "label-#{md.type_class}"}= md.display_tag
                       %h3
                         %a{:href => "#"}= md.name
