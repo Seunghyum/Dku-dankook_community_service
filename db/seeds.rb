@@ -1,20 +1,19 @@
-# # 인액터스 데이터 가져오기
-# require 'csv'
-# require 'open-uri'
-#
-# Board.create(name: "자유게시판", description: "자유롭게 말하세요!")
-#
-# csv_text = File.read("#{Rails.root}/db/enactus_book.csv")
-# csv = CSV.parse(csv_text, :headers => true)
-# csv.each do |row|
-#   saving = Book.new(row.to_hash)
-#   saving.save
-# end
-#
+# 인액터스 데이터 가져오기
+require 'csv'
+require 'open-uri'
+
+csv_text = File.read("#{Rails.root}/db/enactus_book.csv")
+csv = CSV.parse(csv_text, :headers => true)
+csv.each do |row|
+  saving = Book.new(row.to_hash)
+  saving.save
+end
+
 # BestFive.create(category: "교양")
 # BestFive.create(category: "자유게시판")
+# Board.create(name: "자유게시판", description: "자유롭게 말하세요!")
 #
-User.create(username: "운영자1", name: "운영자1", email: 'antmgu@naver.com', password: "(ajttk2016)", password_confirmation: "(ajttk2016)", role: "슈퍼관리자", major_id: 1, certification: true)
+# User.create(username: "운영자1", name: "운영자1", email: 'antmgu@naver.com', password: "(ajttk2016)", password_confirmation: "(ajttk2016)", role: "슈퍼관리자", major_id: 1, certification: true)
 # User.create(username: "운영자2", name: "운영자2", email: 'antmgu@gmail.com', password: "(ajttk2016)", password_confirmation: "(ajttk2016)", role: "슈퍼관리자", major_id: 1, certification: true)
 # User.create(username: "운영자3", name: "운영자3", email: 'antmgu@gmail.com', password: "(ajttk2016)", password_confirmation: "(ajttk2016)", role: "슈퍼관리자", major_id: 1, certification: true)
 # User.create(username: "운영자4", name: "운영자4", email: 'antmgu@gmail.com', password: "(ajttk2016)", password_confirmation: "(ajttk2016)", role: "슈퍼관리자", major_id: 1, certification: true)
