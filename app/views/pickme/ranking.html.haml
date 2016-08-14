@@ -25,14 +25,14 @@
           %li{class: ( index + 1 < 10 ? "rank0#{index + 1}" : "rank#{index + 1}")}
             .thumb
               %span.tag= index + 1
-              %a{:href => "/produce101/page/p101.page.profile.dbp?id=88"}
+              %a{:href => "#"}
                 %div{ style: "background-position: center; background-size: contain;  background-repeat: no-repeat; background-image: url(#{prof.profile});"}
                   %span.mask
                 -# background-image: url(#{pro.profile});
                 -# %img{:alt => "#{prof.name}", }/
                 -# = image_tag prof.profile, alt: prof.name
             %p.name
-              %a{:href => "/produce101/page/p101.page.profile.dbp?id=88"}= prof.name
+              %a{:href => "#"}= prof.name
             %p.agency= prof.belong
             %p.voteCount= prof.get_upvotes.size
     %br
