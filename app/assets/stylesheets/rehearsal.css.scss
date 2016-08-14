@@ -20,8 +20,7 @@
  .ly_help p em{color:#268e00}
  .ly_help .edge_cen{position:absolute;top:0;left:50%;width:9px;height:6px;margin:-6px 0 0 -5px;background:url(http://static.naver.com/kin/09renewal/bg_layer_edge.gif) no-repeat 0 0;font-size:0}
  .ly_help .edge_rgt{position:absolute;top:0;right:0;width:9px;height:6px;margin-top:-6px;background:url(http://static.naver.com/kin/09renewal/bg_layer_edge.gif) no-repeat 0 0;font-size:0}
-
- /*sns*/
+/*
 .sns-box {
   float: right;
 }
@@ -38,7 +37,6 @@
     text-align: center;
     border-radius: 3px;
     clear: none;
-    /*float: left;*/
     display: inline-block;
     margin: 5px;
     font-size: 20px;
@@ -99,4 +97,71 @@
     padding: 0px 8px 5px;
     display:block;
     overflow:hidden;
+}*/
+
+
+
+.btn-share {
+  width: 32px;
+  height: 32px;
+  background: #a16da3;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 4px;
+  padding: 3px;
+  cursor: pointer;
+  position: absolute;
+  right: 53px;
+  top: -6px;
+}
+@media (min-width: 1px) and (max-width: 768px) {
+  .btn-share {
+    width: 25px;
+    height: 25px;
+    font-size: 14px;
+  }
+}
+
+.sns-box {
+  padding: 3px 0px 3px 3px;
+  /*position: absolute;*/
+  right: 83px;
+  top: 60px;
+  margin-top: 0;
+  overflow: hidden;
+}
+.sns-box.open {
+  display: block;
+}
+.sns-box img {
+  width: 32px !important;
+}
+.sns-box .btn-sns {
+  width: 26px;
+  height: 26px;
+  float: left;
+  margin-right: 4px;
+  cursor: pointer;
+  text-align: center;
+  color: #fff !important;
+  font-size: 16px  !important;
+  line-height: 1.1;
+  border-radius: 5px;
+  font-weight: bold;
+  background: none !important;
+  i {
+     margin-top:5px !important;
+  }
+}
+.sns-box .btn-fb {
+  background-color: #4267b2 !important;
+  padding: 3px;
+}
+.sns-box .btn-tw {
+  background-color: #5da8de !important;
+  padding: 3px;
+}
+.sns-box .btn-band {
+  margin-right: 3px;
 }

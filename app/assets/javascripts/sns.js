@@ -7,11 +7,12 @@ $(document).ready(function(){
     var page_url = window.location.href;
     var kakao_image = $('#kakao_image').attr("content");
     // console.log(page_url + "assets/hopelight.jpg");
+    var shareImage = $('#share_image').data("img");
     function kakaoToggle(e){
       Kakao.Link.sendTalkLink({
         label: e,
         image: {
-          src: page_url + "3-min.png",
+          src: page_url + shareImage,
           width: '100',
           height: '100'
         },
