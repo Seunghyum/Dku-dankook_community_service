@@ -28,6 +28,7 @@
     = javascript_include_tag 'jquery.vticker.min' if controller_name == "lecture_infos" && action_name == "index"
     = javascript_include_tag 'jquery.vticker.min' if controller_name == "home"
     = javascript_include_tag 'owl_carousel' if controller_name == "home"
+    %script.sns-script{:src => "http://developers.kakao.com/sdk/js/kakao.min.js"}
     = timeago_script_tag
     = csrf_meta_tags
   %body

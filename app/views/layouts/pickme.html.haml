@@ -8,7 +8,7 @@
     -# %meta{:content => "http://", :property => "og:url"}
     %meta{:content => "website", :property => "og:type"}
     %meta{ content: asset_url("rehearsal.jpg"), property: "og:image" }
-    %meta{:id => "mttitle", :content => "수강신청 리허설", :property => "og:title"}
+    %meta{:id => "mttitle", :content => "교수님 인기투표", :property => "og:title"}
     %meta{:id => "mtdesc", :content => "Dku(디쿠)", :property => "og:description"}
     %meta{:id => "kakao_image", :content => asset_url("rehearsal.jpg")}
     %meta{:content => "300", :property => "og:image:width"}/
@@ -18,6 +18,7 @@
     %title Professor 101
     = stylesheet_link_tag    'pickme', media: 'all'
     = javascript_include_tag 'pickme'
+    %script.sns-script{:src => "http://developers.kakao.com/sdk/js/kakao.min.js"}
     = csrf_meta_tags
   %body
     #wrap
@@ -53,13 +54,17 @@
                 %em>
                 인기순위
                 %span{style: "position: relative;color: #fff;background: coral;border: 1px solid #eb5846;margin-right: -1px;padding: 4px 10px;"} 히트
-          .snsBtn
+          %d
             =render "sns"
             -# %a.btn_f{:href => "https://www.facebook.com/produce101", :target => "_blank"} facebook
             -# %a.btn_t{:href => "https://www.twitter.com/mnetkr", :target => "_blank"} twitter
             -# %a.btn_i{:href => "https://www.instagram.com/produce101_official", :target => "_blank"} instagram
           .timeWrap
       / /HEADER
+
+      %div{:class => "alert alert-warning fade in text-center", id: "flash", style: "width:230px; margin: 10px auto;"}
+        %div{style: "text-align: center; font-size: 17px;"}= "총 투표수 : #{ActsAsVotable::Vote.where(votable_type: "Professor").count}"
+
     = yield
 
     #footerGlabal_2016

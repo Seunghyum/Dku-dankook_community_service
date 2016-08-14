@@ -11,12 +11,12 @@ $(document).ready(function(){
       Kakao.Link.sendTalkLink({
         label: e,
         image: {
-          src: page_url + "dku/3.jpg",
+          src: page_url + "3-min.png",
           width: '100',
           height: '100'
         },
         webButton: {
-          text: '응원메세지',
+          text: '디쿠',
           url: urlName
         }
       });
@@ -37,20 +37,20 @@ $(document).ready(function(){
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.6&appId=588782887970593";
+      js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.6&appId=1286444708049122";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
 
     $('.fshare').click(function(){
       var msg = "#" + $(this).data("facebook");
-      var output = $(msg).text();
+      var output = $("#mttitle").attr("content");
       FB.ui({
           method: 'feed',
-          name: '소아암 인식개선 희망별빛 캠페인',
+          name: '단국대 커뮤니티 - 디쿠',
           link: page_url,
           picture: kakao_image,
-          caption: '한국백혈병어린이재단',
+          caption: '디쿠',
           description: output
       });
     });
