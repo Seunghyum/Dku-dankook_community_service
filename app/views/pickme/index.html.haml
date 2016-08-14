@@ -48,7 +48,7 @@
         %ul
           %li
             .thumb
-              - if current_user.present? and current_user.voted_up_on? pro
+              - if current_user.present? and current_user.voted_up_on? @search_professor
                 = link_to dislike_pickmes_path(@search_professor),method: :get do
                   %span.mask_vote
                   %div{style: "background-image: url(#{@search_professor.profile});background-position: center; background-size: contain;  background-repeat: no-repeat; width: 131px; height: 131px;"}
