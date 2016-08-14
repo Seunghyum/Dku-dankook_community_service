@@ -12,9 +12,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-
     # uploader = ProfileUploader.new
     # uploader.store!(params[:profile])
+    resource.save
     resource.update_column(:role, "외부인")
 
   end
