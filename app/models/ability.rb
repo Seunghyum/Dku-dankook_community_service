@@ -36,6 +36,13 @@ class Ability
         end
       end
     elsif user.role == '외부인'
+      can [:upvote, :downvote], Professor do |professor|
+        professor.votes.each do |puser|
+          if puser.voter_id == user.id
+            return true
+          end
+        end
+      end
       if user.use_pause == false
         cannot [:index, :show], Locker
         can :home, Locker
@@ -52,7 +59,7 @@ class Ability
         esimate.user_id == user.id
       end
     else
-      
+
     end
   end
 end

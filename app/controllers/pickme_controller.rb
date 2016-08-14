@@ -29,7 +29,7 @@ class PickmeController < ApplicationController
       @prof.upvote_by current_user
       flash[:success] = "#{@prof.name} 교수님을 응원하셨습니다."
     elsif current_user.voted_up_on? @prof
-      current_user.get_down_voted Professor
+      current_user.get_down_voted @prof
       flash[:warning] = "중복투표는 안됩니다."
     else
       flash[:warning] = "최대 3번까지만 가능합니다."
@@ -38,7 +38,6 @@ class PickmeController < ApplicationController
   end
 
   def downvote
-    @prof = Professor.find(params[:id])
     @prof.downvote_by current_user
     flash[:warning] = "#{@prof.name} 교수님께 한 응원을 취소하셨습니다."
     redirect_to :back

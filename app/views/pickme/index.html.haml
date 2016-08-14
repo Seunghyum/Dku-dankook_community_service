@@ -33,9 +33,14 @@
             - professors_7.each do |pro|
               %li
                 .thumb
-                  = link_to ( pro.get_upvotes.size == 0 ? like_pickmes_path(pro) : dislike_pickmes_path(pro)),method: :get do
-                    %span.mask_vote
-                    %div{style: "background-image: url(#{pro.profile});background-position: center; background-size: contain;  background-repeat: no-repeat; width: 131px; height: 131px;"}
+                  - if current_user.voted_up_on? pro
+                    = link_to dislike_pickmes_path(pro),method: :get do
+                      %span.mask_vote
+                      %div{style: "background-image: url(#{pro.profile});background-position: center; background-size: contain;  background-repeat: no-repeat; width: 131px; height: 131px;"}
+                  - else
+                    = link_to like_pickmes_path(pro),method: :get do
+                      %span.mask_vote
+                      %div{style: "background-image: url(#{pro.profile});background-position: center; background-size: contain;  background-repeat: no-repeat; width: 131px; height: 131px;"}
                 %p.name
                   = "#{pro.name}"
                 %p.agency= pro.belong
