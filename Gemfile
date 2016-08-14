@@ -76,7 +76,7 @@ gem 'redactor-rails'
 gem 'owlcarousel-rails'
 gem 'image-picker-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 #gem 'turbolinks'
