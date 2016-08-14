@@ -5,8 +5,7 @@ $(document).ready(function(){
     var output;
     var urlName =  $(location).attr('hostname');
     var page_url = window.location.href;
-    var kakao_image = $('#kakao_image').attr("content");
-    // console.log(page_url + "assets/hopelight.jpg");
+   //  var kakao_image = $('#kakao_image').attr("content");
     var shareImage = $('#share_image').data("img");
     function kakaoToggle(e){
       Kakao.Link.sendTalkLink({
@@ -50,7 +49,7 @@ $(document).ready(function(){
           method: 'feed',
           name: '단국대 커뮤니티 - 디쿠',
           link: page_url,
-          picture: kakao_image,
+          picture: shareImage,
           caption: '디쿠',
           description: output
       });
