@@ -22,31 +22,31 @@
               -#     검색하기
               -#     %i.fa.fa-search
 
-  .container
-    - if @result.empty?
-      %h4.text-danger.text-center 일치하는 결과가 없습니다.
-    - else
-      .row
-        .col-md-12
-          .panel.panel-blue.margin-bottom-40
-            .panel-heading
-              %h3.panel-title.text-center
-                %i.fa.fa-phone
-                총 #{@result.total_count}개의 결과가 있습니다
-            .panel-body
-              %table.table.table-striped.table-hover
-                %thead
+.container
+  - if @result.empty?
+    %h4.text-danger.text-center 일치하는 결과가 없습니다.
+  - else
+    .row
+      .col-md-12
+        .panel.panel-blue.margin-bottom-40
+          .panel-heading
+            %h3.panel-title.text-center
+              %i.fa.fa-phone
+              총 #{@result.total_count}개의 결과가 있습니다
+          .panel-body
+            %table.table.table-striped.table-hover
+              %thead
+                %tr
+                  %th 캠퍼스
+                  %th 과/학과
+                  %th 명칭/이름
+                  %th 전화번호
+              %tbody
+                - @result.each do |c|
                   %tr
-                    %th 캠퍼스
-                    %th 과/학과
-                    %th 명칭/이름
-                    %th 전화번호
-                %tbody
-                  - @result.each do |c|
-                    %tr
-                      %td= c.campus
-                      %td= c.belong
-                      %td= c.name
-                      %td= c.phone
+                    %td= c.campus
+                    %td= c.belong
+                    %td= c.name
+                    %td= c.phone
 
-        = paginate @result, :param_name => 'page', remote: true
+      = paginate @result, :param_name => 'page', remote: true
