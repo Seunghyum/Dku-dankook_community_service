@@ -5,6 +5,7 @@
         %center
           %p#notice= notice
         / News v3
+        -binding.pry
         = link_to @board.name, board_posts_path(@board), class: "btn-u btn-u-lg"
         .news-v3.bg-color-white.margin-bottom-30
           .news-v3-in.clearfix.row

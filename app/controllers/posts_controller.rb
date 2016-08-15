@@ -6,7 +6,6 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   def index
-    # @posts = @board.posts.all.page(params[:page]).per(20)
     @posts = @board.posts.order("created_at DESC").search(params[:search]).page(params[:page]).per(20)
     respond_to do |format|
       format.js
