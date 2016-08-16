@@ -174,12 +174,12 @@
               %h3 &#xAD50;&#xC218; &#xC815;&#xBCF4;
               .overflow-h
                 %p.hex
-                  \&#xC774;&#xB984; : #{@professor.name}
+                  \&#xC774;&#xB984; : #{@lecture_info.tname}
                 %p
                   \&#xC18C;&#xC18D; :
                   %span.hex
-                    = @professor.belong
-                %h5
+                    = @lecture_info.belong
+                -# %h5
                   = link_to "이력 경력 확인하기", @professor.intro_url, target: "_blank"
             .col-md-6
               %h3 &#xAC15;&#xC758; &#xC815;&#xBCF4;
@@ -187,8 +187,8 @@
                 %p.hex
                   %strong
                     \&#xAC15;&#xC758;&#xBA85; : #{@lecture_info.name}
-                    %button.btn-u.btn-u-xs.rounded{class: "btn-u-#{@lecture_info.div_color}"}
-                      = @lecture_info.l_type
+                %button.btn-u.btn-u-xs.rounded{class: "btn-u-#{@lecture_info.div_color}"}
+                  = @lecture_info.l_type
               %p.hex
                 \&#xAC1C;&#xC124;&#xD559;&#xAE30; : #{@lecture_info.semester}&#xD559;&#xAE30;
               %p.hex

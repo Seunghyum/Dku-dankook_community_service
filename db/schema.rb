@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816115118) do
+ActiveRecord::Schema.define(version: 20160816121236) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(version: 20160816115118) do
     t.integer  "point"
     t.string   "tname"
     t.string   "time"
+    t.integer  "semester"
   end
 
   add_index "lecture_infos", ["best_five_id"], name: "index_lecture_infos_on_best_five_id"
