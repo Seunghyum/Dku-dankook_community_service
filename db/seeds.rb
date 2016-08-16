@@ -16,14 +16,28 @@ require 'open-uri'
 #   saving = LectureInfo.new(row.to_hash)
 #   saving.save
 # end
-# 천안 csv
-csv_text = File.read("#{Rails.root}/db/chun.csv")
+# # 천안 csv
+# csv_text = File.read("#{Rails.root}/db/chun.csv")
+# csv = CSV.parse(csv_text, :headers => true)
+# csv.each do |row|
+#   saving = LectureInfo.new(row.to_hash)
+#   saving.save
+# end
+## 죽전 교양 csv
+csv_text = File.read("#{Rails.root}/db/chun_2.csv")
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   saving = LectureInfo.new(row.to_hash)
   saving.save
 end
-
+## 천안 교양 csv
+csv_text = File.read("#{Rails.root}/db/juck_2.csv")
+csv = CSV.parse(csv_text, :headers => true)
+csv.each do |row|
+  saving = LectureInfo.new(row.to_hash)
+  saving.save
+end
+#
 # BestFive.create(category: "교양")
 # BestFive.create(category: "자유게시판")
 # Board.create(name: "자유게시판", description: "자유롭게 말하세요!")
