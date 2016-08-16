@@ -30,19 +30,6 @@ class MeetingsController < ApplicationController
     uploader.store!(params[:meeting][:photo])
     @meeting.save
 
-    event_type_check = @meeting.event_type
-    if event_type_check == "학사"
-      @meeting.update(type_class: "primary")
-    elsif event_type_check == "동아리"
-      @meeting.update(type_class: "success")
-    elsif event_type_check == "총학"
-      @meeting.update(type_class: "info")
-    elsif event_type_check == "강연"
-      @meeting.update(type_class: "warning")
-    elsif event_type_check == "기타"
-      @meeting.update(type_class: "danger")
-    end
-
     t = @meeting.end_time - @meeting.start_time
 
     date_inerval = Time.at(t).strftime("%d").to_i
@@ -56,8 +43,7 @@ class MeetingsController < ApplicationController
                         photo: @meeting.photo,
                         display_tag: @meeting.display_tag,
                         end_time: @meeting.end_time + (x + 1).day,
-                        event_type: @meeting.event_type,
-                        type_class: @meeting.type_class
+                        event_type: @meeting.event_type
           )
       end
     end
