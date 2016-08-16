@@ -5,8 +5,10 @@ class PickmeController < ApplicationController
   def index
     if params[:name].nil? || params[:filter] == "전체"
       @professors = Professor.all
+    elsif Professor.search_professor(params[:name]).present?
+      @professors = Professor.search_professor(params[:name])
     else
-      @search_professor = Professor.search_professor(params[:name])
+      flash[:warning] = "검색 결과가 없습니다 다시 시도해주세요."
     end
   end
 

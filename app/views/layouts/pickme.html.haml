@@ -69,7 +69,7 @@
           .timeWrap
       / /HEADER
 
-      %div{:class => "alert alert-warning fade in text-center", id: "flash", style: "width:230px; margin: 10px auto;"}
+      %div{:class => "alert alert-warning fade in text-center", style: "width:230px; margin: 10px auto;"}
         %div{style: "text-align: center; font-size: 17px;"}= "총 투표수 : #{ActsAsVotable::Vote.where(votable_type: "Professor").count}"
 
     = yield
