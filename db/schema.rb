@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160814060540) do
+ActiveRecord::Schema.define(version: 20160816115118) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -135,8 +135,6 @@ ActiveRecord::Schema.define(version: 20160814060540) do
   create_table "lecture_infos", force: :cascade do |t|
     t.string   "name"
     t.string   "l_type"
-    t.integer  "time"
-    t.integer  "semester"
     t.integer  "male_view",         default: 0
     t.integer  "female_view",       default: 0
     t.integer  "all_view",          default: 0
@@ -151,6 +149,10 @@ ActiveRecord::Schema.define(version: 20160814060540) do
     t.string   "div_color"
     t.integer  "best_five_id"
     t.string   "review"
+    t.string   "belong"
+    t.integer  "point"
+    t.string   "tname"
+    t.string   "time"
   end
 
   add_index "lecture_infos", ["best_five_id"], name: "index_lecture_infos_on_best_five_id"
