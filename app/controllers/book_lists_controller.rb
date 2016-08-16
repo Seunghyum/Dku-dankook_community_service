@@ -11,6 +11,7 @@ class BookListsController < ApplicationController
     @book_lists = BookList.search(params[:name]).page(params[:page]).per(20)
     @book_lists_all = BookList.all
     @books = Book.all
+    @book_lists_length = @books.length
     respond_to do |format|
       format.html
       format.js
