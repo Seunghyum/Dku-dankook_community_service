@@ -270,16 +270,16 @@ ko:
         av_teamwork_n_asg: "팀플 & 과제 총점"
         professor_id: "관련 교수"
       locker_particular:
-        locker_id: "사물함"
+        locker_id: "사물함-id"
         # user_id: ""
         type: "예외 이유"
       locker:
         limit_num: "총 사물함 갯수"
         counting: "이미 점유한 사물함"
-        major_id: "학과"
+        major_id: "학과-id"
       major:
         name: "학과명"
-        locker_id: "관련 사물함"
+        locker_id: "관련 사물함-id"
         locker_time: "사물함 접수 시작시간"
         book_time: "중고책 접수 시작시간"
       meeting:
@@ -325,7 +325,7 @@ ko:
         lnum: "사물함 번호"
         name: "실명"
         lcounting: "사물함 1차접수 번호표"
-        major_id: "전공"
+        major_id: "학과-id"
         use_pause: "사용정지 여부"
         certification: "인증 여부"
     errors:

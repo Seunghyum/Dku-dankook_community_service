@@ -1,12 +1,11 @@
 ActiveAdmin.register User do
 
-  permit_params :email, :password, :password_confirmation, :role, :username, :gender, :lnum, :name, :major_id
+  permit_params :email, :password, :password_confirmation, :role, :username, :lnum, :name, :major_id
 
   index do
       column :email
       column :role
       column :username
-      column :gender
       column :lnum
       column :name
       column :major_id
@@ -19,7 +18,6 @@ ActiveAdmin.register User do
   filter :email
   filter :username
   filter :role
-  filter :gender
   filter :lnum
   filter :name
   filter :major_id
@@ -31,9 +29,6 @@ ActiveAdmin.register User do
           f.input :email
           f.input :password
           f.input :password_confirmation
-          f.input :gender, as: :radio, collection: {
-            남자: "남자", 여자: "여자"
-          }
           f.input :lnum
           f.input :name
           f.input :major_id

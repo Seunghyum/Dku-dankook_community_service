@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816121236) do
+ActiveRecord::Schema.define(version: 20160818144528) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -176,6 +176,8 @@ ActiveRecord::Schema.define(version: 20160816121236) do
     t.integer  "major_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
   end
 
   add_index "lockers", ["major_id"], name: "index_lockers_on_major_id"

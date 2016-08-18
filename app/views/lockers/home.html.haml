@@ -1,45 +1,57 @@
-.container
-  .text-center
-    - flash.each do |key, value|
-      %div{:class => "alert alert-#{key}"}= value
-  .row
-    .col-xs-12.col-md-12.col-lg-12.text-center
-      %table#table{:border => "0"}
-        %tr
-          %td{:align => "center", :colspan => "6"}
-            #count2.numbers{:style => "padding: 10px; "}
-        %tr#spacer1
-          %td.title{:align => "center"}
-            %p 사물함 대여 사업은
-          %td{:align => "right"}
-            #dday.numbers
-          %td.title{:align => "center", :style => "width:30px;"}
-            %p 일
-          %td{:align => "right"}
-            #dhour.numbers
-          %td.title{:align => "center", :style => "width:60px;"}
-            %p 시간
-          %td{:align => "right"}
-            #dmin.numbers
-          %td.title{:align => "center", :style => "width:30px;"}
-            %p 분
-          %td{:align => "right"}
-            #dsec.numbers
-          %td.title{:align => "center", :style => "width:30px;"}
-            %p 초
-          %td.title{:align => "center"}
-            %p  후에 열립니다.
-        -#   %td
-        -#     = link_to(home_lockers_path) do
-        -#       = image_tag("refresh.png", width: "40")
-  .row
-    #book_button.col-xs-6.col-md-6.col-lg-6.text-center
-      = link_to(index_lockers_path) do
-        = image_tag "locker_book/books.png", class: "center-block img-responsive img-circle hoverable"
-      = link_to(index_lockers_path) do
-        %h4 중고책 대여 신청
-    #locker_button.col-xs-6.col-md-6.col-lg-6.text-center
-      = link_to(index_lockers_path) do
-        = image_tag "locker_book/lockers.png", class: "center-block img-responsive img-circle hoverable"
-      = link_to(index_lockers_path) do
-        %h4 사물함 신청
+.text-center
+  - flash.each do |key, value|
+    %div{:class => "alert alert-#{key}"}= value
+-# .row
+  .col-xs-12.col-md-12.col-lg-12.text-center
+    %table#table{:border => "0"}
+      %tr
+        %td{:align => "center", :colspan => "6"}
+          #count2.numbers{:style => "padding: 10px; "}
+      %tr#spacer1
+        %td.title{:align => "center"}
+          %p 사물함 대여 사업은
+        %td{:align => "right"}
+          #dday.numbers
+        %td.title{:align => "center", :style => "width:30px;"}
+          %p 일
+        %td{:align => "right"}
+          #dhour.numbers
+        %td.title{:align => "center", :style => "width:60px;"}
+          %p 시간
+        %td{:align => "right"}
+          #dmin.numbers
+        %td.title{:align => "center", :style => "width:30px;"}
+          %p 분
+        %td{:align => "right"}
+          #dsec.numbers
+        %td.title{:align => "center", :style => "width:30px;"}
+          %p 초
+        %td.title{:align => "center"}
+          %p  후에 열립니다.
+      -#   %td
+      -#     = link_to(home_lockers_path) do
+      -#       = image_tag("refresh.png", width: "40")
+.row
+  .bg-color-light
+    .container.content-sm
+      .headline-center.margin-bottom-60
+        %h2 온라인 신청
+        %p
+          평등은 동일한 위치에서 시작하는 것이 아니라 .
+          %br/
+          Lorem ipsum
+          %strong dolor
+          sit amet, consectetur adipiscing elit. Morbi libero libero, imperdiet fringilla
+      / Testimonials Wrap
+      .testimonials-v6.testimonials-wrap
+        .row.margin-bottom-50
+          .col-xs-6.col-md-6.col-lg-6.text-center
+            = link_to(index_lockers_path) do
+              = image_tag "locker_book/books.png", class: "center-block img-responsive img-circle hoverable hover_blue"
+            = link_to(index_lockers_path) do
+              %h4 중고책 대여 신청
+          .col-xs-6.col-md-6.col-lg-6.text-center
+            = link_to(index_lockers_path) do
+              = image_tag "locker_book/lockers.png", class: "center-block img-responsive img-circle hoverable hover_blue"
+            = link_to(index_lockers_path) do
+              %h4 사물함 신청
