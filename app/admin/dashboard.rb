@@ -24,11 +24,13 @@ ActiveAdmin.register_page "Dashboard" do
 
       column do
         panel "Tag" do
-          table_for ActsAsTaggableOn::Tag.order('taggings_count desc').limit(10) do
-            column("태그명")   {|tag| tag.name}
-            column("사용 횟수"){|tag| tag.taggings_count }
-            column("생성 시간")   {|tag| tag.taggings.first.created_at}
-            column("마지막 사용")   {|tag| tag.taggings.last.created_at}
+          if ActsAsTaggableOn::Tag.all.present?
+            table_for ActsAsTaggableOn::Tag.order('taggings_count desc').limit(10) do
+              column("태그명")   {|tag| tag.name}
+              column("사용 횟수"){|tag| tag.taggings_count }
+              column("생성 시간")   {|tag| tag.taggings.first.created_at}
+              column("마지막 사용")   {|tag| tag.taggings.last.created_at}
+            end
           end
         end
       end
