@@ -94,11 +94,12 @@ class LockersController < ApplicationController
       #유저의 현재 사물함
       @our_locker = current_user.major.locker
 
-      #유저가 클릭한 사물함 params값
-      @lnum = params[:lnum].to_i
-
-      #유저가 클릭한 사물함
-      @selecting_locker = current_user.major.users.find_by(lnum: @lnum)
+      if params[:lnum].present?
+        #유저가 클릭한 사물함 params값
+        @lnum = params[:lnum].to_i
+        #유저가 클릭한 사물함
+        @selecting_locker = current_user.major.users.find_by(lnum: @lnum)
+      end
     end
 
     def check_lcounting_nil
@@ -126,7 +127,6 @@ class LockersController < ApplicationController
 
     def reject_unless_student
       unless current_user.role == "학생" || current_user.role == "일반대표"
-        binding.pry
         redirect_to action: "reject"
       end
     end
