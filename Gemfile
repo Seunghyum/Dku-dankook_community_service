@@ -69,12 +69,16 @@ gem 'rails-assets-tether', '~> 1.1', '>= 1.1.1'
 gem 'tag-it-rails'
 ##radar chart
 gem 'chart-js-rails'
-#haml
+##haml
 gem "haml-rails"
-#editor
+##editor
 gem 'redactor-rails'
 gem 'owlcarousel-rails'
 gem 'image-picker-rails'
+##countdown
+gem 'jquery-countdown-rails'
+
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 

@@ -93,7 +93,6 @@ class LockersController < ApplicationController
     def set_locker
       #유저의 현재 사물함
       @our_locker = current_user.major.locker
-
       if params[:lnum].present?
         #유저가 클릭한 사물함 params값
         @lnum = params[:lnum].to_i
