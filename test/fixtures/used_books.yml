@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  btitle: MyString
+  bgiver: MyString
+  n_edition: MyString
+  real_or_copy: MyString
+  user_id: 
+  major_id: 
+
+two:
+  btitle: MyString
+  bgiver: MyString
+  n_edition: MyString
+  real_or_copy: MyString
+  user_id: 
+  major_id: 

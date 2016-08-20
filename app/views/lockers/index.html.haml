@@ -37,10 +37,7 @@
 
     .row.text-center
       .col-sm-12
-        - flash.each do |key, value|
-          .alert.fade.in.alert-dismissable.locker-alert{:class => "alert-#{key}"}
-            %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
-            %strong= value
+        = render partial: "application/flash/static_flash_message", flash: flash
         - if current_user.lcounting.nil? && current_user.major.locker.limit_num > current_user.major.locker.counting
           .form-group
             = link_to first_check_lockers_path, method: "post" do

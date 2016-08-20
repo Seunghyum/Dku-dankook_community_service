@@ -1,40 +1,10 @@
--# .row
-  .col-xs-12.col-md-12.col-lg-12.text-center
-    %table#table{:border => "0"}
-      %tr
-        %td{:align => "center", :colspan => "6"}
-          #count2.numbers{:style => "padding: 10px; "}
-      %tr#spacer1
-        %td.title{:align => "center"}
-          %p 사물함 대여 사업은
-        %td{:align => "right"}
-          #dday.numbers
-        %td.title{:align => "center", :style => "width:30px;"}
-          %p 일
-        %td{:align => "right"}
-          #dhour.numbers
-        %td.title{:align => "center", :style => "width:60px;"}
-          %p 시간
-        %td{:align => "right"}
-          #dmin.numbers
-        %td.title{:align => "center", :style => "width:30px;"}
-          %p 분
-        %td{:align => "right"}
-          #dsec.numbers
-        %td.title{:align => "center", :style => "width:30px;"}
-          %p 초
-        %td.title{:align => "center"}
-          %p  후에 열립니다.
-      -#   %td
-      -#     = link_to(home_lockers_path) do
-      -#       = image_tag("refresh.png", width: "40")
 .row
   .bg-color-light
     .container.content-sm
       .headline-center
         %h2 온라인 신청 TEST
-        - if current_user.present? && current_user.major.present?
-          %p{data: {open: current_user.major.locker.start_time.strftime("%Y/%m/%d %H:%M:%S")}}
+        - if current_user.present? && current_user.major.present? && current_user.major.locker_start_time.present?
+          %p{data: {open: current_user.major.locker_start_time.strftime("%Y/%m/%d %H:%M:%S")}}
             = "#{current_user.major.name} 사물함 신청"
         - else
           사물함 신청 페이지입니다.
@@ -46,7 +16,6 @@
           ID: 테스트
           %br
           PW: 12341234
-
         :javascript
           $(document).ready(function(){
             var getStartTime = $("[data-open]").data("open");
@@ -59,9 +28,9 @@
       .testimonials-v6.testimonials-wrap
         .row.margin-bottom-50
           .col-xs-6.col-md-6.col-lg-6.text-center
-            = link_to(index_lockers_path) do
+            = link_to(used_books_path) do
               = image_tag "locker_book/books.png", class: "center-block img-responsive img-circle hoverable hover_blue"
-            = link_to(index_lockers_path) do
+            = link_to(used_books_path) do
               %h4 중고책 대여 신청
           .col-xs-6.col-md-6.col-lg-6.text-center
             = link_to(index_lockers_path) do

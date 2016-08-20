@@ -1,0 +1,79 @@
+.row
+  .col-sm-offset-3.col-sm-6
+    = render partial: "application/flash/static_flash_message", flash: flash
+.row
+  .col-sm-offset-1.col-sm-10
+    %ul.pager
+      %li.previous
+        = link_to "홈으로 가기", home_lockers_path, class: "rounded", method: "get"
+      %li.next
+        = link_to "우리 학과 현황", result_used_books_path, class: "rounded"
+    .panel.panel-yellow
+      .panel-heading
+        %h3.panel-title.text-center
+          %i.fa.fa-tasks
+          중고책 리스트(아직 신청가능한 책들)
+
+        = form_tag used_books_path, method: "get",class: "form-inline text-center" do
+          .form-group
+            = text_field_tag( :btitle, "", :placeholder => "책제목 검색", style: "vertical-align: initial;", class: "form-control")
+            = button_tag("검색", type: 'submit', class: "btn-u btn-u-orange")
+            -# %button.btn-u.btn-u-orange{:type => "submit"} 검색
+
+      .panel-body
+        %table#used_book.table.table-hover
+          %thead
+            %tr
+              %th.text-center 책제목
+              %th.text-center 기부자
+              %th.text-center 버전
+              %th.text-center 원본 / 제본
+              %th.text-center 예약자
+              %th
+          %tbody#pg_target
+            - if @able_used_books.present?
+              - @able_used_books.each do |used_book|
+                %tr
+                  %td= used_book.btitle
+                  %td.text-center= used_book.bgiver
+                  %td.text-center= used_book.n_edition
+                  %td.text-center= used_book.real_or_copy
+                  %td.text-center
+                    - if used_book.user.present?
+                      - if used_book.user.name.present?
+                        = used_book.user.name
+                      - else
+                        = used_book.user.username
+                    - else
+                      = "미정"
+                  %td.text-center
+                    = link_to '신청하기', selecting_used_book_path(used_book.id), class: "btn-u btn-u-sm btn-u-green", method: "post"
+        - if @able_used_books.present?
+          .text-center
+            = paginate @able_used_books, :param_name => 'page'
+
+    .panel.panel-green
+      .panel-heading
+        %h3.panel-title.text-center
+          %i.fa.fa-tasks
+          내 책 리스트(신청한 책 리스트)
+      .panel-body
+        - if @my_used_books.present?
+          %table#used_book.table.table-hover
+            %thead
+              %tr
+                %th.text-center 책제목
+                %th.text-center 기부자
+                %th.text-center 버전
+                %th.text-center 원본 / 제본
+            %tbody
+              - @my_used_books.each do |used_book|
+                %tr
+                  %td= used_book.btitle
+                  %td.text-center= used_book.bgiver
+                  %td.text-center= used_book.n_edition
+                  %td.text-center= used_book.real_or_copy
+                  %td.text-center
+                    = link_to '신청취소', destroy_used_book_path(used_book.id), class: "btn-u btn-u-sm btn-u-yellow", method: "delete"
+        - else
+          %h3.text-center 아직 신청한 책이 없습니다. 신청 가능한 책들에서 신청해주세요.
