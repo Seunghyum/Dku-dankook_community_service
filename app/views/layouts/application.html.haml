@@ -22,8 +22,9 @@
     = stylesheet_link_tag    'fakeloader'
     = stylesheet_link_tag    'owl.carousel' if controller_name == "home"
     = stylesheet_link_tag    'owl.theme' if controller_name == "home"
-    = javascript_include_tag 'application'
+    = javascript_include_tag 'jquery_package'
     = javascript_include_tag(controller_name == "home" ? "loading/fakeloader" : "loading/pace")
+    = javascript_include_tag 'application'
     = javascript_include_tag 'chart' if controller_name == "lecture_estimates" && action_name == "index"
     = javascript_include_tag 'jquery.vticker.min' if controller_name == "lecture_infos" && action_name == "index"
     = javascript_include_tag 'jquery.vticker.min' if controller_name == "home"
@@ -44,6 +45,6 @@
     #fakeLoader
     .wrapper
       = render "header"
-      = render partial: "application/shared/flash_message", flash: flash if controller_name != "lockers"
+      = render partial: "application/flash/slide_down_flash_message", flash: flash if controller_name != "lockers" && controller_name != "used_books"
       = yield
       = render "footer"

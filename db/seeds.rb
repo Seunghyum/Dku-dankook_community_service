@@ -1,3 +1,9 @@
+#중고책 더미파일
+UsedBook.create(btitle: "건축학 원론", bgiver: "수지", n_edition: "제 1판", real_or_copy: "원본", user_id: nil, major_id: 1)
+UsedBook.create(btitle: "미국 경제학 원론", bgiver: "트럼프", n_edition: "제 1판", real_or_copy: "원본", user_id: nil, major_id: 1)
+UsedBook.create(btitle: "절약정신", bgiver: "한국전력공사", n_edition: "제 1판", real_or_copy: "원본", user_id: nil, major_id: 1)
+UsedBook.create(btitle: "멋쟁이 사자처럼", bgiver: "이두희", n_edition: "제 1판", real_or_copy: "원본", user_id: nil, major_id: 1)
+
 # 인액터스 데이터 가져오기
 # require 'csv'
 # require 'open-uri'
@@ -44,8 +50,8 @@
 #
 # User.create(username: "운영자1", name: "운영자1", email: 'antmgu@naver.com', password: "(ajttk2016)", password_confirmation: "(ajttk2016)", role: "슈퍼관리자", major_id: 1, certification: true)
 # User.create(username: "운영자2", name: "운영자2", email: 'antmgu@gmail.com', password: "(ajttk2016)", password_confirmation: "(ajttk2016)", role: "슈퍼관리자", major_id: 1, certification: true)
-User.create(username: "학생1", name: "학생1", email: '123@123.com', password: "12341234", password_confirmation: "12341234", role: "학생", major_id: 1, certification: true)
-User.create(username: "학생2", name: "학생2", email: '12@12.com', password: "12341234", password_confirmation: "12341234", role: "학생", major_id: 1, certification: true)
+# User.create(username: "학생1", name: "학생1", email: '123@123.com', password: "12341234", password_confirmation: "12341234", role: "학생", major_id: 1, certification: true)
+# User.create(username: "학생2", name: "학생2", email: '12@12.com', password: "12341234", password_confirmation: "12341234", role: "학생", major_id: 1, certification: true)
 
 # User.create(username: "Enactus", name: "Enactus", email: '1@1.com', password: "encatus123", password_confirmation: "encatus123", role: "인액터스", major_id: 1, certification: true)
 # # Board.create(name: "자유게시판", description: "자유롭게 말하세요")

@@ -1,0 +1,38 @@
+.row
+  .col-sm-offset-1.col-sm-10
+    %ul.pager
+      %li.previous
+        = link_to "홈으로 가기", home_lockers_path, class: "rounded", method: "get"
+      %li.next
+        = link_to '중고책 현황 다운로드', result_used_books_path(format: "xlsx"), class: "rounded"
+    / Orange Panel
+    .panel.panel-orange
+      .panel-heading
+        %h3.panel-title.text-center
+          %i.fa.fa-tasks
+          중고책 리스트(아직 신청 안된 책들)
+      .panel-body
+        %table#used_book.table.table-hover
+          %thead
+            %tr
+              %th.text-center 책제목
+              %th.text-center 기부자
+              %th.text-center 버전
+              %th.text-center 원본 / 제본
+              %th.text-center 예약자
+          %tbody
+            - if @used_books.present?
+              - @used_books.each do |used_book|
+                %tr
+                  %td= used_book.btitle
+                  %td.text-center= used_book.bgiver
+                  %td.text-center= used_book.n_edition
+                  %td.text-center= used_book.real_or_copy
+                  %td.text-center
+                    - if used_book.user.present?
+                      - if used_book.user.name.present?
+                        = used_book.user.name
+                      - else
+                        = used_book.user.username
+                    - else
+                      = "미정"

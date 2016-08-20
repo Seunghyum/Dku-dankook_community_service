@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818160433) do
+ActiveRecord::Schema.define(version: 20160820161123) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -176,16 +176,18 @@ ActiveRecord::Schema.define(version: 20160818160433) do
     t.integer  "major_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.datetime "start_time"
-    t.datetime "end_time"
   end
 
   add_index "lockers", ["major_id"], name: "index_lockers_on_major_id"
 
   create_table "majors", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.datetime "book_start_time"
+    t.datetime "book_end_time"
+    t.datetime "locker_start_time"
+    t.datetime "locker_end_time"
   end
 
   create_table "meetings", force: :cascade do |t|
@@ -349,6 +351,20 @@ ActiveRecord::Schema.define(version: 20160818160433) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+
+  create_table "used_books", force: :cascade do |t|
+    t.string   "btitle"
+    t.string   "bgiver"
+    t.string   "n_edition"
+    t.string   "real_or_copy"
+    t.integer  "user_id"
+    t.integer  "major_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "used_books", ["major_id"], name: "index_used_books_on_major_id"
+  add_index "used_books", ["user_id"], name: "index_used_books_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

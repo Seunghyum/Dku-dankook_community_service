@@ -223,6 +223,7 @@ ko:
       professor: "교수님 정보"
       locker_particular: "사물함 예외사항"
       locker: "사물함"
+      used_book: "중고책"
       major: "전공"
       meeting: "일정"
       school_chun: "단국대 천안"
@@ -277,13 +278,19 @@ ko:
         limit_num: "총 사물함 갯수"
         counting: "이미 점유한 사물함"
         major_id: "학과-id"
-        start_time: "시작시간"
-        end_time: "종료시간"
+      used_book:
+        btitle: "책제목"
+        bgiver: "기부자"
+        n_edition: "버전"
+        real_or_copy: "원본 / 제본"
+        user_id: "예약자"
       major:
         name: "학과명"
         locker_id: "관련 사물함-id"
-        locker_time: "사물함 접수 시작시간"
-        book_time: "중고책 접수 시작시간"
+        locker_start_time: "시작시간"
+        locker_end_time: "종료시간"
+        book_start_time: "시작시간"
+        book_end_time: "종료시간"
       meeting:
         name: "일정 이름"
         start_time: "시작 시간"
@@ -306,12 +313,7 @@ ko:
         name: "성함"
         belong: "소속"
         intro_url: "이력"
-      school_jook:
-        belong: "소속"
-        name: "기관명"
-        phone: "전화번호"
-        campus: "캠퍼스"
-      school_chun:
+      school_phone_searchings:
         belong: "소속"
         name: "기관명"
         phone: "전화번호"

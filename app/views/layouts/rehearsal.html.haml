@@ -15,9 +15,11 @@
     %link{ href:"//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", rel:"stylesheet"}
     - if params[:action] == "sign_in" || params[:action] == "sign_up"
       = stylesheet_link_tag    'rehearsal_sign', media: 'all'
+      = javascript_include_tag 'jquery_package'
       = javascript_include_tag 'rehearsal_sign'
     - else
       = stylesheet_link_tag    'rehearsal', media: 'all'
+      = javascript_include_tag 'jquery_package'
       = javascript_include_tag 'rehearsal'
     %script.sns-script{:src => "http://developers.kakao.com/sdk/js/kakao.min.js"}
     :javascript

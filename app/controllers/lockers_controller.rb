@@ -15,7 +15,7 @@ class LockersController < ApplicationController
   after_action :check_lcounting_for_reject, only: [:first_check]
 #1차 접수 후 selecting_page로 이동
   after_action :check_lcounting_for_selecting, only: [:first_check]
-  before_action :check_start_time, :check_end_time, except: [:nottime, :home, :reject, :result]
+  before_action :check_start_time_nil, :check_start_time, :check_end_time, except: [:nottime, :home, :reject, :result]
 #자신의 로커 상태 표시 page + 첫번째 번호표 뽑기 view page
   def index
     if !current_user.lcounting.nil? && @our_locker.counting <= @our_locker.limit_num
@@ -131,14 +131,20 @@ class LockersController < ApplicationController
     end
 
     def check_start_time
-      @start_time = current_user.major.locker.start_time
+      @start_time = current_user.major.locker_start_time
       if @start_time > Time.now.in_time_zone("Seoul")
         redirect_to action: "nottime"
       end
     end
     def check_end_time
-      @end_time = current_user.major.locker.end_time
+      @end_time = current_user.major.locker_end_time
       if @end_time < Time.now.in_time_zone("Seoul")
+        redirect_to action: "nottime"
+      end
+    end
+
+    def check_start_time_nil
+      if current_user.major.locker_start_time == nil
         redirect_to action: "nottime"
       end
     end

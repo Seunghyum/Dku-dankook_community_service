@@ -39,6 +39,15 @@ Rails.application.routes.draw do
 #달력
 resources :meetings
 
+#중고책
+post 'used_books/selecting/:id' => 'used_books#selecting', as: 'selecting_used_book'
+
+delete 'used_books/destroy/:id' => 'used_books#destroy', as: 'destroy_used_book'
+
+get 'used_books/index' => 'used_books#index', as: 'used_books'
+
+get 'used_books/result' => 'used_books#result', as: 'result_used_books'
+
 #사물함
 post '/lockers/lockerselect' => 'lockers#lockerselect', as: "lockerselect_lockers"
 
