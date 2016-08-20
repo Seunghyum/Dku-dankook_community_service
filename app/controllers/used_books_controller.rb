@@ -5,7 +5,7 @@ class UsedBooksController < InheritedResources::Base
 
   #자신의 로커 상태 표시 page + 첫번째 번호표 뽑기 view page
   def index
-    @able_used_books = UsedBook.search(params[:btitle]).where(major_id: current_user.major_id, user_id: nil).page(params[:page]).per(2)
+    @able_used_books = UsedBook.search(params[:btitle]).where(major_id: current_user.major_id, user_id: nil).page(params[:page]).per(10)
     @my_used_books = UsedBook.where(major_id: current_user.major_id, user_id: current_user.id)
   end
 
