@@ -31,21 +31,30 @@
 .row
   .bg-color-light
     .container.content-sm
-      .headline-center.margin-bottom-60
-        %h2 온라인 신청
-        %p
+      .headline-center
+        %h2 온라인 신청 TEST
+        %p{data: {open: current_user.major.locker.start_time}}
           - if current_user.major.present?
             = "#{current_user.major.name} 사물함 신청"
           - else
             사물함 신청 페이지입니다.
         #getting-started
           %p
+        %p{style: "width:200px;background-color:white;margin:auto;padding:20px 0px;"}
+          테스트용 계정
+          %br
+          ID: 테스트
+          %br
+          PW: 12341234
 
         :javascript
-          $("#getting-started p").countdown("2016/08/22 12:00:00", function(event) {
-            $(this).text(
-              event.strftime('D - %D일 %H:%M:%S')
-            );
+          $(document).ready(function(){
+            //alert($("[data-open]").data("open"));
+            $("#getting-started p").countdown("2016/08/22 12:00:00", function(event) {
+              $(this).text(
+                event.strftime('D - %D일 %H:%M:%S')
+              );
+            });
           });
       .testimonials-v6.testimonials-wrap
         .row.margin-bottom-50
