@@ -20,7 +20,8 @@ class Ability
       end
     elsif user.role == '일반대표' || user.role == '학생'
       can :read, BookList
-      can [:create, :read, :upvote, :downvote], [Post, Comment, LectureEstimate, Locker]
+      can [:create, :read, :upvote, :downvote, :index], [Post, Comment, LectureEstimate, Locker]
+      can [:first_check, :lockerselect, :destroy, :update, :selecting_page, :result], [Locker]
       can [:update, :destroy], Post do |post|
         post.user_id == user.id
       end
@@ -30,9 +31,6 @@ class Ability
       if user.use_pause == false
         can [:update, :destroy], LectureEstimate do |esimate|
           esimate.user_id == user.id
-        end
-        can [:first_check, :lockerselect], Locker do |locker|
-          locker.user_id == user.id
         end
       end
     elsif user.role == '외부인'

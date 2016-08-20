@@ -26,7 +26,7 @@ module Workspace
 
     config.time_zone = 'Seoul'
     config.active_record.default_timezone = :local
-    
+
     config.beginning_of_week = :sunday
   end
 end

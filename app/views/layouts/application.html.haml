@@ -3,7 +3,10 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:charset => "utf-8"}/
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    - if controller_name != "lockers"
+      %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    - else
+      %meta{:content => "width=device-width, initial-scale=0.3", :name => "viewport"}/
     %meta{:content => "http://mydku.com", :property => "og:url"}
     %meta{ content: asset_url("dku/3-min.png"), property: "og:image" }
     %meta{:id => "mttitle", :content => "단국대 커뮤니티", :property => "og:title"}
@@ -41,6 +44,6 @@
     #fakeLoader
     .wrapper
       = render "header"
-      = render partial: "application/shared/flash_message", flash: flash
+      = render partial: "application/shared/flash_message", flash: flash if controller_name != "lockers"
       = yield
       = render "footer"

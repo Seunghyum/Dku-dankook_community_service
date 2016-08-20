@@ -52,7 +52,7 @@ get 'lockers/reject' => "lockers#reject", as: "reject_lockers"
 
 get 'lockers/index' => "lockers#index", as: "index_lockers"
 
-get 'lockers/manage' => "lockers#manage", as: "manage_lockers"
+get 'lockers/result' => "lockers#result", as: "result_lockers"
 
 get 'lockers/selecting_page' => "lockers#selecting_page", as: "selecting_page_lockers"
 

@@ -5,7 +5,7 @@
       %li.previous
         = link_to "홈으로 가기", home_lockers_path, class: "rounded", method: "get"
       %li.next
-        = link_to "우리 학과 현황", manage_lockers_path, class: "rounded"
+        = link_to "우리 학과 현황", result_lockers_path, class: "rounded"
     .panel.panel-green
       .panel-heading
         %h3.panel-title
@@ -38,7 +38,7 @@
     .row.text-center
       .col-sm-12
         - flash.each do |key, value|
-          .alert.fade.in.alert-dismissable{:class => "alert-#{key}"}
+          .alert.fade.in.alert-dismissable.locker-alert{:class => "alert-#{key}"}
             %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
             %strong= value
         - if current_user.lcounting.nil? && current_user.major.locker.limit_num > current_user.major.locker.counting

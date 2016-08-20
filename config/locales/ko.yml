@@ -277,6 +277,8 @@ ko:
         limit_num: "총 사물함 갯수"
         counting: "이미 점유한 사물함"
         major_id: "학과-id"
+        start_time: "시작시간"
+        end_time: "종료시간"
       major:
         name: "학과명"
         locker_id: "관련 사물함-id"

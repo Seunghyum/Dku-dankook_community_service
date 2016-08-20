@@ -1,13 +1,12 @@
 class LockersController < ApplicationController
   #auth
   load_and_authorize_resource
+  skip_authorize_resource :only => [:nottime, :home, :reject, :result]
   before_action :authenticate_user!, :except => [:home]
 
   before_action :set_locker, only: [:index, :lockerselect, :destroy, :first_check, :selecting_page, :check_lcounting_for_reject]
 #학생이나 일반대표가 아닐 경우 사물함 얻을 권한 박탈
   before_action :reject_unless_student, only: [:index, :lockerselect, :destroy, :first_check, :selecting_page, :check_lcounting_for_reject]
-
-  before_action :set_time, only: [:lockerselect, :first_check, :nottime ]
 #1차 접수 전 제한인원안에 들지 못한 유저의 사물함 선택 방어
   before_action :check_lcounting_for_reject, only: [:selecting_page, :lockerselect]
 #1차 접수 없이 url타고 들어온 유저 방어
@@ -16,6 +15,7 @@ class LockersController < ApplicationController
   after_action :check_lcounting_for_reject, only: [:first_check]
 #1차 접수 후 selecting_page로 이동
   after_action :check_lcounting_for_selecting, only: [:first_check]
+  before_action :check_start_time, :check_end_time, except: [:nottime, :home, :reject, :result]
 #자신의 로커 상태 표시 page + 첫번째 번호표 뽑기 view page
   def index
     if !current_user.lcounting.nil? && @our_locker.counting <= @our_locker.limit_num
@@ -79,7 +79,7 @@ class LockersController < ApplicationController
       redirect_to action: "selecting_page"
   end
 
-  def manage
+  def result
     @user_major_locker = current_user.major.users.where.not(lnum: 0).order("lnum ASC")
     respond_to do |format|
       format.html
@@ -126,11 +126,21 @@ class LockersController < ApplicationController
 
     def reject_unless_student
       unless current_user.role == "학생" || current_user.role == "일반대표"
+        binding.pry
         redirect_to action: "reject"
       end
     end
 
-    def set_time
-      @time = Time.now
+    def check_start_time
+      @start_time = current_user.major.locker.start_time
+      if @start_time > Time.now.in_time_zone("Seoul")
+        redirect_to action: "nottime"
+      end
+    end
+    def check_end_time
+      @end_time = current_user.major.locker.end_time
+      if @end_time < Time.now.in_time_zone("Seoul")
+        redirect_to action: "nottime"
+      end
     end
 end
