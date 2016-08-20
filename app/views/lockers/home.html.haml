@@ -33,7 +33,7 @@
     .container.content-sm
       .headline-center
         %h2 온라인 신청 TEST
-        %p{data: {open: current_user.major.locker.start_time}}
+        %p{data: {open: current_user.major.locker.start_time.strftime("%Y/%m/%d %H:%M:%S")}}
           - if current_user.major.present?
             = "#{current_user.major.name} 사물함 신청"
           - else
@@ -49,8 +49,8 @@
 
         :javascript
           $(document).ready(function(){
-            //alert($("[data-open]").data("open"));
-            $("#getting-started p").countdown("2016/08/22 12:00:00", function(event) {
+            var getStartTime = $("[data-open]").data("open");
+            $("#getting-started p").countdown(getStartTime, function(event) {
               $(this).text(
                 event.strftime('D - %D일 %H:%M:%S')
               );
