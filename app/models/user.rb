@@ -79,8 +79,8 @@ class User < ActiveRecord::Base
       user.profile = auth.info.image # assuming the user model has an image
     end
     # 이 때는 이상하게도 after_create 콜백이 호출되지 않아서 아래와 같은 조치를 했다.
-    user.add_role :user if user.roles.empty?
-    user   # 최종 반환값은 user 객체이어야 한다.
+    # user.add_role :user if user.roles.empty?
+    # user   # 최종 반환값은 user 객체이어야 한다.
   end
 
   def self.new_with_session(params, session)
