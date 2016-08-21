@@ -19,7 +19,7 @@ class Ability
         comment.user_id == user.id
       end
     elsif user.role == '일반대표' || user.role == '학생'
-      can :read, BookList
+      can :read, [Book, BookList]
       if user.use_pause == false
         can [:create, :read, :upvote, :downvote, :index], [Post, Comment, LectureEstimate, Locker]
         can [:update, :destroy], Post do |post|
@@ -64,7 +64,7 @@ class Ability
         can :home, Locker
       end
     else
-      can [:read], [BookList, Book]
+
     end
   end
 end

@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   skip_authorization_check :if => :devise_controller?
 
   # check_authorization :if => :admin_subdomain?, :only => [:update, :create, :destroy, :edit, :new]   # check_authorization :only => [:update, :destroy, :edit, :new]
-  
+
 
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
@@ -32,8 +32,8 @@ class ApplicationController < ActionController::Base
 
   protected
     def configure_permitted_parameters
-      devise_parameter_sanitizer.for(:sign_in) {|u| u.permit(:login, :username, :email, :password, :remember_me,:name, :provider, :uid, :profile)}
-      devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :remember_me, :profile, :gender, :username,:name, :provider, :uid) }
-      devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :student_number, :profile, :username,:name, :provider, :uid) }
+      devise_parameter_sanitizer.permit(:sign_in) {|u| u.permit(:login, :username, :email, :password, :remember_me,:name, :provider, :uid, :profile)}
+      devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :remember_me, :profile, :gender, :username,:name, :provider, :uid) }
+      devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :student_number, :profile, :username,:name, :provider, :uid) }
     end
 end
