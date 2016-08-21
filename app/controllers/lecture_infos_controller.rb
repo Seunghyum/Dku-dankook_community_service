@@ -10,7 +10,8 @@ class LectureInfosController < ApplicationController
       @lecture_infos = LectureInfo.professor_search(params[:search])
     end
 
-    unless params[:filter].nil?
+    if params[:filter] == "전체"
+    elsif params[:filter].present?
       @lecture_infos = @lecture_infos.where(l_type: params[:filter])
     end
 
