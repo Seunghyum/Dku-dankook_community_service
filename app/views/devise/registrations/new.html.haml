@@ -83,7 +83,7 @@
             %br
             = f.submit "회원가입", class: "btn-u btn-u-aqua btn-block rounded"
             #{render "devise/shared/links"}
-            = link_to user_facebook_omniauth_authorize_path(:facebook), class: " btn btn-block btn-facebook-inversed rounded" do
+            = link_to user_facebook_omniauth_authorize_path, class: " btn btn-block btn-facebook-inversed rounded" do
               %i.fa.fa-facebook
               Login with Facebook
 
