@@ -20,44 +20,51 @@ class Ability
       end
     elsif user.role == '일반대표' || user.role == '학생'
       can :read, BookList
-      can [:create, :read, :upvote, :downvote, :index], [Post, Comment, LectureEstimate, Locker]
-      can [:first_check, :lockerselect, :destroy, :update, :selecting_page, :result], [Locker]
-      can [:update, :destroy], Post do |post|
-        post.user_id == user.id
-      end
-      can [:update, :destroy], Comment do |comment|
-        comment.user_id == user.id
-      end
       if user.use_pause == false
+        can [:create, :read, :upvote, :downvote, :index], [Post, Comment, LectureEstimate, Locker]
+        can [:update, :destroy], Post do |post|
+          post.user_id == user.id
+        end
+        can [:update, :destroy], Comment do |comment|
+          comment.user_id == user.id
+        end
+        can [:upvote, :downvote], Professor do |professor|
+          professor.votes.each do |puser|
+            if puser.voter_id == user.id
+              return true
+            end
+          end
+        end
+      end
+      if user.use_pause == false && user.certification == true
+        can [:first_check, :lockerselect, :destroy, :update, :selecting_page, :result], [Locker]
+        can [:destroy], UsedBook do |used_book|
+          used_book.user_id == user.id
+        end
         can [:update, :destroy], LectureEstimate do |esimate|
           esimate.user_id == user.id
         end
       end
     elsif user.role == '외부인'
-      can [:upvote, :downvote], Professor do |professor|
-        professor.votes.each do |puser|
-          if puser.voter_id == user.id
-            return true
-          end
+      can :read, [BookList, Book]
+      if user.use_pause == false
+        can [:create, :read, :upvote, :downvote], [Post, Comment, LectureEstimate]
+        can [:update, :destroy], Post do |post|
+          post.user_id == user.id
+        end
+        can [:update, :destroy], Comment do |comment|
+          comment.user_id == user.id
+        end
+        can [:update, :destroy], LectureEstimate do |esimate|
+          esimate.user_id == user.id
         end
       end
-      if user.use_pause == false
+      if user.use_pause == false && user.certification == true
         cannot [:index, :show], Locker
         can :home, Locker
       end
-      can :read, [BookList, Book]
-      can [:create, :read, :upvote, :downvote], [Post, Comment, LectureEstimate]
-      can [:update, :destroy], Post do |post|
-        post.user_id == user.id
-      end
-      can [:update, :destroy], Comment do |comment|
-        comment.user_id == user.id
-      end
-      can [:update, :destroy], LectureEstimate do |esimate|
-        esimate.user_id == user.id
-      end
     else
-
+      can [:read], [BookList, Book]
     end
   end
 end

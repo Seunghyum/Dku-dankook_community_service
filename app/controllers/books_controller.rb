@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   #auth
   load_and_authorize_resource
   # authorize_resource :class => false
-  # skip_authorize_resource :only => :searching
+  # skip_authorize_resource :only => [:index, :show]
 
   before_action :set_book, only: [:edit, :update, :destroy, :purchase, :reject_purchase]
   before_action :set_book_list, only: [:edit, :update, :destroy, :purchase, :reject_purchase]

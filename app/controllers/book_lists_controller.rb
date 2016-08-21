@@ -3,7 +3,7 @@ class BookListsController < ApplicationController
   #auth
   load_and_authorize_resource
   # authorize_resource :class => false
-  # skip_authorize_resource :only => :searching
+  # skip_authorize_resource :only => [:index, :show]
 
   before_action :set_book_list, only: [:show]
 
