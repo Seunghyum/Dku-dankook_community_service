@@ -7,9 +7,7 @@ class LectureInfosController < ApplicationController
     elsif params[:category] == "강의명"
       @lecture_infos = LectureInfo.search(params[:search])
     elsif params[:category] == "교수명"
-    # binding.pry
       @lecture_infos = LectureInfo.professor_search(params[:search])
-      # binding.pry
     end
 
     unless params[:filter].nil?

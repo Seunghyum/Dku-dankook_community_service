@@ -17,9 +17,9 @@
                   %strong 강의 평가
               #bs-example-navbar-collapse-1.collapse.navbar-collapse
                 = form_tag lecture_infos_path, :method => 'get', class: "navbar-form navbar-right", role: "search" do
-                  = select_tag "category", options_for_select([['강의명', '강의명'], ['교수명', '교수명']]), {class: "btn-u form-control",    style: "height: 34px;" }
+                  = select_tag "category", options_for_select([['강의명', '강의명'], ['교수명', '교수명']]), {class: "btn-u form-control",    style: "height: 34px;", data: ({origin: params[:category]} if params[:category].present?) }
                   .input-group
-                    = text_field_tag :search, params[:search], class: "form-control", placeholder: "Search"
+                    = text_field_tag :search, params[:search], class: "form-control", placeholder: "Search", data: ({origin: params[:search]} if params[:search].present?)
                     %span.input-group-btn
                       = button_tag type: "submit" , class: "btn-u" do
                         %i.fa.fa-search
@@ -100,11 +100,11 @@
                             %small.hex (109 jobs)
               / /.navbar-collapse
             / /.container-fluid
-        #lecture_info_pages
+        #lecture_info_pages#pg_target
           = render 'lecture_infos/list'
         -unless @lecture_info_pages.nil?
           %center
-            #paginator
+            #paginator.pagination-wrapper
               = paginate @lecture_info_pages, :param_name => 'page', remote: true
 
       .col-md-3

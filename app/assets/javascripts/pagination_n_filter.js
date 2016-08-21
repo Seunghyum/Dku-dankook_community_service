@@ -13,7 +13,7 @@ $(document).ready(function(){
     });
   }
   pagination_update();
-  
+
   //필터 ajax
   function checkUrl(){
     if(location.search == ""){
@@ -22,7 +22,7 @@ $(document).ready(function(){
       return location.href + "&filter=";
     }
   }
-  $(".admin_filter").click(function(e){
+  $(".filter").click(function(e){
     e.preventDefault();
     var filter_name = $(this).text();
     $.get(checkUrl() + filter_name, function(result){

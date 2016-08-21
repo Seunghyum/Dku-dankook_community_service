@@ -20,6 +20,7 @@
 //= require config1
 //= require redactor/langs/ko
 //= require pagination_n_filter
+//= require search_origin
 //= require custom
 
 $(document).ready(function(){
