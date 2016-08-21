@@ -15,91 +15,30 @@
                   %span.icon-bar
                 = link_to lecture_infos_path , class: "navbar-brand text-info" do
                   %strong 강의 평가
-              #bs-example-navbar-collapse-1.collapse.navbar-collapse
+              #bs-example-navbar-collapse-1.navbar-collapse
                 = form_tag lecture_infos_path, :method => 'get', class: "navbar-form navbar-right", role: "search" do
                   = select_tag "category", options_for_select([['강의명', '강의명'], ['교수명', '교수명']]), {class: "btn-u form-control",    style: "height: 34px;", data: ({origin: params[:category]} if params[:category].present?) }
                   .input-group
                     = text_field_tag :search, params[:search], class: "form-control", placeholder: "Search", data: ({origin: params[:search]} if params[:search].present?)
+                  .input-group
+                    = text_field_tag :search, params[:group_search], class: "form-control", placeholder: "학과", data: ({origin: params[:search]} if params[:search].present?)
                     %span.input-group-btn
-                      = button_tag type: "submit" , class: "btn-u" do
+                      = button_tag type: "submit" , class: "btn-u", style: "margin-left:5px;" do
                         %i.fa.fa-search
-                .row
-                .row
-                  = link_to lecture_infos_path(filter: "전체"), class: "filter" do
-                    %button.btn-u.btn-u-sm.rounded.btn-u-yellow.pull-right{:type => "button", style: "margin-right: 10px;"} 전체
-                  = link_to lecture_infos_path(filter: "교양"), class: "filter" do
-                    %button.btn-u.btn-u-sm.rounded.btn-u-green.pull-right{:type => "button", style: "margin-right: 10px;"} 교양
-                  = link_to lecture_infos_path(filter: "전공필수"), class: "filter" do
-                    %button.btn-u.btn-u-sm.rounded.btn-u-red.pull-right{:type => "button", style: "margin-right: 10px;"} 전공필수
-                  = link_to lecture_infos_path(filter: "학부기초"), class: "filter" do
-                    %button.btn-u.btn-u-sm.rounded.btn-u-orange.pull-right{:type => "button", style: "margin-right: 10px;"} 학부기초
-                  = link_to lecture_infos_path(filter: "전공선택"), class: "filter" do
-                    %button.btn-u.btn-u-sm.rounded.btn-u-blue.pull-right{:type => "button", style: "margin-right: 10px;"} 전공선택
-
-                -# %hr/g.job-content
-                  .col-sm-4.md-margin-bottom-40
-                    %ul.list-unstyled.categories
-                      %li
-                        %a{:href => "#"}
-                          %h5.margin-bottom-5
-                            Pharmaceutical
-                            %small.hex (109 jobs)
-                      %li
-                        %a{:href => "#"}
-                          %h5.margin-bottom-5
-                            Pharmaceutical
-                            %small.hex (109 jobs)
-                      %li
-                        %a{:href => "#"}
-                          %h5.margin-bottom-5
-                            Pharmaceutical
-                            %small.hex (109 jobs)
-                  .col-sm-4.md-margin-bottom-40
-                    %ul.list-unstyled.categories
-                      %li
-                        %a{:href => "#"}
-                          %h5.margin-bottom-5
-                            Pharmaceutical
-                            %small.hex (109 jobs)
-                      %li
-                        %a{:href => "#"}
-                          %h5.margin-bottom-5
-                            Pharmaceutical
-                            %small.hex (109 jobs)
-                      %li
-                        %a{:href => "#"}
-                          %h5.margin-bottom-5
-                            Pharmaceutical
-                            %small.hex (109 jobs)
-                      %li
-                        %a{:href => "#"}
-                          %h5.margin-bottom-5
-                            Pharmaceutical
-                            %small.hex (109 jobs)
-                  .col-sm-4.md-margin-bottom-40
-                    %ul.list-unstyled.categories
-                      %li
-                        %a{:href => "#"}
-                          %h5.margin-bottom-5
-                            Pharmaceutical
-                            %small.hex (109 jobs)
-                      %li
-                        %a{:href => "#"}
-                          %h5.margin-bottom-5
-                            Pharmaceutical
-                            %small.hex (109 jobs)
-                      %li
-                        %a{:href => "#"}
-                          %h5.margin-bottom-5
-                            Pharmaceutical
-                            %small.hex (109 jobs)
-                      %li
-                        %a{:href => "#"}
-                          %h5.margin-bottom-5
-                            Pharmaceutical
-                            %small.hex (109 jobs)
-              / /.navbar-collapse
-            / /.container-fluid
+              %hr
+              .row
+                = link_to lecture_infos_path(filter: "전체"), class: "filter" do
+                  %button.btn-u.btn-u-sm.rounded.btn-u-aqua.margin-bottom-10{:type => "button", style: "margin-right: 10px;"} 전체
+                = link_to lecture_infos_path(filter: "전공선택"), class: "filter" do
+                  %button.btn-u.btn-u-sm.rounded.btn-u-blue.margin-bottom-10{:type => "button", style: "margin-right: 10px;"} 전공선택
+                = link_to lecture_infos_path(filter: "교양"), class: "filter" do
+                  %button.btn-u.btn-u-sm.rounded.btn-u-green.margin-bottom-10{:type => "button", style: "margin-right: 10px;"} 교양
+                = link_to lecture_infos_path(filter: "학과기초"), class: "filter" do
+                  %button.btn-u.btn-u-sm.rounded.btn-u-yellow.margin-bottom-10{:type => "button", style: "margin-right: 10px;"} 학과기초
+                = link_to lecture_infos_path(filter: "학부기초"), class: "filter" do
+                  %button.btn-u.btn-u-sm.rounded.btn-u-orange.margin-bottom-10{:type => "button", style: "margin-right: 10px;"} 학부기초
+                = link_to lecture_infos_path(filter: "전공필수"), class: "filter" do
+                  %button.btn-u.btn-u-sm.rounded.btn-u-red.margin-bottom-10{:type => "button", style: "margin-right: 10px;"} 전공필수
         #lecture_info_pages#pg_target
           = render 'lecture_infos/list'
         -unless @lecture_info_pages.nil?

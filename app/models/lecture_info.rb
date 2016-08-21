@@ -7,6 +7,14 @@ class LectureInfo < ActiveRecord::Base
 
   after_save :color_pick
 
+  def self.group_search(search)
+    if search
+      where(["belong LIKE :search", search: "%#{search}%"])
+    else
+      all
+    end
+  end
+
   def self.search(search)
     if search
       where(["name LIKE :search", search: "%#{search}%"])
