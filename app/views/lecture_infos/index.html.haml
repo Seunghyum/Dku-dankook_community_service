@@ -21,7 +21,7 @@
                   .input-group
                     = text_field_tag :search, params[:search], class: "form-control", placeholder: "Search", data: ({origin: params[:search]} if params[:search].present?)
                   .input-group
-                    = text_field_tag :search, params[:group_search], class: "form-control", placeholder: "학과", data: ({origin: params[:search]} if params[:search].present?)
+                    = text_field_tag :group_search, params[:group_search], class: "form-control", placeholder: "학과", data: ({origin: params[:group_search]} if params[:group_search].present?)
                     %span.input-group-btn
                       = button_tag type: "submit" , class: "btn-u", style: "margin-left:5px;" do
                         %i.fa.fa-search
