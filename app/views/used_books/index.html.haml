@@ -49,7 +49,7 @@
                   %td.text-center
                     = link_to '신청하기', selecting_used_book_path(used_book.id), class: "btn-u btn-u-sm btn-u-green", method: "post"
         - if @able_used_books.present?
-          .text-center
+          #used_book_paginator.text-center
             = paginate @able_used_books, :param_name => 'page'
 
     .panel.panel-green
