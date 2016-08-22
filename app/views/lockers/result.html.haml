@@ -22,10 +22,10 @@
               %tr
                 %td.text-center= user.lnum
                 %td.text-center
-                  - if used_book.user.present?
-                    - if used_book.user.name.present?
-                      = used_book.user.name
+                  - if user.present?
+                    - if user.name.present?
+                      = user.name
                     - else
-                      = used_book.user.username
+                      = user.username
                   - else
                     = "미정"
