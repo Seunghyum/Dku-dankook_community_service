@@ -10,18 +10,9 @@
         / gba table START
         - 1.upto(2) do |x|
           %tr
-            - unless @our_locker.major.users.find_by(lnum: 1 + ( 11 * ( x  - 1 )))
-              %td{:style => "border: 5px solid yellow;"}= link_to "#{ 1 + ( 11 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 1 + ( 11 * ( x  - 1 ))}"), method: :post
-            - else
-              %td.red-box X
-            - unless @our_locker.major.users.find_by(lnum: 2 + ( 11 * ( x  - 1 )))
-              %td{:style => "border: 5px solid yellow;"}= link_to "#{ 2 + ( 11 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 2 + ( 11 * ( x  - 1 ))}"), method: :post
-            - else
-              %td.red-box X
-            - unless @our_locker.major.users.find_by(lnum: 3 + ( 11 * ( x  - 1 )))
-              %td{:style => "border: 5px solid yellow;"}= link_to "#{ 3 + ( 11 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 3 + ( 11 * ( x  - 1 ))}"), method: :post
-            - else
-              %td.red-box X
+            %td.red-box X
+            %td.red-box X
+            %td.red-box X
         / gba table END
         - 1.upto(2) do |x|
           %tr
