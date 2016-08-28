@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 #   has_many :locker_particulars
 
   belongs_to :major
-  validates :username, :email, uniqueness: true
+  validates :username, uniqueness: true
   # , presence: true
   # validates :gender, presence: true,
   #           inclusion: { in: %w(남자 여자) }
@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   acts_as_voter
   #태그자
   acts_as_tagger
-
+  
   #로그인시 서로의 username과 email이 같은 유저 발생시 예외처리
   def validate_username
     if User.where(email: username).exists?
