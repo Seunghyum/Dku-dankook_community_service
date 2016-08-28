@@ -1,10 +1,6 @@
 / === Content Part ===
 .container.content.profile
   .row.magazine-page
-    - if flash[:alert]
-      .alert.alert-warning.fade.in.alert-dismissable{style: "position: fixed; z-index: 100;"}
-        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
-        %strong= flash[:alert]
     / Begin Content
     .col-md-8
       #owl-example.owl-carousel
