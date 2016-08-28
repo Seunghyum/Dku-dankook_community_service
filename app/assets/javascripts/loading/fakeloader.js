@@ -118,15 +118,12 @@ $(document).ready(function(){
 
             }
 
-            $(window).load(function(){
-                    centerLoader();
-                  $(window).resize(function(){
-                    centerLoader();
-                  });
-            });
-
-
+    centerLoader();
+    $(window).resize(function(){
+        centerLoader();
+    });
     }(jQuery));
+    
     $("#fakeLoader").fakeLoader({
         timeToHide:1200, //Time in milliseconds for fakeLoader disappear
         zIndex:"999",//Default zIndex
