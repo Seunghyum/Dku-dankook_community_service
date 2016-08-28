@@ -127,12 +127,10 @@ $(document).ready(function(){
 
 
     }(jQuery));
-    $( window ).load(function() {
-        $("#fakeLoader").fakeLoader({
-            timeToHide:1200, //Time in milliseconds for fakeLoader disappear
-            zIndex:"999",//Default zIndex
-            spinner:"spinner7",//Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'
-            bgColor:"rgb(52, 152, 219)", //Hex, RGB or RGBA colors
-        });
+    $("#fakeLoader").fakeLoader({
+        timeToHide:1200, //Time in milliseconds for fakeLoader disappear
+        zIndex:"999",//Default zIndex
+        spinner:"spinner7",//Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'
+        bgColor:"rgb(52, 152, 219)", //Hex, RGB or RGBA colors
     });
 });
