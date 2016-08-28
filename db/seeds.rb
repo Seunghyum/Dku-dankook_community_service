@@ -1,8 +1,9 @@
-#중고책 더미파일
-UsedBook.create(btitle: "건축학 원론", bgiver: "수지", n_edition: "제 1판", real_or_copy: "원본", user_id: nil, major_id: 1)
-UsedBook.create(btitle: "미국 경제학 원론", bgiver: "트럼프", n_edition: "제 1판", real_or_copy: "원본", user_id: nil, major_id: 1)
-UsedBook.create(btitle: "절약정신", bgiver: "한국전력공사", n_edition: "제 1판", real_or_copy: "원본", user_id: nil, major_id: 1)
-UsedBook.create(btitle: "멋쟁이 사자처럼", bgiver: "이두희", n_edition: "제 1판", real_or_copy: "원본", user_id: nil, major_id: 1)
+
+# #중고책 더미파일
+# UsedBook.create(btitle: "건축학 원론", bgiver: "수지", n_edition: "제 1판", real_or_copy: "원본", user_id: nil, major_id: 1)
+# UsedBook.create(btitle: "미국 경제학 원론", bgiver: "트럼프", n_edition: "제 1판", real_or_copy: "원본", user_id: nil, major_id: 1)
+# UsedBook.create(btitle: "절약정신", bgiver: "한국전력공사", n_edition: "제 1판", real_or_copy: "원본", user_id: nil, major_id: 1)
+# UsedBook.create(btitle: "멋쟁이 사자처럼", bgiver: "이두희", n_edition: "제 1판", real_or_copy: "원본", user_id: nil, major_id: 1)
 
 # 인액터스 데이터 가져오기
 # require 'csv'
@@ -47,6 +48,7 @@ UsedBook.create(btitle: "멋쟁이 사자처럼", bgiver: "이두희", n_edition
 # BestFive.create(category: "교양")
 # BestFive.create(category: "자유게시판")
 # Board.create(name: "자유게시판", description: "자유롭게 말하세요!")
+
 #
 # User.create(username: "운영자1", name: "운영자1", email: 'antmgu@naver.com', password: "(ajttk2016)", password_confirmation: "(ajttk2016)", role: "슈퍼관리자", major_id: 1, certification: true)
 # User.create(username: "운영자2", name: "운영자2", email: 'antmgu@gmail.com', password: "(ajttk2016)", password_confirmation: "(ajttk2016)", role: "슈퍼관리자", major_id: 1, certification: true)

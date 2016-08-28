@@ -9,15 +9,6 @@ class CommentsController < ApplicationController
   before_action :set_board, only: [:create]
 
   def create
-    # respond_to do |format|
-    #   if @comment.save
-    #     format.html { @comment.user = current_user}
-    #     format.js
-    #   else
-    #     format.html
-    #     format.js
-    #   end
-    # end
   	@comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
     @comment.save
@@ -31,21 +22,11 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-      # 덧글 삭제 ajax
-    # respond_to do |format|
-    # 	format.html
-    #   format.js
-    # end
     redirect_to :back
   end
 
   def update
     @comment.update(comment_params)
-      # 덧글 수정 ajax
-    # respond_to do |format|
-    # 	format.html
-    #   format.js
-    # end
     redirect_to :back
   end
 

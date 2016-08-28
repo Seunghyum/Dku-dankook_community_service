@@ -1,0 +1,30 @@
+.lk-sublime
+  .sublime-header
+    %span
+    %span
+    %span
+  %ul.sublime-tab
+    %li (이전글)
+    %li.active
+      %b (현재글)
+      = @bloging.title
+    %li (다음글)
+  .clearfix
+  .sidenum
+    .list_num
+      .num 1
+      .num 2
+      .num 3
+  %ul.sublime-body
+    %li
+      = @bloging.body.html_safe
+%p
+  %b Hits:
+  = @bloging.hits
+%p
+  %b Image:
+  = @bloging.image
+
+= link_to 'Edit', edit_bloging_path(@bloging)
+\|
+= link_to 'Back', blogings_path

@@ -44,13 +44,11 @@ class Post < ActiveRecord::Base
           best_category.posts.each do |post|
             post.update_column(:best_five_id, nil)
           end
-          # binding.pry
         end
         best_5 = self.board.posts.unscoped.order("cached_votes_score DESC").take(7)
         best_5.each do |best|
           best.update_column(:best_five_id, best_category.id)
         end
-        # binding.pry
       # end
     end
 end

@@ -1,0 +1,13 @@
+= bootstrap_form_for @bloging do |f|
+  .field
+    = f.text_field :title
+  .field
+    = f.text_area :body, class: "redactor"
+  .field
+    = f.number_field :hits
+  .field
+    = f.text_field :image
+  .field
+    = f.text_field :tag_list, id: "tag-input"
+  .actions
+    = f.submit 'Save'
