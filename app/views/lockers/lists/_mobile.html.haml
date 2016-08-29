@@ -1,6 +1,6 @@
 .row
   .col-xs-12.col-sm-12.col-md-12.col-lg-12.margin-bottom-30
-    = image_tag "mobile.png", style: "width: 100%;"
+    = image_tag "locker_book/mobile.png", style: "width: 100%;"
 .row
   / 모바일 왼쪽 사물함
   .col-xs-6.col-sm-6.col-md-6.col-lg-6
@@ -21,28 +21,28 @@
             %td.red-box X
             / 6,18
         %tr
-          - if Locker.where(major_id: 2,lnum: 24 ).take.nil?
-            %td= link_to "24", locker_lockerselect_path( :lnum => 24 ), method: :post
+          - if @our_locker.major.users.find_by(lnum: 24).nil?
+            %td= link_to "24", lockerselect_lockers_path( :lnum => 24 ), method: :post
           - else
             %td.red-box X
-          - if Locker.where(major_id: 2,lnum: 25 ).take.nil?
-            %td= link_to "25", locker_lockerselect_path( :lnum => 25 ), method: :post
+          - if @our_locker.major.users.find_by(lnum: 25).nil?
+            %td= link_to "25", lockerselect_lockers_path( :lnum => 25 ), method: :post
           - else
             %td.red-box X
-          - if Locker.where(major_id: 2,lnum: 26 ).take.nil?
-            %td= link_to "26", locker_lockerselect_path( :lnum => 26 ), method: :post
+          - if @our_locker.major.users.find_by(lnum: 26 ).nil?
+            %td= link_to "26", lockerselect_lockers_path( :lnum => 26 ), method: :post
           - else
             %td.red-box X
-          - if Locker.where(major_id: 2,lnum: 27 ).take.nil?
-            %td= link_to "27", locker_lockerselect_path( :lnum => 27 ), method: :post
+          - if @our_locker.major.users.find_by(lnum: 27 ).nil?
+            %td= link_to "27", lockerselect_lockers_path( :lnum => 27 ), method: :post
           - else
             %td.red-box X
-          - if Locker.where(major_id: 2,lnum: 28 ).take.nil?
-            %td= link_to "28", locker_lockerselect_path( :lnum => 28 ), method: :post
+          - if @our_locker.major.users.find_by(lnum: 28 ).nil?
+            %td= link_to "28", lockerselect_lockers_path( :lnum => 28 ), method: :post
           - else
             %td.red-box X
-          - if Locker.where(major_id: 2,lnum: 29 ).take.nil?
-            %td= link_to "29", locker_lockerselect_path( :lnum => 29 ), method: :post
+          - if @our_locker.major.users.find_by(lnum: 29 ).nil?
+            %td= link_to "29", lockerselect_lockers_path( :lnum => 29 ), method: :post
           - else
             %td.red-box X
         %tr
@@ -50,45 +50,45 @@
           / 37
           %td.red-box X
           / 38
-          - if Locker.where(major_id: 2,lnum: 39 ).take.nil?
-            %td= link_to "39", locker_lockerselect_path( :lnum => 39 ), method: :post
+          - if @our_locker.major.users.find_by(lnum:39 ).nil?
+            %td= link_to "39", lockerselect_lockers_path( :lnum => 39 ), method: :post
           - else
             %td.red-box X
-          - if Locker.where(major_id: 2,lnum: 40 ).take.nil?
-            %td= link_to "40", locker_lockerselect_path( :lnum => 40 ), method: :post
+          - if @our_locker.major.users.find_by(lnum:40 ).nil?
+            %td= link_to "40", lockerselect_lockers_path( :lnum => 40 ), method: :post
           - else
             %td.red-box X
-          - if Locker.where(major_id: 2,lnum: 41 ).take.nil?
-            %td= link_to "41", locker_lockerselect_path( :lnum => 41 ), method: :post
+          - if @our_locker.major.users.find_by(lnum:41 ).nil?
+            %td= link_to "41", lockerselect_lockers_path( :lnum => 41 ), method: :post
           - else
             %td.red-box X
-          - if Locker.where(major_id: 2,lnum: 42 ).take.nil?
-            %td= link_to "42", locker_lockerselect_path( :lnum => 42 ), method: :post
+          - if @our_locker.major.users.find_by(lnum:42 ).nil?
+            %td= link_to "42", lockerselect_lockers_path( :lnum => 42 ), method: :post
           - else
             %td.red-box X
         %tr
-          - if Locker.where(major_id: 2,lnum: 49 ).take.nil?
-            %td= link_to "49", locker_lockerselect_path( :lnum => 49 ), method: :post
+          - if @our_locker.major.users.find_by(lnum:49 ).nil?
+            %td= link_to "49", lockerselect_lockers_path( :lnum => 49 ), method: :post
           - else
             %td.red-box X
-          - if Locker.where(major_id: 2,lnum: 50 ).take.nil?
-            %td= link_to "50", locker_lockerselect_path( :lnum => 50 ), method: :post
+          - if @our_locker.major.users.find_by(lnum:50 ).nil?
+            %td= link_to "50", lockerselect_lockers_path( :lnum => 50 ), method: :post
           - else
             %td.red-box X
-          - if Locker.where(major_id: 2,lnum: 51 ).take.nil?
-            %td= link_to "51", locker_lockerselect_path( :lnum => 51 ), method: :post
+          - if @our_locker.major.users.find_by(lnum:51 ).nil?
+            %td= link_to "51", lockerselect_lockers_path( :lnum => 51 ), method: :post
           - else
             %td.red-box X
-          - if Locker.where(major_id: 2,lnum: 52 ).take.nil?
-            %td= link_to "52", locker_lockerselect_path( :lnum => 52 ), method: :post
+          - if @our_locker.major.users.find_by(lnum:52 ).nil?
+            %td= link_to "52", lockerselect_lockers_path( :lnum => 52 ), method: :post
           - else
             %td.red-box X
-          - if Locker.where(major_id: 2,lnum: 28 ).take.nil?
-            %td= link_to "53", locker_lockerselect_path( :lnum => 53 ), method: :post
+          - if @our_locker.major.users.find_by(lnum:28 ).nil?
+            %td= link_to "53", lockerselect_lockers_path( :lnum => 53 ), method: :post
           - else
             %td.red-box X
-          - if Locker.where(major_id: 2,lnum: 29 ).take.nil?
-            %td= link_to "54", locker_lockerselect_path( :lnum => 54 ), method: :post
+          - if @our_locker.major.users.find_by(lnum:29 ).nil?
+            %td= link_to "54", lockerselect_lockers_path( :lnum => 54 ), method: :post
           - else
             %td.red-box X
   / 모바일 오른쪽 사물함
@@ -97,27 +97,27 @@
       %tbody
         - 1.upto(5) do |x|
           %tr
-            - if Locker.where(major_id: 2, lnum: 7 + ( 12 * ( x  - 1 ))).take.nil?
-              %td= link_to "#{ 7 + ( 12 * ( x  - 1 )) }", locker_lockerselect_path( :lnum => "#{ 7 + ( 12 * ( x  - 1 ))}"), method: :post
+            - if @our_locker.major.users.find_by(lnum: 7 + ( 12 * ( x  - 1 ))).nil?
+              %td= link_to "#{ 7 + ( 12 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 7 + ( 12 * ( x  - 1 ))}"), method: :post
             - else
               %td.red-box X
-            - if Locker.where(major_id: 2, lnum: 8 + ( 12 * ( x  - 1 ))).take.nil?
-              %td= link_to "#{ 8 + ( 12 * ( x  - 1 )) }", locker_lockerselect_path( :lnum => "#{ 8 + ( 12 * ( x  - 1 ))}"), method: :post
+            - if @our_locker.major.users.find_by(lnum: 8 + ( 12 * ( x  - 1 ))).nil?
+              %td= link_to "#{ 8 + ( 12 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 8 + ( 12 * ( x  - 1 ))}"), method: :post
             - else
               %td.red-box X
-            - if Locker.where(major_id: 2, lnum: 9 + ( 12 * ( x  - 1 ))).take.nil?
-              %td= link_to "#{ 9 + ( 12 * ( x  - 1 )) }", locker_lockerselect_path( :lnum => "#{ 9 + ( 12 * ( x  - 1 ))}"), method: :post
+            - if @our_locker.major.users.find_by(lnum: 9 + ( 12 * ( x  - 1 ))).nil?
+              %td= link_to "#{ 9 + ( 12 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 9 + ( 12 * ( x  - 1 ))}"), method: :post
             - else
               %td.red-box X
-            - if Locker.where(major_id: 2, lnum: 10 + ( 12 * ( x  - 1 ))).take.nil?
-              %td= link_to "#{ 10 + ( 12 * ( x  - 1 )) }", locker_lockerselect_path( :lnum => "#{ 10 + ( 12 * ( x  - 1 ))}"), method: :post
+            - if @our_locker.major.users.find_by(lnum: 10 + ( 12 * ( x  - 1 ))).nil?
+              %td= link_to "#{ 10 + ( 12 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 10 + ( 12 * ( x  - 1 ))}"), method: :post
             - else
               %td.red-box X
-            - if Locker.where(major_id: 2, lnum: 11 + ( 12 * ( x  - 1 ))).take.nil?
-              %td= link_to "#{ 11 + ( 12 * ( x  - 1 )) }", locker_lockerselect_path( :lnum => "#{ 11 + ( 12 * ( x  - 1 ))}"), method: :post
+            - if @our_locker.major.users.find_by(lnum: 11 + ( 12 * ( x  - 1 ))).nil?
+              %td= link_to "#{ 11 + ( 12 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 11 + ( 12 * ( x  - 1 ))}"), method: :post
             - else
               %td.red-box X
-            - if Locker.where(major_id: 2, lnum: 12 + ( 12 * ( x  - 1 ))).take.nil?
-              %td= link_to "#{ 12 + ( 12 * ( x  - 1 )) }", locker_lockerselect_path( :lnum => "#{ 12 + ( 12 * ( x  - 1 ))}"), method: :post
+            - if @our_locker.major.users.find_by(lnum: 12 + ( 12 * ( x  - 1 ))).nil?
+              %td= link_to "#{ 12 + ( 12 * ( x  - 1 )) }", lockerselect_lockers_path( :lnum => "#{ 12 + ( 12 * ( x  - 1 ))}"), method: :post
             - else
               %td.red-box X
