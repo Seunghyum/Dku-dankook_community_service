@@ -2,14 +2,14 @@
   .bg-color-light
     .container.content-sm
       .headline-center
-        %h2 온라인 신청 TEST
+        %h2 사물함 온라인 신청
         - if current_user.present? && current_user.major.present? && current_user.major.locker_start_time.present?
           %p{data: {open: current_user.major.locker_start_time.strftime("%Y/%m/%d %H:%M:%S")}}
             = "#{current_user.major.name} 사물함 신청"
         - else
           사물함 신청 페이지입니다.
         #getting-started
-          %p
+          %p{style: "font-size: 20px;"}
         -# %p{style: "width:200px;background-color:white;margin:auto;padding:20px 0px;"}
           테스트용 계정
           %br
