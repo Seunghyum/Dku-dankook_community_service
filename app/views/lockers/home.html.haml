@@ -10,7 +10,7 @@
           사물함 신청 페이지입니다.
         #getting-started
           %p
-        %p{style: "width:200px;background-color:white;margin:auto;padding:20px 0px;"}
+        -# %p{style: "width:200px;background-color:white;margin:auto;padding:20px 0px;"}
           테스트용 계정
           %br
           ID: 테스트
@@ -27,12 +27,12 @@
           });
       .testimonials-v6.testimonials-wrap
         .row.margin-bottom-50
-          .col-xs-6.col-md-6.col-lg-6.text-center
+          -# .col-xs-6.col-md-6.col-lg-6.text-center
             = link_to(used_books_path) do
               = image_tag "locker_book/books.png", class: "center-block img-responsive img-circle hoverable hover_blue"
             = link_to(used_books_path) do
               %h4 중고책 대여 신청
-          .col-xs-6.col-md-6.col-lg-6.text-center
+          .col-xs-12.col-md-12.col-lg-12.text-center
             = link_to(index_lockers_path) do
               = image_tag "locker_book/lockers.png", class: "center-block img-responsive img-circle hoverable hover_blue"
             = link_to(index_lockers_path) do
