@@ -10,9 +10,9 @@ wb.add_worksheet(name: "인액터스-#{Time.now.strftime("%m-%d %I%p")}.xlsx") d
   end
 
   sheet.add_row ["개별 책"]
-  sheet.add_row ["#", "책이름", "가격", "판매자", "판매여부", "등록", "판매시간 or 정보수정시간(판매완료시 판매된 시각)"]
+  sheet.add_row ["#", "책이름", "가격", "판매여부", "최초등록시간", "판매시간 or 정보수정시간(판매완료시 판매된 시각)"]
   @books.each do |book|
-    sheet.add_row [book.id, book.name, book.price, book.bgiver, book.purchase, book.created_at.to_s, book.updated_at.to_s]
+    sheet.add_row [book.id, book.name, book.price, (book.purchase ? "판매완료" : " "), book.created_at.to_s, book.updated_at.to_s]
   end
   sheet["A1"].style = style_shout
 end
