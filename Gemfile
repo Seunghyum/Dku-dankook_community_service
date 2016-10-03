@@ -75,7 +75,7 @@ gem "haml-rails"
 gem 'redactor-rails'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
-gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
+gem 'tinymce-rails-imageupload'
 
 gem 'owlcarousel-rails'
 gem 'image-picker-rails'
