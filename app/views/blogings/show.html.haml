@@ -10,14 +10,29 @@
       = @bloging.title
     %li (다음글)
   .clearfix
-  .sidenum
-    .list_num
-      .num 1
-      .num 2
-      .num 3
-  %ul.sublime-body
-    %li
-      = @bloging.body.html_safe
+  .row
+    .col-sm-3.col-md-2
+      #container
+        %ul
+          %li
+            Root node
+            %ul
+              %li Child node 1
+              %li Child node 2
+      :javascript
+        $(function() {
+          $('#container').jstree();
+        });
+    .col-sm-9.col-md-10
+      .sidenum
+        .list_num
+          .num 1
+          .num 2
+          .num 3
+
+      %ul.sublime-body
+        %li
+          = @bloging.body.html_safe
 %p
   %b Hits:
   = @bloging.hits
@@ -28,3 +43,18 @@
 = link_to 'Edit', edit_bloging_path(@bloging)
 \|
 = link_to 'Back', blogings_path
+
+:javascript
+  $(document).ready(function(){
+    var previewBody = $('body').minimap({
+        heightRatio : 0.25,
+        widthRatio : 0.07,
+        offsetHeightRatio : 0.05,
+        offsetWidthRatio : 0.02,
+        position : "right",
+        touch: true,
+        smoothScroll: true,
+        smoothScrollDelay: 200,
+        onPreviewChange: function() {}
+    });
+  });

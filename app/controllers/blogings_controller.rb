@@ -1,6 +1,7 @@
 class BlogingsController < InheritedResources::Base
   #auth
   load_and_authorize_resource
+
   before_action :set_bloging, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   def index
@@ -34,8 +35,6 @@ class BlogingsController < InheritedResources::Base
     end
   end
 
-  # PATCH/PUT /blogings/1
-  # PATCH/PUT /blogings/1.json
   def update
     if @bloging.update(bloging_params)
       redirect_to @bloging
@@ -44,8 +43,6 @@ class BlogingsController < InheritedResources::Base
     end
   end
 
-  # DELETE /blogings/1
-  # DELETE /blogings/1.json
   def destroy
     @bloging.destroy
     redirect_to blogings_path
@@ -67,7 +64,6 @@ class BlogingsController < InheritedResources::Base
     end
   end
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_bloging
       @bloging = Bloging.find(params[:id])
     end

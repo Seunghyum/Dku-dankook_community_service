@@ -73,11 +73,15 @@ gem 'chart-js-rails'
 gem "haml-rails"
 ##editor
 gem 'redactor-rails'
+gem 'tinymce-rails'
+gem 'tinymce-rails-langs'
+gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
+
 gem 'owlcarousel-rails'
 gem 'image-picker-rails'
 ##countdown
 gem 'jquery-countdown-rails'
-
+gem "jstree-rails-4"
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby

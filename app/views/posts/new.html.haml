@@ -24,15 +24,12 @@
           %section
             = f.label :content
             %label.textarea
-              = f.text_area :content, class: "redactor"
+              = f.text_area :content, class: "tinymce", :rows => 13
           %section
-            /<label class="input">
-            /<i class="icon-append fa fa-tag"></i>
             = f.text_field :tag_list, id: "tag-input"
-          / </label>
           %footer.text-center
             = f.submit "작성하기", class: "btn-u btn-u-lg"
-    
+
     / /col-md-9
     .col-md-5
       / 운영자 준수 규칙

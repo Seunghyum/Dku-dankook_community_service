@@ -29,7 +29,8 @@
     = javascript_include_tag 'jquery.vticker.min' if controller_name == "lecture_infos" && action_name == "index"
     = javascript_include_tag 'jquery.vticker.min' if controller_name == "home"
     = javascript_include_tag 'owl_carousel' if controller_name == "home"
-    %script.sns-script{:src => "http://developers.kakao.com/sdk/js/kakao.min.js"}
+    = tinymce_assets
+    = tinymce uploadimage_form_url: "/tinymce_assets" + "?controller_name=" + controller_name
     :javascript
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

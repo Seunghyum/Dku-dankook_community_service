@@ -12,16 +12,19 @@
 //= require_tree ./js
 //= require_tree ./plugins
 //= require image-picker
-//= require redactor1
-//= require redactor/fontcolor
-//= require redactor/fontsize
-//= require redactor/fontfamily
-//= require redactor/textdirection
-//= require config1
-//= require redactor/langs/ko
+
+//= require tinymce-jquery
+// require redactor1
+// require redactor/fontcolor
+// require redactor/fontsize
+// require redactor/fontfamily
+// require redactor/textdirection
+// require config1
+// require redactor/langs/ko
 //= require pagination_n_filter
 //= require search_origin
 //= require custom
+//= require jstree
 
 $(document).ready(function(){
   $('input.hasDatetimePicker').datetimepicker({

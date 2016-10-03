@@ -1,0 +1,11 @@
+toolbar:
+  - styleselect | bold italic | alignleft aligncenter alignright| bullist numlist outdent indent | table | codesample | uploadimage | link | undo redo
+plugins:
+  - link
+  - codesample
+  - table
+  - uploadimage
+  - wordcount
+  - paste
+language:
+  - en

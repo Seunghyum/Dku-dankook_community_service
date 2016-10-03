@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post '/tinymce_assets' => 'tinymce_assets#create'
+  
   resources :blogings do
     member do
       get "like" => "posts#upvote"
