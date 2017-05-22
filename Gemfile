@@ -11,6 +11,15 @@ gem 'greensock-rails', '~> 1.18', '>= 1.18.2.0'
 #deploy
 gem 'puma'
 
+group :development do
+    gem 'capistrano',         require: false
+    # gem 'capistrano-rvm',     require: false
+    gem 'capistrano-rbenv'
+    gem 'capistrano-rails',   require: false
+    gem 'capistrano-bundler', require: false
+    gem 'capistrano3-puma',   require: false
+end
+
 #tool
 ##calender gem
 gem "simple_calendar"
