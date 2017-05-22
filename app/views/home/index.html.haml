@@ -1,140 +1,140 @@
-/ === Content Part ===
-.container.content.profile
-  .row.magazine-page
-    / Begin Content
-    .col-md-8
-      #owl-example.owl-carousel
-        = link_to pickmes_path do
-          %div{style: "height: 250px; background-image: url(#{ image_url 'banner/pickme.png'}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
-        = link_to book_lists_path do
-          %div{style: "height: 250px; background-image: url(#{ image_url 'banner/enactus.png'}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
-        -# = link_to home_lockers_path do
-        %a{ href: "#"}
-          %div.certain_banner{style: "height: 250px; background-image: url(#{ image_url 'banner/locker-bn.jpeg'}); background-position: center center; background-repeat: no-repeat; background-size: cover;"}
-        -# = link_to sign_in_test_users_path do
-        %a{ href: "#"}
-          %div.certain_banner{style: "height: 250px; background-image: url(#{ image_url 'banner/rehearsal-bn.jpeg'}); background-position: center center; background-repeat: no-repeat; background-size: cover;"}
-
-      = render 'simple_calendar/calendar'
-
-      .magazine-news
-        -if @meeting_divide_2.present?
-          - @meeting_divide_2.each do |md2|
-            .row
-              - md2.each do |md|
-                -if md.present?
-                  .col-md-6
-                    .thumbnail.thumbnail-style
-                      .magazine-news-img
-                        = link_to meeting_path(md) do
-                          %div{style: "height: 200px;background-image: url(#{ image_url md.photo}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
-                        %span.magazine-badge{class: "label-#{md.type_class}"}= md.event_type
-                      %h3
-                        %a{:href => "#"}= md.name
-                      .by-author
-                        %strong= md.operator
-                        %span= " / #{all_t_format(md.start_time)} ~ #{all_t_format(md.end_time)}"
-                        %p= md.content.truncate(67).html_safe
-
-    .col-md-4
-      / 교수 인기 Event
-      .profile-body.md-margin-bottom-20
-        .panel.panel-profile.no-bg
-          .tag-box-v1.panel-heading.overflow-h{ style: "border-top: solid 2px red;"}
-            %h2.panel-title.heading-sm.pull-left
-              %i.fa.fa-hand-peace-o
-              실시간 인기 순위
-            = link_to "참여하기", pickmes_path, class: "btn-u btn-brd-hover btn-u-red rounded-2x btn-u-xs pull-right"
-          .panel-body.no-padding
-            .profile-event
-              #vertical_banner
-                %ul
-                  -if @professors_11.present?
-                    - @professors_11.each_with_index do |best, index|
-                      %li
-                        -if index + 1 <= 3
-                          %span.badge.rounded-2x.badge-red= "#{index + 1}"
-                        -elsif index + 1 <= 6
-                          %span.badge.rounded-2x.badge-orange= "#{index + 1}"
-                        -else
-                          %span.badge.rounded-2x.badge-yellow= "#{index + 1}"
-                        = "#{best.name} - #{best.belong}"
-      / Profile Event
-      .profile-body.md-margin-bottom-20
-        .panel.panel-profile.no-bg
-          .tag-box-v1.panel-heading.overflow-h{ style: "border-top: solid 2px #e67e22;"}
-            %h2.panel-title.heading-sm.pull-left
-              %i.fa.fa-university
-              실시간 Hot 강의
-            = link_to "참여하기", lecture_infos_path, class: "btn-u btn-brd-hover btn-u-orange rounded-2x btn-u-xs pull-right"
-          .panel-body.no-padding
-            .profile-event
-              #vertical_banner
-                %ul
-                  -if @best_liberal.present?
-                    - @best_liberal.each_with_index do |best, index|
-                      %li
-                        = "#{index + 1}. #{best.name}"
-      / End Profile Event
-      .profile-body
-        .panel.panel-profile
-          .tag-box-v1.panel-heading.overflow-h{ style: "border-top: solid 2px yellow;"}
-            %h2.panel-title.heading-sm.pull-left
-              %i.fa.fa-comments-o
-              자유게시판
-            = link_to "참여하기", board_posts_path(1), class: "btn-u btn-brd-hover btn-u-yellow rounded-2x btn-u-xs pull-right"
-            -# %a.btn-u.btn-brd.btn-brd-hover.btn-u-dark.btn-u-xs.pull-right{:href => "page_profile_comments.html"} View All
-          #scrollbar4.panel-body.no-padding.mCustomScrollbar{"data-mcs-theme" => "minimal-dark"}
-            - if @best_posts.present?
-              - @best_posts.each_with_index do |best, index|
-                .comment
-                  .overflow-h
-                    %strong= "#{index + 1}. #{(best.user.username.nil? ? best.user.name : best.user.username)}"
-                    %p= truncate(best.title)
-                    %ul.list-inline.comment-list
-                      %li
-                        %i.fa.fa-heart
-                        %a{:href => "#"}= best.cached_votes_up
-                      %li
-                        %i.fa.fa-comments
-                        %a{:href => "#"}= best.comments.length
-      / Quick Links
-      .magazine-sb-categories.margin-bottom-20
-        .headline
-          %h2.heading-sm Top Tag 20
-        .row
-          %ul.list-unstyled.col-xs-6
-            - if @listing_a
-              - @listing_a.each do |x|
-                %li
-                  %span.label.rounded.margin-right-5{ class: "label-#{@samples.sample}"}
-                    %i.fa.fa-tags
-                    = x.name
-          %ul.list-unstyled.col-xs-6
-            - if @listing_b
-              - @listing_b.each do |x|
-                %li
-                  %span.label.rounded.margin-right-5{ class: "label-#{@samples.sample}"}
-                    %i.fa.fa-tags
-                    = x.name
-      / End Quick Links
-      / Latest News
-      .margin-bottom-40
-        .headline
-          %h2.heading-sm 자유 게시판 TOP 7
-        .row
-          - if @best_posts.present?
-            - @best_posts.each_with_index do |best, index|
-              .magazine-mini-news
-                %h3
-                  = link_to truncate(best.title), board_post_path(best.board, best)
-                  &nbsp;&nbsp;
-                  %span
-                    %i.fa.fa-heart.color-red
-                  = best.cached_votes_up
-                .post-author
-                  %span.badge.rounded-2x{class: "badge-#{@samples.sample}"}
-                    = "#{index + 1} #{(best.user.username.nil? ? best.user.name : best.user.username)}"
-                  %span= timeago_tag best.created_at
-                  %p= truncate(best.content, length: 30)
-              %hr.hr-md
+-# / === Content Part ===
+-# .container.content.profile
+-#   .row.magazine-page
+-#     / Begin Content
+-#     .col-md-8
+-#       #owl-example.owl-carousel
+-#         = link_to pickmes_path do
+-#           %div{style: "height: 250px; background-image: url(#{ image_url 'banner/pickme.png'}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
+-#         = link_to book_lists_path do
+-#           %div{style: "height: 250px; background-image: url(#{ image_url 'banner/enactus.png'}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
+-#         -# = link_to home_lockers_path do
+-#         %a{ href: "#"}
+-#           %div.certain_banner{style: "height: 250px; background-image: url(#{ image_url 'banner/locker-bn.jpeg'}); background-position: center center; background-repeat: no-repeat; background-size: cover;"}
+-#         -# = link_to sign_in_test_users_path do
+-#         %a{ href: "#"}
+-#           %div.certain_banner{style: "height: 250px; background-image: url(#{ image_url 'banner/rehearsal-bn.jpeg'}); background-position: center center; background-repeat: no-repeat; background-size: cover;"}
+-#
+-#       = render 'simple_calendar/calendar'
+-#
+-#       .magazine-news
+-#         -if @meeting_divide_2.present?
+-#           - @meeting_divide_2.each do |md2|
+-#             .row
+-#               - md2.each do |md|
+-#                 -if md.present?
+-#                   .col-md-6
+-#                     .thumbnail.thumbnail-style
+-#                       .magazine-news-img
+-#                         = link_to meeting_path(md) do
+-#                           %div{style: "height: 200px;background-image: url(#{ image_url md.photo}); background-position: center; background-repeat: no-repeat; background-size: cover;"}
+-#                         %span.magazine-badge{class: "label-#{md.type_class}"}= md.event_type
+-#                       %h3
+-#                         %a{:href => "#"}= md.name
+-#                       .by-author
+-#                         %strong= md.operator
+-#                         %span= " / #{all_t_format(md.start_time)} ~ #{all_t_format(md.end_time)}"
+-#                         %p= md.content.truncate(67).html_safe
+-#
+-#     .col-md-4
+-#       / 교수 인기 Event
+-#       .profile-body.md-margin-bottom-20
+-#         .panel.panel-profile.no-bg
+-#           .tag-box-v1.panel-heading.overflow-h{ style: "border-top: solid 2px red;"}
+-#             %h2.panel-title.heading-sm.pull-left
+-#               %i.fa.fa-hand-peace-o
+-#               실시간 인기 순위
+-#             = link_to "참여하기", pickmes_path, class: "btn-u btn-brd-hover btn-u-red rounded-2x btn-u-xs pull-right"
+-#           .panel-body.no-padding
+-#             .profile-event
+-#               #vertical_banner
+-#                 %ul
+-#                   -if @professors_11.present?
+-#                     - @professors_11.each_with_index do |best, index|
+-#                       %li
+-#                         -if index + 1 <= 3
+-#                           %span.badge.rounded-2x.badge-red= "#{index + 1}"
+-#                         -elsif index + 1 <= 6
+-#                           %span.badge.rounded-2x.badge-orange= "#{index + 1}"
+-#                         -else
+-#                           %span.badge.rounded-2x.badge-yellow= "#{index + 1}"
+-#                         = "#{best.name} - #{best.belong}"
+-#       / Profile Event
+-#       .profile-body.md-margin-bottom-20
+-#         .panel.panel-profile.no-bg
+-#           .tag-box-v1.panel-heading.overflow-h{ style: "border-top: solid 2px #e67e22;"}
+-#             %h2.panel-title.heading-sm.pull-left
+-#               %i.fa.fa-university
+-#               실시간 Hot 강의
+-#             = link_to "참여하기", lecture_infos_path, class: "btn-u btn-brd-hover btn-u-orange rounded-2x btn-u-xs pull-right"
+-#           .panel-body.no-padding
+-#             .profile-event
+-#               #vertical_banner
+-#                 %ul
+-#                   -if @best_liberal.present?
+-#                     - @best_liberal.each_with_index do |best, index|
+-#                       %li
+-#                         = "#{index + 1}. #{best.name}"
+-#       / End Profile Event
+-#       -# .profile-body
+-#         .panel.panel-profile
+-#           .tag-box-v1.panel-heading.overflow-h{ style: "border-top: solid 2px yellow;"}
+-#             %h2.panel-title.heading-sm.pull-left
+-#               %i.fa.fa-comments-o
+-#               자유게시판
+-#             = link_to "참여하기", board_posts_path(1), class: "btn-u btn-brd-hover btn-u-yellow rounded-2x btn-u-xs pull-right"
+-#             -# %a.btn-u.btn-brd.btn-brd-hover.btn-u-dark.btn-u-xs.pull-right{:href => "page_profile_comments.html"} View All
+-#           #scrollbar4.panel-body.no-padding.mCustomScrollbar{"data-mcs-theme" => "minimal-dark"}
+-#             - if @best_posts.present?
+-#               - @best_posts.each_with_index do |best, index|
+-#                 .comment
+-#                   .overflow-h
+-#                     %strong= "#{index + 1}. #{(best.user.username.nil? ? best.user.name : best.user.username)}"
+-#                     %p= truncate(best.title)
+-#                     %ul.list-inline.comment-list
+-#                       %li
+-#                         %i.fa.fa-heart
+-#                         %a{:href => "#"}= best.cached_votes_up
+-#                       %li
+-#                         %i.fa.fa-comments
+-#                         %a{:href => "#"}= best.comments.length
+-#       / Quick Links
+-#       .magazine-sb-categories.margin-bottom-20
+-#         .headline
+-#           %h2.heading-sm Top Tag 20
+-#         .row
+-#           %ul.list-unstyled.col-xs-6
+-#             - if @listing_a
+-#               - @listing_a.each do |x|
+-#                 %li
+-#                   %span.label.rounded.margin-right-5{ class: "label-#{@samples.sample}"}
+-#                     %i.fa.fa-tags
+-#                     = x.name
+-#           %ul.list-unstyled.col-xs-6
+-#             - if @listing_b
+-#               - @listing_b.each do |x|
+-#                 %li
+-#                   %span.label.rounded.margin-right-5{ class: "label-#{@samples.sample}"}
+-#                     %i.fa.fa-tags
+-#                     = x.name
+-#       / End Quick Links
+-#       / Latest News
+-#       -# .margin-bottom-40
+-#         .headline
+-#           %h2.heading-sm 자유 게시판 TOP 7
+-#         .row
+-#           - if @best_posts.present?
+-#             - @best_posts.each_with_index do |best, index|
+-#               .magazine-mini-news
+-#                 %h3
+-#                   = link_to truncate(best.title), board_post_path(best.board, best)
+-#                   &nbsp;&nbsp;
+-#                   %span
+-#                     %i.fa.fa-heart.color-red
+-#                   = best.cached_votes_up
+-#                 .post-author
+-#                   %span.badge.rounded-2x{class: "badge-#{@samples.sample}"}
+-#                     = "#{index + 1} #{(best.user.username.nil? ? best.user.name : best.user.username)}"
+-#                   %span= timeago_tag best.created_at
+-#                   %p= truncate(best.content, length: 30)
+-#               %hr.hr-md

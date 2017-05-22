@@ -2,6 +2,7 @@ class MeetingsController < ApplicationController
 
   #auth
   load_and_authorize_resource
+  layout "dku"
 
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
 

@@ -1,27 +1,21 @@
-%h1 Listing blogings
-
-%table
-  %thead
-    %tr
-      %th Title
-      %th Body
-      %th Hits
-      %th Image
-      %th
-      %th
-      %th
-
-  %tbody
-    - @blogings.each do |bloging|
+%ul.sublime-body
+  %table
+    %thead
       %tr
-        %td= bloging.title
-        %td= bloging.body
-        %td= bloging.hits
-        %td= bloging.image
-        %td= link_to 'Show', bloging
-        %td= link_to 'Edit', edit_bloging_path(bloging)
-        %td= link_to 'Destroy', bloging, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Bloging', new_bloging_path
+        %th Title
+        %th Hits
+        %th Image
+        %th
+        %th
+        %th
+    %tbody
+      - @blogings.each do |bloging|
+        %tr
+          %td= bloging.title
+          %td= bloging.hits
+          %td= bloging.image
+          %td= link_to 'Show', bloging
+          %td= link_to 'Edit', edit_bloging_path(bloging)
+          %td= link_to 'Destroy', bloging, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %br
+  = link_to 'New Bloging', new_bloging_path

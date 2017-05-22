@@ -1,4 +1,5 @@
 class LectureEstimatesController < ApplicationController
+  layout "dku"
 
   before_action :set_lecture_estimate, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :set_professor, only: [:index, :show]

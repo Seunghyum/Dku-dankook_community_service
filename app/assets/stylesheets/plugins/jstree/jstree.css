@@ -13,7 +13,7 @@
 }
 .jstree-anchor {
   display: inline-block;
-  color: black;
+  color: silver;
   white-space: nowrap;
   padding: 0 4px 0 1px;
   margin: 0;
@@ -381,6 +381,8 @@
 .jstree-default .jstree-anchor {
   line-height: 24px;
   height: 24px;
+  width: 100%;
+  color: silver !important;
 }
 .jstree-default .jstree-icon {
   width: 24px;
@@ -516,6 +518,7 @@
 .jstree-default > .jstree-container-ul > .jstree-node {
   margin-left: 0;
   margin-right: 0;
+  margin-bottom: 10px;
 }
 #jstree-dnd.jstree-default {
   line-height: 24px;

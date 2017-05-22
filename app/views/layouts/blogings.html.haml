@@ -1,0 +1,82 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    - if controller_name != "lockers"
+      %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    - else
+      %meta{:content => "width=device-width, initial-scale=0.3", :name => "viewport"}/
+    %meta{:content => "http://mydku.com", :property => "og:url"}
+    %meta{ content: asset_url("dku/3-min.png"), property: "og:image" }
+    %meta{:id => "mttitle", :content => "단국대 커뮤니티", :property => "og:title"}
+    %meta{:id => "mtdesc", :content => "Dku(디쿠)", :property => "og:description"}
+    %meta{:content => "300", :property => "og:image:width"}/
+    %meta{:content => "200", :property => "og:image:height"}/
+    = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
+    %title 디쿠
+    = include_gon
+    = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag    'fakeloader'
+    = javascript_include_tag 'jquery_package'
+    = javascript_include_tag(controller_name == "home" ? "loading/fakeloader" : "loading/pace")
+    = javascript_include_tag 'application'
+    = javascript_include_tag 'plugins/minimap.js' if action_name == "show"
+    = javascript_include_tag 'plugins/jstree.js'
+    = javascript_include_tag 'blogings.js'
+    -# = javascript_include_tag ("pages/" + controller_name)
+    -# = javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"
+    -# = javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.2.2/pixi.min.js"
+
+    -# :javascript
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-65881210-4', 'auto');
+      ga('send', 'pageview');
+    = timeago_script_tag
+    = csrf_meta_tags
+
+  %body
+    #fakeLoader
+    / The overlay
+    #myNav.overlay
+      / Button to close the overlay navigation
+      %a.closebtn{:href => "javascript:void(0)", :onclick => "closeNav()"} ×
+      / Overlay content
+      .overlay-content
+        = link_to root_path do
+          %i.fa.fa-home
+          홈
+        = link_to home_dku_path do
+          %i.fa.fa-university
+          학교 프로젝트 둘러보기
+        %a{:href => "#"} Clients
+        %a{:href => "#"} Contact
+
+    .wrapper
+      = render partial: "application/flash/slide_down_flash_message", flash: flash if controller_name != "lockers" && controller_name != "used_books"
+      .lk-sublime#lk-sublime
+        .sublime-header
+          %span
+          %span
+          %span
+        .clearfix
+        .row
+          .col-sm-3.col-md-2
+            .sublime-toolbar
+              %span.badge.badge-red.rounded#fullscreen
+                -# %span.icon-size-actual{"aria-hidden" => "true"}
+                %span.icon-size-fullscreen{"aria-hidden" => "true"}
+              %span.badge.badge-blue.rounded#navi{ onclick: "openNav();"}
+                %i.fa.fa-bars{"aria-hidden" => "true"}
+            = render "blogings/jstree"
+          .col-sm-9
+            .row.sublime-tab
+
+            .sidenum
+              .list_num
+
+            = yield

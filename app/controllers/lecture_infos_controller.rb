@@ -1,4 +1,5 @@
 class LectureInfosController < ApplicationController
+  layout "dku"
   before_action :set_lecture_info, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -22,7 +23,9 @@ class LectureInfosController < ApplicationController
     unless @lecture_infos.nil?
       @lecture_info_pages = @lecture_infos.page(params[:page]).per(7)
     end
-    @best_liberal = BestFive.find_by(category: "교양").lecture_infos
+    if BestFive.find_by(category: "교양").present?
+      @best_liberal = BestFive.find_by(category: "교양").lecture_infos
+    end
   end
 
   private

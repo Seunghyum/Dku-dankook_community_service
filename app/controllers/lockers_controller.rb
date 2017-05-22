@@ -2,6 +2,8 @@ class LockersController < ApplicationController
   #auth
   load_and_authorize_resource
   skip_authorize_resource :only => [:nottime, :home, :reject, :result]
+  layout "dku"
+
   before_action :authenticate_user!, :except => [:home]
 
   before_action :set_locker, only: [:index, :lockerselect, :destroy, :first_check, :selecting_page, :check_lcounting_for_reject]

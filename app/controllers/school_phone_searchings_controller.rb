@@ -1,4 +1,5 @@
 class SchoolPhoneSearchingsController < ApplicationController
+  layout "dku"
 
   def new
       @campus = ["죽전", "천안"]

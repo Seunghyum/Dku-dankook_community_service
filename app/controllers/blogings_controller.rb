@@ -1,6 +1,7 @@
 class BlogingsController < InheritedResources::Base
   #auth
   load_and_authorize_resource
+  layout "blogings"
 
   before_action :set_bloging, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 

@@ -1,6 +1,7 @@
 class PickmeController < ApplicationController
 
   before_action :set_professor, only: [:upvote, :downvote]
+  layout "pickme"
 
   def index
     if params[:name].nil? || params[:filter] == "전체"

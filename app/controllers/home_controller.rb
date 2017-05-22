@@ -1,5 +1,9 @@
 class HomeController < ApplicationController
+  skip_before_filter :authenticate_user!
   def index
+  end
+
+  def dku
     @meetings = Meeting.all
     @meeting_divide_2 = @meetings.in_groups_of(2)
     #tag 출력
@@ -24,10 +28,9 @@ class HomeController < ApplicationController
     #   format.html
     # end
     @professors_11 = Professor.order("cached_votes_score DESC").take(11)
-
   end
 
-  def certify
+  def all_search
 
   end
 end

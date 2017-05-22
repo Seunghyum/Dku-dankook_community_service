@@ -1,4 +1,4 @@
-.header
+.header.header-sticky
   .container
     / Logo
     = link_to root_path, class: "logo" do
@@ -8,22 +8,22 @@
     / Topbar
     .topbar
       %ul.loginbar.pull-right
-        %li
-          - if user_signed_in?
+        - if user_signed_in?
 
-            %li
-              = link_to edit_user_registration_path do
-                %i.fa.fa-cog
-                =(current_user.username.nil? ? current_user.name : current_user.username )
-            &nbsp;
-            |
-            &nbsp;
-            %li= link_to "로그아웃", destroy_user_session_path, method: "delete"
-          - else
-            %li
-              = link_to new_user_session_path do
-                %i.fa.fa-power-off
-                로그인
+          %li
+            = link_to edit_user_registration_path do
+              %i.fa.fa-cog
+              =(current_user.username.nil? ? current_user.name : current_user.username )
+          -# &nbsp;
+          -# |
+          -# &nbsp;
+          %li.topbar-devider
+          %li= link_to "로그아웃", destroy_user_session_path, method: "delete"
+        - else
+          %li
+            = link_to new_user_session_path do
+              %i.fa.fa-power-off
+              로그인
     / End Topbar
     / Toggle get grouped for better mobile display
     %button.navbar-toggle{"data-target" => ".navbar-responsive-collapse", "data-toggle" => "collapse", :type => "button"}
@@ -32,11 +32,11 @@
     / End Toggle
   / /end container
   / Collect the nav links, forms, and other content for toggling
-  .navbar-collapse.mega-menu.navbar-responsive-collapse.collapse{"aria-expanded" => "false", :style => "height: 1px;"}
+  .collapse.navbar-collapse.mega-menu.navbar-responsive-collapse
     .container
       %ul.nav.navbar-nav
         %li.dropdown.mega-menu-fullwidth
-          %a.dropdown-toggle.text-center{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "javascript:void(0);"}
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0);"}
             전체 메뉴
           %ul.dropdown-menu
             %li
@@ -46,145 +46,148 @@
                     .col-md-3.equal-height-in
                       %ul.list-unstyled.equal-height-list
                         %li
-                          %h3 강의
+                          %h3
+                            학교 커뮤니티 프로젝트(과거)
                         / Buttons
                         %li
+                          = link_to home_dku_path do
+                            %i.fa.fa-home
+                            홈
+                        %li
                           = link_to lecture_infos_path do
-                            %i.fa.fa-flask
+                            %i.fa.fa-university
                             강의 평가
-                            %span.label.rounded.label-orange New
+                            -# %span.label.rounded.label-orange New
                         %li
                           = link_to sign_in_test_users_path do
                             %i.fa.fa-sort-alpha-asc
                             수강신청 리허설
-                            %span.label.rounded.label-orange New
+                            -# %span.label.rounded.label-orange New
                         %li
                           = link_to pickmes_path do
                             %i.fa.fa-hand-peace-o
                             Professor 101(인기 투표)
-                            %span.label.rounded.label-red Hot
-                    .col-md-3.equal-height-in
-                      %ul.list-unstyled.equal-height-list
-                        %li
-                          %h3 온라인 신청
+                            -# %span.label.rounded.label-red Hot
                         %li
                           = link_to home_lockers_path do
                             %i.fa.fa-th
                             사물함 신청
-                            %span.label.rounded.label-red Open
+                            -# %span.label.rounded.label-red Open
 
                         %li
                           = link_to home_lockers_path do
                             %i.fa.fa-book
                             학과별 중고책 신청
-                            %span.label.rounded.label-yellow Test Open
+                            -# %span.label.rounded.label-yellow Test Open
+                        %li
+                          = link_to new_school_phone_searching_path do
+                            %i.fa.fa-phone-square
+                            단국대 기관 전화번호 검색
+                        %li
+                          = link_to book_lists_path do
+                            %i.fa.fa-search
+                            인액터스 중고책 검색
+                            -# %span.label.rounded.label-info Cool
+                        %li
+                          = link_to board_posts_path("1") do
+                            %i.fa.fa-commenting
+                            커뮤니티 게시판
+                    .col-md-3.equal-height-in
+                      %ul.list-unstyled.equal-height-list
+                        %li
+                          %h3 토이 프로젝트
+                        %li
+                          = link_to morphemes_path do
+                            %i.fa.fa-quote-left
+                            Mecab 형태소 분석
+                        %li
+                          = link_to d3js_path do
+                            %i.fa.fa-globe
+                            D3.js
                         %hr
-                        %li
-                          %h3 커뮤니티
-                        %li
-                          = link_to board_posts_path(1) do
-                            %i.fa.fa-quote-left
-                            자유게시판
-                            %span.label.rounded.label-orange New
-                        -# %li
-                          = link_to blogings_path do
-                            %i.fa.fa-quote-left
-                            포스팅
-                            %span.label.rounded.label-orange New
 
                     .col-md-3.equal-height-in
                       %ul.list-unstyled.equal-height-list
                         %li
-                          %h3 중앙 동아리
+                          %h3 공부 및 활동
                         / Common Elements
                         %li
                           = link_to "http://dankook.likelion.net/" do
                             = image_tag "likelion/lion_head.ico", style: "width: 23px;"
                             %nbsp
-                            멋쟁이사자처럼 (?)
-                        %li
-                          %a{:href => "#"}
-                            &nbsp
-                            %i.fa.fa-list-ol
-                            인액터스
+                            멋쟁이사자처럼
                     .col-md-3.equal-height-in
                       %ul.list-unstyled.equal-height-list
                         %li
-                          %h3 검색
+                          %h3 여가
                         %li
-                          = link_to new_school_phone_searching_path do
-                            %i.fa.fa-quote-left
-                            단국대 기관 전화번호 검색
-                        %li
-                          = link_to book_lists_path do
-                            %i.fa.fa-asterisk
-                            인액터스 중고책 검색
-                            %span.label.rounded.label-info Cool
+                          %a{:href => "shortcode_form_general1.html"}
+                            %i.fa.fa-bars
+                            General Unify Forms
+        %li.dropdown
+          = link_to "javascript:void(0);", class: "dropdown-toggle", data: {toggle: "dropdown"} do
+            학교 프로젝트(과거)
+          %ul.dropdown-menu
+            %li
+              = link_to lecture_infos_path do
+                %i.fa.fa-university
+                강의 평가
+                -# %span.label.rounded.label-orange New
+            %li
+              = link_to sign_in_test_users_path do
+                %i.fa.fa-sort-alpha-asc
+                수강신청 리허설
+                -# %span.label.rounded.label-orange New
+            %li
+              = link_to pickmes_path do
+                %i.fa.fa-hand-peace-o
+                Professor 101(인기 투표)
+                -# %span.label.rounded.label-red Hot
+            %li
+              = link_to home_lockers_path do
+                %i.fa.fa-th
+                사물함 신청
+                -# %span.label.rounded.label-red Open
+            %li
+              = link_to home_lockers_path do
+                %i.fa.fa-book
+                학과별 중고책 신청
+                -# %span.label.rounded.label-yellow Test Open
+            %li
+              = link_to new_school_phone_searching_path do
+                %i.fa.fa-phone-square
+                단국대 기관 전화번호 검색
+            %li
+              = link_to book_lists_path do
+                %i.fa.fa-search
+                인액터스 중고책 검색
+            %li
+              = link_to board_posts_path("1") do
+                %i.fa.fa-commenting
+                커뮤니티 게시판
 
-                        -# %li
-                        -#   %h3 동아리
-                        -# / Forms
-                        -#   %a{:href => "shortcode_form_general.html"}
-                        -#     %i.fa.fa-bars
-                        -#     Common Bootstrap Forms
-                        -# %li
-                        -#   %a{:href => "shortcode_form_general1.html"}
-                        -#     %i.fa.fa-bars
-                        -#     General Unify Forms
-                        -# %li
-                        -#   %a{:href => "shortcode_form_advanced.html"}
-                        -#     %i.fa.fa-bars
-                        -#     Advanced Forms
-                        -# %li
-                        -#   %a{:href => "shortcode_form_layouts.html"}
-                        -#     %i.fa.fa-bars
-                        -#     Form Layouts
-                        -# %li
-                        -#   %a{:href => "shortcode_form_layouts_advanced.html"}
-                        -#     %i.fa.fa-bars
-                        -#     Advanced Layout Forms
-                        -# %li
-                        -#   %a{:href => "shortcode_form_states.html"}
-                        -#     %i.fa.fa-bars
-                        -#     Form States
-                        -# %li
-                        -#   %a{:href => "shortcode_form_sliders.html"}
-                        -#     %i.fa.fa-bars
-                        -#     Form Sliders
-                        -# %li
-                        -#   %a{:href => "shortcode_form_modals.html"}
-                        -#     %i.fa.fa-bars
-                        -#     Modals
-                        -# / End Forms
-                        -# / Infographics
-                        -# %li
-                        -#   %a{:href => "shortcode_compo_charts.html"}
-                        -#     %i.fa.fa-pie-chart
-                        -#     Charts &amp; Countdowns
+        %li.dropdown
+          = link_to blogings_path do
+            공부 및 활동
+          %ul.dropdown-menu
+            %li
+              = link_to "http://dankook.likelion.net/" do
+                = image_tag "likelion/lion_head.ico", style: "width: 23px;"
+                %nbsp
+                멋쟁이사자처럼
+        %li.dropdown
+          = link_to "javascript:void(0);", class: "dropdown-toggle", data: {toggle: "dropdown"}  do
+            토이 프로젝트
+          %ul.dropdown-menu
+            %li
+              = link_to morphemes_path do
+                %i.fa.fa-quote-left
+                Mecab 형태소 분석
+            %li
+              = link_to d3js_path do
+                %i.fa.fa-globe
+                D3.js
 
-        %li.text-center
-          = link_to pickmes_path do
-            Professor 101(인기 투표)
-            %span.label.rounded.label-red Hot
-        %li.text-center
-          = link_to home_lockers_path do
-            사물함 신청
-            %span.label.rounded.label-red Open
-        %li.text-center
-          = link_to book_lists_path do
-            인액터스 중고책 검색
-            %span.label.rounded.label-info Cool
-        -# %li
-          = link_to board_posts_path(1) do
-            자유게시판
-
-        -# %li
-          - if user_signed_in?
-            %li= link_to (current_user.username.nil? ? current_user.name : current_user.username ), edit_user_registration_path
-            %li= link_to "로그아웃", destroy_user_session_path, method: "delete"
-          - else
-            %li= link_to "로그인", new_user_session_path if !user_signed_in?
-        / Search Block
         %li
           %i.search.fa.fa-search.search-btn
           .search-open
@@ -195,280 +198,3 @@
         / End Search Block
     / /end container
   / /navbar-collapse
-
-
-/ === Header v4 ===
--# .header-v4
-  / Navbar
-  .navbar.navbar-default.mega-menu{:role => "navigation"}
-    .container.text-center
-      / Brand and toggle get grouped for better mobile display
-      = link_to root_path  do
-        %h2 로고
-      %button.navbar-toggle{"data-target" => ".navbar-responsive-collapse", "data-toggle" => "collapse", :type => "button"}
-        %span.full-width-menu Menu Bar
-        %span.icon-toggle
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-    .clearfix
-    / Collect the nav links, forms, and other content for toggling
-    .collapse.navbar-collapse.navbar-responsive-collapse
-      .container
-        %ul.nav.navbar-nav
-          / Home
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0);"}
-              게시판
-            = render_navigation :level => 1, :renderer => :bootstrap
-            /
-              <ul class="dropdown-menu">
-              <haml_silent>							 Board.all.each do |board|
-              </haml_silent><haml_block>								<li><haml_loud> link_to board.name, board_posts_path(board) </haml_loud></li>
-              </haml_block>						</ul>
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0);"}
-              단국대 웹서비스
-            %ul.dropdown-menu
-              %li
-                = link_to "수강신청 리허설", sign_in_test_users_path
-              %li
-                = link_to "사물함 신청", home_lockers_path
-              %li
-                = link_to "단국대 기관 전화번호 검색", new_school_phone_searching_path
-              %li.no-border
-                = link_to "단대 일정", meetings_path
-          %li
-            = link_to "강의평가", lecture_infos_path
-          %li
-            = link_to "인액터스 중고책 검색", book_lists_path
-          / Shortcodes
-
-          %li.dropdown.mega-menu-fullwidth
-            %a.dropdown-toggle{"data-toggle" => "dropdown1", :href => "javascript:void(0);"}
-              강의평가
-          %li.dropdown.mega-menu-fullwidth
-            %a.dropdown-toggle{"data-toggle" => "dropdown1", :href => "javascript:void(0);"}
-              단국대 웹서비스
-            %ul.dropdown-menu
-              %li
-                .mega-menu-content.disable-icons
-                  .container
-                    .row.equal-height
-                      .col-md-3.equal-height-in
-                        %ul.list-unstyled.equal-height-list
-                          %li
-                            %h3 강의
-                          / Buttons
-                          %li
-                            = link_to lecture_infos_path do
-                              %i.fa.fa-flask
-                              강의 평가
-                          %li
-                            -# %a{:href => "shortcode_typo_general.html"}
-                            = link_to sign_in_test_users_path do
-                              %i.fa.fa-sort-alpha-asc
-                              수강신청 리허설
-                          %li
-                            -# %a{:href => "shortcode_btn_effects.html"}
-                            = link_to pickmes_path do
-                              %i.fa.fa-bolt
-                              Professor 101(인기 투표)
-                          / End Buttons
-                          / Icons
-                          %li
-                            %a{:href => "shortcode_icon_general.html"}
-                              %i.fa.fa-chevron-circle-right
-                              General Icons
-                          %li
-                            %a{:href => "shortcode_icon_fa.html"}
-                              %i.fa.fa-chevron-circle-right
-                              Font Awesome Icons
-                          %li
-                            %a{:href => "shortcode_icon_line.html"}
-                              %i.fa.fa-chevron-circle-right
-                              Line Icons
-                          %li
-                            %a{:href => "shortcode_icon_line_christmas.html"}
-                              %i.fa.fa-chevron-circle-right
-                              Line Icons Pro
-                          %li
-                            %a{:href => "shortcode_icon_glyph.html"}
-                              %i.fa.fa-chevron-circle-right
-                              Glyphicons Icons (Bootstrap)
-                          / End Icons
-                      .col-md-3.equal-height-in
-                        %ul.list-unstyled.equal-height-list
-                          %li
-                            %h3 온라인 신청
-                          %li
-                            -# %a{:href => "shortcode_typo_headings.html"}
-                            = link_to home_lockers_path do
-                              %i.fa.fa-magic
-                              사물함 신청
-                          %li
-                            %a{:href => "#"}
-                              %i.fa.fa-ellipsis-h
-                              학과별 중고책 신청
-                          %hr
-                          %li
-                            %h3 검색
-                          %li
-                            = link_to new_school_phone_searching_path do
-                              %i.fa.fa-quote-left
-                              단국대 기관 전화번호 검색
-                          %li
-                            = link_to book_lists_path do
-                              %i.fa.fa-asterisk
-                              인액터스 중고책 검색
-                          -# %li
-                          -#   %a{:href => "shortcode_typo_blockquote.html"}
-                          -#     %i.fa.fa-quote-left
-                          -#     단국대 전화번호 검색
-                          -# %li
-                          -#   %a{:href => "shortcode_typo_boxshadows.html"}
-                          -#     %i.fa.fa-asterisk
-                          -#     Box Shadows
-                          -# %li
-                          -#   %a{:href => "shortcode_typo_testimonials.html"}
-                          -#     %i.fa.fa-comments
-                          -#     Testimonials
-                          -# %li
-                          -#   %a{:href => "shortcode_typo_tagline_boxes.html"}
-                          -#     %i.fa.fa-tasks
-                          -#     Tagline Boxes
-                          -# %li
-                          -#   %a{:href => "shortcode_typo_grid.html"}
-                          -#     %i.fa.fa-align-justify
-                          -#     Grid Layouts
-                          -# / End Typography
-                          -# / Components
-                          -# %li
-                          -#   %a{:href => "shortcode_compo_messages.html"}
-                          -#     %i.fa.fa-comment
-                          -#     Alerts &amp; Messages
-                          -# %li
-                          -#   %a{:href => "shortcode_compo_labels.html"}
-                          -#     %i.fa.fa-tags
-                          -#     Labels &amp; Badges
-                          -# %li
-                          -#   %a{:href => "shortcode_compo_media.html"}
-                          -#     %i.fa.fa-volume-down
-                          -#     Audio/Videos &amp; Images
-                          -# %li
-                          -#   %a{:href => "shortcode_compo_pagination.html"}
-                          -#     %i.fa.fa-arrows-h
-                          -#     Paginations
-                          / End Components
-
-                      .col-md-3.equal-height-in
-                        %ul.list-unstyled.equal-height-list
-                          %li
-                            %h3 중앙 동아리
-                          / Common Elements
-                          %li
-                            %a{:href => "shortcode_thumbnails.html"}
-                              %i.fa.fa-image
-                              멋쟁이사자처럼 (1년후)
-                          %li
-                            %a{:href => "shortcode_accordion_and_tabs.html"}
-                              %i.fa.fa-list-ol
-                              인액터스
-                          %li
-                            %a{:href => "shortcode_timeline1.html"}
-                              %i.fa.fa-dot-circle-o
-                              Timeline Option 1
-                          %li
-                            %a{:href => "shortcode_timeline2.html"}
-                              %i.fa.fa-dot-circle-o
-                              Timeline Option 2
-                          %li
-                            %a{:href => "shortcode_table_general.html"}
-                              %i.fa.fa-table
-                              Tables
-                          %li
-                            %a{:href => "shortcode_compo_progress_bars.html"}
-                              %i.fa.fa-align-left
-                              Progress Bars
-                          %li
-                            %a{:href => "shortcode_compo_panels.html"}
-                              %i.fa.fa-columns
-                              Panels
-                          %li
-                            %a{:href => "shortcode_carousels.html"}
-                              %i.fa.fa-sliders
-                              Carousel Examples
-                          %li
-                            %a{:href => "shortcode_maps_google.html"}
-                              %i.fa.fa-map-marker
-                              Google Maps
-                          %li
-                            %a{:href => "shortcode_maps_vector.html"}
-                              %i.fa.fa-align-center
-                              Vector Maps
-                          / End Common Elements
-                      .col-md-3.equal-height-in
-                        %ul.list-unstyled.equal-height-list
-                          %li
-                            %h3 동아리
-                          / Forms
-                          %li
-                            %a{:href => "shortcode_form_general.html"}
-                              %i.fa.fa-bars
-                              Common Bootstrap Forms
-                          %li
-                            %a{:href => "shortcode_form_general1.html"}
-                              %i.fa.fa-bars
-                              General Unify Forms
-                          %li
-                            %a{:href => "shortcode_form_advanced.html"}
-                              %i.fa.fa-bars
-                              Advanced Forms
-                          %li
-                            %a{:href => "shortcode_form_layouts.html"}
-                              %i.fa.fa-bars
-                              Form Layouts
-                          %li
-                            %a{:href => "shortcode_form_layouts_advanced.html"}
-                              %i.fa.fa-bars
-                              Advanced Layout Forms
-                          %li
-                            %a{:href => "shortcode_form_states.html"}
-                              %i.fa.fa-bars
-                              Form States
-                          %li
-                            %a{:href => "shortcode_form_sliders.html"}
-                              %i.fa.fa-bars
-                              Form Sliders
-                          %li
-                            %a{:href => "shortcode_form_modals.html"}
-                              %i.fa.fa-bars
-                              Modals
-                          / End Forms
-                          / Infographics
-                          %li
-                            %a{:href => "shortcode_compo_charts.html"}
-                              %i.fa.fa-pie-chart
-                              Charts &amp; Countdowns
-        %ul.nav.navbar-nav.navbar-border-bottom.navbar-right
-          - if user_signed_in?
-            %li.no-border= link_to (current_user.username.nil? ? current_user.name : current_user.username ), edit_user_registration_path
-            %li.no-border= link_to "로그아웃", destroy_user_session_path, method: "delete"
-          - else
-            %li.no-border= link_to "로그인", new_user_session_path if !user_signed_in?
-          / <li class="no-border">
-          / <i class="search fa fa-search search-btn"></i>
-          / <div class="search-open">
-          / <div class="input-group animated fadeInDown">
-          / <input type="text" class="form-control" placeholder="Search">
-          / <span class="input-group-btn">
-          / <button class="btn-u" type="button">Go</button>
-          / </span>
-          / </div>
-          / </div>
-          / </li>
-        / End Search Block
-      / /end container
-    / /navbar-collapse
-  / End Navbar
-/ === End Header v4 ===

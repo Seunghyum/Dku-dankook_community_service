@@ -1,0 +1,106 @@
+.block-description
+  .container
+    .row
+      / Right Inner
+      .col-md-6.col-md-push-6
+        .right-inner
+          .headline
+            %h3 다른 유저들이 검색한 텍스트
+          #pgListTarget
+            %table.table.table-striped#pgTableTarget
+              %thead
+                %tr
+                  %th.text-center 내용
+                  %th.text-center 검색일
+              %tbody
+                - if @morphemes.present?
+                  - @morphemes.each do |m|
+                    %tr
+                      %td= link_to truncate(m.input,:length => 35), ""
+                      %td= timeago_tag m.created_at
+            -# %ul
+              - if @morphemes.present?
+                - @morphemes.each do |m|
+                  %li=link_to truncate(m.input,:length => 35), ""
+          %center
+            #paginator.pagination-wrapper
+              - if @morphemes.present?
+                #pgList
+                  = paginate @morphemes, param_name: 'page'
+
+      / Left Inner
+      .col-md-6.col-md-pull-6
+        .left-inner
+          .headline
+            %h3 분석할 데이터 입력
+          = form_for @morpheme, html: {id: "sky-form3", class: "sky-form sky-changes-3 contact-style", novalidate: "novalidate"} do |f|
+            - if @morpheme.errors.any?
+              #error_explanation
+                %h2
+                  = pluralize(@morpheme.errors.count, "error")
+                  prohibited this morpheme from being saved:
+                %ul
+                  - @morpheme.errors.full_messages.each do |message|
+                    %li= message
+            %section
+              %label.textarea
+                = f.text_area :input, rows: "10", value: Morpheme.last.input
+            .text-center
+              = f.submit "작성하기", class: "btn-u btn-u-md"
+    %br
+
+    .row
+      / Right Inner
+      - if @text.present?
+        .col-md-6.col-md-push-6
+          .right-inner
+            .headline
+              %h3.text-center 텍스트 분석
+            %table.table.table-striped#pgTableTarget
+              %thead
+                %tr
+                  %th 단어
+                  %th 형태소
+              %tbody
+                - @text.each do |m|
+                  %tr
+                    %td= m.surface
+                    %td= translateCodes(m.feature.split(",").first)
+            - if @text.present?
+              .text-center
+                #pgTable
+                  = paginate @text, param_name: 'page_table'
+      / Left Inner
+      - if @graph.present?
+        .col-md-6.col-md-pull-6
+          .left-inner
+            .headline
+              %h3 그래프 분석
+            #pie
+            .row
+              .col-md-6
+                .headline
+                  %h3 BEST 10 분석
+                %table.table.table-striped#pgTableTarget
+                  %thead
+                    %tr
+                      %th 단어
+                      %th 횟수
+                  %tbody
+                    - @graph.each do |g|
+                      %tr
+                        %td= g[0].to_s
+                        %td= g[1].to_s
+              .col-md-6
+                .headline
+                  %h3 기사 형태소 통계
+                %table.table.table-striped#pgTableTarget
+                  %thead
+                    %tr
+                      %th 형태소 이름
+                      %th 총계
+                  %tbody
+                    - @morphemes_aggregate.each do |g|
+                      %tr
+                        %td= g[0].to_s
+                        %td= g[1].to_s

@@ -1,0 +1,38 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "http://mydku.com", :property => "og:url"}
+    %meta{ content: asset_url("dku/3-min.png"), property: "og:image" }
+    %meta{:id => "mttitle", :content => "단국대 커뮤니티", :property => "og:title"}
+    %meta{:id => "mtdesc", :content => "Dku(디쿠)", :property => "og:description"}
+    %meta{:content => "300", :property => "og:image:width"}/
+    %meta{:content => "200", :property => "og:image:height"}/
+    = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
+    %title 디쿠
+    = include_gon
+    = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag    'fakeloader'
+    = javascript_include_tag 'jquery_package'
+    = javascript_include_tag(controller_name == "home" ? "loading/fakeloader" : "loading/pace")
+    = javascript_include_tag 'application'
+
+    -# :javascript
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-65881210-4', 'auto');
+      ga('send', 'pageview');
+    = timeago_script_tag
+    = csrf_meta_tags
+
+  %body
+    #fakeLoader
+    .wrapper
+      = render "header"
+      = render partial: "application/flash/slide_down_flash_message", flash: flash if controller_name != "lockers" && controller_name != "used_books"
+      = yield
+      -# = render "footer"

@@ -3,8 +3,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5'
 
 #db
-# gem 'mysql2', '~> 0.3.18'
-gem 'sqlite3'
+gem 'mysql2', '~> 0.3.18'
+# gem 'sqlite3'
+
+gem 'greensock-rails', '~> 1.18', '>= 1.18.2.0'
 
 #deploy
 gem 'puma'
@@ -28,6 +30,8 @@ gem 'gon'
 gem 'rubyzip'
 gem 'axlsx'
 gem 'axlsx_rails'
+## 형태소 분석
+gem 'natto'
 
 #auth
 gem 'devise'
@@ -35,7 +39,7 @@ gem 'omniauth-kakao'
 gem 'omniauth-facebook'
 ##권한설정
 gem 'cancancan'
-gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'activeadmin'#, '~> 1.0.0.pre4'
 
 #files
 gem 'carrierwave'
@@ -51,9 +55,11 @@ gem 'sass-rails', '~> 5.0'
 ## Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
-gem "jquery-ui-rails"
+gem "jquery-rails"
+# gem 'jquery-ui-rails'
+gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'jquery-timepicker-addon-rails'
+
 ##icon cdn
 gem "font-awesome-rails"
 ##nav
@@ -62,13 +68,17 @@ gem 'bootstrap_form'
 ##rating
 gem 'rails-assets-jquery-bar-rating', source: 'https://rails-assets.org'
 gem 'bootstrap'
+gem 'bootstrap3-rails', '~> 3.2'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
-gem 'rails-assets-tether', '~> 1.1', '>= 1.1.1'
+gem 'rails-assets-tether', '~> 1.1', '>= 1.1.1', :source => 'https://rails-assets.org/'
 ##tag
 gem 'tag-it-rails'
-##radar chart
+##chart
 gem 'chart-js-rails'
+gem "d3-rails"
+gem "d3pie-rails"
+
 ##haml
 gem "haml-rails"
 ##editor

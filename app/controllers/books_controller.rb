@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
 
+  layout "dku"
   #auth
   load_and_authorize_resource
   # authorize_resource :class => false

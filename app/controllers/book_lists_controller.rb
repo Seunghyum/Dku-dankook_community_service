@@ -1,7 +1,7 @@
 class BookListsController < ApplicationController
-
   #auth
   load_and_authorize_resource :except => [:index, :show]
+  layout "dku"
   # authorize_resource :class => false
   # skip_authorize_resource :only => [:index, :show]
 

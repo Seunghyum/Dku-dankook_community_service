@@ -1,4 +1,6 @@
 class UsedBooksController < InheritedResources::Base
+  layout "dku"
+
   before_action :set_used_book, only: [ :destroy, :selecting ]
   before_action :authenticate_user!, :except => "manage"
   before_action :check_start_time_nil, :check_start_time, :check_end_time, except: [:nottime, :home, :reject, :result]

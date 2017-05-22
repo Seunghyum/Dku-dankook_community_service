@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   #auth
+  skip_before_filter :authenticate_user!, only: [:show, :index]
   load_and_authorize_resource
+  layout "dku"
 
   before_action :set_board
   before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]

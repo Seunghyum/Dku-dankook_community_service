@@ -49,7 +49,7 @@ class Ability
       can :read, [BookList, Book]
       if user.use_pause == false
         can [:create, :read, :upvote, :downvote], [Post, Comment, LectureEstimate]
-        can [:update, :destroy], Post do |post|
+        can [:read, :update, :destroy], Post do |post|
           post.user_id == user.id
         end
         can [:update, :destroy], Comment do |comment|

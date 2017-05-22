@@ -1,7 +1,10 @@
 / 덧글작성 Form
 .row.blog-comments.margin-bottom-30
   .col-sm-2.sm-margin-bottom-40.text-right_sm-left_xs
-    = image_tag current_user.profile.nil? ? image_url("placeholder.jpg") : current_user.profile
+    - if current_user.present?
+      = image_tag(current_user.profile.nil? ? image_url("placeholder.jpg") : current_user.profile)
+    - else
+      = image_tag("placeholder.jpg")
   .col-sm-10
     / Form
     = form_for [@board, @post, @post.comments.new], class: "comment-style", novalidate:"novalidate", remote: true do |f|

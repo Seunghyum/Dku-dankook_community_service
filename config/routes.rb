@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+  get 'd3js/index'
+
+  resources :morphemes
+  resources :d3js
   post '/tinymce_assets' => 'tinymce_assets#create'
-  
+
+  get "toy1" => "toy_project#toy1"
+  get "study" => "toy_project#study"
+
   resources :blogings do
     member do
       get "like" => "posts#upvote"
@@ -86,6 +93,7 @@ get 'lockers/nottime' => "lockers#nottime", as: "nottime_lockers"
   resources :school_phone_searchings
 
   get 'home/index' => "home#index"
+  get 'home/dku' => 'home#dku'
   get 'home/certify' => "home#certify"
 
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'users/registrations',

@@ -9,12 +9,6 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( chart.js owl_carousel.js owl.carousel.css owl.theme.css pickme.js pickme.css jquery_package.js )
-Rails.application.config.assets.precompile += %w( rehearsal.js)
-Rails.application.config.assets.precompile += %w( rehearsal.css )
-Rails.application.config.assets.precompile += %w( rehearsal_sign.js )
-Rails.application.config.assets.precompile += %w( jquery.vticker.min.js )
-Rails.application.config.assets.precompile += %w( rehearsal_sign.css )
-Rails.application.config.assets.precompile += %w( fakeloader.css )
-Rails.application.config.assets.precompile += %w( loading/fakeloader.js )
-Rails.application.config.assets.precompile += %w( loading/pace.js )
+Rails.application.config.assets.precompile += %w( pagination_n_filter.js morphemes.js plugins/minimap.js plugins/jstree.js blogings.js chartist.js chart.js owl_carousel.js pickme.js jquery_package.js rehearsal.js  rehearsal_sign.js jquery.vticker.min.js loading/fakeloader.js loading/pace.js )
+Rails.application.config.assets.precompile += %w( owl.carousel.css owl.theme.css pickme.css rehearsal.css rehearsal_sign.css fakeloader.css )
+# Rails.application.config.assets.precompile += %w( pages/*.js )
